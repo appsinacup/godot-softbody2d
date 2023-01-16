@@ -4,7 +4,7 @@ extends Control
 @export var editor : EditorInterface
 
 var stiffness: float = 20
-var damping: float = 1
+var damping: float = 0
 var disable_collision := false
 
 var collision_layer := 1

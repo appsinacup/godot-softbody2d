@@ -13,46 +13,69 @@ size_flags_vertical = 3
 script = ExtResource("1_7aiwg")
 
 [node name="Panel" type="PanelContainer" parent="."]
-layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 556.0
 size_flags_horizontal = 3
 
 [node name="Container" type="VBoxContainer" parent="Panel"]
-layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 556.0
 
 [node name="Info" type="Label" parent="Panel/Container"]
-layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 26.0
 tooltip_text = "1. From Polygon2D selected, Generate Polygons with a step selected(default 10)
-2. Create a Skeleton2D child of Polygon2D. Add bones to it in a ring structure. (Optionally use automated way by clicking Create Jelly Skeleton)
-3. Click Generate Weights to automatically generate weights for bones
-4. Click Generate RigidBodies and Joints"
+2. Create a Skeleton2D child of Polygon2D. Add bones to it in a ring structure.
+Make sure bones are inside the object.
+The rigidbody generated will have circlce as shape, so make sure that will be inside.
+(Optionally use automated way by clicking Create Jelly Skeleton and then change the result by deleting/moving bones)
+The automatic generation makes the center bone the lookat bone.
+If you think it's wrong, you can update manually the lookat bone to be center one.
+3. Click Overide Pose now after you created bones until they get changed or anything.
+4. Click Generate Weights to automatically generate weights for bones
+5. Click Generate RigidBodies
+6. Click Generate Joints
+
+NOTE: each step can be restarted but you will lose what you are trying to generate
+(eg. if you regenerate skeleton will delete old one)"
 mouse_filter = 1
 text = "How to use(hover for details)"
 clip_text = true
 
 [node name="HSeparator4" type="HSeparator" parent="Panel/Container"]
-layout_mode = 2
+offset_top = 30.0
+offset_right = 1152.0
+offset_bottom = 34.0
 
 [node name="PanelGenerate" type="PanelContainer" parent="Panel/Container"]
-layout_mode = 2
+offset_top = 38.0
+offset_right = 1152.0
+offset_bottom = 104.0
 tooltip_text = "Generate outline and internal vertices and triangulates with distance specified."
 
 [node name="List" type="VBoxContainer" parent="Panel/Container/PanelGenerate"]
-layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 66.0
 size_flags_vertical = 3
 
 [node name="StepBoxContainer" type="HBoxContainer" parent="Panel/Container/PanelGenerate/List"]
-layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 31.0
 
 [node name="Step" type="Label" parent="Panel/Container/PanelGenerate/List/StepBoxContainer"]
 custom_minimum_size = Vector2(200, 2.08165e-12)
-layout_mode = 2
+offset_top = 2.0
+offset_right = 574.0
+offset_bottom = 28.0
 size_flags_horizontal = 3
 mouse_filter = 1
 text = "Polygon Vertex Distance:"
 clip_text = true
 
 [node name="steplabel" type="SpinBox" parent="Panel/Container/PanelGenerate/List/StepBoxContainer"]
-layout_mode = 2
+offset_left = 578.0
+offset_right = 1152.0
+offset_bottom = 31.0
 size_flags_horizontal = 3
 tooltip_text = "1. From Polygon2D selected, Generate Polygons with a step selected(default 10)
 2. Create a Skeleton2D child of Polygon2D. Add bones to it in a ring structure.
@@ -63,35 +86,47 @@ min_value = 5.0
 value = 10.0
 
 [node name="Generate" type="Button" parent="Panel/Container/PanelGenerate/List"]
-layout_mode = 2
+offset_top = 35.0
+offset_right = 1152.0
+offset_bottom = 66.0
 mouse_filter = 1
 shortcut_in_tooltip = false
 text = "Generate Polygon"
 
 [node name="HSeparator3" type="HSeparator" parent="Panel/Container"]
-layout_mode = 2
+offset_top = 108.0
+offset_right = 1152.0
+offset_bottom = 112.0
 
 [node name="PanelSkeleton" type="PanelContainer" parent="Panel/Container"]
-layout_mode = 2
+offset_top = 116.0
+offset_right = 1152.0
+offset_bottom = 182.0
 tooltip_text = "Generate Skeleton2D and Bone2D at distance specified above one of another."
 
 [node name="List" type="VBoxContainer" parent="Panel/Container/PanelSkeleton"]
-layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 66.0
 size_flags_vertical = 3
 
 [node name="skeletonStep" type="HBoxContainer" parent="Panel/Container/PanelSkeleton/List"]
-layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 31.0
 
 [node name="Step" type="Label" parent="Panel/Container/PanelSkeleton/List/skeletonStep"]
 custom_minimum_size = Vector2(200, 2.08165e-12)
-layout_mode = 2
+offset_top = 2.0
+offset_right = 574.0
+offset_bottom = 28.0
 size_flags_horizontal = 3
 mouse_filter = 1
 text = "Skeleton Bone Distance:"
 clip_text = true
 
 [node name="stepbonelabel" type="SpinBox" parent="Panel/Container/PanelSkeleton/List/skeletonStep"]
-layout_mode = 2
+offset_left = 578.0
+offset_right = 1152.0
+offset_bottom = 31.0
 size_flags_horizontal = 3
 tooltip_text = "1. From Polygon2D selected, Generate Polygons with a step selected(default 10)
 2. Create a Skeleton2D child of Polygon2D. Add bones to it in a ring structure.
@@ -102,79 +137,101 @@ min_value = 5.0
 value = 30.0
 
 [node name="Create Skeleton" type="Button" parent="Panel/Container/PanelSkeleton/List"]
-layout_mode = 2
+offset_top = 35.0
+offset_right = 1152.0
+offset_bottom = 66.0
 mouse_filter = 1
 shortcut_in_tooltip = false
 text = "Create Jelly Skeleton
 "
 
 [node name="HSeparator2" type="HSeparator" parent="Panel/Container"]
-layout_mode = 2
+offset_top = 186.0
+offset_right = 1152.0
+offset_bottom = 190.0
 
 [node name="PanelWeights" type="PanelContainer" parent="Panel/Container"]
-layout_mode = 2
+offset_top = 194.0
+offset_right = 1152.0
+offset_bottom = 225.0
 tooltip_text = "Generate Weights to Bone2D's. Don't forget before running this to do:
 - Skeleton2D: Overite Rest Pose
 - Polygon2D: UV(top menu) -> Bones Tab -> Sync Bones To Polygons"
 
 [node name="List2" type="VBoxContainer" parent="Panel/Container/PanelWeights"]
-layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 31.0
 size_flags_vertical = 3
 
 [node name="Weights" type="Button" parent="Panel/Container/PanelWeights/List2"]
-layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 31.0
 mouse_filter = 1
 shortcut_in_tooltip = false
 text = "Generate Weights"
 
 [node name="HSeparator" type="HSeparator" parent="Panel/Container"]
-layout_mode = 2
+offset_top = 229.0
+offset_right = 1152.0
+offset_bottom = 233.0
 
 [node name="PanelRb" type="PanelContainer" parent="Panel/Container"]
-layout_mode = 2
+offset_top = 237.0
+offset_right = 1152.0
+offset_bottom = 548.0
 tooltip_text = "Generate Rigidbodies2D and joints with specified parameters for each bone2D that this Polygon2D has."
 
 [node name="List" type="VBoxContainer" parent="Panel/Container/PanelRb"]
-layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 311.0
 size_flags_vertical = 3
 
 [node name="Damping" type="HBoxContainer" parent="Panel/Container/PanelRb/List"]
-layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 31.0
 
 [node name="rigidbody" type="Label" parent="Panel/Container/PanelRb/List/Damping"]
 custom_minimum_size = Vector2(200, 2.08165e-12)
-layout_mode = 2
+offset_top = 2.0
+offset_right = 574.0
+offset_bottom = 28.0
 size_flags_horizontal = 3
 mouse_filter = 1
 text = "Joint Damping:"
 clip_text = true
 
 [node name="dampinglabel" type="SpinBox" parent="Panel/Container/PanelRb/List/Damping"]
-layout_mode = 2
+offset_left = 578.0
+offset_right = 1152.0
+offset_bottom = 31.0
 size_flags_horizontal = 3
 tooltip_text = "1. From Polygon2D selected, Generate Polygons with a step selected(default 10)
 2. Create a Skeleton2D child of Polygon2D. Add bones to it in a ring structure.
 3. Click Generate Weights to automatically generate weights for bones
 4. Click Generate RigidBodies and Joints"
 mouse_filter = 1
-min_value = 0.1
 max_value = 16.0
 step = 0.1
-value = 1.0
 
 [node name="RigidbodiesRadiusContainer" type="HBoxContainer" parent="Panel/Container/PanelRb/List"]
-layout_mode = 2
+offset_top = 35.0
+offset_right = 1152.0
+offset_bottom = 66.0
 
 [node name="rigidbody" type="Label" parent="Panel/Container/PanelRb/List/RigidbodiesRadiusContainer"]
 custom_minimum_size = Vector2(200, 2.08165e-12)
-layout_mode = 2
+offset_top = 2.0
+offset_right = 574.0
+offset_bottom = 28.0
 size_flags_horizontal = 3
 mouse_filter = 1
 text = "Joint Stiffness:"
 clip_text = true
 
 [node name="stiffnesslabel" type="SpinBox" parent="Panel/Container/PanelRb/List/RigidbodiesRadiusContainer"]
-layout_mode = 2
+offset_left = 578.0
+offset_right = 1152.0
+offset_bottom = 31.0
 size_flags_horizontal = 3
 tooltip_text = "1. From Polygon2D selected, Generate Polygons with a step selected(default 10)
 2. Create a Skeleton2D child of Polygon2D. Add bones to it in a ring structure.
@@ -186,18 +243,24 @@ max_value = 64.0
 value = 20.1
 
 [node name="Radius" type="HBoxContainer" parent="Panel/Container/PanelRb/List"]
-layout_mode = 2
+offset_top = 70.0
+offset_right = 1152.0
+offset_bottom = 101.0
 
 [node name="radius" type="Label" parent="Panel/Container/PanelRb/List/Radius"]
 custom_minimum_size = Vector2(200, 2.08165e-12)
-layout_mode = 2
+offset_top = 2.0
+offset_right = 574.0
+offset_bottom = 28.0
 size_flags_horizontal = 3
 mouse_filter = 1
 text = "Rigidbody Radius:"
 clip_text = true
 
 [node name="radiuslabel" type="SpinBox" parent="Panel/Container/PanelRb/List/Radius"]
-layout_mode = 2
+offset_left = 578.0
+offset_right = 1152.0
+offset_bottom = 31.0
 size_flags_horizontal = 3
 tooltip_text = "1. From Polygon2D selected, Generate Polygons with a step selected(default 10)
 2. Create a Skeleton2D child of Polygon2D. Add bones to it in a ring structure.
@@ -208,18 +271,24 @@ min_value = 2.0
 value = 20.0
 
 [node name="collisionlayer" type="HBoxContainer" parent="Panel/Container/PanelRb/List"]
-layout_mode = 2
+offset_top = 105.0
+offset_right = 1152.0
+offset_bottom = 136.0
 
 [node name="label" type="Label" parent="Panel/Container/PanelRb/List/collisionlayer"]
 custom_minimum_size = Vector2(200, 2.08165e-12)
-layout_mode = 2
+offset_top = 2.0
+offset_right = 574.0
+offset_bottom = 28.0
 size_flags_horizontal = 3
 mouse_filter = 1
 text = "Rigidbody Collision Layer:"
 clip_text = true
 
 [node name="collisionlayer" type="SpinBox" parent="Panel/Container/PanelRb/List/collisionlayer"]
-layout_mode = 2
+offset_left = 578.0
+offset_right = 1152.0
+offset_bottom = 31.0
 size_flags_horizontal = 3
 tooltip_text = "1. From Polygon2D selected, Generate Polygons with a step selected(default 10)
 2. Create a Skeleton2D child of Polygon2D. Add bones to it in a ring structure.
@@ -230,18 +299,24 @@ max_value = 1e+08
 value = 1.0
 
 [node name="collisionmask" type="HBoxContainer" parent="Panel/Container/PanelRb/List"]
-layout_mode = 2
+offset_top = 140.0
+offset_right = 1152.0
+offset_bottom = 171.0
 
 [node name="label" type="Label" parent="Panel/Container/PanelRb/List/collisionmask"]
 custom_minimum_size = Vector2(200, 2.08165e-12)
-layout_mode = 2
+offset_top = 2.0
+offset_right = 574.0
+offset_bottom = 28.0
 size_flags_horizontal = 3
 mouse_filter = 1
 text = "Rigidbody Collision Mask:"
 clip_text = true
 
 [node name="collisionmask" type="SpinBox" parent="Panel/Container/PanelRb/List/collisionmask"]
-layout_mode = 2
+offset_left = 578.0
+offset_right = 1152.0
+offset_bottom = 31.0
 size_flags_horizontal = 3
 tooltip_text = "1. From Polygon2D selected, Generate Polygons with a step selected(default 10)
 2. Create a Skeleton2D child of Polygon2D. Add bones to it in a ring structure.
@@ -252,18 +327,24 @@ max_value = 1e+08
 value = 1.0
 
 [node name="mass" type="HBoxContainer" parent="Panel/Container/PanelRb/List"]
-layout_mode = 2
+offset_top = 175.0
+offset_right = 1152.0
+offset_bottom = 206.0
 
 [node name="label" type="Label" parent="Panel/Container/PanelRb/List/mass"]
 custom_minimum_size = Vector2(200, 2.08165e-12)
-layout_mode = 2
+offset_top = 2.0
+offset_right = 574.0
+offset_bottom = 28.0
 size_flags_horizontal = 3
 mouse_filter = 1
 text = "Rigidbody Mass:"
 clip_text = true
 
 [node name="mass" type="SpinBox" parent="Panel/Container/PanelRb/List/mass"]
-layout_mode = 2
+offset_left = 578.0
+offset_right = 1152.0
+offset_bottom = 31.0
 size_flags_horizontal = 3
 tooltip_text = "1. From Polygon2D selected, Generate Polygons with a step selected(default 10)
 2. Create a Skeleton2D child of Polygon2D. Add bones to it in a ring structure.
@@ -274,24 +355,32 @@ step = 0.1
 value = 0.1
 
 [node name="disablecollision" type="CheckBox" parent="Panel/Container/PanelRb/List"]
-layout_mode = 2
+offset_top = 210.0
+offset_right = 1152.0
+offset_bottom = 241.0
 mouse_filter = 1
 text = "Disable Collisions"
 
 [node name="Generate Rigidbodies" type="Button" parent="Panel/Container/PanelRb/List"]
-layout_mode = 2
+offset_top = 245.0
+offset_right = 1152.0
+offset_bottom = 276.0
 mouse_filter = 1
 shortcut_in_tooltip = false
 text = "Generate Rigidbodies"
 
 [node name="Generate Joints" type="Button" parent="Panel/Container/PanelRb/List"]
-layout_mode = 2
+offset_top = 280.0
+offset_right = 1152.0
+offset_bottom = 311.0
 mouse_filter = 1
 shortcut_in_tooltip = false
 text = "Generate Joints"
 
 [node name="HSeparator5" type="HSeparator" parent="Panel/Container"]
-layout_mode = 2
+offset_top = 552.0
+offset_right = 1152.0
+offset_bottom = 556.0
 
 [connection signal="value_changed" from="Panel/Container/PanelGenerate/List/StepBoxContainer/steplabel" to="." method="_on_steplabel_value_changed"]
 [connection signal="pressed" from="Panel/Container/PanelGenerate/List/Generate" to="." method="_on_generate_polygon"]

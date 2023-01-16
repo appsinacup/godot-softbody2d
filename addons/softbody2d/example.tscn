@@ -1,68 +1,48 @@
-[gd_scene load_steps=62 format=3 uid="uid://bu3cp67pqc8aa"]
+[gd_scene load_steps=52 format=3 uid="uid://bu3cp67pqc8aa"]
 
 [ext_resource type="Texture2D" uid="uid://dbpu4eohsmbfh" path="res://addons/softbody2d/Butter.png" id="1_adqcn"]
 [ext_resource type="Script" path="res://addons/softbody2d/look_at_center_2d.gd" id="2_yb506"]
 [ext_resource type="Texture2D" uid="uid://d1widf0ssl8lu" path="res://addons/softbody2d/Circle.png" id="3_n6yok"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vj7ma"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_7p638"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7ugp2"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ibwuj"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_f0hnr"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_rgioh"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_80wbu"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_6lo4f"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_51xkq"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ll1hv"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4i87k"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_yjp8g"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yon7s"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_bgqta"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2c0vu"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_24dt7"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yisof"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ut58p"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_a6lxp"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_i058b"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_66w8p"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_n0bse"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_o504u"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_clk8r"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fcxv7"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_n3y6x"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dow88"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_5vmvj"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_y4aik"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_oo5d6"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_c2a4k"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_enqvt"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6bmuf"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ujgp5"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_g767l"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_7b5xo"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_di8h0"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_4kjdt"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jx2xo"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_8mej6"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_8yf3w"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_8jqbl"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_c2g0u"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_4bxs5"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_jud65"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_cirhd"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_24caj"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_cky7r"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_8kd6r"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_4bvgl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7ea3b"]
 radius = 20.0
@@ -151,21 +131,22 @@ radius = 20.0
 [node name="Node2D" type="Node2D"]
 
 [node name="Polygon2D3" type="Polygon2D" parent="."]
-position = Vector2(321, -179)
+position = Vector2(302, -186)
 offset = Vector2(2.08165e-12, 2.08165e-12)
 texture = ExtResource("1_adqcn")
-skeleton = NodePath("@Skeleton2D@32144")
+skeleton = NodePath("Skeleton2D")
 polygon = PackedVector2Array(45, 2, 35.9714, 6.29934, 26.9428, 10.5987, 17.9142, 14.898, 8.88558, 19.1973, 2, 22, 2.41631, 31.9913, 2.83261, 41.9827, 3, 46, 3, 56, 3, 66, 3, 71, 12.1756, 74.9761, 21.3511, 78.9521, 33, 85, 40, 85, 44, 85, 52.7158, 80.0974, 61.4315, 75.1948, 70.1473, 70.2922, 77, 67, 76.2025, 57.0318, 75.4051, 47.0637, 75, 42, 75, 32, 75, 23, 67.1913, 16.753, 59.3826, 10.5061, 50, 1, 32, 11, 42, 11, 52, 11, 12, 21, 22, 21, 32, 21, 42, 21, 52, 21, 62, 21, 72, 21, 12, 31, 22, 31, 32, 31, 42, 31, 52, 31, 62, 31, 72, 31, 12, 41, 22, 41, 32, 41, 42, 41, 52, 41, 62, 41, 72, 41, 12, 51, 22, 51, 32, 51, 42, 51, 52, 51, 62, 51, 72, 51, 12, 61, 22, 61, 32, 61, 42, 61, 52, 61, 62, 61, 72, 61, 12, 71, 22, 71, 32, 71, 42, 71, 52, 71, 62, 71, 32, 81, 42, 81)
 uv = PackedVector2Array(45, 2, 35.9714, 6.29934, 26.9428, 10.5987, 17.9142, 14.898, 8.88558, 19.1973, 2, 22, 2.41631, 31.9913, 2.83261, 41.9827, 3, 46, 3, 56, 3, 66, 3, 71, 12.1756, 74.9761, 21.3511, 78.9521, 33, 85, 40, 85, 44, 85, 52.7158, 80.0974, 61.4315, 75.1948, 70.1473, 70.2922, 77, 67, 76.2025, 57.0318, 75.4051, 47.0637, 75, 42, 75, 32, 75, 23, 67.1913, 16.753, 59.3826, 10.5061, 50, 1, 32, 11, 42, 11, 52, 11, 12, 21, 22, 21, 32, 21, 42, 21, 52, 21, 62, 21, 72, 21, 12, 31, 22, 31, 32, 31, 42, 31, 52, 31, 62, 31, 72, 31, 12, 41, 22, 41, 32, 41, 42, 41, 52, 41, 62, 41, 72, 41, 12, 51, 22, 51, 32, 51, 42, 51, 52, 51, 62, 51, 72, 51, 12, 61, 22, 61, 32, 61, 42, 61, 52, 61, 62, 61, 72, 61, 12, 71, 22, 71, 32, 71, 42, 71, 52, 71, 62, 71, 32, 81, 42, 81)
 polygons = [PackedInt32Array(1, 2, 29), PackedInt32Array(0, 1, 30), PackedInt32Array(1, 29, 30), PackedInt32Array(27, 28, 31), PackedInt32Array(28, 0, 31), PackedInt32Array(0, 30, 31), PackedInt32Array(3, 4, 32), PackedInt32Array(4, 5, 32), PackedInt32Array(2, 3, 33), PackedInt32Array(3, 32, 33), PackedInt32Array(29, 2, 34), PackedInt32Array(2, 33, 34), PackedInt32Array(30, 29, 35), PackedInt32Array(29, 34, 35), PackedInt32Array(27, 31, 36), PackedInt32Array(31, 30, 36), PackedInt32Array(30, 35, 36), PackedInt32Array(26, 27, 37), PackedInt32Array(27, 36, 37), PackedInt32Array(25, 26, 38), PackedInt32Array(26, 37, 38), PackedInt32Array(5, 6, 39), PackedInt32Array(32, 5, 39), PackedInt32Array(33, 32, 40), PackedInt32Array(32, 39, 40), PackedInt32Array(34, 33, 41), PackedInt32Array(33, 40, 41), PackedInt32Array(35, 34, 42), PackedInt32Array(34, 41, 42), PackedInt32Array(36, 35, 43), PackedInt32Array(35, 42, 43), PackedInt32Array(37, 36, 44), PackedInt32Array(36, 43, 44), PackedInt32Array(24, 25, 45), PackedInt32Array(25, 38, 45), PackedInt32Array(38, 37, 45), PackedInt32Array(37, 44, 45), PackedInt32Array(6, 7, 46), PackedInt32Array(39, 6, 46), PackedInt32Array(7, 8, 46), PackedInt32Array(40, 39, 47), PackedInt32Array(39, 46, 47), PackedInt32Array(41, 40, 48), PackedInt32Array(40, 47, 48), PackedInt32Array(42, 41, 49), PackedInt32Array(41, 48, 49), PackedInt32Array(43, 42, 50), PackedInt32Array(42, 49, 50), PackedInt32Array(44, 43, 51), PackedInt32Array(43, 50, 51), PackedInt32Array(23, 24, 52), PackedInt32Array(24, 45, 52), PackedInt32Array(45, 44, 52), PackedInt32Array(44, 51, 52), PackedInt32Array(22, 23, 52), PackedInt32Array(8, 9, 53), PackedInt32Array(46, 8, 53), PackedInt32Array(47, 46, 54), PackedInt32Array(46, 53, 54), PackedInt32Array(48, 47, 55), PackedInt32Array(47, 54, 55), PackedInt32Array(49, 48, 56), PackedInt32Array(48, 55, 56), PackedInt32Array(50, 49, 57), PackedInt32Array(49, 56, 57), PackedInt32Array(51, 50, 58), PackedInt32Array(50, 57, 58), PackedInt32Array(21, 22, 59), PackedInt32Array(22, 52, 59), PackedInt32Array(52, 51, 59), PackedInt32Array(51, 58, 59), PackedInt32Array(9, 10, 60), PackedInt32Array(53, 9, 60), PackedInt32Array(54, 53, 61), PackedInt32Array(53, 60, 61), PackedInt32Array(55, 54, 62), PackedInt32Array(54, 61, 62), PackedInt32Array(56, 55, 63), PackedInt32Array(55, 62, 63), PackedInt32Array(57, 56, 64), PackedInt32Array(56, 63, 64), PackedInt32Array(58, 57, 65), PackedInt32Array(57, 64, 65), PackedInt32Array(19, 20, 66), PackedInt32Array(20, 21, 66), PackedInt32Array(65, 19, 66), PackedInt32Array(21, 59, 66), PackedInt32Array(59, 58, 66), PackedInt32Array(58, 65, 66), PackedInt32Array(10, 11, 67), PackedInt32Array(11, 12, 67), PackedInt32Array(60, 10, 67), PackedInt32Array(12, 13, 68), PackedInt32Array(67, 12, 68), PackedInt32Array(61, 60, 68), PackedInt32Array(60, 67, 68), PackedInt32Array(68, 13, 69), PackedInt32Array(62, 61, 69), PackedInt32Array(61, 68, 69), PackedInt32Array(63, 62, 70), PackedInt32Array(62, 69, 70), PackedInt32Array(17, 18, 71), PackedInt32Array(70, 17, 71), PackedInt32Array(64, 63, 71), PackedInt32Array(63, 70, 71), PackedInt32Array(18, 19, 72), PackedInt32Array(19, 65, 72), PackedInt32Array(71, 18, 72), PackedInt32Array(65, 64, 72), PackedInt32Array(64, 71, 72), PackedInt32Array(14, 15, 73), PackedInt32Array(13, 14, 73), PackedInt32Array(69, 13, 73), PackedInt32Array(15, 16, 74), PackedInt32Array(16, 17, 74), PackedInt32Array(17, 70, 74), PackedInt32Array(73, 15, 74), PackedInt32Array(70, 69, 74), PackedInt32Array(69, 73, 74)]
-bones = ["Bone2D11", PackedFloat32Array(0, 1.12143, 0.772459, 0.45626, 0.684462, 0.841188, 1.02047, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1.38197, 0, 0.618034, 0, 1, 2, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1.38197, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D21", PackedFloat32Array(0.860057, 0.878572, 1.22754, 1.54374, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.30492, 0.960255, 1, 0.618034, 1, 0, 2, 1, 0, 1, 2, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D31", PackedFloat32Array(1.13994, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.03709, 0.744018, 0.425804, 0.695076, 1.03975, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.618034, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 2, 1.38197, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D12", PackedFloat32Array(0, 0, 0, 0, 1.31554, 1.15881, 0.979531, 0.830965, 0.896007, 1.10399, 1.23025, 1.24639, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.38197, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0.618034, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1.38197, 2, 0, 0, 0, 0, 0, 1.38197, 0, 0, 0, 0, 0, 0, 0), "Bone2D22", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D32", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.30021, 1.18448, 0.864193, 0.723148, 0.962912, 1.25598, 1.5742, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.38197, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0.618034, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 2, 1.38197, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D13", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 1.16904, 1.10399, 0.896007, 0.769749, 0.75361, 0.719154, 0.928028, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0.618034, 0, 1, 0, 0, 0, 0, 0.618034, 0.618034, 1, 0, 0, 0, 1.38197, 0), "Bone2D23", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.44484, 1.68677, 1.68677, 0, 0, 1.41151, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1.38197, 1, 1, 1, 1.38197, 0, 2), "Bone2D33", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.32765, 0.823872, 0.588487, 0.699794, 0.815522, 1.13581, 1.27685, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0.618034, 0, 0, 0, 0, 1, 0.618034, 0, 0), "Bone2D24", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.28085, 1.07197, 0.555164, 0, 0, 0.672353, 1.17613, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0.618034, 0)]
+bones = ["Bone2D11", PackedFloat32Array(0, 0.439287, 0.61377, 0.77187, 0.657769, 0.579406, 0.489765, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0.690983, 1, 0.5, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D21", PackedFloat32Array(0.569971, 0.560713, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.519873, 0.5, 0.690983, 0.5, 0, 0, 0.5, 1, 0.5, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D31", PackedFloat32Array(0.430029, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.481456, 0.627991, 0.787099, 0.652462, 0.480127, 0, 0, 0.5, 0, 0, 0, 0, 0.5, 1, 0.690983, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D12", PackedFloat32Array(0, 0, 0, 0, 0, 0.420594, 0.510235, 0.584517, 0.551997, 0.448003, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0, 0, 0, 0, 0, 0.690983, 1, 0.5, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D22", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 0, 0.5, 1, 0.5, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D32", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.407761, 0.567904, 0.638426, 0.518544, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0, 0, 0, 0, 0.5, 1, 0.690983, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D13", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0.415482, 0.448003, 0.551997, 0.615126, 0.623195, 0.640423, 0.535986, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0, 0, 0, 0, 0, 0.690983, 1, 0.5, 0, 0, 0, 0, 0.690983, 0.690983, 0.5, 0, 0, 0, 0, 0), "Bone2D23", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 0, 0.5, 1, 0.5, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0, 0, 0), "Bone2D33", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.588064, 0.705756, 0.650103, 0.592239, 0.432096, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0, 0, 0, 0, 0.5, 1, 0.690983, 0, 0, 0, 0, 0.5, 0.690983, 0, 0), "Bone2D24", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.464014, 0.722418, 0.843387, 0.843387, 0.663824, 0.411936, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0.690983, 1)]
 internal_vertex_count = 46
 
-[node name="@Skeleton2D@32144" type="Skeleton2D" parent="Polygon2D3"]
+[node name="Skeleton2D" type="Skeleton2D" parent="Polygon2D3"]
 
-[node name="Bone2D11" type="Bone2D" parent="Polygon2D3/@Skeleton2D@32144"]
+[node name="Bone2D11" type="Bone2D" parent="Polygon2D3/Skeleton2D"]
 position = Vector2(22, 21)
 rotation = 0.785398
+scale = Vector2(1, 1)
 rest = Transform2D(0.707107, 0.707107, -0.707107, 0.707107, 22, 21)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -173,7 +154,7 @@ bone_angle = 0.0
 script = ExtResource("2_yb506")
 follow = "../Bone2D22"
 
-[node name="Bone2D21" type="Bone2D" parent="Polygon2D3/@Skeleton2D@32144"]
+[node name="Bone2D21" type="Bone2D" parent="Polygon2D3/Skeleton2D"]
 position = Vector2(42, 21)
 rotation = 1.5708
 rest = Transform2D(-4.37114e-08, 1, -1, -4.37114e-08, 42, 21)
@@ -183,9 +164,10 @@ bone_angle = 0.0
 script = ExtResource("2_yb506")
 follow = "../Bone2D22"
 
-[node name="Bone2D31" type="Bone2D" parent="Polygon2D3/@Skeleton2D@32144"]
+[node name="Bone2D31" type="Bone2D" parent="Polygon2D3/Skeleton2D"]
 position = Vector2(62, 21)
 rotation = 2.35619
+scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, 0.707107, -0.707107, -0.707107, 62, 21)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -193,7 +175,7 @@ bone_angle = 0.0
 script = ExtResource("2_yb506")
 follow = "../Bone2D22"
 
-[node name="Bone2D12" type="Bone2D" parent="Polygon2D3/@Skeleton2D@32144"]
+[node name="Bone2D12" type="Bone2D" parent="Polygon2D3/Skeleton2D"]
 position = Vector2(22, 41)
 rest = Transform2D(1, 0, 0, 1, 22, 41)
 auto_calculate_length_and_angle = false
@@ -202,7 +184,7 @@ bone_angle = 0.0
 script = ExtResource("2_yb506")
 follow = "../Bone2D22"
 
-[node name="Bone2D22" type="Bone2D" parent="Polygon2D3/@Skeleton2D@32144"]
+[node name="Bone2D22" type="Bone2D" parent="Polygon2D3/Skeleton2D"]
 position = Vector2(42, 41)
 rest = Transform2D(1, 0, 0, 1, 42, 41)
 auto_calculate_length_and_angle = false
@@ -211,7 +193,7 @@ bone_angle = 0.0
 script = ExtResource("2_yb506")
 follow = "../Bone2D22"
 
-[node name="Bone2D32" type="Bone2D" parent="Polygon2D3/@Skeleton2D@32144"]
+[node name="Bone2D32" type="Bone2D" parent="Polygon2D3/Skeleton2D"]
 position = Vector2(62, 41)
 rotation = 3.14159
 rest = Transform2D(-1, 1.50996e-07, -1.50996e-07, -1, 62, 41)
@@ -221,9 +203,10 @@ bone_angle = 0.0
 script = ExtResource("2_yb506")
 follow = "../Bone2D22"
 
-[node name="Bone2D13" type="Bone2D" parent="Polygon2D3/@Skeleton2D@32144"]
+[node name="Bone2D13" type="Bone2D" parent="Polygon2D3/Skeleton2D"]
 position = Vector2(22, 61)
 rotation = -0.785398
+scale = Vector2(1, 1)
 rest = Transform2D(0.707107, -0.707107, 0.707107, 0.707107, 22, 61)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -231,7 +214,7 @@ bone_angle = 0.0
 script = ExtResource("2_yb506")
 follow = "../Bone2D22"
 
-[node name="Bone2D23" type="Bone2D" parent="Polygon2D3/@Skeleton2D@32144"]
+[node name="Bone2D23" type="Bone2D" parent="Polygon2D3/Skeleton2D"]
 position = Vector2(42, 61)
 rotation = -1.5708
 rest = Transform2D(-4.37114e-08, -1, 1, -4.37114e-08, 42, 61)
@@ -241,9 +224,10 @@ bone_angle = 0.0
 script = ExtResource("2_yb506")
 follow = "../Bone2D22"
 
-[node name="Bone2D33" type="Bone2D" parent="Polygon2D3/@Skeleton2D@32144"]
+[node name="Bone2D33" type="Bone2D" parent="Polygon2D3/Skeleton2D"]
 position = Vector2(62, 61)
 rotation = -2.35619
+scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, -0.707107, 0.707107, -0.707107, 62, 61)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -251,7 +235,7 @@ bone_angle = 0.0
 script = ExtResource("2_yb506")
 follow = "../Bone2D22"
 
-[node name="Bone2D24" type="Bone2D" parent="Polygon2D3/@Skeleton2D@32144"]
+[node name="Bone2D24" type="Bone2D" parent="Polygon2D3/Skeleton2D"]
 position = Vector2(42, 81)
 rotation = -1.5708
 rest = Transform2D(-4.37114e-08, -1, 1, -4.37114e-08, 42, 81)
@@ -263,1288 +247,654 @@ follow = "../Bone2D22"
 
 [node name="RigidBodiesRoot" type="Node2D" parent="Polygon2D3"]
 
-[node name="@@32982" type="RigidBody2D" parent="Polygon2D3/RigidBodiesRoot"]
+[node name="@@36393" type="RigidBody2D" parent="Polygon2D3/RigidBodiesRoot"]
 position = Vector2(22, 21)
 mass = 0.1
 
-[node name="@@32983" type="CollisionShape2D" parent="Polygon2D3/RigidBodiesRoot/@@32982"]
-shape = SubResource("CircleShape2D_vj7ma")
+[node name="@@36394" type="CollisionShape2D" parent="Polygon2D3/RigidBodiesRoot/@@36393"]
+shape = SubResource("CircleShape2D_7p638")
 
-[node name="@@32984" type="RemoteTransform2D" parent="Polygon2D3/RigidBodiesRoot/@@32982"]
-remote_path = NodePath("../../../@Skeleton2D@32144/Bone2D11")
-update_rotation = false
-update_scale = false
-
-[node name="@@33012" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32982"]
-rotation = 4.71239
-node_a = NodePath("..")
-node_b = NodePath("../../@@32985")
-disable_collision = false
-length = 20.0
-rest_length = 20.0
-
-[node name="@@33013" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32982"]
-rotation = 4.71239
-node_a = NodePath("..")
-node_b = NodePath("../../@@32988")
-disable_collision = false
-length = 40.0
-rest_length = 40.0
-
-[node name="@@33014" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32982"]
-node_a = NodePath("..")
-node_b = NodePath("../../@@32991")
-disable_collision = false
-length = 20.0
-rest_length = 20.0
-
-[node name="@@33015" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32982"]
-rotation = -0.785398
-node_a = NodePath("..")
-node_b = NodePath("../../@@32994")
-disable_collision = false
-length = 28.2843
-rest_length = 28.2843
-
-[node name="@@33016" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32982"]
-node_a = NodePath("..")
-node_b = NodePath("../../@@33000")
-disable_collision = false
-length = 40.0
-rest_length = 40.0
-
-[node name="@@32985" type="RigidBody2D" parent="Polygon2D3/RigidBodiesRoot"]
-position = Vector2(42, 21)
-mass = 0.1
-
-[node name="@@32986" type="CollisionShape2D" parent="Polygon2D3/RigidBodiesRoot/@@32985"]
-shape = SubResource("CircleShape2D_7ugp2")
-
-[node name="@@32987" type="RemoteTransform2D" parent="Polygon2D3/RigidBodiesRoot/@@32985"]
-remote_path = NodePath("../../../@Skeleton2D@32144/Bone2D21")
-update_rotation = false
-update_scale = false
-
-[node name="@@33017" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32985"]
-rotation = 1.5708
-node_a = NodePath("..")
-node_b = NodePath("../../@@32982")
-disable_collision = false
-length = 20.0
-rest_length = 20.0
-
-[node name="@@33018" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32985"]
-rotation = 4.71239
-node_a = NodePath("..")
-node_b = NodePath("../../@@32988")
-disable_collision = false
-length = 20.0
-rest_length = 20.0
-
-[node name="@@33019" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32985"]
-rotation = 0.785398
-node_a = NodePath("..")
-node_b = NodePath("../../@@32991")
-disable_collision = false
-length = 28.2843
-rest_length = 28.2843
-
-[node name="@@33020" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32985"]
-node_a = NodePath("..")
-node_b = NodePath("../../@@32994")
-disable_collision = false
-length = 20.0
-rest_length = 20.0
-
-[node name="@@33021" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32985"]
-rotation = -0.785398
-node_a = NodePath("..")
-node_b = NodePath("../../@@32997")
-disable_collision = false
-length = 28.2843
-rest_length = 28.2843
-
-[node name="@@33022" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32985"]
-node_a = NodePath("..")
-node_b = NodePath("../../@@33003")
-disable_collision = false
-length = 40.0
-rest_length = 40.0
-
-[node name="@@32988" type="RigidBody2D" parent="Polygon2D3/RigidBodiesRoot"]
-position = Vector2(62, 21)
-mass = 0.1
-
-[node name="@@32989" type="CollisionShape2D" parent="Polygon2D3/RigidBodiesRoot/@@32988"]
-shape = SubResource("CircleShape2D_f0hnr")
-
-[node name="@@32990" type="RemoteTransform2D" parent="Polygon2D3/RigidBodiesRoot/@@32988"]
-remote_path = NodePath("../../../@Skeleton2D@32144/Bone2D31")
-update_rotation = false
-update_scale = false
-
-[node name="@@33023" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32988"]
-rotation = 1.5708
-node_a = NodePath("..")
-node_b = NodePath("../../@@32982")
-disable_collision = false
-length = 40.0
-rest_length = 40.0
-
-[node name="@@33024" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32988"]
-rotation = 1.5708
-node_a = NodePath("..")
-node_b = NodePath("../../@@32985")
-disable_collision = false
-length = 20.0
-rest_length = 20.0
-
-[node name="@@33025" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32988"]
-rotation = 0.785398
-node_a = NodePath("..")
-node_b = NodePath("../../@@32994")
-disable_collision = false
-length = 28.2843
-rest_length = 28.2843
-
-[node name="@@33026" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32988"]
-node_a = NodePath("..")
-node_b = NodePath("../../@@32997")
-disable_collision = false
-length = 20.0
-rest_length = 20.0
-
-[node name="@@33027" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32988"]
-node_a = NodePath("..")
-node_b = NodePath("../../@@33006")
-disable_collision = false
-length = 40.0
-rest_length = 40.0
-
-[node name="@@32991" type="RigidBody2D" parent="Polygon2D3/RigidBodiesRoot"]
-position = Vector2(22, 41)
-mass = 0.1
-
-[node name="@@32992" type="CollisionShape2D" parent="Polygon2D3/RigidBodiesRoot/@@32991"]
-shape = SubResource("CircleShape2D_80wbu")
-
-[node name="@@32993" type="RemoteTransform2D" parent="Polygon2D3/RigidBodiesRoot/@@32991"]
-remote_path = NodePath("../../../@Skeleton2D@32144/Bone2D12")
-update_rotation = false
-update_scale = false
-
-[node name="@@33028" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32991"]
-rotation = 3.14159
-node_a = NodePath("..")
-node_b = NodePath("../../@@32982")
-disable_collision = false
-length = 20.0
-rest_length = 20.0
-
-[node name="@@33029" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32991"]
-rotation = 3.92699
-node_a = NodePath("..")
-node_b = NodePath("../../@@32985")
-disable_collision = false
-length = 28.2843
-rest_length = 28.2843
-
-[node name="@@33030" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32991"]
-rotation = 4.71239
-node_a = NodePath("..")
-node_b = NodePath("../../@@32994")
-disable_collision = false
-length = 20.0
-rest_length = 20.0
-
-[node name="@@33031" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32991"]
-rotation = 4.71239
-node_a = NodePath("..")
-node_b = NodePath("../../@@32997")
-disable_collision = false
-length = 40.0
-rest_length = 40.0
-
-[node name="@@33032" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32991"]
-node_a = NodePath("..")
-node_b = NodePath("../../@@33000")
-disable_collision = false
-length = 20.0
-rest_length = 20.0
-
-[node name="@@33033" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32991"]
-rotation = -0.785398
-node_a = NodePath("..")
-node_b = NodePath("../../@@33003")
-disable_collision = false
-length = 28.2843
-rest_length = 28.2843
-
-[node name="@@32994" type="RigidBody2D" parent="Polygon2D3/RigidBodiesRoot"]
-position = Vector2(42, 41)
-mass = 0.1
-
-[node name="@@32995" type="CollisionShape2D" parent="Polygon2D3/RigidBodiesRoot/@@32994"]
-shape = SubResource("CircleShape2D_51xkq")
-
-[node name="@@32996" type="RemoteTransform2D" parent="Polygon2D3/RigidBodiesRoot/@@32994"]
-remote_path = NodePath("../../../@Skeleton2D@32144/Bone2D22")
-update_rotation = false
-update_scale = false
-
-[node name="@@33034" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32994"]
-rotation = 2.35619
-node_a = NodePath("..")
-node_b = NodePath("../../@@32982")
-disable_collision = false
-length = 28.2843
-rest_length = 28.2843
-
-[node name="@@33035" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32994"]
-rotation = 3.14159
-node_a = NodePath("..")
-node_b = NodePath("../../@@32985")
-disable_collision = false
-length = 20.0
-rest_length = 20.0
-
-[node name="@@33036" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32994"]
-rotation = 3.92699
-node_a = NodePath("..")
-node_b = NodePath("../../@@32988")
-disable_collision = false
-length = 28.2843
-rest_length = 28.2843
-
-[node name="@@33037" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32994"]
-rotation = 1.5708
-node_a = NodePath("..")
-node_b = NodePath("../../@@32991")
-disable_collision = false
-length = 20.0
-rest_length = 20.0
-
-[node name="@@33038" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32994"]
-rotation = 4.71239
-node_a = NodePath("..")
-node_b = NodePath("../../@@32997")
-disable_collision = false
-length = 20.0
-rest_length = 20.0
-
-[node name="@@33039" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32994"]
-rotation = 0.785398
-node_a = NodePath("..")
-node_b = NodePath("../../@@33000")
-disable_collision = false
-length = 28.2843
-rest_length = 28.2843
-
-[node name="@@33040" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32994"]
-node_a = NodePath("..")
-node_b = NodePath("../../@@33003")
-disable_collision = false
-length = 20.0
-rest_length = 20.0
-
-[node name="@@33041" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32994"]
-rotation = -0.785398
-node_a = NodePath("..")
-node_b = NodePath("../../@@33006")
-disable_collision = false
-length = 28.2843
-rest_length = 28.2843
-
-[node name="@@33042" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32994"]
-node_a = NodePath("..")
-node_b = NodePath("../../@@33009")
-disable_collision = false
-length = 40.0
-rest_length = 40.0
-
-[node name="@@32997" type="RigidBody2D" parent="Polygon2D3/RigidBodiesRoot"]
-position = Vector2(62, 41)
-mass = 0.1
-
-[node name="@@32998" type="CollisionShape2D" parent="Polygon2D3/RigidBodiesRoot/@@32997"]
-shape = SubResource("CircleShape2D_4i87k")
-
-[node name="@@32999" type="RemoteTransform2D" parent="Polygon2D3/RigidBodiesRoot/@@32997"]
-remote_path = NodePath("../../../@Skeleton2D@32144/Bone2D32")
-update_rotation = false
-update_scale = false
-
-[node name="@@33043" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32997"]
-rotation = 2.35619
-node_a = NodePath("..")
-node_b = NodePath("../../@@32985")
-disable_collision = false
-length = 28.2843
-rest_length = 28.2843
-
-[node name="@@33044" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32997"]
-rotation = 3.14159
-node_a = NodePath("..")
-node_b = NodePath("../../@@32988")
-disable_collision = false
-length = 20.0
-rest_length = 20.0
-
-[node name="@@33045" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32997"]
-rotation = 1.5708
-node_a = NodePath("..")
-node_b = NodePath("../../@@32991")
-disable_collision = false
-length = 40.0
-rest_length = 40.0
-
-[node name="@@33046" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32997"]
-rotation = 1.5708
-node_a = NodePath("..")
-node_b = NodePath("../../@@32994")
-disable_collision = false
-length = 20.0
-rest_length = 20.0
-
-[node name="@@33047" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32997"]
-rotation = 0.785398
-node_a = NodePath("..")
-node_b = NodePath("../../@@33003")
-disable_collision = false
-length = 28.2843
-rest_length = 28.2843
-
-[node name="@@33048" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@32997"]
-node_a = NodePath("..")
-node_b = NodePath("../../@@33006")
-disable_collision = false
-length = 20.0
-rest_length = 20.0
-
-[node name="@@33000" type="RigidBody2D" parent="Polygon2D3/RigidBodiesRoot"]
-position = Vector2(22, 61)
-mass = 0.1
-
-[node name="@@33001" type="CollisionShape2D" parent="Polygon2D3/RigidBodiesRoot/@@33000"]
-shape = SubResource("CircleShape2D_yon7s")
-
-[node name="@@33002" type="RemoteTransform2D" parent="Polygon2D3/RigidBodiesRoot/@@33000"]
-remote_path = NodePath("../../../@Skeleton2D@32144/Bone2D13")
-update_rotation = false
-update_scale = false
-
-[node name="@@33049" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@33000"]
-rotation = 3.14159
-node_a = NodePath("..")
-node_b = NodePath("../../@@32982")
-disable_collision = false
-length = 40.0
-rest_length = 40.0
-
-[node name="@@33050" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@33000"]
-rotation = 3.14159
-node_a = NodePath("..")
-node_b = NodePath("../../@@32991")
-disable_collision = false
-length = 20.0
-rest_length = 20.0
-
-[node name="@@33051" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@33000"]
-rotation = 3.92699
-node_a = NodePath("..")
-node_b = NodePath("../../@@32994")
-disable_collision = false
-length = 28.2843
-rest_length = 28.2843
-
-[node name="@@33052" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@33000"]
-rotation = 4.71239
-node_a = NodePath("..")
-node_b = NodePath("../../@@33003")
-disable_collision = false
-length = 20.0
-rest_length = 20.0
-
-[node name="@@33053" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@33000"]
-rotation = 4.71239
-node_a = NodePath("..")
-node_b = NodePath("../../@@33006")
-disable_collision = false
-length = 40.0
-rest_length = 40.0
-
-[node name="@@33054" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@33000"]
-rotation = -0.785398
-node_a = NodePath("..")
-node_b = NodePath("../../@@33009")
-disable_collision = false
-length = 28.2843
-rest_length = 28.2843
-
-[node name="@@33003" type="RigidBody2D" parent="Polygon2D3/RigidBodiesRoot"]
-position = Vector2(42, 61)
-mass = 0.1
-
-[node name="@@33004" type="CollisionShape2D" parent="Polygon2D3/RigidBodiesRoot/@@33003"]
-shape = SubResource("CircleShape2D_2c0vu")
-
-[node name="@@33005" type="RemoteTransform2D" parent="Polygon2D3/RigidBodiesRoot/@@33003"]
-remote_path = NodePath("../../../@Skeleton2D@32144/Bone2D23")
-update_rotation = false
-update_scale = false
-
-[node name="@@33055" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@33003"]
-rotation = 3.14159
-node_a = NodePath("..")
-node_b = NodePath("../../@@32985")
-disable_collision = false
-length = 40.0
-rest_length = 40.0
-
-[node name="@@33056" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@33003"]
-rotation = 2.35619
-node_a = NodePath("..")
-node_b = NodePath("../../@@32991")
-disable_collision = false
-length = 28.2843
-rest_length = 28.2843
-
-[node name="@@33057" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@33003"]
-rotation = 3.14159
-node_a = NodePath("..")
-node_b = NodePath("../../@@32994")
-disable_collision = false
-length = 20.0
-rest_length = 20.0
-
-[node name="@@33058" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@33003"]
-rotation = 3.92699
-node_a = NodePath("..")
-node_b = NodePath("../../@@32997")
-disable_collision = false
-length = 28.2843
-rest_length = 28.2843
-
-[node name="@@33059" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@33003"]
-rotation = 1.5708
-node_a = NodePath("..")
-node_b = NodePath("../../@@33000")
-disable_collision = false
-length = 20.0
-rest_length = 20.0
-
-[node name="@@33060" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@33003"]
-rotation = 4.71239
-node_a = NodePath("..")
-node_b = NodePath("../../@@33006")
-disable_collision = false
-length = 20.0
-rest_length = 20.0
-
-[node name="@@33061" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@33003"]
-node_a = NodePath("..")
-node_b = NodePath("../../@@33009")
-disable_collision = false
-length = 20.0
-rest_length = 20.0
-
-[node name="@@33006" type="RigidBody2D" parent="Polygon2D3/RigidBodiesRoot"]
-position = Vector2(62, 61)
-mass = 0.1
-
-[node name="@@33007" type="CollisionShape2D" parent="Polygon2D3/RigidBodiesRoot/@@33006"]
-shape = SubResource("CircleShape2D_yisof")
-
-[node name="@@33008" type="RemoteTransform2D" parent="Polygon2D3/RigidBodiesRoot/@@33006"]
-remote_path = NodePath("../../../@Skeleton2D@32144/Bone2D33")
-update_rotation = false
-update_scale = false
-
-[node name="@@33062" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@33006"]
-rotation = 3.14159
-node_a = NodePath("..")
-node_b = NodePath("../../@@32988")
-disable_collision = false
-length = 40.0
-rest_length = 40.0
-
-[node name="@@33063" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@33006"]
-rotation = 2.35619
-node_a = NodePath("..")
-node_b = NodePath("../../@@32994")
-disable_collision = false
-length = 28.2843
-rest_length = 28.2843
-
-[node name="@@33064" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@33006"]
-rotation = 3.14159
-node_a = NodePath("..")
-node_b = NodePath("../../@@32997")
-disable_collision = false
-length = 20.0
-rest_length = 20.0
-
-[node name="@@33065" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@33006"]
-rotation = 1.5708
-node_a = NodePath("..")
-node_b = NodePath("../../@@33000")
-disable_collision = false
-length = 40.0
-rest_length = 40.0
-
-[node name="@@33066" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@33006"]
-rotation = 1.5708
-node_a = NodePath("..")
-node_b = NodePath("../../@@33003")
-disable_collision = false
-length = 20.0
-rest_length = 20.0
-
-[node name="@@33067" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@33006"]
-rotation = 0.785398
-node_a = NodePath("..")
-node_b = NodePath("../../@@33009")
-disable_collision = false
-length = 28.2843
-rest_length = 28.2843
-
-[node name="@@33009" type="RigidBody2D" parent="Polygon2D3/RigidBodiesRoot"]
-position = Vector2(42, 81)
-mass = 0.1
-
-[node name="@@33010" type="CollisionShape2D" parent="Polygon2D3/RigidBodiesRoot/@@33009"]
-shape = SubResource("CircleShape2D_a6lxp")
-
-[node name="@@33011" type="RemoteTransform2D" parent="Polygon2D3/RigidBodiesRoot/@@33009"]
-remote_path = NodePath("../../../@Skeleton2D@32144/Bone2D24")
-update_rotation = false
-update_scale = false
-
-[node name="@@33068" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@33009"]
-rotation = 3.14159
-node_a = NodePath("..")
-node_b = NodePath("../../@@32994")
-disable_collision = false
-length = 40.0
-rest_length = 40.0
-
-[node name="@@33069" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@33009"]
-rotation = 2.35619
-node_a = NodePath("..")
-node_b = NodePath("../../@@33000")
-disable_collision = false
-length = 28.2843
-rest_length = 28.2843
-
-[node name="@@33070" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@33009"]
-rotation = 3.14159
-node_a = NodePath("..")
-node_b = NodePath("../../@@33003")
-disable_collision = false
-length = 20.0
-rest_length = 20.0
-
-[node name="@@33071" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@33009"]
-rotation = 3.92699
-node_a = NodePath("..")
-node_b = NodePath("../../@@33006")
-disable_collision = false
-length = 28.2843
-rest_length = 28.2843
-
-[node name="Polygon2D4" type="Polygon2D" parent="."]
-position = Vector2(402, -145)
-offset = Vector2(2.08165e-12, 2.08165e-12)
-texture = ExtResource("1_adqcn")
-skeleton = NodePath("Skeleton2D")
-polygon = PackedVector2Array(45, 2, 35.9714, 6.29934, 26.9428, 10.5987, 17.9142, 14.898, 8.88558, 19.1973, 2, 22, 2.41631, 31.9913, 2.83261, 41.9827, 3, 46, 3, 56, 3, 66, 3, 71, 12.1756, 74.9761, 21.3511, 78.9521, 33, 85, 40, 85, 44, 85, 52.7158, 80.0974, 61.4315, 75.1948, 70.1473, 70.2922, 77, 67, 76.2025, 57.0318, 75.4051, 47.0637, 75, 42, 75, 32, 75, 23, 67.1913, 16.753, 59.3826, 10.5061, 50, 1, 32, 11, 42, 11, 52, 11, 12, 21, 22, 21, 32, 21, 42, 21, 52, 21, 62, 21, 72, 21, 12, 31, 22, 31, 32, 31, 42, 31, 52, 31, 62, 31, 72, 31, 12, 41, 22, 41, 32, 41, 42, 41, 52, 41, 62, 41, 72, 41, 12, 51, 22, 51, 32, 51, 42, 51, 52, 51, 62, 51, 72, 51, 12, 61, 22, 61, 32, 61, 42, 61, 52, 61, 62, 61, 72, 61, 12, 71, 22, 71, 32, 71, 42, 71, 52, 71, 62, 71, 32, 81, 42, 81)
-uv = PackedVector2Array(45, 2, 35.9714, 6.29934, 26.9428, 10.5987, 17.9142, 14.898, 8.88558, 19.1973, 2, 22, 2.41631, 31.9913, 2.83261, 41.9827, 3, 46, 3, 56, 3, 66, 3, 71, 12.1756, 74.9761, 21.3511, 78.9521, 33, 85, 40, 85, 44, 85, 52.7158, 80.0974, 61.4315, 75.1948, 70.1473, 70.2922, 77, 67, 76.2025, 57.0318, 75.4051, 47.0637, 75, 42, 75, 32, 75, 23, 67.1913, 16.753, 59.3826, 10.5061, 50, 1, 32, 11, 42, 11, 52, 11, 12, 21, 22, 21, 32, 21, 42, 21, 52, 21, 62, 21, 72, 21, 12, 31, 22, 31, 32, 31, 42, 31, 52, 31, 62, 31, 72, 31, 12, 41, 22, 41, 32, 41, 42, 41, 52, 41, 62, 41, 72, 41, 12, 51, 22, 51, 32, 51, 42, 51, 52, 51, 62, 51, 72, 51, 12, 61, 22, 61, 32, 61, 42, 61, 52, 61, 62, 61, 72, 61, 12, 71, 22, 71, 32, 71, 42, 71, 52, 71, 62, 71, 32, 81, 42, 81)
-polygons = [PackedInt32Array(1, 2, 29), PackedInt32Array(0, 1, 30), PackedInt32Array(1, 29, 30), PackedInt32Array(27, 28, 31), PackedInt32Array(28, 0, 31), PackedInt32Array(0, 30, 31), PackedInt32Array(3, 4, 32), PackedInt32Array(4, 5, 32), PackedInt32Array(2, 3, 33), PackedInt32Array(3, 32, 33), PackedInt32Array(29, 2, 34), PackedInt32Array(2, 33, 34), PackedInt32Array(30, 29, 35), PackedInt32Array(29, 34, 35), PackedInt32Array(27, 31, 36), PackedInt32Array(31, 30, 36), PackedInt32Array(30, 35, 36), PackedInt32Array(26, 27, 37), PackedInt32Array(27, 36, 37), PackedInt32Array(25, 26, 38), PackedInt32Array(26, 37, 38), PackedInt32Array(5, 6, 39), PackedInt32Array(32, 5, 39), PackedInt32Array(33, 32, 40), PackedInt32Array(32, 39, 40), PackedInt32Array(34, 33, 41), PackedInt32Array(33, 40, 41), PackedInt32Array(35, 34, 42), PackedInt32Array(34, 41, 42), PackedInt32Array(36, 35, 43), PackedInt32Array(35, 42, 43), PackedInt32Array(37, 36, 44), PackedInt32Array(36, 43, 44), PackedInt32Array(24, 25, 45), PackedInt32Array(25, 38, 45), PackedInt32Array(38, 37, 45), PackedInt32Array(37, 44, 45), PackedInt32Array(6, 7, 46), PackedInt32Array(39, 6, 46), PackedInt32Array(7, 8, 46), PackedInt32Array(40, 39, 47), PackedInt32Array(39, 46, 47), PackedInt32Array(41, 40, 48), PackedInt32Array(40, 47, 48), PackedInt32Array(42, 41, 49), PackedInt32Array(41, 48, 49), PackedInt32Array(43, 42, 50), PackedInt32Array(42, 49, 50), PackedInt32Array(44, 43, 51), PackedInt32Array(43, 50, 51), PackedInt32Array(23, 24, 52), PackedInt32Array(24, 45, 52), PackedInt32Array(45, 44, 52), PackedInt32Array(44, 51, 52), PackedInt32Array(22, 23, 52), PackedInt32Array(8, 9, 53), PackedInt32Array(46, 8, 53), PackedInt32Array(47, 46, 54), PackedInt32Array(46, 53, 54), PackedInt32Array(48, 47, 55), PackedInt32Array(47, 54, 55), PackedInt32Array(49, 48, 56), PackedInt32Array(48, 55, 56), PackedInt32Array(50, 49, 57), PackedInt32Array(49, 56, 57), PackedInt32Array(51, 50, 58), PackedInt32Array(50, 57, 58), PackedInt32Array(21, 22, 59), PackedInt32Array(22, 52, 59), PackedInt32Array(52, 51, 59), PackedInt32Array(51, 58, 59), PackedInt32Array(9, 10, 60), PackedInt32Array(53, 9, 60), PackedInt32Array(54, 53, 61), PackedInt32Array(53, 60, 61), PackedInt32Array(55, 54, 62), PackedInt32Array(54, 61, 62), PackedInt32Array(56, 55, 63), PackedInt32Array(55, 62, 63), PackedInt32Array(57, 56, 64), PackedInt32Array(56, 63, 64), PackedInt32Array(58, 57, 65), PackedInt32Array(57, 64, 65), PackedInt32Array(19, 20, 66), PackedInt32Array(20, 21, 66), PackedInt32Array(65, 19, 66), PackedInt32Array(21, 59, 66), PackedInt32Array(59, 58, 66), PackedInt32Array(58, 65, 66), PackedInt32Array(10, 11, 67), PackedInt32Array(11, 12, 67), PackedInt32Array(60, 10, 67), PackedInt32Array(12, 13, 68), PackedInt32Array(67, 12, 68), PackedInt32Array(61, 60, 68), PackedInt32Array(60, 67, 68), PackedInt32Array(68, 13, 69), PackedInt32Array(62, 61, 69), PackedInt32Array(61, 68, 69), PackedInt32Array(63, 62, 70), PackedInt32Array(62, 69, 70), PackedInt32Array(17, 18, 71), PackedInt32Array(70, 17, 71), PackedInt32Array(64, 63, 71), PackedInt32Array(63, 70, 71), PackedInt32Array(18, 19, 72), PackedInt32Array(19, 65, 72), PackedInt32Array(71, 18, 72), PackedInt32Array(65, 64, 72), PackedInt32Array(64, 71, 72), PackedInt32Array(14, 15, 73), PackedInt32Array(13, 14, 73), PackedInt32Array(69, 13, 73), PackedInt32Array(15, 16, 74), PackedInt32Array(16, 17, 74), PackedInt32Array(17, 70, 74), PackedInt32Array(73, 15, 74), PackedInt32Array(70, 69, 74), PackedInt32Array(69, 73, 74)]
-bones = ["Bone2D11", PackedFloat32Array(0, 1.12143, 0.772459, 0.45626, 0.684462, 0.841188, 1.02047, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1.38197, 0, 0.618034, 0, 1, 2, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1.38197, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D21", PackedFloat32Array(0.860057, 0.878572, 1.22754, 1.54374, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.30492, 0.960255, 1, 0.618034, 1, 0, 2, 1, 0, 1, 2, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D31", PackedFloat32Array(1.13994, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.03709, 0.744018, 0.425804, 0.695076, 1.03975, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.618034, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 2, 1.38197, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D12", PackedFloat32Array(0, 0, 0, 0, 1.31554, 1.15881, 0.979531, 0.830965, 0.896007, 1.10399, 1.23025, 1.24639, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.38197, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0.618034, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1.38197, 2, 0, 0, 0, 0, 0, 1.38197, 0, 0, 0, 0, 0, 0, 0), "Bone2D22", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D32", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.30021, 1.18448, 0.864193, 0.723148, 0.962912, 1.25598, 1.5742, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.38197, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0.618034, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 2, 1.38197, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D13", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 1.16904, 1.10399, 0.896007, 0.769749, 0.75361, 0.719154, 0.928028, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0.618034, 0, 1, 0, 0, 0, 0, 0.618034, 0.618034, 1, 0, 0, 0, 1.38197, 0), "Bone2D23", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.44484, 1.68677, 1.68677, 0, 0, 1.41151, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1.38197, 1, 1, 1, 1.38197, 0, 2), "Bone2D33", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.32765, 0.823872, 0.588487, 0.699794, 0.815522, 1.13581, 1.27685, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0.618034, 0, 0, 0, 0, 1, 0.618034, 0, 0), "Bone2D24", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.28085, 1.07197, 0.555164, 0, 0, 0.672353, 1.17613, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0.618034, 0)]
-internal_vertex_count = 46
-
-[node name="Skeleton2D" type="Skeleton2D" parent="Polygon2D4"]
-
-[node name="Bone2D11" type="Bone2D" parent="Polygon2D4/Skeleton2D"]
-position = Vector2(22, 21)
-rest = Transform2D(0.707107, 0.707107, -0.707107, 0.707107, 22, 21)
-auto_calculate_length_and_angle = false
-length = 16.0
-bone_angle = 0.0
-script = ExtResource("2_yb506")
-follow = "../Bone2D22"
-
-[node name="Bone2D21" type="Bone2D" parent="Polygon2D4/Skeleton2D"]
-position = Vector2(42, 21)
-rest = Transform2D(-4.37114e-08, 1, -1, -4.37114e-08, 42, 21)
-auto_calculate_length_and_angle = false
-length = 16.0
-bone_angle = 0.0
-script = ExtResource("2_yb506")
-follow = "../Bone2D22"
-
-[node name="Bone2D31" type="Bone2D" parent="Polygon2D4/Skeleton2D"]
-position = Vector2(62, 21)
-rest = Transform2D(-0.707107, 0.707107, -0.707107, -0.707107, 62, 21)
-auto_calculate_length_and_angle = false
-length = 16.0
-bone_angle = 0.0
-script = ExtResource("2_yb506")
-follow = "../Bone2D22"
-
-[node name="Bone2D12" type="Bone2D" parent="Polygon2D4/Skeleton2D"]
-position = Vector2(22, 41)
-rest = Transform2D(1, 0, 0, 1, 22, 41)
-auto_calculate_length_and_angle = false
-length = 16.0
-bone_angle = 0.0
-script = ExtResource("2_yb506")
-follow = "../Bone2D22"
-
-[node name="Bone2D22" type="Bone2D" parent="Polygon2D4/Skeleton2D"]
-position = Vector2(42, 41)
-rest = Transform2D(1, 0, 0, 1, 42, 41)
-auto_calculate_length_and_angle = false
-length = 16.0
-bone_angle = 0.0
-script = ExtResource("2_yb506")
-follow = "../Bone2D22"
-
-[node name="Bone2D32" type="Bone2D" parent="Polygon2D4/Skeleton2D"]
-position = Vector2(62, 41)
-rest = Transform2D(-1, 1.50996e-07, -1.50996e-07, -1, 62, 41)
-auto_calculate_length_and_angle = false
-length = 16.0
-bone_angle = 0.0
-script = ExtResource("2_yb506")
-follow = "../Bone2D22"
-
-[node name="Bone2D13" type="Bone2D" parent="Polygon2D4/Skeleton2D"]
-position = Vector2(22, 61)
-rest = Transform2D(0.707107, -0.707107, 0.707107, 0.707107, 22, 61)
-auto_calculate_length_and_angle = false
-length = 16.0
-bone_angle = 0.0
-script = ExtResource("2_yb506")
-follow = "../Bone2D22"
-
-[node name="Bone2D23" type="Bone2D" parent="Polygon2D4/Skeleton2D"]
-position = Vector2(42, 61)
-rest = Transform2D(-4.37114e-08, -1, 1, -4.37114e-08, 42, 61)
-auto_calculate_length_and_angle = false
-length = 16.0
-bone_angle = 0.0
-script = ExtResource("2_yb506")
-follow = "../Bone2D22"
-
-[node name="Bone2D33" type="Bone2D" parent="Polygon2D4/Skeleton2D"]
-position = Vector2(62, 61)
-rest = Transform2D(-0.707107, -0.707107, 0.707107, -0.707107, 62, 61)
-auto_calculate_length_and_angle = false
-length = 16.0
-bone_angle = 0.0
-script = ExtResource("2_yb506")
-follow = "../Bone2D22"
-
-[node name="Bone2D24" type="Bone2D" parent="Polygon2D4/Skeleton2D"]
-position = Vector2(42, 81)
-rest = Transform2D(-4.37114e-08, -1, 1, -4.37114e-08, 42, 81)
-auto_calculate_length_and_angle = false
-length = 16.0
-bone_angle = 0.0
-script = ExtResource("2_yb506")
-follow = "../Bone2D22"
-
-[node name="@RigidBodiesRoot@41677" type="Node2D" parent="Polygon2D4"]
-
-[node name="@@41678" type="RigidBody2D" parent="Polygon2D4/@RigidBodiesRoot@41677"]
-position = Vector2(22, 21)
-mass = 0.1
-
-[node name="@@41679" type="CollisionShape2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41678"]
-shape = SubResource("CircleShape2D_66w8p")
-
-[node name="@@41680" type="RemoteTransform2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41678"]
+[node name="@@36395" type="RemoteTransform2D" parent="Polygon2D3/RigidBodiesRoot/@@36393"]
 remote_path = NodePath("../../../Skeleton2D/Bone2D11")
 update_rotation = false
 update_scale = false
 
-[node name="@@41708" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41678"]
+[node name="@@36423" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36393"]
 rotation = 4.71239
 node_a = NodePath("..")
-node_b = NodePath("../../@@41681")
+node_b = NodePath("../../@@36396")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@41709" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41678"]
+[node name="@@36424" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36393"]
 rotation = 4.71239
 node_a = NodePath("..")
-node_b = NodePath("../../@@41684")
+node_b = NodePath("../../@@36399")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@41710" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41678"]
+[node name="@@36425" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36393"]
 node_a = NodePath("..")
-node_b = NodePath("../../@@41687")
+node_b = NodePath("../../@@36402")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@41711" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41678"]
+[node name="@@36426" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36393"]
 rotation = -0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../@@41690")
+node_b = NodePath("../../@@36405")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@41712" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41678"]
+[node name="@@36427" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36393"]
 node_a = NodePath("..")
-node_b = NodePath("../../@@41696")
+node_b = NodePath("../../@@36411")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@41681" type="RigidBody2D" parent="Polygon2D4/@RigidBodiesRoot@41677"]
+[node name="@@36396" type="RigidBody2D" parent="Polygon2D3/RigidBodiesRoot"]
 position = Vector2(42, 21)
 mass = 0.1
 
-[node name="@@41682" type="CollisionShape2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41681"]
-shape = SubResource("CircleShape2D_o504u")
+[node name="@@36397" type="CollisionShape2D" parent="Polygon2D3/RigidBodiesRoot/@@36396"]
+shape = SubResource("CircleShape2D_ibwuj")
 
-[node name="@@41683" type="RemoteTransform2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41681"]
+[node name="@@36398" type="RemoteTransform2D" parent="Polygon2D3/RigidBodiesRoot/@@36396"]
 remote_path = NodePath("../../../Skeleton2D/Bone2D21")
 update_rotation = false
 update_scale = false
 
-[node name="@@41713" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41681"]
+[node name="@@36428" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36396"]
 rotation = 1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../@@41678")
+node_b = NodePath("../../@@36393")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@41714" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41681"]
+[node name="@@36429" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36396"]
 rotation = 4.71239
 node_a = NodePath("..")
-node_b = NodePath("../../@@41684")
+node_b = NodePath("../../@@36399")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@41715" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41681"]
+[node name="@@36430" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36396"]
 rotation = 0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../@@41687")
+node_b = NodePath("../../@@36402")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@41716" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41681"]
+[node name="@@36431" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36396"]
 node_a = NodePath("..")
-node_b = NodePath("../../@@41690")
+node_b = NodePath("../../@@36405")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@41717" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41681"]
+[node name="@@36432" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36396"]
 rotation = -0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../@@41693")
+node_b = NodePath("../../@@36408")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@41718" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41681"]
+[node name="@@36433" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36396"]
 node_a = NodePath("..")
-node_b = NodePath("../../@@41699")
+node_b = NodePath("../../@@36414")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@41684" type="RigidBody2D" parent="Polygon2D4/@RigidBodiesRoot@41677"]
+[node name="@@36399" type="RigidBody2D" parent="Polygon2D3/RigidBodiesRoot"]
 position = Vector2(62, 21)
 mass = 0.1
 
-[node name="@@41685" type="CollisionShape2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41684"]
-shape = SubResource("CircleShape2D_fcxv7")
+[node name="@@36400" type="CollisionShape2D" parent="Polygon2D3/RigidBodiesRoot/@@36399"]
+shape = SubResource("CircleShape2D_rgioh")
 
-[node name="@@41686" type="RemoteTransform2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41684"]
+[node name="@@36401" type="RemoteTransform2D" parent="Polygon2D3/RigidBodiesRoot/@@36399"]
 remote_path = NodePath("../../../Skeleton2D/Bone2D31")
 update_rotation = false
 update_scale = false
 
-[node name="@@41719" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41684"]
+[node name="@@36434" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36399"]
 rotation = 1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../@@41678")
+node_b = NodePath("../../@@36393")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@41720" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41684"]
+[node name="@@36435" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36399"]
 rotation = 1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../@@41681")
+node_b = NodePath("../../@@36396")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@41721" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41684"]
+[node name="@@36436" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36399"]
 rotation = 0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../@@41690")
+node_b = NodePath("../../@@36405")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@41722" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41684"]
+[node name="@@36437" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36399"]
 node_a = NodePath("..")
-node_b = NodePath("../../@@41693")
+node_b = NodePath("../../@@36408")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@41723" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41684"]
+[node name="@@36438" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36399"]
 node_a = NodePath("..")
-node_b = NodePath("../../@@41702")
+node_b = NodePath("../../@@36417")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@41687" type="RigidBody2D" parent="Polygon2D4/@RigidBodiesRoot@41677"]
+[node name="@@36402" type="RigidBody2D" parent="Polygon2D3/RigidBodiesRoot"]
 position = Vector2(22, 41)
 mass = 0.1
 
-[node name="@@41688" type="CollisionShape2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41687"]
-shape = SubResource("CircleShape2D_dow88")
+[node name="@@36403" type="CollisionShape2D" parent="Polygon2D3/RigidBodiesRoot/@@36402"]
+shape = SubResource("CircleShape2D_6lo4f")
 
-[node name="@@41689" type="RemoteTransform2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41687"]
+[node name="@@36404" type="RemoteTransform2D" parent="Polygon2D3/RigidBodiesRoot/@@36402"]
 remote_path = NodePath("../../../Skeleton2D/Bone2D12")
 update_rotation = false
 update_scale = false
 
-[node name="@@41724" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41687"]
+[node name="@@36439" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36402"]
 rotation = 3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../@@41678")
+node_b = NodePath("../../@@36393")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@41725" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41687"]
+[node name="@@36440" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36402"]
 rotation = 3.92699
 node_a = NodePath("..")
-node_b = NodePath("../../@@41681")
+node_b = NodePath("../../@@36396")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@41726" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41687"]
+[node name="@@36441" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36402"]
 rotation = 4.71239
 node_a = NodePath("..")
-node_b = NodePath("../../@@41690")
+node_b = NodePath("../../@@36405")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@41727" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41687"]
+[node name="@@36442" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36402"]
 rotation = 4.71239
 node_a = NodePath("..")
-node_b = NodePath("../../@@41693")
+node_b = NodePath("../../@@36408")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@41728" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41687"]
+[node name="@@36443" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36402"]
 node_a = NodePath("..")
-node_b = NodePath("../../@@41696")
+node_b = NodePath("../../@@36411")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@41729" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41687"]
+[node name="@@36444" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36402"]
 rotation = -0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../@@41699")
+node_b = NodePath("../../@@36414")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@41690" type="RigidBody2D" parent="Polygon2D4/@RigidBodiesRoot@41677"]
+[node name="@@36405" type="RigidBody2D" parent="Polygon2D3/RigidBodiesRoot"]
 position = Vector2(42, 41)
 mass = 0.1
 
-[node name="@@41691" type="CollisionShape2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41690"]
-shape = SubResource("CircleShape2D_y4aik")
+[node name="@@36406" type="CollisionShape2D" parent="Polygon2D3/RigidBodiesRoot/@@36405"]
+shape = SubResource("CircleShape2D_ll1hv")
 
-[node name="@@41692" type="RemoteTransform2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41690"]
+[node name="@@36407" type="RemoteTransform2D" parent="Polygon2D3/RigidBodiesRoot/@@36405"]
 remote_path = NodePath("../../../Skeleton2D/Bone2D22")
 update_rotation = false
 update_scale = false
 
-[node name="@@41730" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41690"]
+[node name="@@36445" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36405"]
 rotation = 2.35619
 node_a = NodePath("..")
-node_b = NodePath("../../@@41678")
+node_b = NodePath("../../@@36393")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@41731" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41690"]
+[node name="@@36446" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36405"]
 rotation = 3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../@@41681")
+node_b = NodePath("../../@@36396")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@41732" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41690"]
+[node name="@@36447" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36405"]
 rotation = 3.92699
 node_a = NodePath("..")
-node_b = NodePath("../../@@41684")
+node_b = NodePath("../../@@36399")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@41733" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41690"]
+[node name="@@36448" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36405"]
 rotation = 1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../@@41687")
+node_b = NodePath("../../@@36402")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@41734" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41690"]
+[node name="@@36449" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36405"]
 rotation = 4.71239
 node_a = NodePath("..")
-node_b = NodePath("../../@@41693")
+node_b = NodePath("../../@@36408")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@41735" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41690"]
+[node name="@@36450" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36405"]
 rotation = 0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../@@41696")
+node_b = NodePath("../../@@36411")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@41736" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41690"]
+[node name="@@36451" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36405"]
 node_a = NodePath("..")
-node_b = NodePath("../../@@41699")
+node_b = NodePath("../../@@36414")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@41737" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41690"]
+[node name="@@36452" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36405"]
 rotation = -0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../@@41702")
+node_b = NodePath("../../@@36417")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@41738" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41690"]
+[node name="@@36453" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36405"]
 node_a = NodePath("..")
-node_b = NodePath("../../@@41705")
+node_b = NodePath("../../@@36420")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@41693" type="RigidBody2D" parent="Polygon2D4/@RigidBodiesRoot@41677"]
+[node name="@@36408" type="RigidBody2D" parent="Polygon2D3/RigidBodiesRoot"]
 position = Vector2(62, 41)
 mass = 0.1
 
-[node name="@@41694" type="CollisionShape2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41693"]
-shape = SubResource("CircleShape2D_c2a4k")
+[node name="@@36409" type="CollisionShape2D" parent="Polygon2D3/RigidBodiesRoot/@@36408"]
+shape = SubResource("CircleShape2D_yjp8g")
 
-[node name="@@41695" type="RemoteTransform2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41693"]
+[node name="@@36410" type="RemoteTransform2D" parent="Polygon2D3/RigidBodiesRoot/@@36408"]
 remote_path = NodePath("../../../Skeleton2D/Bone2D32")
 update_rotation = false
 update_scale = false
 
-[node name="@@41739" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41693"]
+[node name="@@36454" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36408"]
 rotation = 2.35619
 node_a = NodePath("..")
-node_b = NodePath("../../@@41681")
+node_b = NodePath("../../@@36396")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@41740" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41693"]
+[node name="@@36455" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36408"]
 rotation = 3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../@@41684")
+node_b = NodePath("../../@@36399")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@41741" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41693"]
+[node name="@@36456" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36408"]
 rotation = 1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../@@41687")
+node_b = NodePath("../../@@36402")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@41742" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41693"]
+[node name="@@36457" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36408"]
 rotation = 1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../@@41690")
+node_b = NodePath("../../@@36405")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@41743" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41693"]
+[node name="@@36458" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36408"]
 rotation = 0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../@@41699")
+node_b = NodePath("../../@@36414")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@41744" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41693"]
+[node name="@@36459" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36408"]
 node_a = NodePath("..")
-node_b = NodePath("../../@@41702")
+node_b = NodePath("../../@@36417")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@41696" type="RigidBody2D" parent="Polygon2D4/@RigidBodiesRoot@41677"]
+[node name="@@36411" type="RigidBody2D" parent="Polygon2D3/RigidBodiesRoot"]
 position = Vector2(22, 61)
 mass = 0.1
 
-[node name="@@41697" type="CollisionShape2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41696"]
-shape = SubResource("CircleShape2D_6bmuf")
+[node name="@@36412" type="CollisionShape2D" parent="Polygon2D3/RigidBodiesRoot/@@36411"]
+shape = SubResource("CircleShape2D_bgqta")
 
-[node name="@@41698" type="RemoteTransform2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41696"]
+[node name="@@36413" type="RemoteTransform2D" parent="Polygon2D3/RigidBodiesRoot/@@36411"]
 remote_path = NodePath("../../../Skeleton2D/Bone2D13")
 update_rotation = false
 update_scale = false
 
-[node name="@@41745" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41696"]
+[node name="@@36460" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36411"]
 rotation = 3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../@@41678")
+node_b = NodePath("../../@@36393")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@41746" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41696"]
+[node name="@@36461" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36411"]
 rotation = 3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../@@41687")
+node_b = NodePath("../../@@36402")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@41747" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41696"]
+[node name="@@36462" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36411"]
 rotation = 3.92699
 node_a = NodePath("..")
-node_b = NodePath("../../@@41690")
+node_b = NodePath("../../@@36405")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@41748" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41696"]
+[node name="@@36463" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36411"]
 rotation = 4.71239
 node_a = NodePath("..")
-node_b = NodePath("../../@@41699")
+node_b = NodePath("../../@@36414")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@41749" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41696"]
+[node name="@@36464" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36411"]
 rotation = 4.71239
 node_a = NodePath("..")
-node_b = NodePath("../../@@41702")
+node_b = NodePath("../../@@36417")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@41750" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41696"]
+[node name="@@36465" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36411"]
 rotation = -0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../@@41705")
+node_b = NodePath("../../@@36420")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@41699" type="RigidBody2D" parent="Polygon2D4/@RigidBodiesRoot@41677"]
+[node name="@@36414" type="RigidBody2D" parent="Polygon2D3/RigidBodiesRoot"]
 position = Vector2(42, 61)
 mass = 0.1
 
-[node name="@@41700" type="CollisionShape2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41699"]
-shape = SubResource("CircleShape2D_g767l")
+[node name="@@36415" type="CollisionShape2D" parent="Polygon2D3/RigidBodiesRoot/@@36414"]
+shape = SubResource("CircleShape2D_24dt7")
 
-[node name="@@41701" type="RemoteTransform2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41699"]
+[node name="@@36416" type="RemoteTransform2D" parent="Polygon2D3/RigidBodiesRoot/@@36414"]
 remote_path = NodePath("../../../Skeleton2D/Bone2D23")
 update_rotation = false
 update_scale = false
 
-[node name="@@41751" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41699"]
+[node name="@@36466" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36414"]
 rotation = 3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../@@41681")
+node_b = NodePath("../../@@36396")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@41752" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41699"]
+[node name="@@36467" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36414"]
 rotation = 2.35619
 node_a = NodePath("..")
-node_b = NodePath("../../@@41687")
+node_b = NodePath("../../@@36402")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@41753" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41699"]
+[node name="@@36468" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36414"]
 rotation = 3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../@@41690")
+node_b = NodePath("../../@@36405")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@41754" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41699"]
+[node name="@@36469" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36414"]
 rotation = 3.92699
 node_a = NodePath("..")
-node_b = NodePath("../../@@41693")
+node_b = NodePath("../../@@36408")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@41755" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41699"]
+[node name="@@36470" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36414"]
 rotation = 1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../@@41696")
+node_b = NodePath("../../@@36411")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@41756" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41699"]
+[node name="@@36471" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36414"]
 rotation = 4.71239
 node_a = NodePath("..")
-node_b = NodePath("../../@@41702")
+node_b = NodePath("../../@@36417")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@41757" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41699"]
+[node name="@@36472" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36414"]
 node_a = NodePath("..")
-node_b = NodePath("../../@@41705")
+node_b = NodePath("../../@@36420")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@41702" type="RigidBody2D" parent="Polygon2D4/@RigidBodiesRoot@41677"]
+[node name="@@36417" type="RigidBody2D" parent="Polygon2D3/RigidBodiesRoot"]
 position = Vector2(62, 61)
 mass = 0.1
 
-[node name="@@41703" type="CollisionShape2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41702"]
-shape = SubResource("CircleShape2D_di8h0")
+[node name="@@36418" type="CollisionShape2D" parent="Polygon2D3/RigidBodiesRoot/@@36417"]
+shape = SubResource("CircleShape2D_ut58p")
 
-[node name="@@41704" type="RemoteTransform2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41702"]
+[node name="@@36419" type="RemoteTransform2D" parent="Polygon2D3/RigidBodiesRoot/@@36417"]
 remote_path = NodePath("../../../Skeleton2D/Bone2D33")
 update_rotation = false
 update_scale = false
 
-[node name="@@41758" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41702"]
+[node name="@@36473" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36417"]
 rotation = 3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../@@41684")
+node_b = NodePath("../../@@36399")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@41759" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41702"]
+[node name="@@36474" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36417"]
 rotation = 2.35619
 node_a = NodePath("..")
-node_b = NodePath("../../@@41690")
+node_b = NodePath("../../@@36405")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@41760" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41702"]
+[node name="@@36475" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36417"]
 rotation = 3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../@@41693")
+node_b = NodePath("../../@@36408")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@41761" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41702"]
+[node name="@@36476" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36417"]
 rotation = 1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../@@41696")
+node_b = NodePath("../../@@36411")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@41762" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41702"]
+[node name="@@36477" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36417"]
 rotation = 1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../@@41699")
+node_b = NodePath("../../@@36414")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@41763" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41702"]
+[node name="@@36478" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36417"]
 rotation = 0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../@@41705")
+node_b = NodePath("../../@@36420")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@41705" type="RigidBody2D" parent="Polygon2D4/@RigidBodiesRoot@41677"]
+[node name="@@36420" type="RigidBody2D" parent="Polygon2D3/RigidBodiesRoot"]
 position = Vector2(42, 81)
 mass = 0.1
 
-[node name="@@41706" type="CollisionShape2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41705"]
-shape = SubResource("CircleShape2D_jx2xo")
+[node name="@@36421" type="CollisionShape2D" parent="Polygon2D3/RigidBodiesRoot/@@36420"]
+shape = SubResource("CircleShape2D_i058b")
 
-[node name="@@41707" type="RemoteTransform2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41705"]
+[node name="@@36422" type="RemoteTransform2D" parent="Polygon2D3/RigidBodiesRoot/@@36420"]
 remote_path = NodePath("../../../Skeleton2D/Bone2D24")
 update_rotation = false
 update_scale = false
 
-[node name="@@41764" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41705"]
+[node name="@@36479" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36420"]
 rotation = 3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../@@41690")
+node_b = NodePath("../../@@36405")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@41765" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41705"]
+[node name="@@36480" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36420"]
 rotation = 2.35619
 node_a = NodePath("..")
-node_b = NodePath("../../@@41696")
+node_b = NodePath("../../@@36411")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@41766" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41705"]
+[node name="@@36481" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36420"]
 rotation = 3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../@@41699")
+node_b = NodePath("../../@@36414")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@41767" type="DampedSpringJoint2D" parent="Polygon2D4/@RigidBodiesRoot@41677/@@41705"]
+[node name="@@36482" type="DampedSpringJoint2D" parent="Polygon2D3/RigidBodiesRoot/@@36420"]
 rotation = 3.92699
 node_a = NodePath("..")
-node_b = NodePath("../../@@41702")
+node_b = NodePath("../../@@36417")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
 [node name="Polygon2D2" type="Polygon2D" parent="."]
 position = Vector2(301, -61)
@@ -1552,16 +902,14 @@ offset = Vector2(2.08165e-12, 2.08165e-12)
 texture = ExtResource("1_adqcn")
 skeleton = NodePath("Skeleton2D")
 polygon = PackedVector2Array(45, 2, 35.9714, 6.29934, 26.9428, 10.5987, 17.9142, 14.898, 8.88558, 19.1973, 2, 22, 2.41631, 31.9913, 2.83261, 41.9827, 3, 46, 3, 56, 3, 66, 3, 71, 12.1756, 74.9761, 21.3511, 78.9521, 33, 85, 40, 85, 44, 85, 52.7158, 80.0974, 61.4315, 75.1948, 70.1473, 70.2922, 77, 67, 76.2025, 57.0318, 75.4051, 47.0637, 75, 42, 75, 32, 75, 23, 67.1913, 16.753, 59.3826, 10.5061, 50, 1, 32, 11, 42, 11, 52, 11, 12, 21, 22, 21, 32, 21, 42, 21, 52, 21, 62, 21, 72, 21, 12, 31, 22, 31, 32, 31, 42, 31, 52, 31, 62, 31, 72, 31, 12, 41, 22, 41, 32, 41, 42, 41, 52, 41, 62, 41, 72, 41, 12, 51, 22, 51, 32, 51, 42, 51, 52, 51, 62, 51, 72, 51, 12, 61, 22, 61, 32, 61, 42, 61, 52, 61, 62, 61, 72, 61, 12, 71, 22, 71, 32, 71, 42, 71, 52, 71, 62, 71, 32, 81, 42, 81)
-uv = PackedVector2Array(45, 2, 35.9714, 6.29934, 26.9428, 10.5987, 17.9142, 14.898, 8.88558, 19.1973, 2, 22, 2.41631, 31.9913, 2.83261, 41.9827, 3, 46, 3, 56, 3, 66, 3, 71, 12.1756, 74.9761, 21.3511, 78.9521, 33, 85, 40, 85, 44, 85, 52.7158, 80.0974, 61.4315, 75.1948, 70.1473, 70.2922, 77, 67, 76.2025, 57.0318, 75.4051, 47.0637, 75, 42, 75, 32, 75, 23, 67.1913, 16.753, 59.3826, 10.5061, 50, 1, 32, 11, 42, 11, 52, 11, 12, 21, 22, 21, 32, 21, 42, 21, 52, 21, 62, 21, 72, 21, 12, 31, 22, 31, 32, 31, 42, 31, 52, 31, 62, 31, 72, 31, 12, 41, 22, 41, 32, 41, 42, 41, 52, 41, 62, 41, 72, 41, 12, 51, 22, 51, 32, 51, 42, 51, 52, 51, 62, 51, 72, 51, 12, 61, 22, 61, 32, 61, 42, 61, 52, 61, 62, 61, 72, 61, 12, 71, 22, 71, 32, 71, 42, 71, 52, 71, 62, 71, 32, 81, 42, 81)
 polygons = [PackedInt32Array(1, 2, 29), PackedInt32Array(0, 1, 30), PackedInt32Array(1, 29, 30), PackedInt32Array(27, 28, 31), PackedInt32Array(28, 0, 31), PackedInt32Array(0, 30, 31), PackedInt32Array(3, 4, 32), PackedInt32Array(4, 5, 32), PackedInt32Array(2, 3, 33), PackedInt32Array(3, 32, 33), PackedInt32Array(29, 2, 34), PackedInt32Array(2, 33, 34), PackedInt32Array(30, 29, 35), PackedInt32Array(29, 34, 35), PackedInt32Array(27, 31, 36), PackedInt32Array(31, 30, 36), PackedInt32Array(30, 35, 36), PackedInt32Array(26, 27, 37), PackedInt32Array(27, 36, 37), PackedInt32Array(25, 26, 38), PackedInt32Array(26, 37, 38), PackedInt32Array(5, 6, 39), PackedInt32Array(32, 5, 39), PackedInt32Array(33, 32, 40), PackedInt32Array(32, 39, 40), PackedInt32Array(34, 33, 41), PackedInt32Array(33, 40, 41), PackedInt32Array(35, 34, 42), PackedInt32Array(34, 41, 42), PackedInt32Array(36, 35, 43), PackedInt32Array(35, 42, 43), PackedInt32Array(37, 36, 44), PackedInt32Array(36, 43, 44), PackedInt32Array(24, 25, 45), PackedInt32Array(25, 38, 45), PackedInt32Array(38, 37, 45), PackedInt32Array(37, 44, 45), PackedInt32Array(6, 7, 46), PackedInt32Array(39, 6, 46), PackedInt32Array(7, 8, 46), PackedInt32Array(40, 39, 47), PackedInt32Array(39, 46, 47), PackedInt32Array(41, 40, 48), PackedInt32Array(40, 47, 48), PackedInt32Array(42, 41, 49), PackedInt32Array(41, 48, 49), PackedInt32Array(43, 42, 50), PackedInt32Array(42, 49, 50), PackedInt32Array(44, 43, 51), PackedInt32Array(43, 50, 51), PackedInt32Array(23, 24, 52), PackedInt32Array(24, 45, 52), PackedInt32Array(45, 44, 52), PackedInt32Array(44, 51, 52), PackedInt32Array(22, 23, 52), PackedInt32Array(8, 9, 53), PackedInt32Array(46, 8, 53), PackedInt32Array(47, 46, 54), PackedInt32Array(46, 53, 54), PackedInt32Array(48, 47, 55), PackedInt32Array(47, 54, 55), PackedInt32Array(49, 48, 56), PackedInt32Array(48, 55, 56), PackedInt32Array(50, 49, 57), PackedInt32Array(49, 56, 57), PackedInt32Array(51, 50, 58), PackedInt32Array(50, 57, 58), PackedInt32Array(21, 22, 59), PackedInt32Array(22, 52, 59), PackedInt32Array(52, 51, 59), PackedInt32Array(51, 58, 59), PackedInt32Array(9, 10, 60), PackedInt32Array(53, 9, 60), PackedInt32Array(54, 53, 61), PackedInt32Array(53, 60, 61), PackedInt32Array(55, 54, 62), PackedInt32Array(54, 61, 62), PackedInt32Array(56, 55, 63), PackedInt32Array(55, 62, 63), PackedInt32Array(57, 56, 64), PackedInt32Array(56, 63, 64), PackedInt32Array(58, 57, 65), PackedInt32Array(57, 64, 65), PackedInt32Array(19, 20, 66), PackedInt32Array(20, 21, 66), PackedInt32Array(65, 19, 66), PackedInt32Array(21, 59, 66), PackedInt32Array(59, 58, 66), PackedInt32Array(58, 65, 66), PackedInt32Array(10, 11, 67), PackedInt32Array(11, 12, 67), PackedInt32Array(60, 10, 67), PackedInt32Array(12, 13, 68), PackedInt32Array(67, 12, 68), PackedInt32Array(61, 60, 68), PackedInt32Array(60, 67, 68), PackedInt32Array(68, 13, 69), PackedInt32Array(62, 61, 69), PackedInt32Array(61, 68, 69), PackedInt32Array(63, 62, 70), PackedInt32Array(62, 69, 70), PackedInt32Array(17, 18, 71), PackedInt32Array(70, 17, 71), PackedInt32Array(64, 63, 71), PackedInt32Array(63, 70, 71), PackedInt32Array(18, 19, 72), PackedInt32Array(19, 65, 72), PackedInt32Array(71, 18, 72), PackedInt32Array(65, 64, 72), PackedInt32Array(64, 71, 72), PackedInt32Array(14, 15, 73), PackedInt32Array(13, 14, 73), PackedInt32Array(69, 13, 73), PackedInt32Array(15, 16, 74), PackedInt32Array(16, 17, 74), PackedInt32Array(17, 70, 74), PackedInt32Array(73, 15, 74), PackedInt32Array(70, 69, 74), PackedInt32Array(69, 73, 74)]
-bones = ["Bone2D11", PackedFloat32Array(0, 1.12143, 0.77246, 0.45626, 0.684462, 0.841188, 1.02047, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1.38197, 0, 0.618034, 0, 1, 2, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1.38197, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D21", PackedFloat32Array(0.860057, 0.878572, 1.22754, 1.54374, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.30492, 0.960255, 1, 0.618034, 1, 0, 2, 1, 0, 1, 2, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D31", PackedFloat32Array(1.13994, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.03709, 0.744018, 0.425804, 0.695077, 1.03975, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.618034, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 2, 1.38197, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D12", PackedFloat32Array(0, 0, 0, 0, 1.31554, 1.15881, 0.979531, 0.830965, 0.896007, 1.10399, 1.23025, 1.24639, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.38197, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0.618034, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1.38197, 2, 0, 0, 0, 0, 0, 1.38197, 0, 0, 0, 0, 0, 0, 0), "Bone2D22", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D32", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.30021, 1.18448, 0.864193, 0.723148, 0.962912, 1.25598, 1.5742, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.38197, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0.618034, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 2, 1.38197, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D13", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 1.16903, 1.10399, 0.896007, 0.769749, 0.75361, 0.719155, 0.928027, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0.618034, 0, 1, 0, 0, 0, 0, 0.618034, 0.618034, 1, 0, 0, 0, 1.38197, 0), "Bone2D23", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.44484, 1.68677, 1.68677, 0, 0, 1.41151, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1.38197, 1, 1, 1, 1.38197, 0, 2), "Bone2D33", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.32765, 0.823874, 0.588488, 0.699794, 0.815522, 1.13581, 1.27685, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0.618034, 0, 0, 0, 0, 1, 0.618034, 0, 0), "Bone2D24", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.28085, 1.07197, 0.555164, 0, 0, 0.672354, 1.17613, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0.618034, 0)]
+bones = ["Bone2D11", PackedFloat32Array(0, 0.439286, 0.61377, 0.77187, 0.657769, 0.579406, 0.489765, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0.690983, 1, 0.5, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D21", PackedFloat32Array(0.569971, 0.560714, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.519873, 0.5, 0.690983, 0.5, 0, 0, 0.5, 1, 0.5, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D31", PackedFloat32Array(0.430029, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.481456, 0.627991, 0.787098, 0.652462, 0.480127, 0, 0, 0.5, 0, 0, 0, 0, 0.5, 1, 0.690983, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D12", PackedFloat32Array(0, 0, 0, 0, 0, 0.420594, 0.510235, 0.584518, 0.551997, 0.448003, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0, 0, 0, 0, 0, 0.690983, 1, 0.5, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D22", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 0, 0.5, 1, 0.5, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D32", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.407761, 0.567904, 0.638426, 0.518544, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0, 0, 0, 0, 0.5, 1, 0.690983, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Bone2D13", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0.415482, 0.448003, 0.551997, 0.615126, 0.623195, 0.640423, 0.535986, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0, 0, 0, 0, 0, 0.690983, 1, 0.5, 0, 0, 0, 0, 0.690983, 0.690983, 0.5, 0, 0, 0, 0, 0), "Bone2D23", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 0, 0.5, 1, 0.5, 0, 0, 0, 0, 0.5, 0.5, 0.5, 0, 0, 0), "Bone2D33", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.588064, 0.705756, 0.650103, 0.592239, 0.432096, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0, 0, 0, 0, 0.5, 1, 0.690983, 0, 0, 0, 0, 0.5, 0.690983, 0, 0), "Bone2D24", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.464014, 0.722418, 0.843387, 0.843387, 0.663824, 0.411936, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0.690983, 1)]
 internal_vertex_count = 46
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Polygon2D2"]
 
 [node name="Bone2D11" type="Bone2D" parent="Polygon2D2/Skeleton2D"]
 position = Vector2(22, 21)
-rotation = 0.785398
 rest = Transform2D(0.707107, 0.707107, -0.707107, 0.707107, 22, 21)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -1571,7 +919,6 @@ follow = "../Bone2D22"
 
 [node name="Bone2D21" type="Bone2D" parent="Polygon2D2/Skeleton2D"]
 position = Vector2(42, 21)
-rotation = 1.5708
 rest = Transform2D(-4.37114e-08, 1, -1, -4.37114e-08, 42, 21)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -1581,7 +928,6 @@ follow = "../Bone2D22"
 
 [node name="Bone2D31" type="Bone2D" parent="Polygon2D2/Skeleton2D"]
 position = Vector2(62, 21)
-rotation = 2.35619
 rest = Transform2D(-0.707107, 0.707107, -0.707107, -0.707107, 62, 21)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -1609,7 +955,6 @@ follow = "../Bone2D22"
 
 [node name="Bone2D32" type="Bone2D" parent="Polygon2D2/Skeleton2D"]
 position = Vector2(62, 41)
-rotation = 3.14159
 rest = Transform2D(-1, 1.50996e-07, -1.50996e-07, -1, 62, 41)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -1619,7 +964,6 @@ follow = "../Bone2D22"
 
 [node name="Bone2D13" type="Bone2D" parent="Polygon2D2/Skeleton2D"]
 position = Vector2(22, 61)
-rotation = -0.785398
 rest = Transform2D(0.707107, -0.707107, 0.707107, 0.707107, 22, 61)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -1629,7 +973,6 @@ follow = "../Bone2D22"
 
 [node name="Bone2D23" type="Bone2D" parent="Polygon2D2/Skeleton2D"]
 position = Vector2(42, 61)
-rotation = -1.5708
 rest = Transform2D(-4.37114e-08, -1, 1, -4.37114e-08, 42, 61)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -1639,7 +982,6 @@ follow = "../Bone2D22"
 
 [node name="Bone2D33" type="Bone2D" parent="Polygon2D2/Skeleton2D"]
 position = Vector2(62, 61)
-rotation = -2.35619
 rest = Transform2D(-0.707107, -0.707107, 0.707107, -0.707107, 62, 61)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -1649,7 +991,6 @@ follow = "../Bone2D22"
 
 [node name="Bone2D24" type="Bone2D" parent="Polygon2D2/Skeleton2D"]
 position = Vector2(42, 81)
-rotation = -1.5708
 rest = Transform2D(-4.37114e-08, -1, 1, -4.37114e-08, 42, 81)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -1657,596 +998,656 @@ bone_angle = 0.0
 script = ExtResource("2_yb506")
 follow = "../Bone2D22"
 
-[node name="@RigidBodiesRoot@25238" type="Node2D" parent="Polygon2D2"]
+[node name="@RigidBodiesRoot@24761" type="Node2D" parent="Polygon2D2"]
 
-[node name="@@25239" type="RigidBody2D" parent="Polygon2D2/@RigidBodiesRoot@25238"]
+[node name="@@24762" type="RigidBody2D" parent="Polygon2D2/@RigidBodiesRoot@24761"]
 position = Vector2(22, 21)
 mass = 0.1
 
-[node name="@@25240" type="CollisionShape2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25239"]
-shape = SubResource("CircleShape2D_8mej6")
+[node name="@@24763" type="CollisionShape2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24762"]
+shape = SubResource("CircleShape2D_n0bse")
 
-[node name="@@25241" type="RemoteTransform2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25239"]
+[node name="@@24764" type="RemoteTransform2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24762"]
 remote_path = NodePath("../../../Skeleton2D/Bone2D11")
 update_rotation = false
 update_scale = false
 
-[node name="@@26605" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25239"]
+[node name="@@24792" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24762"]
 rotation = 4.71239
 node_a = NodePath("..")
-node_b = NodePath("../../@@25242")
+node_b = NodePath("../../@@24765")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@26606" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25239"]
+[node name="@@24793" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24762"]
 rotation = 4.71239
 node_a = NodePath("..")
-node_b = NodePath("../../@@25245")
+node_b = NodePath("../../@@24768")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@26607" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25239"]
+[node name="@@24794" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24762"]
 node_a = NodePath("..")
-node_b = NodePath("../../@@25248")
+node_b = NodePath("../../@@24771")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@26608" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25239"]
+[node name="@@24795" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24762"]
 rotation = -0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../@@25251")
+node_b = NodePath("../../@@24774")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@26609" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25239"]
+[node name="@@24796" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24762"]
 node_a = NodePath("..")
-node_b = NodePath("../../@@25257")
+node_b = NodePath("../../@@24780")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@25242" type="RigidBody2D" parent="Polygon2D2/@RigidBodiesRoot@25238"]
+[node name="@@24765" type="RigidBody2D" parent="Polygon2D2/@RigidBodiesRoot@24761"]
 position = Vector2(42, 21)
 mass = 0.1
 
-[node name="@@25243" type="CollisionShape2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25242"]
-shape = SubResource("CircleShape2D_8yf3w")
+[node name="@@24766" type="CollisionShape2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24765"]
+shape = SubResource("CircleShape2D_clk8r")
 
-[node name="@@25244" type="RemoteTransform2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25242"]
+[node name="@@24767" type="RemoteTransform2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24765"]
 remote_path = NodePath("../../../Skeleton2D/Bone2D21")
 update_rotation = false
 update_scale = false
 
-[node name="@@26610" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25242"]
+[node name="@@24797" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24765"]
 rotation = 1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../@@25239")
+node_b = NodePath("../../@@24762")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@26611" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25242"]
+[node name="@@24798" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24765"]
 rotation = 4.71239
 node_a = NodePath("..")
-node_b = NodePath("../../@@25245")
+node_b = NodePath("../../@@24768")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@26612" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25242"]
+[node name="@@24799" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24765"]
 rotation = 0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../@@25248")
+node_b = NodePath("../../@@24771")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@26613" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25242"]
+[node name="@@24800" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24765"]
 node_a = NodePath("..")
-node_b = NodePath("../../@@25251")
+node_b = NodePath("../../@@24774")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@26614" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25242"]
+[node name="@@24801" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24765"]
 rotation = -0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../@@25254")
+node_b = NodePath("../../@@24777")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@26615" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25242"]
+[node name="@@24802" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24765"]
 node_a = NodePath("..")
-node_b = NodePath("../../@@25260")
+node_b = NodePath("../../@@24783")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@25245" type="RigidBody2D" parent="Polygon2D2/@RigidBodiesRoot@25238"]
+[node name="@@24768" type="RigidBody2D" parent="Polygon2D2/@RigidBodiesRoot@24761"]
 position = Vector2(62, 21)
 mass = 0.1
 
-[node name="@@25246" type="CollisionShape2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25245"]
-shape = SubResource("CircleShape2D_8jqbl")
+[node name="@@24769" type="CollisionShape2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24768"]
+shape = SubResource("CircleShape2D_n3y6x")
 
-[node name="@@25247" type="RemoteTransform2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25245"]
+[node name="@@24770" type="RemoteTransform2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24768"]
 remote_path = NodePath("../../../Skeleton2D/Bone2D31")
 update_rotation = false
 update_scale = false
 
-[node name="@@26616" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25245"]
+[node name="@@24803" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24768"]
 rotation = 1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../@@25239")
+node_b = NodePath("../../@@24762")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@26617" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25245"]
+[node name="@@24804" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24768"]
 rotation = 1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../@@25242")
+node_b = NodePath("../../@@24765")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@26618" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25245"]
+[node name="@@24805" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24768"]
 rotation = 0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../@@25251")
+node_b = NodePath("../../@@24774")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@26619" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25245"]
+[node name="@@24806" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24768"]
 node_a = NodePath("..")
-node_b = NodePath("../../@@25254")
+node_b = NodePath("../../@@24777")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@26620" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25245"]
+[node name="@@24807" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24768"]
 node_a = NodePath("..")
-node_b = NodePath("../../@@25263")
+node_b = NodePath("../../@@24786")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@25248" type="RigidBody2D" parent="Polygon2D2/@RigidBodiesRoot@25238"]
+[node name="@@24771" type="RigidBody2D" parent="Polygon2D2/@RigidBodiesRoot@24761"]
 position = Vector2(22, 41)
 mass = 0.1
 
-[node name="@@25249" type="CollisionShape2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25248"]
-shape = SubResource("CircleShape2D_c2g0u")
+[node name="@@24772" type="CollisionShape2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24771"]
+shape = SubResource("CircleShape2D_5vmvj")
 
-[node name="@@25250" type="RemoteTransform2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25248"]
+[node name="@@24773" type="RemoteTransform2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24771"]
 remote_path = NodePath("../../../Skeleton2D/Bone2D12")
 update_rotation = false
 update_scale = false
 
-[node name="@@26621" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25248"]
+[node name="@@24808" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24771"]
 rotation = 3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../@@25239")
+node_b = NodePath("../../@@24762")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@26622" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25248"]
+[node name="@@24809" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24771"]
 rotation = 3.92699
 node_a = NodePath("..")
-node_b = NodePath("../../@@25242")
+node_b = NodePath("../../@@24765")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@26623" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25248"]
+[node name="@@24810" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24771"]
 rotation = 4.71239
 node_a = NodePath("..")
-node_b = NodePath("../../@@25251")
+node_b = NodePath("../../@@24774")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@26624" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25248"]
+[node name="@@24811" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24771"]
 rotation = 4.71239
 node_a = NodePath("..")
-node_b = NodePath("../../@@25254")
+node_b = NodePath("../../@@24777")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@26625" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25248"]
+[node name="@@24812" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24771"]
 node_a = NodePath("..")
-node_b = NodePath("../../@@25257")
+node_b = NodePath("../../@@24780")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@26626" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25248"]
+[node name="@@24813" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24771"]
 rotation = -0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../@@25260")
+node_b = NodePath("../../@@24783")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@25251" type="RigidBody2D" parent="Polygon2D2/@RigidBodiesRoot@25238"]
+[node name="@@24774" type="RigidBody2D" parent="Polygon2D2/@RigidBodiesRoot@24761"]
 position = Vector2(42, 41)
 mass = 0.1
 
-[node name="@@25252" type="CollisionShape2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25251"]
-shape = SubResource("CircleShape2D_4bxs5")
+[node name="@@24775" type="CollisionShape2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24774"]
+shape = SubResource("CircleShape2D_oo5d6")
 
-[node name="@@25253" type="RemoteTransform2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25251"]
+[node name="@@24776" type="RemoteTransform2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24774"]
 remote_path = NodePath("../../../Skeleton2D/Bone2D22")
 update_rotation = false
 update_scale = false
 
-[node name="@@26627" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25251"]
+[node name="@@24814" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24774"]
 rotation = 2.35619
 node_a = NodePath("..")
-node_b = NodePath("../../@@25239")
+node_b = NodePath("../../@@24762")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@26628" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25251"]
+[node name="@@24815" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24774"]
 rotation = 3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../@@25242")
+node_b = NodePath("../../@@24765")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@26629" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25251"]
+[node name="@@24816" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24774"]
 rotation = 3.92699
 node_a = NodePath("..")
-node_b = NodePath("../../@@25245")
+node_b = NodePath("../../@@24768")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@26630" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25251"]
+[node name="@@24817" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24774"]
 rotation = 1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../@@25248")
+node_b = NodePath("../../@@24771")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@26631" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25251"]
+[node name="@@24818" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24774"]
 rotation = 4.71239
 node_a = NodePath("..")
-node_b = NodePath("../../@@25254")
+node_b = NodePath("../../@@24777")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@26632" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25251"]
+[node name="@@24819" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24774"]
 rotation = 0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../@@25257")
+node_b = NodePath("../../@@24780")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@26633" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25251"]
+[node name="@@24820" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24774"]
 node_a = NodePath("..")
-node_b = NodePath("../../@@25260")
+node_b = NodePath("../../@@24783")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@26634" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25251"]
+[node name="@@24821" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24774"]
 rotation = -0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../@@25263")
+node_b = NodePath("../../@@24786")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@26635" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25251"]
+[node name="@@24822" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24774"]
 node_a = NodePath("..")
-node_b = NodePath("../../@@25266")
+node_b = NodePath("../../@@24789")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@25254" type="RigidBody2D" parent="Polygon2D2/@RigidBodiesRoot@25238"]
+[node name="@@24777" type="RigidBody2D" parent="Polygon2D2/@RigidBodiesRoot@24761"]
 position = Vector2(62, 41)
 mass = 0.1
 
-[node name="@@25255" type="CollisionShape2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25254"]
-shape = SubResource("CircleShape2D_jud65")
+[node name="@@24778" type="CollisionShape2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24777"]
+shape = SubResource("CircleShape2D_enqvt")
 
-[node name="@@25256" type="RemoteTransform2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25254"]
+[node name="@@24779" type="RemoteTransform2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24777"]
 remote_path = NodePath("../../../Skeleton2D/Bone2D32")
 update_rotation = false
 update_scale = false
 
-[node name="@@26636" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25254"]
+[node name="@@24823" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24777"]
 rotation = 2.35619
 node_a = NodePath("..")
-node_b = NodePath("../../@@25242")
+node_b = NodePath("../../@@24765")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@26637" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25254"]
+[node name="@@24824" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24777"]
 rotation = 3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../@@25245")
+node_b = NodePath("../../@@24768")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@26638" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25254"]
+[node name="@@24825" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24777"]
 rotation = 1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../@@25248")
+node_b = NodePath("../../@@24771")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@26639" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25254"]
+[node name="@@24826" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24777"]
 rotation = 1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../@@25251")
+node_b = NodePath("../../@@24774")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@26640" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25254"]
+[node name="@@24827" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24777"]
 rotation = 0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../@@25260")
+node_b = NodePath("../../@@24783")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@26641" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25254"]
+[node name="@@24828" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24777"]
 node_a = NodePath("..")
-node_b = NodePath("../../@@25263")
+node_b = NodePath("../../@@24786")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@25257" type="RigidBody2D" parent="Polygon2D2/@RigidBodiesRoot@25238"]
+[node name="@@24780" type="RigidBody2D" parent="Polygon2D2/@RigidBodiesRoot@24761"]
 position = Vector2(22, 61)
 mass = 0.1
 
-[node name="@@25258" type="CollisionShape2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25257"]
-shape = SubResource("CircleShape2D_cirhd")
+[node name="@@24781" type="CollisionShape2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24780"]
+shape = SubResource("CircleShape2D_ujgp5")
 
-[node name="@@25259" type="RemoteTransform2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25257"]
+[node name="@@24782" type="RemoteTransform2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24780"]
 remote_path = NodePath("../../../Skeleton2D/Bone2D13")
 update_rotation = false
 update_scale = false
 
-[node name="@@26642" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25257"]
+[node name="@@24829" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24780"]
 rotation = 3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../@@25239")
+node_b = NodePath("../../@@24762")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@26643" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25257"]
+[node name="@@24830" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24780"]
 rotation = 3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../@@25248")
+node_b = NodePath("../../@@24771")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@26644" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25257"]
+[node name="@@24831" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24780"]
 rotation = 3.92699
 node_a = NodePath("..")
-node_b = NodePath("../../@@25251")
+node_b = NodePath("../../@@24774")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@26645" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25257"]
+[node name="@@24832" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24780"]
 rotation = 4.71239
 node_a = NodePath("..")
-node_b = NodePath("../../@@25260")
+node_b = NodePath("../../@@24783")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@26646" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25257"]
+[node name="@@24833" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24780"]
 rotation = 4.71239
 node_a = NodePath("..")
-node_b = NodePath("../../@@25263")
+node_b = NodePath("../../@@24786")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@26647" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25257"]
+[node name="@@24834" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24780"]
 rotation = -0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../@@25266")
+node_b = NodePath("../../@@24789")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@25260" type="RigidBody2D" parent="Polygon2D2/@RigidBodiesRoot@25238"]
+[node name="@@24783" type="RigidBody2D" parent="Polygon2D2/@RigidBodiesRoot@24761"]
 position = Vector2(42, 61)
 mass = 0.1
 
-[node name="@@25261" type="CollisionShape2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25260"]
-shape = SubResource("CircleShape2D_24caj")
+[node name="@@24784" type="CollisionShape2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24783"]
+shape = SubResource("CircleShape2D_7b5xo")
 
-[node name="@@25262" type="RemoteTransform2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25260"]
+[node name="@@24785" type="RemoteTransform2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24783"]
 remote_path = NodePath("../../../Skeleton2D/Bone2D23")
 update_rotation = false
 update_scale = false
 
-[node name="@@26648" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25260"]
+[node name="@@24835" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24783"]
 rotation = 3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../@@25242")
+node_b = NodePath("../../@@24765")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@26649" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25260"]
+[node name="@@24836" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24783"]
 rotation = 2.35619
 node_a = NodePath("..")
-node_b = NodePath("../../@@25248")
+node_b = NodePath("../../@@24771")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@26650" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25260"]
+[node name="@@24837" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24783"]
 rotation = 3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../@@25251")
+node_b = NodePath("../../@@24774")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@26651" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25260"]
+[node name="@@24838" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24783"]
 rotation = 3.92699
 node_a = NodePath("..")
-node_b = NodePath("../../@@25254")
+node_b = NodePath("../../@@24777")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@26652" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25260"]
+[node name="@@24839" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24783"]
 rotation = 1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../@@25257")
+node_b = NodePath("../../@@24780")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@26653" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25260"]
+[node name="@@24840" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24783"]
 rotation = 4.71239
 node_a = NodePath("..")
-node_b = NodePath("../../@@25263")
+node_b = NodePath("../../@@24786")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@26654" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25260"]
+[node name="@@24841" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24783"]
 node_a = NodePath("..")
-node_b = NodePath("../../@@25266")
+node_b = NodePath("../../@@24789")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@25263" type="RigidBody2D" parent="Polygon2D2/@RigidBodiesRoot@25238"]
+[node name="@@24786" type="RigidBody2D" parent="Polygon2D2/@RigidBodiesRoot@24761"]
 position = Vector2(62, 61)
 mass = 0.1
 
-[node name="@@25264" type="CollisionShape2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25263"]
-shape = SubResource("CircleShape2D_cky7r")
+[node name="@@24787" type="CollisionShape2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24786"]
+shape = SubResource("CircleShape2D_4kjdt")
 
-[node name="@@25265" type="RemoteTransform2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25263"]
+[node name="@@24788" type="RemoteTransform2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24786"]
 remote_path = NodePath("../../../Skeleton2D/Bone2D33")
 update_rotation = false
 update_scale = false
 
-[node name="@@26655" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25263"]
+[node name="@@24842" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24786"]
 rotation = 3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../@@25245")
+node_b = NodePath("../../@@24768")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@26656" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25263"]
+[node name="@@24843" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24786"]
 rotation = 2.35619
 node_a = NodePath("..")
-node_b = NodePath("../../@@25251")
+node_b = NodePath("../../@@24774")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@26657" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25263"]
+[node name="@@24844" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24786"]
 rotation = 3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../@@25254")
+node_b = NodePath("../../@@24777")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@26658" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25263"]
+[node name="@@24845" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24786"]
 rotation = 1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../@@25257")
+node_b = NodePath("../../@@24780")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@26659" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25263"]
+[node name="@@24846" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24786"]
 rotation = 1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../@@25260")
+node_b = NodePath("../../@@24783")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@26660" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25263"]
+[node name="@@24847" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24786"]
 rotation = 0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../@@25266")
+node_b = NodePath("../../@@24789")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@25266" type="RigidBody2D" parent="Polygon2D2/@RigidBodiesRoot@25238"]
+[node name="@@24789" type="RigidBody2D" parent="Polygon2D2/@RigidBodiesRoot@24761"]
 position = Vector2(42, 81)
 mass = 0.1
 
-[node name="@@25267" type="CollisionShape2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25266"]
-shape = SubResource("CircleShape2D_8kd6r")
+[node name="@@24790" type="CollisionShape2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24789"]
+shape = SubResource("CircleShape2D_4bvgl")
 
-[node name="@@25268" type="RemoteTransform2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25266"]
+[node name="@@24791" type="RemoteTransform2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24789"]
 remote_path = NodePath("../../../Skeleton2D/Bone2D24")
 update_rotation = false
 update_scale = false
 
-[node name="@@26661" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25266"]
+[node name="@@24848" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24789"]
 rotation = 3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../@@25251")
+node_b = NodePath("../../@@24774")
 disable_collision = false
 length = 40.0
 rest_length = 40.0
+damping = 0.1
 
-[node name="@@26662" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25266"]
+[node name="@@24849" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24789"]
 rotation = 2.35619
 node_a = NodePath("..")
-node_b = NodePath("../../@@25257")
+node_b = NodePath("../../@@24780")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
-[node name="@@26663" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25266"]
+[node name="@@24850" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24789"]
 rotation = 3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../@@25260")
+node_b = NodePath("../../@@24783")
 disable_collision = false
 length = 20.0
 rest_length = 20.0
+damping = 0.1
 
-[node name="@@26664" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@25238/@@25266"]
+[node name="@@24851" type="DampedSpringJoint2D" parent="Polygon2D2/@RigidBodiesRoot@24761/@@24789"]
 rotation = 3.92699
 node_a = NodePath("..")
-node_b = NodePath("../../@@25263")
+node_b = NodePath("../../@@24786")
 disable_collision = false
 length = 28.2843
 rest_length = 28.2843
+damping = 0.1
 
 [node name="RigidBody2D" type="StaticBody2D" parent="."]
 
