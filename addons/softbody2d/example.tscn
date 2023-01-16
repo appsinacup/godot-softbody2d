@@ -146,7 +146,6 @@ internal_vertex_count = 46
 [node name="Bone2D11" type="Bone2D" parent="Polygon2D3/Skeleton2D"]
 position = Vector2(22, 21)
 rotation = 0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, 0.707107, -0.707107, 0.707107, 22, 21)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -167,7 +166,6 @@ follow = "../Bone2D22"
 [node name="Bone2D31" type="Bone2D" parent="Polygon2D3/Skeleton2D"]
 position = Vector2(62, 21)
 rotation = 2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, 0.707107, -0.707107, -0.707107, 62, 21)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -206,7 +204,6 @@ follow = "../Bone2D22"
 [node name="Bone2D13" type="Bone2D" parent="Polygon2D3/Skeleton2D"]
 position = Vector2(22, 61)
 rotation = -0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, -0.707107, 0.707107, 0.707107, 22, 61)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -227,7 +224,6 @@ follow = "../Bone2D22"
 [node name="Bone2D33" type="Bone2D" parent="Polygon2D3/Skeleton2D"]
 position = Vector2(62, 61)
 rotation = -2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, -0.707107, 0.707107, -0.707107, 62, 61)
 auto_calculate_length_and_angle = false
 length = 16.0

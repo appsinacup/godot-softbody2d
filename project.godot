@@ -35,7 +35,7 @@ movie_writer/movie_file="/Users/dragosdaian/Downloads/polygon2d_generator-941751
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/softbody2d/plugin.cfg")
 
 [rendering]
 
