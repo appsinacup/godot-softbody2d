@@ -1,0 +1,45 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+_global_script_classes=[{
+"base": "Bone2D",
+"class": &"LookAtCenter2D",
+"language": &"GDScript",
+"path": "res://addons/softbody2d/look_at_center_2d.gd"
+}]
+_global_script_class_icons={
+"LookAtCenter2D": ""
+}
+
+[application]
+
+config/name="softbody2d"
+run/main_scene="res://addons/softbody2d/example.tscn"
+config/features=PackedStringArray("4.0")
+config/icon="res://addons/softbody2d/icon.png"
+
+[display]
+
+window/stretch/mode="viewport"
+
+[editor]
+
+movie_writer/movie_file="/Users/dragosdaian/Downloads/polygon2d_generator-9417515ffabc09971e99ab0f86d19033c4b4374c/recording/recording.avi"
+
+[editor_plugins]
+
+enabled=PackedStringArray()
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"
