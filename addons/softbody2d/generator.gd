@@ -3,45 +3,61 @@ extends Control
 
 @export var editor : EditorInterface
 
-var stiffness: float = 20
-var damping: float = 0
+# Polygon Vertex Distance
+var step := 30
+
+# Skeleton Bone Distance
+var stepbone := 50
+
+# Joint Damping
+var damping: float = 0.3
+# Joint Stiffness
+var stiffness: float = 25
+# Joint Bias
+var bias := 0.5
+# Joint Ratio
+var jointratio := 1.1
+# Joint Disable Collision
 var disable_collision := false
 
+# Rigidbody Radius
+var steprigidbody := 45
+# Rigidbody Collision Layer
 var collision_layer := 1
+# Rigidbody Collision Mask
 var collision_mask := 1
+# Rigidbody Mass
 var mass := 0.1
-var step := 10
-var stepbone := 30
-var steprigidbody := 20
-var polygon2d: Polygon2D
+
 var polygon_verts: PackedVector2Array
 var polygon_size: Vector2
 var polygon_num: Vector2
 var polygon_bone_num: Vector2
+var lim_delta: Vector2
 var lim_max: Vector2
 var lim_min: Vector2
 var rigid_bodies_root: Node2D
+var physics_material_override_path: String = "res://addons/softbody2d/softbody2d_phys.tres"
 
-func _is_polygon_selected():
-	polygon2d = null
-	if editor.get_selection().get_selected_nodes():
-		if editor.get_selection().get_selected_nodes()[0] is Polygon2D:
-			polygon2d = editor.get_selection().get_selected_nodes()[0]
-			return true
-	return false
+func get_polygons_selected() -> Array[Polygon2D]:
+	var arr := editor.get_selection() \
+		.get_selected_nodes() \
+		.filter(func(node): return node is Polygon2D) \
+		.map(func(node): return node as Polygon2D)
+	var polygons: Array[Polygon2D]
+	for node in arr:
+		polygons.append(node as Polygon2D)
+	return polygons
 
 func _on_generate_polygon() -> void:
-	if !_is_polygon_selected():
-		return
-	_create_basic_poly()
-	_clear_polygon()
-	_create_per_vert()
-	_create_internal_vert()
-	_triangulate_polygon()
+	for polygon2d in get_polygons_selected():
+		_create_basic_poly(polygon2d)
+		_clear_polygon(polygon2d)
+		_create_per_vert(polygon2d)
+		_create_internal_vert(polygon2d)
+		_triangulate_polygon(polygon2d)
 
-func _create_basic_poly() -> void:
-	if polygon2d == null:
-		return
+func _create_basic_poly(polygon2d: Polygon2D) -> void:
 	polygon2d.skeleton = ""
 	var bm = BitMap.new()
 	bm.create_from_image_alpha(polygon2d.texture.get_image())
@@ -50,7 +66,7 @@ func _create_basic_poly() -> void:
 	polygon2d.set_polygon(PackedVector2Array(poly[0]))
 	polygon2d.set_polygons(PackedVector2Array(poly[0]))
 
-func _update_vars():
+func _update_vars(polygon2d: Polygon2D):
 	polygon_verts = polygon2d.polygon.duplicate()
 	if polygon_verts.size() != 0:
 		var new_size = polygon_verts.size() - polygon2d.internal_vertex_count
@@ -67,19 +83,18 @@ func _update_vars():
 			lim_min.y = point.y
 		if point.y > lim_max.y:
 			lim_max.y = point.y
+	lim_delta = lim_max - lim_min
 	polygon_size = Vector2(lim_max.x - lim_min.x, lim_max.y - lim_min.y)
 	polygon_num = Vector2(int(polygon_size.x / step), int(polygon_size.y / step))
 	polygon_bone_num = Vector2(int(polygon_size.x / stepbone), int(polygon_size.y / stepbone))
 
-func _clear_polygon() -> void:
-	if polygon2d == null:
-		return
-	_update_vars()
+func _clear_polygon(polygon2d: Polygon2D) -> void:
+	_update_vars(polygon2d)
 	polygon2d.set_polygons([])
 	polygon2d.set_internal_vertex_count(0)
 	polygon2d.set_uv(PackedVector2Array([]))
 
-func _create_per_vert() -> PackedVector2Array:
+func _create_per_vert(polygon2d: Polygon2D) -> PackedVector2Array:
 	var poly = []
 	var init_size = polygon2d.polygon.size()
 	for n in range(init_size):
@@ -98,7 +113,7 @@ func _create_per_vert() -> PackedVector2Array:
 	polygon_verts = PackedVector2Array(poly)
 	return polygon2d.get_polygon()
 
-func _create_internal_vert() -> void:
+func _create_internal_vert(polygon2d: Polygon2D) -> void:
 	var in_vert_count = 0
 	var new_vert = polygon2d.get_polygon()
 	
@@ -121,7 +136,7 @@ func _create_internal_vert() -> void:
 func _is_point_in_area(point: Vector2) -> bool:
 	return Geometry2D.is_point_in_polygon(point, polygon_verts)
 
-func _triangulate_polygon() -> void:
+func _triangulate_polygon(polygon2d: Polygon2D) -> void:
 	var polygon = polygon2d.get_polygon()
 	var points = Array(Geometry2D.triangulate_delaunay(polygon))
 	var polygons = []
@@ -142,13 +157,10 @@ func _is_line_in_area(a: Vector2, b: Vector2) -> bool:
 		and _is_point_in_area(b + b.direction_to(a) * 0.01) \
 		and _is_point_in_area((a + b) / 2)
 
-func _on_weights_pressed() -> void:
-	if !_is_polygon_selected():
-		return
-	_update_vars()
-	var skeleton := polygon2d.get_node(polygon2d.skeleton) as Skeleton2D
+func _generate_weights(polygon2d: Polygon2D, skeleton: Skeleton2D) -> void:
+	_update_vars(polygon2d)
 	var weights = []
-	var bone_count = polygon2d.get_bone_count()
+	var bone_count = skeleton.get_bone_count()
 	var points_size = polygon2d.polygon.size()
 	
 	weights.resize(bone_count)
@@ -187,36 +199,38 @@ func _on_weights_pressed() -> void:
 				weights[bone_index][point_index] = 0
 
 	for bone_index in range(bone_count):
-		polygon2d.set_bone_weights(bone_index, PackedFloat32Array(weights[bone_index]))
+		polygon2d.add_bone(NodePath(skeleton.get_bone(bone_index).name), PackedFloat32Array(weights[bone_index]))
 
 func _sort_nearest_point(a, b) -> bool:
 	return a[1] < b[1]
 
 func _on_create_skeleton_pressed():
-	if !_is_polygon_selected():
-		return
-	_update_vars()
-	for child in polygon2d.get_children():
-		if child is Skeleton2D:
-			child.queue_free()
-	var skeleton2D = Skeleton2D.new()
-	skeleton2D.name = "Skeleton2D"
-	polygon2d.add_child(skeleton2D)
-	skeleton2D.owner = editor.get_edited_scene_root()
-	skeleton2D.get_relative
-	polygon2d.skeleton = NodePath(skeleton2D.name)
-	_create_bones(skeleton2D)
-
-func _create_bones(skeleton2D: Skeleton2D) -> void:
+	for polygon2d in get_polygons_selected():
+		_update_vars(polygon2d)
+		for child in polygon2d.get_children():
+			if child is Skeleton2D:
+				polygon2d.remove_child(child)
+				child.queue_free()
+		var skeleton2D = Skeleton2D.new()
+		skeleton2D.name = "Skeleton2D"
+		polygon2d.add_child(skeleton2D)
+		skeleton2D.owner = editor.get_edited_scene_root()
+		skeleton2D.get_relative
+		_create_bones(skeleton2D, polygon2d)
+		_generate_weights(polygon2d, skeleton2D)
+		polygon2d.skeleton = NodePath(skeleton2D.name)
+	
+func _create_bones(skeleton2D: Skeleton2D, polygon2d: Polygon2D) -> void:
 	var bones: Array[Bone2D] = []
 	var bone_matrix = []
-	bone_matrix.resize(polygon_bone_num.y + 1)
-	for y in range(polygon_bone_num.y + 1):
+	bone_matrix.resize(polygon_bone_num.y + 2)
+	for y in range(-polygon_bone_num.y / 2-1, polygon_bone_num.y +2):
 		var row_array = []
-		row_array.resize(polygon_bone_num.x + 1)
+		row_array.resize(polygon_bone_num.x + 2)
 		bone_matrix[y] = row_array
-		for x in range(polygon_bone_num.x + 1):
-			var point = Vector2(lim_min.x + (x * stepbone), lim_min.y + (y * stepbone))
+		for x in range(-polygon_bone_num.x / 2 -1, polygon_bone_num.x + 2):
+			var point = Vector2(lim_min.x + lim_delta.x/2 + x * stepbone,\
+				lim_min.y + lim_delta.y/2 + y * stepbone)
 			
 			if _is_point_in_area(point):
 				var is_fit = true
@@ -229,11 +243,14 @@ func _create_bones(skeleton2D: Skeleton2D) -> void:
 					bone.owner = editor.get_edited_scene_root()
 					bones.append(bone)
 					bone_matrix[y][x] = bone
-	var center_bone = bone_matrix[(polygon_bone_num.y + 1) / 2][(polygon_bone_num.x + 1) / 2]
+	var center_bone = bone_matrix[0][0]
+	polygon2d.clear_bones()
 	for bone in bones:
 		bone.look_at(center_bone.global_position)
 		bone.set_script(LookAtCenter2D)
-		(bone as LookAtCenter2D).follow = "../" + center_bone.name
+		(bone as LookAtCenter2D).follow = NodePath("../" + center_bone.name)
+	
+		bone.set_rest(bone.transform)
 
 func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D):
 	var rigid_body = RigidBody2D.new()
@@ -245,6 +262,8 @@ func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D):
 	collision_shape.shape = shape
 	rigid_body.mass = mass
 	rigid_body.global_position = bone.global_position
+	if physics_material_override_path:
+		rigid_body.physics_material_override = load(physics_material_override_path) as PhysicsMaterial
 	rigid_body.add_child(collision_shape)
 	collision_shape.owner = editor.get_edited_scene_root()
 	rigid_body.collision_layer = collision_layer
@@ -257,7 +276,7 @@ func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D):
 	remote_transform.update_scale = false
 	return rigid_body
 
-func _add_rigid_body_bones():
+func _add_rigid_body_bones(polygon2d):
 	var skeleton := polygon2d.get_node(polygon2d.skeleton) as Skeleton2D
 	var bones = skeleton.get_children()
 	var link_pair = {}
@@ -265,22 +284,27 @@ func _add_rigid_body_bones():
 		var rigid_body = _create_rigid_body(skeleton, bone)
 
 func _on_generate_rigidbodies_pressed():
-	if !_is_polygon_selected():
-		return
-	_update_vars()
-	for child in polygon2d.get_children():
-		if not child is Skeleton2D:
-			child.queue_free()
-	rigid_bodies_root = Node2D.new()
-	rigid_bodies_root.name = "RigidBodiesRoot"
-	polygon2d.add_child(rigid_bodies_root)
-	rigid_bodies_root.owner = editor.get_edited_scene_root()
-	_add_rigid_body_bones()
+	for polygon2d in get_polygons_selected():
+		_update_vars(polygon2d)
+		for child in polygon2d.get_children():
+			if not child is Skeleton2D:
+				polygon2d.remove_child(child)
+				child.queue_free()
+		rigid_bodies_root = Node2D.new()
+		rigid_bodies_root.name = "RigidBodiesRoot"
+		polygon2d.add_child(rigid_bodies_root)
+		rigid_bodies_root.owner = editor.get_edited_scene_root()
+		_add_rigid_body_bones(polygon2d)
+		_reset_skeleton(polygon2d.get_node(polygon2d.skeleton) as Skeleton2D)
+		_generate_joints(polygon2d)
 
-func _on_generate_joints_pressed():
-	if !_is_polygon_selected():
-		return
-	_update_vars()
+func _reset_skeleton(skeleton: Skeleton2D):
+	for bone_index in skeleton.get_bone_count():
+			var bone := skeleton.get_bone(bone_index)
+			bone.apply_rest()
+
+func _generate_joints(polygon2d: Polygon2D):
+	_update_vars(polygon2d)
 	var rigid_bodies: Array[RigidBody2D]
 	for child in polygon2d.get_children():
 		if not child is Skeleton2D:
@@ -289,6 +313,7 @@ func _on_generate_joints_pressed():
 				rigid_bodies.append(rigid_body as RigidBody2D)
 				for link in rigid_body.get_children():
 					if link is DampedSpringJoint2D:
+						rigid_body.remove_child(link)
 						link.queue_free()
 	_add_joints(rigid_bodies)
 
@@ -303,38 +328,58 @@ func _add_joints(rigid_bodies: Array[RigidBody2D]):
 			joint.node_b = "../../" + node_b.name
 			joint.stiffness = stiffness
 			joint.disable_collision = disable_collision
-			joint.length = ((node_a.global_position - node_b.global_position).length())
-			joint.rest_length = ((node_a.global_position - node_b.global_position).length())
+			joint.length = ((node_a.global_position - node_b.global_position).length())/2*jointratio
+			joint.rest_length = ((node_a.global_position - node_b.global_position).length())/2*jointratio
 			var angle = (node_a.global_position - node_b.global_position).angle()
 			joint.global_rotation = angle + PI/2
 			joint.damping = damping
+			joint.bias = bias
 			node_a.add_child(joint)
 			joint.global_position = node_a.global_position
 			joint.owner = editor.get_edited_scene_root()
 
 func _on_steplabel_value_changed(value):
 	step = value
+	_on_generate_polygon()
 
 func _on_stepbonelabel_value_changed(value):
 	stepbone = value
+	_on_create_skeleton_pressed()
 
 func _on_stiffnesslabel_value_changed(value):
 	stiffness = value
+	_on_generate_rigidbodies_pressed()
 
 func _on_dampinglabel_value_changed(value):
 	damping = value
+	_on_generate_rigidbodies_pressed()
 
 func _on_disablecollision_toggled(button_pressed):
 	disable_collision = button_pressed
+	_on_generate_rigidbodies_pressed()
 
 func _on_collisionlayer_value_changed(value):
 	collision_layer = value
+	_on_generate_rigidbodies_pressed()
 
 func _on_collisionmask_value_changed(value):
 	collision_mask = value
+	_on_generate_rigidbodies_pressed()
 
 func _on_mass_value_changed(value):
 	mass = value
+	_on_generate_rigidbodies_pressed()
 
 func _on_radiuslabel_value_changed(value):
 	steprigidbody = value
+	_on_generate_rigidbodies_pressed()
+
+
+func _on_bias_value_changed(value):
+	bias = value
+	_on_generate_rigidbodies_pressed()
+
+
+func _on_ratio_value_changed(value):
+	jointratio = value
+	_on_generate_rigidbodies_pressed()

@@ -8,22 +8,11 @@
 
 config_version=5
 
-_global_script_classes=[{
-"base": "Bone2D",
-"class": &"LookAtCenter2D",
-"language": &"GDScript",
-"path": "res://addons/softbody2d/look_at_center_2d.gd"
-}]
-_global_script_class_icons={
-"LookAtCenter2D": ""
-}
-
 [application]
 
 config/name="softbody2d"
 run/main_scene="res://addons/softbody2d/example.tscn"
 config/features=PackedStringArray("4.0")
-config/icon="res://addons/softbody2d/icon.png"
 
 [display]
 
