@@ -25,7 +25,7 @@ NOTE: each step can be restarted but you will lose what you are trying to genera
 
 ## Tips
 
-- To get good results, use at most 2-3 layers of circles, so there aren't too many joints levels.
+- To get good results, use at most 2-3 layers of circles, so there aren't too many joints levels. Also, try to use square shapes, as those tend to perform better.
 
 Eg:
 
@@ -35,7 +35,7 @@ o-o-o
 |x|x|
 o-o-o
 
-Bigger shapes tend to stick and not keep their shape, unless you play a lot with the parameters.
+Bigger shapes tend to stick and not keep their shape, unless you play a lot with the parameters. If you do use bigger shapes with a lot of circles, increase joint damping and joint stiffness.
 
 - If you make circle shapes too small, things might enter between them and ruin the phisics simulation.
 - If you make everything too loose, the phisics simulation might break. Play for begining with joint damping but careful not to make it too small.

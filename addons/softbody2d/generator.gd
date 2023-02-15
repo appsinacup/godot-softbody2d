@@ -1,27 +1,27 @@
 @tool
 extends Control
-
+class_name SoftbodyGenerator
 @export var editor : EditorInterface
 
 # Polygon Vertex Distance
 var step := 30
 
 # Skeleton Bone Distance
-var stepbone := 50
+var stepbone := 35
 
 # Joint Damping
-var damping: float = 0.3
+var damping: float = 0.7
 # Joint Stiffness
-var stiffness: float = 25
+var stiffness: float = 30
 # Joint Bias
-var bias := 0.5
+var bias := 1
 # Joint Ratio
 var jointratio := 1.1
 # Joint Disable Collision
 var disable_collision := false
 
 # Rigidbody Radius
-var steprigidbody := 45
+var steprigidbody := 30
 # Rigidbody Collision Layer
 var collision_layer := 1
 # Rigidbody Collision Mask
@@ -321,7 +321,7 @@ func _add_joints(rigid_bodies: Array[RigidBody2D]):
 	for node_a in rigid_bodies:
 		for node_b in rigid_bodies:
 			if node_a == node_b or \
-				node_a.global_position.distance_to(node_b.global_position) > stepbone * 2:
+				node_a.global_position.distance_to(node_b.global_position) > stepbone * 1.5:
 				continue
 			var joint = DampedSpringJoint2D.new()
 			joint.node_a = ".."
@@ -329,7 +329,8 @@ func _add_joints(rigid_bodies: Array[RigidBody2D]):
 			joint.stiffness = stiffness
 			joint.disable_collision = disable_collision
 			joint.length = ((node_a.global_position - node_b.global_position).length())/2*jointratio
-			joint.rest_length = ((node_a.global_position - node_b.global_position).length())/2*jointratio
+			#joint.rest_length = ((node_a.global_position - node_b.global_position).length())/2*jointratio
+			joint.rest_length = 0
 			var angle = (node_a.global_position - node_b.global_position).angle()
 			joint.global_rotation = angle + PI/2
 			joint.damping = damping
@@ -345,6 +346,7 @@ func _on_steplabel_value_changed(value):
 func _on_stepbonelabel_value_changed(value):
 	stepbone = value
 	_on_create_skeleton_pressed()
+	_on_generate_rigidbodies_pressed()
 
 func _on_stiffnesslabel_value_changed(value):
 	stiffness = value
