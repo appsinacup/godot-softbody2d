@@ -40,8 +40,16 @@ Bigger shapes tend to stick and not keep their shape, unless you play a lot with
 - If you make circle shapes too small, things might enter between them and ruin the phisics simulation.
 - If you make everything too loose, the phisics simulation might break. Play for begining with joint damping but careful not to make it too small.
 - You can also change the softbody2d_phys.tres that is used for the shapes to further customize the softbodies.
+- Increase physics/common/physics_ticks_per_second to 240.
+- Increase physics/common/max_physics_steps_per_frame to 100.
+
 
 ## Changelog
+
+### Version 0.3
+
+- Add more tips on how to get a good simulation
+- Fix case where if root object is rotated, generation doesn't work.
 
 ### Version 0.2
 

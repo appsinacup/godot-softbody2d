@@ -328,11 +328,10 @@ func _add_joints(rigid_bodies: Array[RigidBody2D]):
 			joint.node_b = "../../" + node_b.name
 			joint.stiffness = stiffness
 			joint.disable_collision = disable_collision
-			joint.length = ((node_a.global_position - node_b.global_position).length())/2*jointratio
-			#joint.rest_length = ((node_a.global_position - node_b.global_position).length())/2*jointratio
-			joint.rest_length = 0
-			var angle = (node_a.global_position - node_b.global_position).angle()
-			joint.global_rotation = angle + PI/2
+			joint.rest_length = ((node_a.global_position - node_b.global_position).length())
+			joint.length = ((node_a.global_position - node_b.global_position).length())*jointratio
+			joint.look_at(node_b.global_position)
+			joint.rotation = node_a.position.angle_to_point(node_b.position) - PI/2
 			joint.damping = damping
 			joint.bias = bias
 			node_a.add_child(joint)

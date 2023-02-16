@@ -16,6 +16,9 @@ config/features=PackedStringArray("4.0")
 
 [display]
 
+window/size/viewport_width=1300
+window/size/viewport_height=1000
+window/size/mode=2
 window/stretch/mode="viewport"
 
 [editor]
@@ -25,6 +28,11 @@ movie_writer/movie_file="/Users/dragosdaian/Downloads/polygon2d_generator-941751
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/softbody2d/plugin.cfg")
+
+[physics]
+
+common/physics_ticks_per_second=240
+common/max_physics_steps_per_frame=100
 
 [rendering]
 
