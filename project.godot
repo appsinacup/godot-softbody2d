@@ -32,7 +32,7 @@ enabled=PackedStringArray("res://addons/softbody2d/plugin.cfg")
 [physics]
 
 common/physics_ticks_per_second=240
-common/max_physics_steps_per_frame=100
+common/max_physics_steps_per_frame=16
 
 [rendering]
 

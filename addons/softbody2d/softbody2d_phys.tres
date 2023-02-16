@@ -2,5 +2,5 @@
 
 [resource]
 friction = 0.1
-bounce = 0.13
+bounce = 0.47
 absorbent = true
