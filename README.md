@@ -1,5 +1,4 @@
-![icon](https://raw.githubusercontent.com/Ughuuu/godot-4-softbody2d/main/addons/softbody2d/plugin_icon.png)
-# softbody2d
+# ![icon](https://raw.githubusercontent.com/Ughuuu/godot-4-softbody2d/main/addons/softbody2d/plugin_icon.png) softbody2d
 
 Generates polygon outline, internal vertices, bones, rigidbodies and joints so you can turn a texture into a softbody2d.
 Based on Polygon2d Generator.
