@@ -16,14 +16,11 @@ config/features=PackedStringArray("4.0")
 
 [display]
 
-window/size/viewport_width=1300
-window/size/viewport_height=1000
-window/size/mode=2
 window/stretch/mode="viewport"
 
 [editor]
 
-movie_writer/movie_file="/Users/dragosdaian/Downloads/polygon2d_generator-9417515ffabc09971e99ab0f86d19033c4b4374c/recording/recording.avi"
+movie_writer/movie_file="./recording/recording.avi"
 
 [editor_plugins]
 
