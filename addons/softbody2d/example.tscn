@@ -603,7 +603,6 @@ internal_vertex_count = 137
 [node name="Bone2D-1-3" type="Bone2D" parent="Egg/Skeleton2D"]
 position = Vector2(59.5, 24)
 rotation = 1.24905
-scale = Vector2(1, 1)
 rest = Transform2D(0.316228, 0.948683, -0.948683, 0.316228, 59.5, 24)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -645,6 +644,7 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D1-2" type="Bone2D" parent="Egg/Skeleton2D"]
 position = Vector2(129.5, 59)
 rotation = 2.03444
+scale = Vector2(1, 1)
 rest = Transform2D(-0.447214, 0.894427, -0.894427, -0.447214, 129.5, 59)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -687,7 +687,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D1-1" type="Bone2D" parent="Egg/Skeleton2D"]
 position = Vector2(129.5, 94.0009)
 rotation = 2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, 0.707106, -0.707106, -0.707107, 129.5, 94)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -787,7 +786,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D11" type="Bone2D" parent="Egg/Skeleton2D"]
 position = Vector2(129.5, 164)
 rotation = -2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, -0.707107, 0.707107, -0.707107, 129.5, 164)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -808,6 +806,7 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-22" type="Bone2D" parent="Egg/Skeleton2D"]
 position = Vector2(24.5, 199.001)
 rotation = -0.785398
+scale = Vector2(1, 1)
 rest = Transform2D(0.707107, -0.707107, 0.707107, 0.707107, 24.5, 199)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -839,6 +838,7 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D12" type="Bone2D" parent="Egg/Skeleton2D"]
 position = Vector2(129.5, 199)
 rotation = -2.03444
+scale = Vector2(1, 1)
 rest = Transform2D(-0.447214, -0.894427, 0.894427, -0.447214, 129.5, 199)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -849,7 +849,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D22" type="Bone2D" parent="Egg/Skeleton2D"]
 position = Vector2(164.5, 199.001)
 rotation = -2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, -0.707107, 0.707107, -0.707107, 164.5, 199)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -860,7 +859,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-13" type="Bone2D" parent="Egg/Skeleton2D"]
 position = Vector2(59.5, 234)
 rotation = -1.24905
-scale = Vector2(1, 1)
 rest = Transform2D(0.316228, -0.948683, 0.948683, 0.316228, 59.5, 234)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -2906,7 +2904,6 @@ internal_vertex_count = 137
 [node name="Bone2D-1-3" type="Bone2D" parent="Egg2/Skeleton2D"]
 position = Vector2(59.5, 24)
 rotation = 1.24905
-scale = Vector2(1, 1)
 rest = Transform2D(0.316228, 0.948683, -0.948683, 0.316228, 59.5, 24)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -2927,6 +2924,7 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-1-2" type="Bone2D" parent="Egg2/Skeleton2D"]
 position = Vector2(59.5, 59)
 rotation = 1.10715
+scale = Vector2(1, 1)
 rest = Transform2D(0.447214, 0.894427, -0.894427, 0.447214, 59.5, 59)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -2947,6 +2945,7 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D1-2" type="Bone2D" parent="Egg2/Skeleton2D"]
 position = Vector2(129.5, 59)
 rotation = 2.03444
+scale = Vector2(1, 1)
 rest = Transform2D(-0.447214, 0.894427, -0.894427, -0.447214, 129.5, 59)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -2968,7 +2967,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-1-1" type="Bone2D" parent="Egg2/Skeleton2D"]
 position = Vector2(59.5, 94)
 rotation = 0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, 0.707107, -0.707107, 0.707107, 59.5, 94)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -2989,7 +2987,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D1-1" type="Bone2D" parent="Egg2/Skeleton2D"]
 position = Vector2(129.5, 94)
 rotation = 2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, 0.707107, -0.707107, -0.707107, 129.5, 94)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -3068,7 +3065,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-11" type="Bone2D" parent="Egg2/Skeleton2D"]
 position = Vector2(59.5, 164)
 rotation = -0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, -0.707107, 0.707107, 0.707107, 59.5, 164)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -3089,7 +3085,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D11" type="Bone2D" parent="Egg2/Skeleton2D"]
 position = Vector2(129.5, 164)
 rotation = -2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, -0.707107, 0.707107, -0.707107, 129.5, 164)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -3110,7 +3105,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-22" type="Bone2D" parent="Egg2/Skeleton2D"]
 position = Vector2(24.5, 199)
 rotation = -0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, -0.707107, 0.707107, 0.707107, 24.5, 199)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -3121,6 +3115,7 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-12" type="Bone2D" parent="Egg2/Skeleton2D"]
 position = Vector2(59.5, 199)
 rotation = -1.10715
+scale = Vector2(1, 1)
 rest = Transform2D(0.447214, -0.894427, 0.894427, 0.447214, 59.5, 199)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -3141,6 +3136,7 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D12" type="Bone2D" parent="Egg2/Skeleton2D"]
 position = Vector2(129.5, 199)
 rotation = -2.03444
+scale = Vector2(1, 1)
 rest = Transform2D(-0.447214, -0.894427, 0.894427, -0.447214, 129.5, 199)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -3151,7 +3147,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D22" type="Bone2D" parent="Egg2/Skeleton2D"]
 position = Vector2(164.5, 199)
 rotation = -2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, -0.707107, 0.707107, -0.707107, 164.5, 199)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -3162,7 +3157,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-13" type="Bone2D" parent="Egg2/Skeleton2D"]
 position = Vector2(59.5, 234)
 rotation = -1.24905
-scale = Vector2(1, 1)
 rest = Transform2D(0.316228, -0.948683, 0.948683, 0.316228, 59.5, 234)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -5208,7 +5202,6 @@ internal_vertex_count = 137
 [node name="Bone2D-1-3" type="Bone2D" parent="Egg3/Skeleton2D"]
 position = Vector2(59.5, 24)
 rotation = 1.24905
-scale = Vector2(1, 1)
 rest = Transform2D(0.316228, 0.948683, -0.948683, 0.316228, 59.5, 24)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -5229,6 +5222,7 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-1-2" type="Bone2D" parent="Egg3/Skeleton2D"]
 position = Vector2(59.5, 59)
 rotation = 1.10715
+scale = Vector2(1, 1)
 rest = Transform2D(0.447214, 0.894427, -0.894427, 0.447214, 59.5, 59)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -5249,6 +5243,7 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D1-2" type="Bone2D" parent="Egg3/Skeleton2D"]
 position = Vector2(129.5, 59)
 rotation = 2.03444
+scale = Vector2(1, 1)
 rest = Transform2D(-0.447214, 0.894427, -0.894427, -0.447214, 129.5, 59)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -5270,7 +5265,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-1-1" type="Bone2D" parent="Egg3/Skeleton2D"]
 position = Vector2(59.5, 94)
 rotation = 0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, 0.707107, -0.707107, 0.707107, 59.5, 94)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -5291,7 +5285,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D1-1" type="Bone2D" parent="Egg3/Skeleton2D"]
 position = Vector2(129.5, 94)
 rotation = 2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, 0.707107, -0.707107, -0.707107, 129.5, 94)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -5370,7 +5363,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-11" type="Bone2D" parent="Egg3/Skeleton2D"]
 position = Vector2(59.5, 164)
 rotation = -0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, -0.707107, 0.707107, 0.707107, 59.5, 164)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -5391,7 +5383,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D11" type="Bone2D" parent="Egg3/Skeleton2D"]
 position = Vector2(129.5, 164)
 rotation = -2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, -0.707107, 0.707107, -0.707107, 129.5, 164)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -5412,7 +5403,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-22" type="Bone2D" parent="Egg3/Skeleton2D"]
 position = Vector2(24.5, 199)
 rotation = -0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, -0.707107, 0.707107, 0.707107, 24.5, 199)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -5423,6 +5413,7 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-12" type="Bone2D" parent="Egg3/Skeleton2D"]
 position = Vector2(59.5, 199)
 rotation = -1.10715
+scale = Vector2(1, 1)
 rest = Transform2D(0.447214, -0.894427, 0.894427, 0.447214, 59.5, 199)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -5443,6 +5434,7 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D12" type="Bone2D" parent="Egg3/Skeleton2D"]
 position = Vector2(129.5, 199)
 rotation = -2.03444
+scale = Vector2(1, 1)
 rest = Transform2D(-0.447214, -0.894427, 0.894427, -0.447214, 129.5, 199)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -5453,7 +5445,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D22" type="Bone2D" parent="Egg3/Skeleton2D"]
 position = Vector2(164.5, 199)
 rotation = -2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, -0.707107, 0.707107, -0.707107, 164.5, 199)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -5464,7 +5455,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-13" type="Bone2D" parent="Egg3/Skeleton2D"]
 position = Vector2(59.5, 234)
 rotation = -1.24905
-scale = Vector2(1, 1)
 rest = Transform2D(0.316228, -0.948683, 0.948683, 0.316228, 59.5, 234)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -7510,7 +7500,6 @@ internal_vertex_count = 137
 [node name="Bone2D-1-3" type="Bone2D" parent="Egg4/Skeleton2D"]
 position = Vector2(59.5, 24)
 rotation = 1.24905
-scale = Vector2(1, 1)
 rest = Transform2D(0.316228, 0.948683, -0.948683, 0.316228, 59.5, 24)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -7531,6 +7520,7 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-1-2" type="Bone2D" parent="Egg4/Skeleton2D"]
 position = Vector2(59.5, 59)
 rotation = 1.10715
+scale = Vector2(1, 1)
 rest = Transform2D(0.447214, 0.894427, -0.894427, 0.447214, 59.5, 59)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -7551,6 +7541,7 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D1-2" type="Bone2D" parent="Egg4/Skeleton2D"]
 position = Vector2(129.5, 59)
 rotation = 2.03444
+scale = Vector2(1, 1)
 rest = Transform2D(-0.447214, 0.894427, -0.894427, -0.447214, 129.5, 59)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -7572,7 +7563,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-1-1" type="Bone2D" parent="Egg4/Skeleton2D"]
 position = Vector2(59.5, 94)
 rotation = 0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, 0.707107, -0.707107, 0.707107, 59.5, 94)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -7593,7 +7583,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D1-1" type="Bone2D" parent="Egg4/Skeleton2D"]
 position = Vector2(129.5, 94)
 rotation = 2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, 0.707107, -0.707107, -0.707107, 129.5, 94)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -7672,7 +7661,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-11" type="Bone2D" parent="Egg4/Skeleton2D"]
 position = Vector2(59.5, 164)
 rotation = -0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, -0.707107, 0.707107, 0.707107, 59.5, 164)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -7693,7 +7681,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D11" type="Bone2D" parent="Egg4/Skeleton2D"]
 position = Vector2(129.5, 164)
 rotation = -2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, -0.707107, 0.707107, -0.707107, 129.5, 164)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -7714,7 +7701,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-22" type="Bone2D" parent="Egg4/Skeleton2D"]
 position = Vector2(24.5, 199)
 rotation = -0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, -0.707107, 0.707107, 0.707107, 24.5, 199)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -7725,6 +7711,7 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-12" type="Bone2D" parent="Egg4/Skeleton2D"]
 position = Vector2(59.5, 199)
 rotation = -1.10715
+scale = Vector2(1, 1)
 rest = Transform2D(0.447214, -0.894427, 0.894427, 0.447214, 59.5, 199)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -7745,6 +7732,7 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D12" type="Bone2D" parent="Egg4/Skeleton2D"]
 position = Vector2(129.5, 199)
 rotation = -2.03444
+scale = Vector2(1, 1)
 rest = Transform2D(-0.447214, -0.894427, 0.894427, -0.447214, 129.5, 199)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -7755,7 +7743,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D22" type="Bone2D" parent="Egg4/Skeleton2D"]
 position = Vector2(164.5, 199)
 rotation = -2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, -0.707107, 0.707107, -0.707107, 164.5, 199)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -9812,7 +9799,6 @@ internal_vertex_count = 10
 [node name="Bone2D-1-1" type="Bone2D" parent="Butter1/Skeleton2D"]
 position = Vector2(26, 30)
 rotation = 0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, 0.707107, -0.707107, 0.707107, 26, 30)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -9833,7 +9819,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D1-1" type="Bone2D" parent="Butter1/Skeleton2D"]
 position = Vector2(96, 30)
 rotation = 2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, 0.707107, -0.707107, -0.707107, 96, 30)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -9872,7 +9857,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-11" type="Bone2D" parent="Butter1/Skeleton2D"]
 position = Vector2(26, 100)
 rotation = -0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, -0.707107, 0.707107, 0.707107, 26, 100)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -9893,7 +9877,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D11" type="Bone2D" parent="Butter1/Skeleton2D"]
 position = Vector2(96, 100)
 rotation = -2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, -0.707107, 0.707107, -0.707107, 96, 100)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -10430,7 +10413,6 @@ internal_vertex_count = 10
 [node name="Bone2D-1-1" type="Bone2D" parent="Butter2/Skeleton2D"]
 position = Vector2(26, 30)
 rotation = 0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, 0.707107, -0.707107, 0.707107, 26, 30)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -10451,7 +10433,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D1-1" type="Bone2D" parent="Butter2/Skeleton2D"]
 position = Vector2(96, 30)
 rotation = 2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, 0.707107, -0.707107, -0.707107, 96, 30)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -10490,7 +10471,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-11" type="Bone2D" parent="Butter2/Skeleton2D"]
 position = Vector2(26, 100)
 rotation = -0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, -0.707107, 0.707107, 0.707107, 26, 100)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -10511,7 +10491,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D11" type="Bone2D" parent="Butter2/Skeleton2D"]
 position = Vector2(96, 100)
 rotation = -2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, -0.707107, 0.707107, -0.707107, 96, 100)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -11048,7 +11027,6 @@ internal_vertex_count = 10
 [node name="Bone2D-1-1" type="Bone2D" parent="Butter3/Skeleton2D"]
 position = Vector2(26, 30)
 rotation = 0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, 0.707107, -0.707107, 0.707107, 26, 30)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -11069,7 +11047,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D1-1" type="Bone2D" parent="Butter3/Skeleton2D"]
 position = Vector2(96, 30)
 rotation = 2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, 0.707107, -0.707107, -0.707107, 96, 30)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -11108,7 +11085,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-11" type="Bone2D" parent="Butter3/Skeleton2D"]
 position = Vector2(26, 100)
 rotation = -0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, -0.707107, 0.707107, 0.707107, 26, 100)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -11129,7 +11105,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D11" type="Bone2D" parent="Butter3/Skeleton2D"]
 position = Vector2(96, 100)
 rotation = -2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, -0.707107, 0.707107, -0.707107, 96, 100)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -11666,7 +11641,6 @@ internal_vertex_count = 10
 [node name="Bone2D-1-1" type="Bone2D" parent="Butter4/Skeleton2D"]
 position = Vector2(26, 30)
 rotation = 0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, 0.707107, -0.707107, 0.707107, 26, 30)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -11687,7 +11661,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D1-1" type="Bone2D" parent="Butter4/Skeleton2D"]
 position = Vector2(96, 30)
 rotation = 2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, 0.707107, -0.707107, -0.707107, 96, 30)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -11726,7 +11699,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-11" type="Bone2D" parent="Butter4/Skeleton2D"]
 position = Vector2(26, 100)
 rotation = -0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, -0.707107, 0.707107, 0.707107, 26, 100)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -11747,7 +11719,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D11" type="Bone2D" parent="Butter4/Skeleton2D"]
 position = Vector2(96, 100)
 rotation = -2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, -0.707107, 0.707107, -0.707107, 96, 100)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -12284,7 +12255,6 @@ internal_vertex_count = 10
 [node name="Bone2D-1-1" type="Bone2D" parent="Butter5/Skeleton2D"]
 position = Vector2(26, 30)
 rotation = 0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, 0.707107, -0.707107, 0.707107, 26, 30)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -12305,7 +12275,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D1-1" type="Bone2D" parent="Butter5/Skeleton2D"]
 position = Vector2(96, 30)
 rotation = 2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, 0.707107, -0.707107, -0.707107, 96, 30)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -12344,7 +12313,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-11" type="Bone2D" parent="Butter5/Skeleton2D"]
 position = Vector2(26, 100)
 rotation = -0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, -0.707107, 0.707107, 0.707107, 26, 100)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -12365,7 +12333,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D11" type="Bone2D" parent="Butter5/Skeleton2D"]
 position = Vector2(96, 100)
 rotation = -2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, -0.707107, 0.707107, -0.707107, 96, 100)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -12902,7 +12869,6 @@ internal_vertex_count = 10
 [node name="Bone2D-1-1" type="Bone2D" parent="Butter6/Skeleton2D"]
 position = Vector2(26, 30)
 rotation = 0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, 0.707107, -0.707107, 0.707107, 26, 30)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -12923,7 +12889,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D1-1" type="Bone2D" parent="Butter6/Skeleton2D"]
 position = Vector2(96, 30)
 rotation = 2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, 0.707107, -0.707107, -0.707107, 96, 30)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -12962,7 +12927,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-11" type="Bone2D" parent="Butter6/Skeleton2D"]
 position = Vector2(26, 100)
 rotation = -0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, -0.707107, 0.707107, 0.707107, 26, 100)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -12983,7 +12947,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D11" type="Bone2D" parent="Butter6/Skeleton2D"]
 position = Vector2(96, 100)
 rotation = -2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, -0.707107, 0.707107, -0.707107, 96, 100)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -13520,7 +13483,6 @@ internal_vertex_count = 10
 [node name="Bone2D-1-1" type="Bone2D" parent="Butter7/Skeleton2D"]
 position = Vector2(26, 30)
 rotation = 0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, 0.707107, -0.707107, 0.707107, 26, 30)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -13541,7 +13503,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D1-1" type="Bone2D" parent="Butter7/Skeleton2D"]
 position = Vector2(96, 30)
 rotation = 2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, 0.707107, -0.707107, -0.707107, 96, 30)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -13580,7 +13541,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-11" type="Bone2D" parent="Butter7/Skeleton2D"]
 position = Vector2(26, 100)
 rotation = -0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, -0.707107, 0.707107, 0.707107, 26, 100)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -13601,7 +13561,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D11" type="Bone2D" parent="Butter7/Skeleton2D"]
 position = Vector2(96, 100)
 rotation = -2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, -0.707107, 0.707107, -0.707107, 96, 100)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -14138,7 +14097,6 @@ internal_vertex_count = 10
 [node name="Bone2D-1-1" type="Bone2D" parent="Butter8/Skeleton2D"]
 position = Vector2(26, 30)
 rotation = 0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, 0.707107, -0.707107, 0.707107, 26, 30)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -14159,7 +14117,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D1-1" type="Bone2D" parent="Butter8/Skeleton2D"]
 position = Vector2(96, 30)
 rotation = 2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, 0.707107, -0.707107, -0.707107, 96, 30)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -14198,7 +14155,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-11" type="Bone2D" parent="Butter8/Skeleton2D"]
 position = Vector2(26, 100)
 rotation = -0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, -0.707107, 0.707107, 0.707107, 26, 100)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -14219,7 +14175,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D11" type="Bone2D" parent="Butter8/Skeleton2D"]
 position = Vector2(96, 100)
 rotation = -2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, -0.707107, 0.707107, -0.707107, 96, 100)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -14756,7 +14711,6 @@ internal_vertex_count = 10
 [node name="Bone2D-1-1" type="Bone2D" parent="Butter9/Skeleton2D"]
 position = Vector2(26, 30)
 rotation = 0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, 0.707107, -0.707107, 0.707107, 26, 30)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -14777,7 +14731,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D1-1" type="Bone2D" parent="Butter9/Skeleton2D"]
 position = Vector2(96, 30)
 rotation = 2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, 0.707107, -0.707107, -0.707107, 96, 30)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -14816,7 +14769,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D-11" type="Bone2D" parent="Butter9/Skeleton2D"]
 position = Vector2(26, 100)
 rotation = -0.785398
-scale = Vector2(1, 1)
 rest = Transform2D(0.707107, -0.707107, 0.707107, 0.707107, 26, 100)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -14837,7 +14789,6 @@ follow = NodePath("../Bone2D00")
 [node name="Bone2D11" type="Bone2D" parent="Butter9/Skeleton2D"]
 position = Vector2(96, 100)
 rotation = -2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, -0.707107, 0.707107, -0.707107, 96, 100)
 auto_calculate_length_and_angle = false
 length = 16.0
