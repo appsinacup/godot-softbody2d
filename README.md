@@ -46,6 +46,10 @@ Bigger shapes tend to stick and not keep their shape, unless you play a lot with
 
 ## Changelog
 
+### Version 0.4
+
+- Fix bug where if object is rotated weight generation isn't correct.
+
 ### Version 0.3
 
 - Add more tips on how to get a good simulation
