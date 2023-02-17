@@ -169,7 +169,7 @@ func _generate_weights(polygon2d: Polygon2D, skeleton: Skeleton2D) -> void:
 		weights[bone_index].resize(points_size)
 
 	for point_index in range(polygon2d.polygon.size()):
-		var point = polygon2d.polygon[point_index] + polygon2d.global_position
+		var point = polygon2d.transform * polygon2d.polygon[point_index]
 		var bones_data = []
 		var dist_sum = 0
 		
@@ -216,9 +216,9 @@ func _on_create_skeleton_pressed():
 		polygon2d.add_child(skeleton2D)
 		skeleton2D.owner = editor.get_edited_scene_root()
 		skeleton2D.get_relative
+		polygon2d.skeleton = NodePath(skeleton2D.name)
 		_create_bones(skeleton2D, polygon2d)
 		_generate_weights(polygon2d, skeleton2D)
-		polygon2d.skeleton = NodePath(skeleton2D.name)
 	
 func _create_bones(skeleton2D: Skeleton2D, polygon2d: Polygon2D) -> void:
 	var bones: Array[Bone2D] = []
