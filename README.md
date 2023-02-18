@@ -1,4 +1,4 @@
-# ![icon](https://raw.githubusercontent.com/Ughuuu/godot-4-softbody2d/main/addons/softbody2d/plugin_icon.png) softbody2d
+# ![icon](https://raw.githubusercontent.com/Ughuuu/godot-4-softbody2d/main/addons/softbody2d/plugin_icon.png) Soft Body 2d
 
 Generates polygon outline, internal vertices, bones, rigidbodies and joints so you can turn a texture into a softbody2d.
 Based on Polygon2d Generator.
@@ -36,6 +36,7 @@ o-o-o
 |x|x|
 o-o-o
 ```
+
 Bigger shapes tend to stick and not keep their shape, unless you play a lot with the parameters. If you do use bigger shapes with a lot of circles, increase joint damping and joint stiffness.
 
 - If you make circle shapes too small, things might enter between them and ruin the phisics simulation.
