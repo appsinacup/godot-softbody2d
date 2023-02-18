@@ -17,7 +17,6 @@ This tool automates that.
 
 1. Select a Polygon2D node.
 2. Click Generate Polygon.
-- Step determines at distance to create internal points from one another.
 3. Click Create Skeleton2D.
 4. Click Generate Rigidbodies.
 
