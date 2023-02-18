@@ -64,4 +64,4 @@ Bigger shapes tend to stick and not keep their shape, unless you play a lot with
 
 ### Version 0.1
 
-Initial Release
+- Initial Release
