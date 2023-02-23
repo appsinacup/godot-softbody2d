@@ -16,9 +16,7 @@ This tool automates that.
 ## Steps
 
 1. Select a Polygon2D node.
-2. Click Generate Polygon.
-3. Click Create Skeleton2D.
-4. Click Generate Rigidbodies.
+2. Click Generate SoftBody2D.
 
 NOTE: each step can be restarted but you will lose what you are trying to generate
 (eg. if you regenerate skeleton will delete old one)
@@ -45,6 +43,10 @@ Bigger shapes tend to stick and not keep their shape, unless you play a lot with
 
 
 ## Changelog
+
+### Version 0.5
+
+- Create just one script that you can put on a Polygon2D that generates all nodes below.
 
 ### Version 0.4
 

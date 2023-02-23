@@ -10,13 +10,17 @@ config_version=5
 
 [application]
 
-config/name="softbody2d"
+config/name="SoftBody2D"
 run/main_scene="res://addons/softbody2d/example.tscn"
 config/features=PackedStringArray("4.0")
+config/icon="res://addons/softbody2d/Butter.png"
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=1024
 window/stretch/mode="viewport"
+window/stretch/aspect="keep_height"
 
 [editor]
 
@@ -29,7 +33,6 @@ enabled=PackedStringArray("res://addons/softbody2d/plugin.cfg")
 [physics]
 
 common/physics_ticks_per_second=240
-common/max_physics_steps_per_frame=16
 
 [rendering]
 

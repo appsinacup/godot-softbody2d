@@ -2,4 +2,6 @@
 
 [resource]
 friction = 0.2
-bounce = 0.5
+rough = true
+bounce = 0.51
+absorbent = true
