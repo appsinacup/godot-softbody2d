@@ -5,7 +5,7 @@ extends Polygon2D
 
 @export var bake_softbody := false :
 	set (value):
-		create_polygon2d()
+		create_softbody2d()
 	get:
 		return false
 
