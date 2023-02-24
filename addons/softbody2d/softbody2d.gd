@@ -17,7 +17,7 @@ extends Polygon2D
 @export_range(1, 5, 1, "or_greater") var weight_shared_by_n := 2
 
 @export_group("Joint")
-@export_range(0, 1, 0.1) var joint_ratio : float = 1
+@export_range(0.5, 1.5, 0.1) var joint_ratio : float = 1
 @export_range(0.1, 64, 0.1) var joint_stiffness: float = 20
 @export_range(2, 50, 1, "or_greater") var joint_damping: float = 0.7
 @export_range(0, 1, 0.1) var joint_bias : float = 0

@@ -1,4 +1,4 @@
-# ![icon](https://raw.githubusercontent.com/Ughuuu/godot-4-softbody2d/main/addons/softbody2d/plugin_icon.png) Soft Body 2d
+# ![icon](https://raw.githubusercontent.com/Ughuuu/godot-4-softbody2d/main/addons/softbody2d/plugin_icon.png) softbody2d
 
 Generates polygon outline, internal vertices, bones, rigidbodies and joints so you can turn a texture into a softbody2d.
 Based on Polygon2d Generator.
@@ -16,7 +16,8 @@ This tool automates that.
 ## Steps
 
 1. Select a Polygon2D node.
-2. Click Generate SoftBody2D.
+2. Add a SoftBody2D script to it.
+3. Click Bake Softbody
 
 NOTE: each step can be restarted but you will lose what you are trying to generate
 (eg. if you regenerate skeleton will delete old one)
@@ -33,7 +34,6 @@ o-o-o
 |x|x|
 o-o-o
 ```
-
 Bigger shapes tend to stick and not keep their shape, unless you play a lot with the parameters. If you do use bigger shapes with a lot of circles, increase joint damping and joint stiffness.
 
 - If you make circle shapes too small, things might enter between them and ruin the phisics simulation.
@@ -46,7 +46,7 @@ Bigger shapes tend to stick and not keep their shape, unless you play a lot with
 
 ### Version 0.5
 
-- Create just one script that you can put on a Polygon2D that generates all nodes below.
+- Create just one script, SoftBody2D that you can put on a Polygon2D that generates all nodes below.
 
 ### Version 0.4
 
@@ -65,4 +65,4 @@ Bigger shapes tend to stick and not keep their shape, unless you play a lot with
 
 ### Version 0.1
 
-- Initial Release
+Initial Release
