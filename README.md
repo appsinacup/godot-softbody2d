@@ -13,6 +13,8 @@ After that, create for each Bone2D a matching Rigidbody2D with Circle shape and 
 
 This tool automates that.
 
+![Softbody2d](https://i.imgur.com/49s3PcJ.gif)
+
 ## Steps
 
 1. Select a Polygon2D node.
