@@ -9,56 +9,51 @@ extends Polygon2D
 	get:
 		return false
 
-@export_group("Polygon")
-@export_range(2, 50, 1, "or_greater") var polygon_vertex_interval := 30
+@export var clear_softbody := false :
+	set (value):
+		clear_softbody2d()
+	get:
+		return false
 
-@export_group("Skeleton")
-@export_range(2, 50, 1, "or_greater") var bone_interval := 35
-@export_range(1, 5, 1, "or_greater") var weight_shared_by_n := 2
+@export_group("Polygon")
+@export_range(2, 50, 1, "or_greater") var polygon_vertex_interval := 20
+@export_range(0.01, 0.6, 0.05) var polygon_voronoi_interval :float= 0.15
 
 @export_group("Joint")
-@export_range(0.5, 1.5, 0.1) var joint_ratio : float = 1
 @export_range(0.1, 64, 0.1) var joint_stiffness: float = 20
-@export_range(2, 50, 1, "or_greater") var joint_damping: float = 0.7
+@export_range(0.1, 16, 0.1) var joint_damping: float = 0.7
 @export_range(0, 1, 0.1) var joint_bias : float = 0
 @export var joint_disable_collision := false
 
 @export_group("RigidBody")
+@export_range(2, 50, 1, "or_greater") var shape_circle_radius := 30
 @export_flags_2d_physics var rigidbody_collision_layer := 1
 @export_flags_2d_physics var rigidbody_collision_mask := 1
 @export_range(0.1, 100, 0.1, "or_more") var rigidbody_mass := 0.1
 @export var rigidbody_script : Script
 @export var rigidbody_pickable := false
-@export_range(2, 50, 1, "or_greater") var shape_circle_radius := 30
 @export var physics_material_override: PhysicsMaterial
 
-@export_group("Debug")
-
-@export var bake_polygon := false :
-	set (value):
-		create_polygon2d()
-	get:
-		return false
-
-@export var bake_skeleton := false :
-	set (value):
-		construct_skeleton2d()
-	get:
-		return false
-		
-@export var bake_rigidbodies := false :
-	set (value):
-		var skeleton2d = get_children().filter(func (node): return node is Skeleton2D)[0] as Skeleton2D
-		create_rigidbodies2d(skeleton2d)
-	get:
-		return false
-
 func create_softbody2d():
-	create_polygon2d()
-	var skeleton2d = construct_skeleton2d()
+	var voronoi = create_polygon2d()
+	var skeleton2d = construct_skeleton2d(voronoi[0], voronoi[1])
 	create_rigidbodies2d(skeleton2d)
+	#var bones = skeleton2d.get_children()
+	#_ready()
+	#remove_joint(bones[0].name, bones[1].name)
 
+func clear_softbody2d():
+	clear_polygon()
+	for child in get_children():
+		child.queue_free()
+		remove_child(child)
+	clear_bones()
 
+func clear_polygon():
+	polygon.clear()
+	polygons.clear()
+	uv.clear()
+	internal_vertex_count = 0
 
 func create_polygon2d():
 	if texture == null:
@@ -66,8 +61,7 @@ func create_polygon2d():
 		return
 	_create_external_vertices_from_texture()
 	_simplify_polygon()
-	_create_internal_vertices()
-	_triangulate_polygon()
+	return _create_internal_vertices()
 
 func _get_polygon_verts():
 	var polygon_verts = polygon.duplicate()
@@ -103,30 +97,89 @@ func _simplify_polygon():
 					
 	set_polygon(PackedVector2Array(poly))
 
+func _generate_points_voronoi(lim_min: Vector2, lim_max: Vector2, polygon_verts):
+	var polygon_size = lim_max - lim_min
+	var polygon_num = Vector2(int(polygon_size.x / polygon_vertex_interval), int(polygon_size.y / polygon_vertex_interval))
+
+	var voronoi = Voronoi2D.generateVoronoi(polygon_size, polygon_vertex_interval, polygon_voronoi_interval)
+	
+	var polygons = []
+	var new_voronoi = []
+	var voronoi_regions_to_move = []
+	# find out what regions to remove
+	for region_idx in len(voronoi):
+		var each = voronoi[region_idx]
+		var did_cut = false
+		var is_middle_inside = _is_point_in_area(each[0], polygon_verts)
+		var is_inside = true
+		for polygon_vert in each[1]:
+			if not _is_point_in_area(polygon_vert, polygon_verts):
+				is_inside = false
+				var intersect = Geometry2D.intersect_polygons(polygon_verts, each[1])
+				each[1] = PackedVector2Array()
+				for intersect_poly in intersect:
+					each[1].append_array(intersect_poly)
+					did_cut = true
+				if did_cut:
+					new_voronoi.append(each)
+					if not is_middle_inside:
+						voronoi_regions_to_move.append(new_voronoi.size() - 1)
+					break
+		if (not did_cut) and is_inside:
+			new_voronoi.append(each)
+			if not is_middle_inside:
+				voronoi_regions_to_move.append(new_voronoi.size() - 1)
+	# move regions first
+	for region_to_move in voronoi_regions_to_move:
+		var dist := -1.0
+		var closest_idx := -1
+		var to_remove = new_voronoi[region_to_move]
+		for voronoi_idx in len(new_voronoi):
+			if voronoi_idx in voronoi_regions_to_move:
+				continue
+			var each = new_voronoi[voronoi_idx]
+			var current_dist = each[0].distance_to(to_remove[0])
+			if dist < 0 or dist > current_dist:
+				dist = current_dist
+				closest_idx = voronoi_idx
+		if typeof(new_voronoi[closest_idx][1]) != TYPE_ARRAY:
+			new_voronoi[closest_idx][1] = [new_voronoi[closest_idx][1]]
+		new_voronoi[closest_idx][1].append(to_remove[1])
+	voronoi_regions_to_move.sort_custom(func (x,y): return x>y)
+	# remove them
+	for region_to_move in voronoi_regions_to_move:
+		new_voronoi.remove_at(region_to_move)
+	# add remaining
+	var new_vert = get_polygon()
+	var bone_vert_arr = []
+	var in_vert_count = 0
+	for each in new_voronoi:
+		if typeof(each[1]) != TYPE_ARRAY:
+			each[1] = [each[1]]
+		# multiple polygons
+		var bone_vert_combined_array := []
+		for poly in each[1]:
+			polygons.append_array(_triangulate_polygon(poly, polygon_verts, len(new_vert)))
+			var bone_vert_arr_el = []
+			for vert in poly:
+				bone_vert_arr_el.append(len(new_vert))
+				new_vert.append(vert)
+				in_vert_count += 1
+			bone_vert_combined_array.append_array(bone_vert_arr_el)
+		bone_vert_arr.append(bone_vert_combined_array)
+	set_polygon(new_vert)
+	set_internal_vertex_count(in_vert_count)
+	set_polygons(polygons)
+	return [new_voronoi, bone_vert_arr]
+
 func _create_internal_vertices():
 	var polygon_verts = _get_polygon_verts()
-	var in_vert_count = 0
-	var new_vert = get_polygon()
 	var polygon_limits = _calculate_polygon_limits()
 	var lim_min = polygon_limits[0]
 	var lim_max = polygon_limits[1]
 	var polygon_size = lim_max - lim_min
 	var polygon_num = Vector2(int(polygon_size.x / polygon_vertex_interval), int(polygon_size.y / polygon_vertex_interval))
-	for y in range(polygon_num.y + 1):
-		for x in range(polygon_num.x + 1):
-			var point = Vector2(lim_min.x + (x * polygon_vertex_interval), lim_min.y + (y * polygon_vertex_interval))
-			if _is_point_in_area(point, polygon_verts):
-				var is_fit = true
-				for vert in polygon_verts:
-					if point.distance_to(vert) < polygon_vertex_interval / 3:
-						is_fit = false
-						break
-				if is_fit:
-					new_vert.append(point)
-					in_vert_count += 1
-	
-	set_polygon(new_vert)
-	set_internal_vertex_count(in_vert_count)
+	return _generate_points_voronoi(lim_min, lim_max, polygon_verts)
 
 func _calculate_polygon_limits() -> Array[Vector2]:
 	var lim_min = polygon[0]
@@ -142,24 +195,33 @@ func _calculate_polygon_limits() -> Array[Vector2]:
 			lim_max.y = point.y
 	return [lim_min, lim_max]
 
-func _is_point_in_area(point: Vector2, polygon_verts: PackedVector2Array) -> bool:
-	return Geometry2D.is_point_in_polygon(point, polygon_verts)
+func _is_point_in_area(point: Vector2, polygon_verts: PackedVector2Array, scale_amount := 1.0) -> bool:
+	var scaled_poly = polygon_verts.duplicate()
+	var center = Vector2()
+	for vert in polygon_verts:
+		center = center + vert
+	center = center / len(polygon_verts)
+	for i in len(scaled_poly):
+		scaled_poly[i] = (scaled_poly[i] - center) * scale_amount + center
+	return Geometry2D.is_point_in_polygon(point, scaled_poly)
 
-func _triangulate_polygon() -> void:
-	var polygon_verts = _get_polygon_verts()
-	var points = Array(Geometry2D.triangulate_delaunay(polygon))
+func _triangulate_polygon(polygon: PackedVector2Array, polygon_verts, offset:= 0, validate_inside:= false):
+	var points = Array(Geometry2D.triangulate_polygon(polygon))
 	var polygons = []
 	for i in range(ceil(len(points) / 3)):
 		var triangle = []
 		for n in range(3):
-			triangle.append(points.pop_front())
-		var a = polygon[triangle[0]]
-		var b = polygon[triangle[1]]
-		var c = polygon[triangle[2]]
-		
-		if _is_line_in_area(a,b, polygon_verts) and _is_line_in_area(b,c, polygon_verts) and _is_line_in_area(c,a, polygon_verts):
+			triangle.append(points.pop_front() + offset)
+		var a = polygon[triangle[0] - offset]
+		var b = polygon[triangle[1] - offset]
+		var c = polygon[triangle[2] - offset]
+		if validate_inside:
+			if _is_line_in_area(a,b, polygon_verts) and _is_line_in_area(b,c, polygon_verts) and _is_line_in_area(c,a, polygon_verts):
+				polygons.append(PackedInt32Array(triangle))
+		else:
 			polygons.append(PackedInt32Array(triangle))
-	set_polygons(polygons)
+	return polygons
+
 
 func _is_line_in_area(a: Vector2, b: Vector2, polygon_verts: PackedVector2Array) -> bool:
 	return _is_point_in_area(a + a.direction_to(b) * 0.01, polygon_verts) \
@@ -177,7 +239,7 @@ func _create_skeleton() -> Skeleton2D:
 	clear_bones()
 	return skeleton2d
 
-func construct_skeleton2d() -> Skeleton2D:
+func construct_skeleton2d(voronoi, bone_vert_arr) -> Skeleton2D:
 	var skeleton_nodes = get_children().filter(func (node): return node is Skeleton2D)
 	var skeleton2d : Skeleton2D
 	if len(skeleton_nodes) == 0:
@@ -191,145 +253,83 @@ func construct_skeleton2d() -> Skeleton2D:
 		child.queue_free()
 		skeleton2d.remove_child(child)
 	clear_bones()
-	var bones = _create_bones()
-	for bone in bones:
+	var bones = _create_bones(voronoi)
+	var weights = _generate_weights(bones, voronoi)
+	var bone_count = skeleton2d.get_bone_count()
+	for bone_index in len(bones):
+		var bone : Bone2D = bones[bone_index]
+		bone.set_meta("vert_owned", bone_vert_arr[bone_index])
 		skeleton2d.add_child(bone)
+		add_bone(NodePath(bone.name), PackedFloat32Array(weights[bone_index]))
 		if Engine.is_editor_hint():
 			bone.set_owner(get_tree().get_edited_scene_root())
-	var weights = _generate_weights(skeleton2d)
-	var bone_count = skeleton2d.get_bone_count()
-	for bone_index in bone_count:
-		add_bone(NodePath(skeleton2d.get_bone(bone_index).name), PackedFloat32Array(weights[bone_index]))
+	_center_bones(bones)
 	return skeleton2d
 
-func _create_bones() -> Array[Bone2D]:
+func _create_bones(voronoi) -> Array[Bone2D]:
 	var bones: Array[Bone2D] = []
-	var bone_matrix = []
 	var polygon_limits = _calculate_polygon_limits()
-	var lim_min = polygon_limits[0]
-	var lim_max = polygon_limits[1]
-	var polygon_size = lim_max - lim_min
-	var polygon_bone_num = Vector2(int(polygon_size.x / bone_interval), int(polygon_size.y / bone_interval))
 	var polygon_verts = _get_polygon_verts()
-	bone_matrix.resize(polygon_bone_num.y + 2)
-	for y in range(-polygon_bone_num.y / 2-1, polygon_bone_num.y +2):
-		var row_array = []
-		row_array.resize(polygon_bone_num.x + 2)
-		bone_matrix[y] = row_array
-		for x in range(-polygon_bone_num.x / 2 -1, polygon_bone_num.x + 2):
-			var point = Vector2(lim_min.x + polygon_size.x/2 + x * bone_interval,\
-				lim_min.y + polygon_size.y/2 + y * bone_interval)
-			
-			if _is_point_in_area(point, polygon_verts):
-				var is_fit = true
-				if is_fit:
-					var bone := Bone2D.new()
-					bone.name = "Bone:["+str(x)+"]["+str(y)+"]"
-					bone.global_position = point
-					bone.set_autocalculate_length_and_angle(false)
-					bones.append(bone)
-					bone_matrix[y][x] = bone
-	var center_bone = bone_matrix[0][0]
+	for each in voronoi:
+		var bone := Bone2D.new()
+		var point = each[0]
+		bone.global_position = point
+		bone.set_autocalculate_length_and_angle(false)
+		bones.append(bone)
 	for bone in bones:
-		bone.look_at(center_bone.global_position)
 		bone.set_script(LookAtCenter2D)
-		(bone as LookAtCenter2D).follow = NodePath("../" + center_bone.name)
-	
-		bone.set_rest(bone.transform)
 	return bones
 
-func _generate_weights(skeleton: Skeleton2D):
+func _center_bones(bones_arr):
+	#var follow_node := _get_node_to_follow(bones_arr)
+	for i in len(bones_arr):
+		var bone: Bone2D = bones_arr[i]
+		var follow_node: Node = bones_arr[(i+1)%len(bones_arr)]
+		bone.follow = NodePath("../"+follow_node.name)
+		bone.look_at(follow_node.global_position)
+		bone.set_rest(bone.transform)
+	return bones_arr
+
+func _get_node_to_follow(bones_arr) -> Node:
+	var center = Vector2()
+	for bone in bones_arr:
+		if bone != null:
+			center = center + (bone as Node2D).global_position
+	center = center / len(bones_arr)
+	var dist_to_center = (bones_arr[0] as Node2D).global_position.distance_squared_to(center)
+	var selected_bone = bones_arr[0]
+	for bone in bones_arr:
+		if bones_arr != null:
+			var dist = (bone as Node2D).global_position.distance_squared_to(center)
+			if dist < dist_to_center:
+				dist_to_center = dist
+				selected_bone = bone
+	
+	return selected_bone
+
+func _generate_weights(bones: Array[Bone2D], voronoi):
 	var weights = []
-	var bone_count = skeleton.get_bone_count()
+	var bone_count = len(bones)
 	var points_size = polygon.size()
 	weights.resize(bone_count)
 	for bone_index in bone_count:
 		weights[bone_index] = []
 		weights[bone_index].resize(points_size)
-
 	for point_index in points_size:
 		var point = polygon[point_index]
 		var bones_data = []
 		var dist_sum : float = 0
 		
 		for bone_index in bone_count:
-			var bone = skeleton.get_bone(bone_index)
-			var dist = point.distance_to(bone.position)
-			bones_data.append([bone_index, dist, null])
-			dist_sum += dist
-		
-		bones_data.sort_custom(_sort_nearest_point)
-		var total_bone_sum = 0
-		var weights_to_calc = bone_count
-		if weights_to_calc > weight_shared_by_n:
-			weights_to_calc = weight_shared_by_n
-			dist_sum = 0
-			for i in weights_to_calc:
-				dist_sum += bones_data[i][1]
-		for bone_data_index in range(weights_to_calc):
-			var bone_data = bones_data[bone_data_index]
-			var bone_index = bones_data[bone_data_index][0]
-			bone_data[2] = (dist_sum - bone_data[1]) / dist_sum
-			if bone_data[2] > 0.25:
-				weights[bone_index][point_index] = bone_data[2]
-			else:
-				weights[bone_index][point_index] = 0
+			weights[bone_index][point_index] = 0
+			for poly in voronoi[bone_index][1]:
+				if _is_point_in_area(point, poly, 1.1):
+					weights[bone_index][point_index] = 1
+					break
 	return weights
 
 func _sort_nearest_point(a, b) -> bool:
 	return a[1] < b[1]
-
-func remove_bone(polygon2d: Polygon2D, skeleton2d: Skeleton2D, idx: int):
-	var bone := skeleton2d.get_bone(idx)
-	polygon2d.erase_bone(idx)
-	skeleton2d.remove_child(bone)
-	bone.queue_free()
-
-func remove_unused_points(polygon2d: Polygon2D):
-	var polygon_weights : Array[float] = []
-	polygon_weights.resize(len(polygon2d.polygon))
-	var weights: Array[PackedFloat32Array] = []
-	var bone_count := polygon2d.get_bone_count()
-	for bone_idx in bone_count:
-		var arr := polygon2d.get_bone_weights(bone_idx)
-		weights.append(arr)
-		for i in len(polygon_weights):
-			polygon_weights[i] += arr[i]
-	var polygon = PackedVector2Array()
-	var to_remove = {}
-	var internal_vertex_count = polygon2d.internal_vertex_count
-	var outside_vertex_count = len(polygon_weights) - internal_vertex_count
-	for i in len(polygon_weights):
-		if polygon_weights[i] < 0.5:
-			to_remove[i] = true
-			if i > outside_vertex_count:
-				internal_vertex_count = internal_vertex_count - 1
-		else:
-			polygon.append(polygon2d.polygon[i])
-	for bone_idx in bone_count:
-		var removed := 0
-		for idx_removed in to_remove:
-			weights[bone_idx].remove_at(idx_removed - removed)
-			removed = removed + 1
-		polygon2d.set_bone_weights(bone_idx, weights[bone_idx])
-	var new_polygons = []
-	for poly in polygon2d.polygons:
-		var valid_polygon = true
-		for idx in poly:
-			if idx in to_remove:
-				valid_polygon = false
-		if valid_polygon:
-			var ith = 0
-			for idx_removed in to_remove:
-				for i in len(poly):
-					if poly[i] >= idx_removed - ith:
-						poly[i] = poly[i] - 1
-				ith = ith + 1
-			new_polygons.append(poly)
-	polygon2d.polygons = new_polygons
-	polygon2d.polygon = polygon
-	polygon2d.internal_vertex_count = internal_vertex_count
-
 
 func create_rigidbodies2d(skeleton: Skeleton2D):
 	for child in get_children():
@@ -346,6 +346,7 @@ func _add_rigid_body_for_bones(skeleton: Skeleton2D) -> Array[RigidBody2D]:
 	var rigidbodies : Array[RigidBody2D] = []
 	for bone in bones:
 		var rigid_body = _create_rigid_body(skeleton, bone)
+		rigid_body.set_meta("bone_name", bone.name)
 		rigidbodies.append(rigid_body)
 	return rigidbodies
 
@@ -369,6 +370,7 @@ func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D):
 	remote_transform.remote_path = "../../" + skeleton.name + "/" + bone.name
 	remote_transform.update_rotation = false
 	remote_transform.update_scale = false
+	remote_transform.use_global_coordinates = true
 	add_child(rigid_body)
 	if Engine.is_editor_hint():
 		collision_shape.set_owner(get_tree().get_edited_scene_root())
@@ -388,7 +390,7 @@ func _add_joints(rigid_bodies: Array[RigidBody2D]):
 	for node_a in rigid_bodies:
 		for node_b in rigid_bodies:
 			if node_a == node_b or \
-				node_a.global_position.distance_to(node_b.global_position) > bone_interval * 1.5:
+				node_a.global_position.distance_to(node_b.global_position) > polygon_vertex_interval * 1.5:
 				continue
 			var joint = DampedSpringJoint2D.new()
 			joint.node_a = ".."
@@ -396,7 +398,8 @@ func _add_joints(rigid_bodies: Array[RigidBody2D]):
 			joint.stiffness = joint_stiffness
 			joint.disable_collision = joint_disable_collision
 			joint.rest_length = ((node_a.global_position - node_b.global_position).length())
-			joint.length = ((node_a.global_position - node_b.global_position).length())*joint_ratio
+			#joint.rest_length = 0
+			joint.length = ((node_a.global_position - node_b.global_position).length())
 			joint.look_at(node_b.global_position)
 			joint.rotation = node_a.position.angle_to_point(node_b.position) - PI/2
 			joint.damping = joint_damping
@@ -406,14 +409,35 @@ func _add_joints(rigid_bodies: Array[RigidBody2D]):
 			if Engine.is_editor_hint():
 				joint.set_owner(get_tree().get_edited_scene_root())
 
-
+var bones_dict: Dictionary
+var bones_array
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	if get_child_count() == 0:
+		print("SoftBody2D not initialized")
+		return
+	bones_array = get_node(skeleton).get_children().filter(func(node): return node is Bone2D)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if Engine.is_editor_hint():
-		pass
+func remove_joint(bone_a_name, bone_b_name):
+	var polygon_weights : Array[float] = []
+	polygon_weights.resize(len(polygon))
+	var weights: Array[PackedFloat32Array] = []
+	var bone_a_idx = -1
+	var bone_b_idx = -1
+	for i in len(bones_array):
+		var bone = bones_array[i]
+		if bone.name == bone_a_name:
+			bone_a_idx = i
+		if bone.name == bone_b_name:
+			bone_b_idx = i
+	var bone_a_weights = get_bone_weights(bone_a_idx)
+	var bone_b_weights = get_bone_weights(bone_b_idx)
+	var bone_a_owned_verts = bones_array[bone_a_idx].get_meta("vert_owned")
+	var bone_b_owned_verts = bones_array[bone_b_idx].get_meta("vert_owned")
+	for i in bone_a_owned_verts:
+		bone_b_weights[i] = 0.0
+	for i in bone_b_owned_verts:
+		bone_a_weights[i] = 0.0
+	set_bone_weights(bone_a_idx, bone_a_weights)
+	set_bone_weights(bone_b_idx, bone_b_weights)

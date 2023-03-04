@@ -17,8 +17,8 @@ config/icon="res://addons/softbody2d/Butter.png"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=1024
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
 
@@ -32,7 +32,8 @@ enabled=PackedStringArray("res://addons/softbody2d/plugin.cfg")
 
 [physics]
 
-common/physics_ticks_per_second=240
+common/physics_ticks_per_second=120
+common/max_physics_steps_per_frame=100
 
 [rendering]
 
