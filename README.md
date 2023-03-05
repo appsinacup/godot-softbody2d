@@ -3,6 +3,10 @@
 Generates polygon outline, internal vertices, bones, rigidbodies and joints so you can turn a texture into a softbody2d.
 Based on Polygon2d Generator.
 
+![Softbody2d](https://i.imgur.com/49s3PcJ.gif)
+
+![Softbody2d](https://i.imgur.com/trg3MZW.gif)
+
 ## Introduction
 
 This addon helps you create 2d softbodies using 2d bones and circle rigidbodies technique.
@@ -12,8 +16,6 @@ After that, create a Skeleton2D with Bone2D nodes that all follow the center Bon
 After that, create for each Bone2D a matching Rigidbody2D with Circle shape and joints that tie them all togheter in a web pattern.
 
 This tool automates that.
-
-![Softbody2d](https://i.imgur.com/49s3PcJ.gif)
 
 ## Steps
 
