@@ -5,8 +5,6 @@ Based on Polygon2d Generator.
 
 ![Softbody2d-1](https://i.imgur.com/49s3PcJ.gif)
 
-![Softbody2d-2](https://i.imgur.com/trg3MZW.gif)
-
 ![Softbody2d-3](https://i.imgur.com/7uCPDqB.gif)
 
 ## Introduction
