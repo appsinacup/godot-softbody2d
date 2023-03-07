@@ -119,17 +119,19 @@ static func getCircumcenter(a:Vector2, b:Vector2, c:Vector2):
 	result.y = slopePerpAB*result.x + bOfPerpAB;
 	return result;
 
-static func generateVoronoi(size: Vector2, distBtwPoints: float, edgeDist := 0.3) -> Array:
+static func generateVoronoi(size: Vector2, distBtwPoints: float, start:= Vector2(), edgeDist := 0.3) -> Array:
 	var polygons = []
 	var sizePerChunk = 5
-	for w in int(size.x / (sizePerChunk* distBtwPoints) + 3):
-		for h in int(size.y / (sizePerChunk*distBtwPoints) + 3):
-			var chunkLoc = Vector2(w - 1,h - 1)
+	var totalX = size.x / (sizePerChunk* distBtwPoints)
+	var totalY = size.y / (sizePerChunk* distBtwPoints)
+	for w in int(totalX * 2 + 2):
+		for h in int(totalY * 2 + 2):
+			var chunkLoc = Vector2(w - totalX - 1,h - totalY - 1)
 			var voronoi = generateChunkVoronoi(chunkLoc, sizePerChunk, \
 			0.3, 0, distBtwPoints, edgeDist)
 			for each in voronoi:
 				var newPolyPoints := PackedVector2Array();
-				var offset = Vector2(chunkLoc.x*sizePerChunk*distBtwPoints,chunkLoc.y*sizePerChunk*distBtwPoints)
+				var offset = Vector2(chunkLoc.x*sizePerChunk*distBtwPoints,chunkLoc.y*sizePerChunk*distBtwPoints) + start
 				for point in each[1]:
 					newPolyPoints.append(point + offset);
 				polygons.append([each[0] + offset, newPolyPoints])

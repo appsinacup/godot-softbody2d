@@ -20,10 +20,14 @@ extends Polygon2D
 @export_range(0.01, 0.6, 0.05) var polygon_voronoi_interval :float= 0.15
 
 @export_group("Joint")
-@export_range(0.1, 64, 0.1) var joint_stiffness: float = 20
-@export_range(0.1, 16, 0.1) var joint_damping: float = 0.7
-@export_range(0, 1, 0.1) var joint_bias : float = 0
+@export_enum("pin", "spring") var joint_type:= "pin"
+@export_range(0, 2, 0.1, "or_greater") var joint_bias : float = 0
 @export var joint_disable_collision := false
+@export_subgroup("DampedSpringJoint")
+@export_range(0.1, 128, 0.1, "or_greater") var joint_stiffness: float = 20
+@export_range(0.1, 16, 0.1, "or_greater") var joint_damping: float = 0.7
+@export_subgroup("PinJoint")
+@export_range(0, 100, 0.1, "or_greater") var joint_softness: float = 16
 
 @export_group("RigidBody")
 @export_range(2, 50, 1, "or_greater") var shape_circle_radius := 30
@@ -32,15 +36,13 @@ extends Polygon2D
 @export_range(0.1, 100, 0.1, "or_more") var rigidbody_mass := 0.1
 @export var rigidbody_script : Script
 @export var rigidbody_pickable := false
+@export var rigidbody_lock_rotation := false
 @export var physics_material_override: PhysicsMaterial
 
 func create_softbody2d():
 	var voronoi = create_polygon2d()
 	var skeleton2d = construct_skeleton2d(voronoi[0], voronoi[1])
 	create_rigidbodies2d(skeleton2d)
-	#var bones = skeleton2d.get_children()
-	#_ready()
-	#remove_joint(bones[0].name, bones[1].name)
 
 func clear_softbody2d():
 	clear_polygon()
@@ -100,8 +102,8 @@ func _simplify_polygon():
 func _generate_points_voronoi(lim_min: Vector2, lim_max: Vector2, polygon_verts):
 	var polygon_size = lim_max - lim_min
 	var polygon_num = Vector2(int(polygon_size.x / polygon_vertex_interval), int(polygon_size.y / polygon_vertex_interval))
-
-	var voronoi = Voronoi2D.generateVoronoi(polygon_size, polygon_vertex_interval, polygon_voronoi_interval)
+	var voronoi = Voronoi2D.generateVoronoi(polygon_size, polygon_vertex_interval, \
+		Vector2(polygon_voronoi_interval, polygon_voronoi_interval) + lim_min + polygon_size/2, polygon_voronoi_interval)
 	
 	var polygons = []
 	var new_voronoi = []
@@ -263,7 +265,6 @@ func construct_skeleton2d(voronoi, bone_vert_arr) -> Skeleton2D:
 		add_bone(NodePath(bone.name), PackedFloat32Array(weights[bone_index]))
 		if Engine.is_editor_hint():
 			bone.set_owner(get_tree().get_edited_scene_root())
-	_center_bones(bones)
 	return skeleton2d
 
 func _create_bones(voronoi) -> Array[Bone2D]:
@@ -279,16 +280,6 @@ func _create_bones(voronoi) -> Array[Bone2D]:
 	for bone in bones:
 		bone.set_script(LookAtCenter2D)
 	return bones
-
-func _center_bones(bones_arr):
-	#var follow_node := _get_node_to_follow(bones_arr)
-	for i in len(bones_arr):
-		var bone: Bone2D = bones_arr[i]
-		var follow_node: Node = bones_arr[(i+1)%len(bones_arr)]
-		bone.follow = NodePath("../"+follow_node.name)
-		bone.look_at(follow_node.global_position)
-		bone.set_rest(bone.transform)
-	return bones_arr
 
 func _get_node_to_follow(bones_arr) -> Node:
 	var center = Vector2()
@@ -337,7 +328,6 @@ func create_rigidbodies2d(skeleton: Skeleton2D):
 			remove_child(child)
 			child.queue_free()
 	var rigidbodies := _add_rigid_body_for_bones(skeleton)
-	_reset_skeleton(skeleton)
 	_generate_joints(rigidbodies)
 
 func _add_rigid_body_for_bones(skeleton: Skeleton2D) -> Array[RigidBody2D]:
@@ -364,6 +354,7 @@ func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D):
 	rigid_body.collision_layer = rigidbody_collision_layer
 	rigid_body.collision_mask = rigidbody_collision_mask
 	rigid_body.input_pickable = rigidbody_pickable
+	rigid_body.lock_rotation = rigidbody_lock_rotation
 	rigid_body.set_script(rigidbody_script)
 	var remote_transform = RemoteTransform2D.new()
 	rigid_body.add_child(remote_transform)
@@ -378,63 +369,83 @@ func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D):
 		rigid_body.set_owner(get_tree().get_edited_scene_root())
 	return rigid_body
 
-func _reset_skeleton(skeleton: Skeleton2D):
-	for bone_index in skeleton.get_bone_count():
-		var bone := skeleton.get_bone(bone_index)
-		bone.apply_rest()
-
 func _generate_joints(rigid_bodies: Array[RigidBody2D]):
-	_add_joints(rigid_bodies)
-
-func _add_joints(rigid_bodies: Array[RigidBody2D]):
-	for node_a in rigid_bodies:
-		for node_b in rigid_bodies:
+	var bones = get_node(skeleton).get_children()
+	for idx_a in len(rigid_bodies):
+		var node_a := rigid_bodies[idx_a]
+		for idx_b in len(rigid_bodies):
+			var node_b := rigid_bodies[idx_b]
 			if node_a == node_b or \
 				node_a.global_position.distance_to(node_b.global_position) > polygon_vertex_interval * 1.5:
 				continue
-			var joint = DampedSpringJoint2D.new()
-			joint.node_a = ".."
-			joint.node_b = "../../" + node_b.name
-			joint.stiffness = joint_stiffness
-			joint.disable_collision = joint_disable_collision
-			joint.rest_length = ((node_a.global_position - node_b.global_position).length())
-			#joint.rest_length = 0
-			joint.length = ((node_a.global_position - node_b.global_position).length())
-			joint.look_at(node_b.global_position)
-			joint.rotation = node_a.position.angle_to_point(node_b.position) - PI/2
-			joint.damping = joint_damping
-			joint.bias = joint_bias
-			node_a.add_child(joint)
-			joint.global_position = node_a.global_position
-			if Engine.is_editor_hint():
-				joint.set_owner(get_tree().get_edited_scene_root())
+			if joint_type == "pin":
+				var joint = PinJoint2D.new()
+				joint.node_a = ".."
+				joint.node_b = "../../" + node_b.name
+				joint.softness = joint_softness
+				joint.disable_collision = joint_disable_collision
+				joint.look_at(node_b.global_position)
+				joint.rotation = node_a.position.angle_to_point(node_b.position) - PI/2
+				joint.bias = joint_bias
+				node_a.add_child(joint)
+				joint.global_position = node_a.global_position
+				if Engine.is_editor_hint():
+					joint.set_owner(get_tree().get_edited_scene_root())
+			else:
+				var joint = DampedSpringJoint2D.new()
+				joint.node_a = ".."
+				joint.node_b = "../../" + node_b.name
+				joint.stiffness = joint_stiffness
+				joint.disable_collision = joint_disable_collision
+				#joint.rest_length = ((node_a.global_position - node_b.global_position).length()) * 1
+				#joint.rest_length = 0
+				joint.length = ((node_a.global_position - node_b.global_position).length()) * 1
+				joint.look_at(node_b.global_position)
+				joint.rotation = node_a.position.angle_to_point(node_b.position) - PI/2
+				joint.damping = joint_damping
+				joint.bias = joint_bias
+				node_a.add_child(joint)
+				joint.global_position = node_a.global_position
+				if Engine.is_editor_hint():
+					joint.set_owner(get_tree().get_edited_scene_root())
+	var follow_node := _get_node_to_follow(bones)
+	for i in bones.size():
+		var bone = bones[i]
+		bone.follow = [NodePath("../"+follow_node.name)]
+		bone.look_at(follow_node.global_position)
+		bone.set_rest(bone.transform)
 
-var bones_dict: Dictionary
-var bones_array
+# used internally, computed at _ready once
+var _bones_array
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if get_child_count() == 0:
 		print("SoftBody2D not initialized")
 		return
-	bones_array = get_node(skeleton).get_children().filter(func(node): return node is Bone2D)
+	_bones_array = get_node(skeleton).get_children().filter(func(node): return node is Bone2D)
 
 func remove_joint(bone_a_name, bone_b_name):
-	var polygon_weights : Array[float] = []
+	var polygon_weights: Array[float] = []
 	polygon_weights.resize(len(polygon))
 	var weights: Array[PackedFloat32Array] = []
 	var bone_a_idx = -1
 	var bone_b_idx = -1
-	for i in len(bones_array):
-		var bone = bones_array[i]
+	var bone_a: Bone2D
+	var bone_b: Bone2D
+	for i in len(_bones_array):
+		var bone = _bones_array[i]
 		if bone.name == bone_a_name:
 			bone_a_idx = i
+			bone_a = bone
 		if bone.name == bone_b_name:
 			bone_b_idx = i
+			bone_b = bone
+	
 	var bone_a_weights = get_bone_weights(bone_a_idx)
 	var bone_b_weights = get_bone_weights(bone_b_idx)
-	var bone_a_owned_verts = bones_array[bone_a_idx].get_meta("vert_owned")
-	var bone_b_owned_verts = bones_array[bone_b_idx].get_meta("vert_owned")
+	var bone_a_owned_verts = _bones_array[bone_a_idx].get_meta("vert_owned")
+	var bone_b_owned_verts = _bones_array[bone_b_idx].get_meta("vert_owned")
 	for i in bone_a_owned_verts:
 		bone_b_weights[i] = 0.0
 	for i in bone_b_owned_verts:

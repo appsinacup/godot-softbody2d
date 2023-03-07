@@ -3,9 +3,11 @@
 Generates polygon outline, internal vertices, bones, rigidbodies and joints so you can turn a texture into a softbody2d.
 Based on Polygon2d Generator.
 
-![Softbody2d](https://i.imgur.com/49s3PcJ.gif)
+![Softbody2d-1](https://i.imgur.com/49s3PcJ.gif)
 
-![Softbody2d](https://i.imgur.com/trg3MZW.gif)
+![Softbody2d-2](https://i.imgur.com/trg3MZW.gif)
+
+![Softbody2d-3](https://i.imgur.com/7uCPDqB.gif)
 
 ## Introduction
 
@@ -37,6 +39,10 @@ NOTE: each step can be restarted but you will lose what you are trying to genera
 
 ## Changelog
 
+### Version 0.7
+
+- Use also PinJoin2D for joints to obtain more bouncy softbodies. Also let option to generate with old SpringJoint.
+
 ### Version 0.6
 
 - Change how softbodies are generated. Use voronoi for generating polygons, then store polygons for each bone. This is used for cutting softbodies.
@@ -63,4 +69,4 @@ NOTE: each step can be restarted but you will lose what you are trying to genera
 
 ### Version 0.1
 
-Initial Release
+- Initial Release
