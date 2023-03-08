@@ -8,7 +8,9 @@ var _follow_nodes: Array[Node]
 func look_at_nodes():
 	_follow_nodes = []
 	for to_follow in follow:
-		_follow_nodes.append(get_node_or_null(to_follow))
+		var node = get_node_or_null(to_follow)
+		if node != null:
+			_follow_nodes.append(node)
 	if _follow_nodes.size() == 0:
 		active = false
 
@@ -18,7 +20,21 @@ func _physics_process(delta):
 		return
 	if _follow_nodes.size() == 0:
 		look_at_nodes()
+	else:
+		look_at(get_dir_to_follow(global_position, _follow_nodes))
+
+static func get_dir_to_follow(pos, follow_nodes: Array) -> Vector2:
 	var follow_dir = Vector2()
-	for to_follow in _follow_nodes:
+	for to_follow in follow_nodes:
 		follow_dir += to_follow.global_position
-	look_at(follow_dir/_follow_nodes.size())
+	if follow_nodes.size() >= 8:
+		return pos + Vector2(10,0)
+	return follow_dir/follow_nodes.size()
+
+func filter_out(bone_b):
+	_follow_nodes = _follow_nodes.filter(func (node: Node): return node.name != bone_b.name)
+	follow = follow.filter(func (path: NodePath): return !path.get_concatenated_names().contains(bone_b.name))
+	look_at(get_dir_to_follow(global_position, _follow_nodes))
+	
+	var new_rest := Transform2D(transform.x, transform.y, rest.origin)
+	set_rest(new_rest)

@@ -15,10 +15,10 @@ func _ready():
 	softbody = (get_parent() as SoftBody2D)
 
 func is_hinge_broken(joint: Joint2D):
-	return hinges_distances[joint.name] * 1.3 < hinges_bodies[joint.node_a].position.distance_to(hinges_bodies[joint.node_b].position)
+	return hinges_distances[joint.name] * 1.8 < hinges_bodies[joint.node_a].position.distance_to(hinges_bodies[joint.node_b].position)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	if is_queued_for_deletion():
 		return
 	var to_remove_hinge = []
@@ -39,16 +39,12 @@ func _process(delta):
 			remove_child(hinge)
 			hinge.queue_free()
 			hinges.erase(hinge)
-		if hinges.size() != 0:
-			var hinge = hinges[hinges.size()/2]
 			var bone_a_name = hinges_bodies[hinge.node_a].get_meta("bone_name")
 			var bone_b_name = hinges_bodies[hinge.node_b].get_meta("bone_name")
-			var bone_a = get_node(NodePath("../"+softbody.skeleton.get_concatenated_names()+"/"+bone_a_name)) as LookAtCenter2D
-			var bone_b = get_node(NodePath("../"+softbody.skeleton.get_concatenated_names()+"/"+bone_b_name)) as LookAtCenter2D
-			if false:
-				bone_a.follow = NodePath("../"+bone_b.name)
-				bone_a._follow_node = null
-				bone_a.look_at(bone_b.global_position)
-				#bone_a.rest = bone_a.rest.looking_at(bone_b.global_position)
-				#bone_a.apply_rest()
-				bone_a.active = true
+			var bone_a = get_node(NodePath("../"+softbody.skeleton.get_concatenated_names()+"/"+bone_a_name))
+			var bone_b = get_node(NodePath("../"+softbody.skeleton.get_concatenated_names()+"/"+bone_b_name))
+			remove_bone(bone_a, bone_b)
+			remove_bone(bone_b, bone_a)
+
+func remove_bone(bone_a: LookAtCenter2D, bone_b: LookAtCenter2D):
+	bone_a.filter_out(bone_b)

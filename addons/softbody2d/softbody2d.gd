@@ -276,6 +276,7 @@ func _create_bones(voronoi) -> Array[Bone2D]:
 		var point = each[0]
 		bone.global_position = point
 		bone.set_autocalculate_length_and_angle(false)
+		bone.set_length(polygon_vertex_interval)
 		bones.append(bone)
 	for bone in bones:
 		bone.set_script(LookAtCenter2D)
@@ -371,6 +372,11 @@ func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D):
 
 func _generate_joints(rigid_bodies: Array[RigidBody2D]):
 	var bones = get_node(skeleton).get_children()
+	var connected_nodes_paths = []
+	var connected_nodes = []
+	for _i in bones.size():
+		connected_nodes_paths.append([])
+		connected_nodes.append([])
 	for idx_a in len(rigid_bodies):
 		var node_a := rigid_bodies[idx_a]
 		for idx_b in len(rigid_bodies):
@@ -378,6 +384,8 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D]):
 			if node_a == node_b or \
 				node_a.global_position.distance_to(node_b.global_position) > polygon_vertex_interval * 1.5:
 				continue
+			connected_nodes_paths[idx_a].append(NodePath("../"+bones[idx_b].name))
+			connected_nodes[idx_a].append(node_b)
 			if joint_type == "pin":
 				var joint = PinJoint2D.new()
 				joint.node_a = ".."
@@ -411,8 +419,11 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D]):
 	var follow_node := _get_node_to_follow(bones)
 	for i in bones.size():
 		var bone = bones[i]
-		bone.follow = [NodePath("../"+follow_node.name)]
-		bone.look_at(follow_node.global_position)
+		#bone.follow = [NodePath("../"+follow_node.name)]
+		#bone._follow_nodes = [follow_node]
+		bone.follow = connected_nodes_paths[i]
+		bone._follow_nodes = connected_nodes[i]
+		bone.look_at(LookAtCenter2D.get_dir_to_follow(bone.global_position, connected_nodes[i]))
 		bone.set_rest(bone.transform)
 
 # used internally, computed at _ready once
