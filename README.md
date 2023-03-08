@@ -5,6 +5,8 @@ Based on Polygon2d Generator.
 
 ![Softbody2d-1](https://i.imgur.com/49s3PcJ.gif)
 
+![Softbody2d-2](https://i.imgur.com/trg3MZW.gif)
+
 ![Softbody2d-3](https://i.imgur.com/7uCPDqB.gif)
 
 ## Introduction
@@ -36,6 +38,10 @@ NOTE: each step can be restarted but you will lose what you are trying to genera
 - If you make the polygon increment too big or too small, it will look triangly.
 
 ## Changelog
+
+### Version 0.8
+
+- Fix issue that occured when breaking softbody and bone wouldn't look in correct direction. Also improved how bones look for direction in general.
 
 ### Version 0.7
 
