@@ -1053,7 +1053,6 @@ metadata/vert_owned = [53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 6
 [node name="@@409585" type="Bone2D" parent="Asparagus/Skeleton2D"]
 position = Vector2(19.51, 45.51)
 rotation = 0.463648
-scale = Vector2(1, 1)
 rest = Transform2D(0.894427, 0.447214, -0.447214, 0.894427, 19.51, 45.51)
 auto_calculate_length_and_angle = false
 length = 19.0
@@ -1372,7 +1371,6 @@ metadata/vert_owned = [339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 35
 [node name="@@409615" type="Bone2D" parent="Asparagus/Skeleton2D"]
 position = Vector2(38.51, 368.51)
 rotation = -0.463648
-scale = Vector2(1, 1)
 rest = Transform2D(0.894427, -0.447214, 0.447214, 0.894427, 38.51, 368.51)
 auto_calculate_length_and_angle = false
 length = 19.0
@@ -3406,7 +3404,6 @@ metadata/vert_owned = [53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 6
 [node name="@@409877" type="Bone2D" parent="Asparagus2/Skeleton2D"]
 position = Vector2(19.51, 45.51)
 rotation = 0.463648
-scale = Vector2(1, 1)
 rest = Transform2D(0.894427, 0.447214, -0.447214, 0.894427, 19.51, 45.51)
 auto_calculate_length_and_angle = false
 length = 19.0
@@ -3725,7 +3722,6 @@ metadata/vert_owned = [339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 35
 [node name="@@409907" type="Bone2D" parent="Asparagus2/Skeleton2D"]
 position = Vector2(38.51, 368.51)
 rotation = -0.463648
-scale = Vector2(1, 1)
 rest = Transform2D(0.894427, -0.447214, 0.447214, 0.894427, 38.51, 368.51)
 auto_calculate_length_and_angle = false
 length = 19.0
@@ -5759,7 +5755,6 @@ metadata/vert_owned = [53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 6
 [node name="@@410169" type="Bone2D" parent="Asparagus3/Skeleton2D"]
 position = Vector2(19.51, 45.51)
 rotation = 0.463648
-scale = Vector2(1, 1)
 rest = Transform2D(0.894427, 0.447214, -0.447214, 0.894427, 19.51, 45.51)
 auto_calculate_length_and_angle = false
 length = 19.0
@@ -6078,7 +6073,6 @@ metadata/vert_owned = [339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 35
 [node name="@@410199" type="Bone2D" parent="Asparagus3/Skeleton2D"]
 position = Vector2(38.51, 368.51)
 rotation = -0.463648
-scale = Vector2(1, 1)
 rest = Transform2D(0.894427, -0.447214, 0.447214, 0.894427, 38.51, 368.51)
 auto_calculate_length_and_angle = false
 length = 19.0
@@ -8124,7 +8118,6 @@ metadata/vert_owned = [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36]
 [node name="@@410462" type="Bone2D" parent="Butter/Skeleton2D"]
 position = Vector2(38.31, 57.31)
 rotation = 0.785395
-scale = Vector2(1, 1)
 rest = Transform2D(0.707109, 0.707105, -0.707105, 0.707109, 38.31, 57.31)
 auto_calculate_length_and_angle = false
 length = 29.0
@@ -8169,7 +8162,6 @@ metadata/vert_owned = [62, 63, 64, 65, 66, 67, 68, 69, 70, 71]
 [node name="@@410466" type="Bone2D" parent="Butter/Skeleton2D"]
 position = Vector2(38.31, 86.31)
 rotation = -0.785399
-scale = Vector2(1, 1)
 rest = Transform2D(0.707106, -0.707107, 0.707107, 0.707106, 38.31, 86.31)
 auto_calculate_length_and_angle = false
 length = 29.0
@@ -9126,7 +9118,6 @@ metadata/vert_owned = [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36]
 [node name="@@410567" type="Bone2D" parent="Butter6/Skeleton2D"]
 position = Vector2(38.31, 57.31)
 rotation = 0.785395
-scale = Vector2(1, 1)
 rest = Transform2D(0.707109, 0.707105, -0.707105, 0.707109, 38.31, 57.31)
 auto_calculate_length_and_angle = false
 length = 29.0
@@ -10128,7 +10119,6 @@ metadata/vert_owned = [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36]
 [node name="@@410672" type="Bone2D" parent="Butter7/Skeleton2D"]
 position = Vector2(38.31, 57.31)
 rotation = 0.785395
-scale = Vector2(1, 1)
 rest = Transform2D(0.707109, 0.707105, -0.707105, 0.707109, 38.31, 57.31)
 auto_calculate_length_and_angle = false
 length = 29.0
@@ -15136,7 +15126,6 @@ metadata/vert_owned = [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36]
 [node name="@@411197" type="Bone2D" parent="Butter3/Skeleton2D"]
 position = Vector2(38.31, 57.31)
 rotation = 0.785395
-scale = Vector2(1, 1)
 rest = Transform2D(0.707109, 0.707105, -0.707105, 0.707109, 38.31, 57.31)
 auto_calculate_length_and_angle = false
 length = 29.0
@@ -21332,7 +21321,6 @@ metadata/vert_owned = [263, 264, 265, 266, 267, 268]
 [node name="@@451548" type="Bone2D" parent="Egg4/Skeleton2D"]
 position = Vector2(64.71, 210.21)
 rotation = -0.785409
-scale = Vector2(1, 1)
 rest = Transform2D(0.707099, -0.707115, 0.707115, 0.707099, 64.71, 210.21)
 auto_calculate_length_and_angle = false
 length = 29.0
@@ -24263,7 +24251,6 @@ metadata/vert_owned = [302, 303, 304, 305, 306]
 [node name="@@448540" type="Bone2D" parent="Asparagus4/Skeleton2D"]
 position = Vector2(32.51, 242.51)
 rotation = -0.463652
-scale = Vector2(1, 1)
 rest = Transform2D(0.894425, -0.447217, 0.447217, 0.894425, 32.51, 242.51)
 auto_calculate_length_and_angle = false
 length = 17.0
