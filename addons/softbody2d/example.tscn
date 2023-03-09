@@ -486,31 +486,31 @@ radius = 8.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aud2e"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3vn6k"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_x3uu8"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_tfoyo"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_wwptd"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jqc7h"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_l20yb"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_e0jhy"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ti3d5"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_j43li"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_hvvvl"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mbkc3"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_pb0xt"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pu1j1"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_r4jlq"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4pipx"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_xvllg"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_t7g58"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_lsuvx"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0n36j"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_k0x8h"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_p7eow"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_qtxjv"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1s74c"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_4hsaf"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_oclq0"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_in6ye"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fdrr4"]
 
@@ -12401,7 +12401,7 @@ texture = ExtResource("1_c8wo7")
 skeleton = NodePath("Skeleton2D")
 polygon = PackedVector2Array(70, 3, 43.4995, 14.778, 22, 23, 6, 38, 6, 67, 6, 96, 6, 107, 32.7162, 118.28, 51, 127, 66, 127, 85, 118, 116, 99, 114, 84, 114, 55, 114, 36, 86, 11, 32.1854, 48.8764, 26.8382, 64.3633, 6, 66.3945, 6, 41.1601, 19.944, 38.8306, 19.944, 38.8306, 6, 41.1601, 6, 38, 19.5545, 25.2927, 49.3028, 12.5778, 54.3792, 20.7033, 51.4021, 40.8028, 32.1854, 48.8764, 19.944, 38.8306, 19.5545, 25.2927, 22, 23, 43.4995, 14.778, 48.7463, 12.4461, 49.3028, 12.5778, 48.7463, 12.4461, 49.495, 12.1133, 32.1854, 48.8764, 51.4021, 40.8028, 55.0165, 44.2678, 62.8982, 63.8694, 46.4282, 78.2783, 31.9638, 74.8774, 26.8382, 64.3633, 54.3792, 20.7033, 78.8979, 18.4243, 89.9919, 42.9365, 55.0165, 44.2678, 51.4021, 40.8028, 83.5036, 9.75181, 83.5672, 13.6587, 78.8979, 18.4243, 54.3792, 20.7033, 49.3028, 12.5778, 49.495, 12.1133, 70, 3, 55.0165, 44.2678, 89.9919, 42.9365, 92.03, 44.4053, 83.4433, 68.5215, 78.6281, 71.8882, 62.8982, 63.8694, 31.9638, 74.8774, 21.2614, 98.0535, 6, 98.2863, 6, 66.3945, 26.8382, 64.3633, 31.1284, 107.504, 28.9909, 116.707, 6, 107, 6, 98.2863, 21.2614, 98.0535, 31.9638, 74.8774, 46.4282, 78.2783, 58.5264, 101.781, 55.2709, 106.364, 31.1284, 107.504, 21.2614, 98.0535, 59.6935, 127, 51, 127, 32.7162, 118.28, 28.9909, 116.707, 31.1284, 107.504, 55.2709, 106.364, 46.4282, 78.2783, 62.8982, 63.8694, 78.6281, 71.8883, 77.5481, 94.2131, 58.5264, 101.781, 88.0166, 100.687, 89.542, 115.216, 85, 118, 66, 127, 59.6935, 127, 55.2709, 106.364, 58.5264, 101.781, 77.5481, 94.2131, 114.835, 98.0319, 115.079, 99.5647, 89.542, 115.216, 88.0166, 100.687, 108.679, 95.0278, 89.3398, 13.9819, 111.541, 33.8044, 104.75, 42.2405, 92.03, 44.4053, 89.9919, 42.9365, 78.8979, 18.4243, 83.5672, 13.6583, 86, 11, 89.3398, 13.9819, 83.5672, 13.6583, 83.5036, 9.75181, 114, 59.4368, 114, 66.8959, 107.302, 73.7741, 83.4433, 68.5215, 92.03, 44.4053, 104.75, 42.2405, 114, 36, 114, 59.4368, 104.75, 42.2405, 111.541, 33.8044, 78.6281, 71.8883, 83.4433, 68.5215, 107.302, 73.7741, 108.679, 95.0278, 88.0166, 100.687, 77.5481, 94.2132, 114, 84, 115.825, 97.6908, 114.835, 98.0319, 108.679, 95.0278, 107.302, 73.7741, 114, 66.8959, 116, 99, 115.079, 99.5647, 114.835, 98.0319, 115.825, 97.6908)
 polygons = [PackedInt32Array(20, 16, 17), PackedInt32Array(17, 18, 19), PackedInt32Array(19, 20, 17), PackedInt32Array(24, 21, 22), PackedInt32Array(22, 23, 24), PackedInt32Array(33, 25, 26), PackedInt32Array(26, 27, 28), PackedInt32Array(28, 29, 30), PackedInt32Array(30, 31, 32), PackedInt32Array(32, 33, 26), PackedInt32Array(26, 28, 30), PackedInt32Array(30, 32, 26), PackedInt32Array(36, 34, 35), PackedInt32Array(43, 37, 38), PackedInt32Array(38, 39, 40), PackedInt32Array(40, 41, 42), PackedInt32Array(42, 43, 38), PackedInt32Array(38, 40, 42), PackedInt32Array(48, 44, 45), PackedInt32Array(45, 46, 47), PackedInt32Array(47, 48, 45), PackedInt32Array(55, 49, 50), PackedInt32Array(50, 51, 52), PackedInt32Array(52, 53, 54), PackedInt32Array(54, 55, 50), PackedInt32Array(50, 52, 54), PackedInt32Array(61, 56, 57), PackedInt32Array(57, 58, 59), PackedInt32Array(59, 60, 61), PackedInt32Array(61, 57, 59), PackedInt32Array(66, 62, 63), PackedInt32Array(63, 64, 65), PackedInt32Array(65, 66, 63), PackedInt32Array(71, 67, 68), PackedInt32Array(68, 69, 70), PackedInt32Array(70, 71, 68), PackedInt32Array(77, 72, 73), PackedInt32Array(73, 74, 75), PackedInt32Array(75, 76, 77), PackedInt32Array(77, 73, 75), PackedInt32Array(83, 78, 79), PackedInt32Array(80, 81, 82), PackedInt32Array(82, 83, 79), PackedInt32Array(79, 80, 82), PackedInt32Array(88, 84, 85), PackedInt32Array(85, 86, 87), PackedInt32Array(87, 88, 85), PackedInt32Array(96, 89, 90), PackedInt32Array(90, 91, 92), PackedInt32Array(92, 93, 94), PackedInt32Array(94, 95, 96), PackedInt32Array(96, 90, 92), PackedInt32Array(92, 94, 96), PackedInt32Array(101, 97, 98), PackedInt32Array(98, 99, 100), PackedInt32Array(100, 101, 98), PackedInt32Array(108, 102, 103), PackedInt32Array(103, 104, 105), PackedInt32Array(105, 106, 107), PackedInt32Array(107, 108, 103), PackedInt32Array(103, 105, 107), PackedInt32Array(112, 109, 110), PackedInt32Array(110, 111, 112), PackedInt32Array(118, 113, 114), PackedInt32Array(114, 115, 116), PackedInt32Array(116, 117, 118), PackedInt32Array(118, 114, 116), PackedInt32Array(122, 119, 120), PackedInt32Array(120, 121, 122), PackedInt32Array(128, 123, 124), PackedInt32Array(124, 125, 126), PackedInt32Array(126, 127, 128), PackedInt32Array(128, 124, 126), PackedInt32Array(129, 130, 131), PackedInt32Array(131, 132, 133), PackedInt32Array(133, 134, 129), PackedInt32Array(129, 131, 133), PackedInt32Array(138, 135, 136), PackedInt32Array(136, 137, 138)]
-bones = ["@@410880", PackedFloat32Array(0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "@@410881", PackedFloat32Array(0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "@@410882", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "@@410883", PackedFloat32Array(1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "@@410884", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "@@410885", PackedFloat32Array(0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "@@410886", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "@@410887", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "@@410888", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "@@410889", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1), "@@410890", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "@@410891", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0), "@@410892", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)]
+bones = ["@@32677", PackedFloat32Array(0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "@@32678", PackedFloat32Array(0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "@@32679", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "@@32680", PackedFloat32Array(1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "@@32681", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "@@32682", PackedFloat32Array(0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "@@32683", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "@@32684", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "@@32685", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "@@32686", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1), "@@32687", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "@@32688", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0), "@@32689", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)]
 internal_vertex_count = 123
 script = ExtResource("2_8scco")
 polygon_vertex_interval = 29
@@ -12415,42 +12415,41 @@ physics_material_override = ExtResource("3_y0dug")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Butter9"]
 
-[node name="@@410880" type="Bone2D" parent="Butter9/Skeleton2D"]
+[node name="@@32677" type="Bone2D" parent="Butter9/Skeleton2D"]
 position = Vector2(9.31, 57.31)
 rotation = 0.321751
-scale = Vector2(1, 1)
 rest = Transform2D(0.948683, 0.316228, -0.316228, 0.948683, 9.31, 57.31)
 auto_calculate_length_and_angle = false
 length = 29.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = Array[NodePath]([NodePath("../@@410881"), NodePath("../@@410882"), NodePath("../@@410885"), NodePath("../@@410886")])
+follow = [NodePath("../@@32678"), NodePath("../@@32679"), NodePath("../@@32682"), NodePath("../@@32683")]
 metadata/vert_owned = [16, 17, 18, 19, 20, 21, 22, 23, 24]
 
-[node name="@@410881" type="Bone2D" parent="Butter9/Skeleton2D"]
+[node name="@@32678" type="Bone2D" parent="Butter9/Skeleton2D"]
 position = Vector2(38.31, 28.31)
 rotation = 1.24905
+scale = Vector2(1, 1)
 rest = Transform2D(0.316228, 0.948683, -0.948683, 0.316228, 38.31, 28.31)
 auto_calculate_length_and_angle = false
 length = 29.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = Array[NodePath]([NodePath("../@@410880"), NodePath("../@@410882"), NodePath("../@@410883"), NodePath("../@@410884")])
+follow = [NodePath("../@@32677"), NodePath("../@@32679"), NodePath("../@@32680"), NodePath("../@@32681")]
 metadata/vert_owned = [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36]
 
-[node name="@@410882" type="Bone2D" parent="Butter9/Skeleton2D"]
+[node name="@@32679" type="Bone2D" parent="Butter9/Skeleton2D"]
 position = Vector2(38.31, 57.31)
 rotation = 0.785405
-scale = Vector2(1, 1)
 rest = Transform2D(0.707102, 0.707112, -0.707112, 0.707102, 38.31, 57.31)
 auto_calculate_length_and_angle = false
 length = 29.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = Array[NodePath]([NodePath("../@@410880"), NodePath("../@@410881"), NodePath("../@@410883"), NodePath("../@@410884"), NodePath("../@@410885"), NodePath("../@@410886"), NodePath("../@@410888")])
+follow = [NodePath("../@@32677"), NodePath("../@@32678"), NodePath("../@@32680"), NodePath("../@@32681"), NodePath("../@@32682"), NodePath("../@@32683"), NodePath("../@@32685")]
 metadata/vert_owned = [37, 38, 39, 40, 41, 42, 43]
 
-[node name="@@410883" type="Bone2D" parent="Butter9/Skeleton2D"]
+[node name="@@32680" type="Bone2D" parent="Butter9/Skeleton2D"]
 position = Vector2(67.31, 28.31)
 rotation = 1.5708
 rest = Transform2D(-4.37114e-08, 1, -1, -4.37114e-08, 67.31, 28.31)
@@ -12458,32 +12457,31 @@ auto_calculate_length_and_angle = false
 length = 29.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = Array[NodePath]([NodePath("../@@410881"), NodePath("../@@410882"), NodePath("../@@410884"), NodePath("../@@410890"), NodePath("../@@410891")])
+follow = [NodePath("../@@32678"), NodePath("../@@32679"), NodePath("../@@32681"), NodePath("../@@32687"), NodePath("../@@32688")]
 metadata/vert_owned = [44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55]
 
-[node name="@@410884" type="Bone2D" parent="Butter9/Skeleton2D"]
+[node name="@@32681" type="Bone2D" parent="Butter9/Skeleton2D"]
 position = Vector2(67.31, 57.31)
 rest = Transform2D(1, 0, 0, 1, 67.31, 57.31)
 auto_calculate_length_and_angle = false
 length = 29.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = Array[NodePath]([NodePath("../@@410881"), NodePath("../@@410882"), NodePath("../@@410883"), NodePath("../@@410886"), NodePath("../@@410888"), NodePath("../@@410890"), NodePath("../@@410891"), NodePath("../@@410892")])
+follow = [NodePath("../@@32678"), NodePath("../@@32679"), NodePath("../@@32680"), NodePath("../@@32683"), NodePath("../@@32685"), NodePath("../@@32687"), NodePath("../@@32688"), NodePath("../@@32689")]
 metadata/vert_owned = [56, 57, 58, 59, 60, 61]
 
-[node name="@@410885" type="Bone2D" parent="Butter9/Skeleton2D"]
+[node name="@@32682" type="Bone2D" parent="Butter9/Skeleton2D"]
 position = Vector2(9.31, 86.31)
 rotation = -0.321751
-scale = Vector2(1, 1)
 rest = Transform2D(0.948683, -0.316228, 0.316228, 0.948683, 9.31, 86.31)
 auto_calculate_length_and_angle = false
 length = 29.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = Array[NodePath]([NodePath("../@@410880"), NodePath("../@@410882"), NodePath("../@@410886"), NodePath("../@@410887")])
+follow = [NodePath("../@@32677"), NodePath("../@@32679"), NodePath("../@@32683"), NodePath("../@@32684")]
 metadata/vert_owned = [62, 63, 64, 65, 66, 67, 68, 69, 70, 71]
 
-[node name="@@410886" type="Bone2D" parent="Butter9/Skeleton2D"]
+[node name="@@32683" type="Bone2D" parent="Butter9/Skeleton2D"]
 position = Vector2(38.31, 86.31)
 rotation = -0.7854
 scale = Vector2(1, 1)
@@ -12492,21 +12490,22 @@ auto_calculate_length_and_angle = false
 length = 29.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = Array[NodePath]([NodePath("../@@410880"), NodePath("../@@410882"), NodePath("../@@410884"), NodePath("../@@410885"), NodePath("../@@410887"), NodePath("../@@410888"), NodePath("../@@410889")])
+follow = [NodePath("../@@32677"), NodePath("../@@32679"), NodePath("../@@32681"), NodePath("../@@32682"), NodePath("../@@32684"), NodePath("../@@32685"), NodePath("../@@32686")]
 metadata/vert_owned = [72, 73, 74, 75, 76, 77]
 
-[node name="@@410887" type="Bone2D" parent="Butter9/Skeleton2D"]
+[node name="@@32684" type="Bone2D" parent="Butter9/Skeleton2D"]
 position = Vector2(38.31, 115.31)
 rotation = -1.24905
+scale = Vector2(1, 1)
 rest = Transform2D(0.316228, -0.948683, 0.948683, 0.316228, 38.31, 115.31)
 auto_calculate_length_and_angle = false
 length = 29.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = Array[NodePath]([NodePath("../@@410885"), NodePath("../@@410886"), NodePath("../@@410888"), NodePath("../@@410889")])
+follow = [NodePath("../@@32682"), NodePath("../@@32683"), NodePath("../@@32685"), NodePath("../@@32686")]
 metadata/vert_owned = [78, 79, 80, 81, 82, 83]
 
-[node name="@@410888" type="Bone2D" parent="Butter9/Skeleton2D"]
+[node name="@@32685" type="Bone2D" parent="Butter9/Skeleton2D"]
 position = Vector2(67.31, 86.31)
 rotation = -2.3562
 rest = Transform2D(-0.707111, -0.707103, 0.707103, -0.707111, 67.31, 86.31)
@@ -12514,10 +12513,10 @@ auto_calculate_length_and_angle = false
 length = 29.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = Array[NodePath]([NodePath("../@@410882"), NodePath("../@@410884"), NodePath("../@@410886"), NodePath("../@@410887"), NodePath("../@@410889"), NodePath("../@@410891"), NodePath("../@@410892")])
+follow = [NodePath("../@@32679"), NodePath("../@@32681"), NodePath("../@@32683"), NodePath("../@@32684"), NodePath("../@@32686"), NodePath("../@@32688"), NodePath("../@@32689")]
 metadata/vert_owned = [84, 85, 86, 87, 88]
 
-[node name="@@410889" type="Bone2D" parent="Butter9/Skeleton2D"]
+[node name="@@32686" type="Bone2D" parent="Butter9/Skeleton2D"]
 position = Vector2(67.31, 115.31)
 rotation = -1.89255
 rest = Transform2D(-0.316228, -0.948683, 0.948683, -0.316228, 67.31, 115.31)
@@ -12525,21 +12524,22 @@ auto_calculate_length_and_angle = false
 length = 29.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = Array[NodePath]([NodePath("../@@410886"), NodePath("../@@410887"), NodePath("../@@410888"), NodePath("../@@410892")])
+follow = [NodePath("../@@32683"), NodePath("../@@32684"), NodePath("../@@32685"), NodePath("../@@32689")]
 metadata/vert_owned = [89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101]
 
-[node name="@@410890" type="Bone2D" parent="Butter9/Skeleton2D"]
+[node name="@@32687" type="Bone2D" parent="Butter9/Skeleton2D"]
 position = Vector2(96.31, 28.31)
 rotation = 2.3562
+scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, 0.707106, -0.707106, -0.707107, 96.31, 28.31)
 auto_calculate_length_and_angle = false
 length = 29.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = Array[NodePath]([NodePath("../@@410883"), NodePath("../@@410884"), NodePath("../@@410891")])
+follow = [NodePath("../@@32680"), NodePath("../@@32681"), NodePath("../@@32688")]
 metadata/vert_owned = [102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112]
 
-[node name="@@410891" type="Bone2D" parent="Butter9/Skeleton2D"]
+[node name="@@32688" type="Bone2D" parent="Butter9/Skeleton2D"]
 position = Vector2(96.31, 57.31)
 rotation = 3.14159
 rest = Transform2D(-1, 1.50996e-07, -1.50996e-07, -1, 96.31, 57.31)
@@ -12547,848 +12547,847 @@ auto_calculate_length_and_angle = false
 length = 29.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = Array[NodePath]([NodePath("../@@410883"), NodePath("../@@410884"), NodePath("../@@410888"), NodePath("../@@410890"), NodePath("../@@410892")])
+follow = [NodePath("../@@32680"), NodePath("../@@32681"), NodePath("../@@32685"), NodePath("../@@32687"), NodePath("../@@32689")]
 metadata/vert_owned = [113, 114, 115, 116, 117, 118, 119, 120, 121, 122]
 
-[node name="@@410892" type="Bone2D" parent="Butter9/Skeleton2D"]
+[node name="@@32689" type="Bone2D" parent="Butter9/Skeleton2D"]
 position = Vector2(96.31, 86.31)
 rotation = -2.81984
-scale = Vector2(1, 1)
 rest = Transform2D(-0.948683, -0.316228, 0.316228, -0.948683, 96.31, 86.31)
 auto_calculate_length_and_angle = false
 length = 29.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = Array[NodePath]([NodePath("../@@410884"), NodePath("../@@410888"), NodePath("../@@410889"), NodePath("../@@410891")])
+follow = [NodePath("../@@32681"), NodePath("../@@32685"), NodePath("../@@32686"), NodePath("../@@32688")]
 metadata/vert_owned = [123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138]
 
-[node name="410880" type="RigidBody2D" parent="Butter9"]
+[node name="32677" type="RigidBody2D" parent="Butter9"]
 position = Vector2(9.31, 57.31)
 mass = 0.1
 physics_material_override = ExtResource("3_y0dug")
-metadata/bone_name = &"@@410880"
+metadata/bone_name = &"@@32677"
 
-[node name="@@410893" type="CollisionShape2D" parent="Butter9/410880"]
-shape = SubResource("CircleShape2D_3vn6k")
+[node name="@@32690" type="CollisionShape2D" parent="Butter9/32677"]
+shape = SubResource("CircleShape2D_x3uu8")
 
-[node name="@@410894" type="RemoteTransform2D" parent="Butter9/410880"]
-remote_path = NodePath("../../Skeleton2D/@@410880")
+[node name="@@32691" type="RemoteTransform2D" parent="Butter9/32677"]
+remote_path = NodePath("../../Skeleton2D/@@32677")
 update_rotation = false
 update_scale = false
 
-[node name="@@410919" type="DampedSpringJoint2D" parent="Butter9/410880"]
+[node name="@@32716" type="DampedSpringJoint2D" parent="Butter9/32677"]
 rotation = -2.35619
 node_a = NodePath("..")
-node_b = NodePath("../../410881")
+node_b = NodePath("../../32678")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410920" type="DampedSpringJoint2D" parent="Butter9/410880"]
+[node name="@@32717" type="DampedSpringJoint2D" parent="Butter9/32677"]
 rotation = -1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../410882")
+node_b = NodePath("../../32679")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410921" type="DampedSpringJoint2D" parent="Butter9/410880"]
+[node name="@@32718" type="DampedSpringJoint2D" parent="Butter9/32677"]
 node_a = NodePath("..")
-node_b = NodePath("../../410885")
+node_b = NodePath("../../32682")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410922" type="DampedSpringJoint2D" parent="Butter9/410880"]
+[node name="@@32719" type="DampedSpringJoint2D" parent="Butter9/32677"]
 rotation = -0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../410886")
+node_b = NodePath("../../32683")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="410881" type="RigidBody2D" parent="Butter9"]
+[node name="32678" type="RigidBody2D" parent="Butter9"]
 position = Vector2(38.31, 28.31)
 mass = 0.1
 physics_material_override = ExtResource("3_y0dug")
-metadata/bone_name = &"@@410881"
+metadata/bone_name = &"@@32678"
 
-[node name="@@410895" type="CollisionShape2D" parent="Butter9/410881"]
-shape = SubResource("CircleShape2D_tfoyo")
+[node name="@@32692" type="CollisionShape2D" parent="Butter9/32678"]
+shape = SubResource("CircleShape2D_wwptd")
 
-[node name="@@410896" type="RemoteTransform2D" parent="Butter9/410881"]
-remote_path = NodePath("../../Skeleton2D/@@410881")
+[node name="@@32693" type="RemoteTransform2D" parent="Butter9/32678"]
+remote_path = NodePath("../../Skeleton2D/@@32678")
 update_rotation = false
 update_scale = false
 
-[node name="@@410923" type="DampedSpringJoint2D" parent="Butter9/410881"]
+[node name="@@32720" type="DampedSpringJoint2D" parent="Butter9/32678"]
 rotation = 0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../410880")
+node_b = NodePath("../../32677")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410924" type="DampedSpringJoint2D" parent="Butter9/410881"]
+[node name="@@32721" type="DampedSpringJoint2D" parent="Butter9/32678"]
 node_a = NodePath("..")
-node_b = NodePath("../../410882")
+node_b = NodePath("../../32679")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410925" type="DampedSpringJoint2D" parent="Butter9/410881"]
+[node name="@@32722" type="DampedSpringJoint2D" parent="Butter9/32678"]
 rotation = -1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../410883")
+node_b = NodePath("../../32680")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410926" type="DampedSpringJoint2D" parent="Butter9/410881"]
+[node name="@@32723" type="DampedSpringJoint2D" parent="Butter9/32678"]
 rotation = -0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../410884")
+node_b = NodePath("../../32681")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="410882" type="RigidBody2D" parent="Butter9"]
+[node name="32679" type="RigidBody2D" parent="Butter9"]
 position = Vector2(38.31, 57.31)
 mass = 0.1
 physics_material_override = ExtResource("3_y0dug")
-metadata/bone_name = &"@@410882"
+metadata/bone_name = &"@@32679"
 
-[node name="@@410897" type="CollisionShape2D" parent="Butter9/410882"]
-shape = SubResource("CircleShape2D_jqc7h")
+[node name="@@32694" type="CollisionShape2D" parent="Butter9/32679"]
+shape = SubResource("CircleShape2D_l20yb")
 
-[node name="@@410898" type="RemoteTransform2D" parent="Butter9/410882"]
-remote_path = NodePath("../../Skeleton2D/@@410882")
+[node name="@@32695" type="RemoteTransform2D" parent="Butter9/32679"]
+remote_path = NodePath("../../Skeleton2D/@@32679")
 update_rotation = false
 update_scale = false
 
-[node name="@@410927" type="DampedSpringJoint2D" parent="Butter9/410882"]
+[node name="@@32724" type="DampedSpringJoint2D" parent="Butter9/32679"]
 rotation = 1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../410880")
+node_b = NodePath("../../32677")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410928" type="DampedSpringJoint2D" parent="Butter9/410882"]
+[node name="@@32725" type="DampedSpringJoint2D" parent="Butter9/32679"]
 rotation = -3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../410881")
+node_b = NodePath("../../32678")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410929" type="DampedSpringJoint2D" parent="Butter9/410882"]
+[node name="@@32726" type="DampedSpringJoint2D" parent="Butter9/32679"]
 rotation = -2.35619
 node_a = NodePath("..")
-node_b = NodePath("../../410883")
+node_b = NodePath("../../32680")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410930" type="DampedSpringJoint2D" parent="Butter9/410882"]
+[node name="@@32727" type="DampedSpringJoint2D" parent="Butter9/32679"]
 rotation = -1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../410884")
+node_b = NodePath("../../32681")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410931" type="DampedSpringJoint2D" parent="Butter9/410882"]
+[node name="@@32728" type="DampedSpringJoint2D" parent="Butter9/32679"]
 rotation = 0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../410885")
+node_b = NodePath("../../32682")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410932" type="DampedSpringJoint2D" parent="Butter9/410882"]
+[node name="@@32729" type="DampedSpringJoint2D" parent="Butter9/32679"]
 node_a = NodePath("..")
-node_b = NodePath("../../410886")
+node_b = NodePath("../../32683")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410933" type="DampedSpringJoint2D" parent="Butter9/410882"]
+[node name="@@32730" type="DampedSpringJoint2D" parent="Butter9/32679"]
 rotation = -0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../410888")
+node_b = NodePath("../../32685")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="410883" type="RigidBody2D" parent="Butter9"]
+[node name="32680" type="RigidBody2D" parent="Butter9"]
 position = Vector2(67.31, 28.31)
 mass = 0.1
 physics_material_override = ExtResource("3_y0dug")
-metadata/bone_name = &"@@410883"
+metadata/bone_name = &"@@32680"
 
-[node name="@@410899" type="CollisionShape2D" parent="Butter9/410883"]
-shape = SubResource("CircleShape2D_e0jhy")
+[node name="@@32696" type="CollisionShape2D" parent="Butter9/32680"]
+shape = SubResource("CircleShape2D_ti3d5")
 
-[node name="@@410900" type="RemoteTransform2D" parent="Butter9/410883"]
-remote_path = NodePath("../../Skeleton2D/@@410883")
+[node name="@@32697" type="RemoteTransform2D" parent="Butter9/32680"]
+remote_path = NodePath("../../Skeleton2D/@@32680")
 update_rotation = false
 update_scale = false
 
-[node name="@@410934" type="DampedSpringJoint2D" parent="Butter9/410883"]
+[node name="@@32731" type="DampedSpringJoint2D" parent="Butter9/32680"]
 rotation = 1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../410881")
+node_b = NodePath("../../32678")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410935" type="DampedSpringJoint2D" parent="Butter9/410883"]
+[node name="@@32732" type="DampedSpringJoint2D" parent="Butter9/32680"]
 rotation = 0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../410882")
+node_b = NodePath("../../32679")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410936" type="DampedSpringJoint2D" parent="Butter9/410883"]
+[node name="@@32733" type="DampedSpringJoint2D" parent="Butter9/32680"]
 node_a = NodePath("..")
-node_b = NodePath("../../410884")
+node_b = NodePath("../../32681")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410937" type="DampedSpringJoint2D" parent="Butter9/410883"]
+[node name="@@32734" type="DampedSpringJoint2D" parent="Butter9/32680"]
 rotation = -1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../410890")
+node_b = NodePath("../../32687")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410938" type="DampedSpringJoint2D" parent="Butter9/410883"]
+[node name="@@32735" type="DampedSpringJoint2D" parent="Butter9/32680"]
 rotation = -0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../410891")
+node_b = NodePath("../../32688")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="410884" type="RigidBody2D" parent="Butter9"]
+[node name="32681" type="RigidBody2D" parent="Butter9"]
 position = Vector2(67.31, 57.31)
 mass = 0.1
 physics_material_override = ExtResource("3_y0dug")
-metadata/bone_name = &"@@410884"
+metadata/bone_name = &"@@32681"
 
-[node name="@@410901" type="CollisionShape2D" parent="Butter9/410884"]
-shape = SubResource("CircleShape2D_j43li")
+[node name="@@32698" type="CollisionShape2D" parent="Butter9/32681"]
+shape = SubResource("CircleShape2D_hvvvl")
 
-[node name="@@410902" type="RemoteTransform2D" parent="Butter9/410884"]
-remote_path = NodePath("../../Skeleton2D/@@410884")
+[node name="@@32699" type="RemoteTransform2D" parent="Butter9/32681"]
+remote_path = NodePath("../../Skeleton2D/@@32681")
 update_rotation = false
 update_scale = false
 
-[node name="@@410939" type="DampedSpringJoint2D" parent="Butter9/410884"]
+[node name="@@32736" type="DampedSpringJoint2D" parent="Butter9/32681"]
 rotation = -3.92699
 node_a = NodePath("..")
-node_b = NodePath("../../410881")
+node_b = NodePath("../../32678")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410940" type="DampedSpringJoint2D" parent="Butter9/410884"]
+[node name="@@32737" type="DampedSpringJoint2D" parent="Butter9/32681"]
 rotation = 1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../410882")
+node_b = NodePath("../../32679")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410941" type="DampedSpringJoint2D" parent="Butter9/410884"]
+[node name="@@32738" type="DampedSpringJoint2D" parent="Butter9/32681"]
 rotation = -3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../410883")
+node_b = NodePath("../../32680")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410942" type="DampedSpringJoint2D" parent="Butter9/410884"]
+[node name="@@32739" type="DampedSpringJoint2D" parent="Butter9/32681"]
 rotation = 0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../410886")
+node_b = NodePath("../../32683")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410943" type="DampedSpringJoint2D" parent="Butter9/410884"]
+[node name="@@32740" type="DampedSpringJoint2D" parent="Butter9/32681"]
 node_a = NodePath("..")
-node_b = NodePath("../../410888")
+node_b = NodePath("../../32685")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410944" type="DampedSpringJoint2D" parent="Butter9/410884"]
+[node name="@@32741" type="DampedSpringJoint2D" parent="Butter9/32681"]
 rotation = -2.35619
 node_a = NodePath("..")
-node_b = NodePath("../../410890")
+node_b = NodePath("../../32687")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410945" type="DampedSpringJoint2D" parent="Butter9/410884"]
+[node name="@@32742" type="DampedSpringJoint2D" parent="Butter9/32681"]
 rotation = -1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../410891")
+node_b = NodePath("../../32688")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410946" type="DampedSpringJoint2D" parent="Butter9/410884"]
+[node name="@@32743" type="DampedSpringJoint2D" parent="Butter9/32681"]
 rotation = -0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../410892")
+node_b = NodePath("../../32689")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="410885" type="RigidBody2D" parent="Butter9"]
+[node name="32682" type="RigidBody2D" parent="Butter9"]
 position = Vector2(9.31, 86.31)
 mass = 0.1
 physics_material_override = ExtResource("3_y0dug")
-metadata/bone_name = &"@@410885"
+metadata/bone_name = &"@@32682"
 
-[node name="@@410903" type="CollisionShape2D" parent="Butter9/410885"]
-shape = SubResource("CircleShape2D_mbkc3")
+[node name="@@32700" type="CollisionShape2D" parent="Butter9/32682"]
+shape = SubResource("CircleShape2D_pb0xt")
 
-[node name="@@410904" type="RemoteTransform2D" parent="Butter9/410885"]
-remote_path = NodePath("../../Skeleton2D/@@410885")
+[node name="@@32701" type="RemoteTransform2D" parent="Butter9/32682"]
+remote_path = NodePath("../../Skeleton2D/@@32682")
 update_rotation = false
 update_scale = false
 
-[node name="@@410947" type="DampedSpringJoint2D" parent="Butter9/410885"]
+[node name="@@32744" type="DampedSpringJoint2D" parent="Butter9/32682"]
 rotation = -3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../410880")
+node_b = NodePath("../../32677")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410948" type="DampedSpringJoint2D" parent="Butter9/410885"]
+[node name="@@32745" type="DampedSpringJoint2D" parent="Butter9/32682"]
 rotation = -2.35619
 node_a = NodePath("..")
-node_b = NodePath("../../410882")
+node_b = NodePath("../../32679")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410949" type="DampedSpringJoint2D" parent="Butter9/410885"]
+[node name="@@32746" type="DampedSpringJoint2D" parent="Butter9/32682"]
 rotation = -1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../410886")
+node_b = NodePath("../../32683")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410950" type="DampedSpringJoint2D" parent="Butter9/410885"]
+[node name="@@32747" type="DampedSpringJoint2D" parent="Butter9/32682"]
 rotation = -0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../410887")
+node_b = NodePath("../../32684")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="410886" type="RigidBody2D" parent="Butter9"]
+[node name="32683" type="RigidBody2D" parent="Butter9"]
 position = Vector2(38.31, 86.31)
 mass = 0.1
 physics_material_override = ExtResource("3_y0dug")
-metadata/bone_name = &"@@410886"
+metadata/bone_name = &"@@32683"
 
-[node name="@@410905" type="CollisionShape2D" parent="Butter9/410886"]
-shape = SubResource("CircleShape2D_pu1j1")
+[node name="@@32702" type="CollisionShape2D" parent="Butter9/32683"]
+shape = SubResource("CircleShape2D_r4jlq")
 
-[node name="@@410906" type="RemoteTransform2D" parent="Butter9/410886"]
-remote_path = NodePath("../../Skeleton2D/@@410886")
+[node name="@@32703" type="RemoteTransform2D" parent="Butter9/32683"]
+remote_path = NodePath("../../Skeleton2D/@@32683")
 update_rotation = false
 update_scale = false
 
-[node name="@@410951" type="DampedSpringJoint2D" parent="Butter9/410886"]
+[node name="@@32748" type="DampedSpringJoint2D" parent="Butter9/32683"]
 rotation = -3.92699
 node_a = NodePath("..")
-node_b = NodePath("../../410880")
+node_b = NodePath("../../32677")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410952" type="DampedSpringJoint2D" parent="Butter9/410886"]
+[node name="@@32749" type="DampedSpringJoint2D" parent="Butter9/32683"]
 rotation = -3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../410882")
+node_b = NodePath("../../32679")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410953" type="DampedSpringJoint2D" parent="Butter9/410886"]
+[node name="@@32750" type="DampedSpringJoint2D" parent="Butter9/32683"]
 rotation = -2.35619
 node_a = NodePath("..")
-node_b = NodePath("../../410884")
+node_b = NodePath("../../32681")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410954" type="DampedSpringJoint2D" parent="Butter9/410886"]
+[node name="@@32751" type="DampedSpringJoint2D" parent="Butter9/32683"]
 rotation = 1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../410885")
+node_b = NodePath("../../32682")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410955" type="DampedSpringJoint2D" parent="Butter9/410886"]
+[node name="@@32752" type="DampedSpringJoint2D" parent="Butter9/32683"]
 node_a = NodePath("..")
-node_b = NodePath("../../410887")
+node_b = NodePath("../../32684")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410956" type="DampedSpringJoint2D" parent="Butter9/410886"]
+[node name="@@32753" type="DampedSpringJoint2D" parent="Butter9/32683"]
 rotation = -1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../410888")
+node_b = NodePath("../../32685")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410957" type="DampedSpringJoint2D" parent="Butter9/410886"]
+[node name="@@32754" type="DampedSpringJoint2D" parent="Butter9/32683"]
 rotation = -0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../410889")
+node_b = NodePath("../../32686")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="410887" type="RigidBody2D" parent="Butter9"]
+[node name="32684" type="RigidBody2D" parent="Butter9"]
 position = Vector2(38.31, 115.31)
 mass = 0.1
 physics_material_override = ExtResource("3_y0dug")
-metadata/bone_name = &"@@410887"
+metadata/bone_name = &"@@32684"
 
-[node name="@@410907" type="CollisionShape2D" parent="Butter9/410887"]
-shape = SubResource("CircleShape2D_4pipx")
+[node name="@@32704" type="CollisionShape2D" parent="Butter9/32684"]
+shape = SubResource("CircleShape2D_xvllg")
 
-[node name="@@410908" type="RemoteTransform2D" parent="Butter9/410887"]
-remote_path = NodePath("../../Skeleton2D/@@410887")
+[node name="@@32705" type="RemoteTransform2D" parent="Butter9/32684"]
+remote_path = NodePath("../../Skeleton2D/@@32684")
 update_rotation = false
 update_scale = false
 
-[node name="@@410958" type="DampedSpringJoint2D" parent="Butter9/410887"]
+[node name="@@32755" type="DampedSpringJoint2D" parent="Butter9/32684"]
 rotation = -3.92699
 node_a = NodePath("..")
-node_b = NodePath("../../410885")
+node_b = NodePath("../../32682")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410959" type="DampedSpringJoint2D" parent="Butter9/410887"]
+[node name="@@32756" type="DampedSpringJoint2D" parent="Butter9/32684"]
 rotation = -3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../410886")
+node_b = NodePath("../../32683")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410960" type="DampedSpringJoint2D" parent="Butter9/410887"]
+[node name="@@32757" type="DampedSpringJoint2D" parent="Butter9/32684"]
 rotation = -2.35619
 node_a = NodePath("..")
-node_b = NodePath("../../410888")
+node_b = NodePath("../../32685")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410961" type="DampedSpringJoint2D" parent="Butter9/410887"]
+[node name="@@32758" type="DampedSpringJoint2D" parent="Butter9/32684"]
 rotation = -1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../410889")
+node_b = NodePath("../../32686")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="410888" type="RigidBody2D" parent="Butter9"]
+[node name="32685" type="RigidBody2D" parent="Butter9"]
 position = Vector2(67.31, 86.31)
 mass = 0.1
 physics_material_override = ExtResource("3_y0dug")
-metadata/bone_name = &"@@410888"
+metadata/bone_name = &"@@32685"
 
-[node name="@@410909" type="CollisionShape2D" parent="Butter9/410888"]
-shape = SubResource("CircleShape2D_t7g58")
+[node name="@@32706" type="CollisionShape2D" parent="Butter9/32685"]
+shape = SubResource("CircleShape2D_lsuvx")
 
-[node name="@@410910" type="RemoteTransform2D" parent="Butter9/410888"]
-remote_path = NodePath("../../Skeleton2D/@@410888")
+[node name="@@32707" type="RemoteTransform2D" parent="Butter9/32685"]
+remote_path = NodePath("../../Skeleton2D/@@32685")
 update_rotation = false
 update_scale = false
 
-[node name="@@410962" type="DampedSpringJoint2D" parent="Butter9/410888"]
+[node name="@@32759" type="DampedSpringJoint2D" parent="Butter9/32685"]
 rotation = -3.92699
 node_a = NodePath("..")
-node_b = NodePath("../../410882")
+node_b = NodePath("../../32679")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410963" type="DampedSpringJoint2D" parent="Butter9/410888"]
+[node name="@@32760" type="DampedSpringJoint2D" parent="Butter9/32685"]
 rotation = -3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../410884")
+node_b = NodePath("../../32681")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410964" type="DampedSpringJoint2D" parent="Butter9/410888"]
+[node name="@@32761" type="DampedSpringJoint2D" parent="Butter9/32685"]
 rotation = 1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../410886")
+node_b = NodePath("../../32683")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410965" type="DampedSpringJoint2D" parent="Butter9/410888"]
+[node name="@@32762" type="DampedSpringJoint2D" parent="Butter9/32685"]
 rotation = 0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../410887")
+node_b = NodePath("../../32684")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410966" type="DampedSpringJoint2D" parent="Butter9/410888"]
+[node name="@@32763" type="DampedSpringJoint2D" parent="Butter9/32685"]
 node_a = NodePath("..")
-node_b = NodePath("../../410889")
+node_b = NodePath("../../32686")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410967" type="DampedSpringJoint2D" parent="Butter9/410888"]
+[node name="@@32764" type="DampedSpringJoint2D" parent="Butter9/32685"]
 rotation = -2.35619
 node_a = NodePath("..")
-node_b = NodePath("../../410891")
+node_b = NodePath("../../32688")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410968" type="DampedSpringJoint2D" parent="Butter9/410888"]
+[node name="@@32765" type="DampedSpringJoint2D" parent="Butter9/32685"]
 rotation = -1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../410892")
+node_b = NodePath("../../32689")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="410889" type="RigidBody2D" parent="Butter9"]
+[node name="32686" type="RigidBody2D" parent="Butter9"]
 position = Vector2(67.31, 115.31)
 mass = 0.1
 physics_material_override = ExtResource("3_y0dug")
-metadata/bone_name = &"@@410889"
+metadata/bone_name = &"@@32686"
 
-[node name="@@410911" type="CollisionShape2D" parent="Butter9/410889"]
-shape = SubResource("CircleShape2D_0n36j")
+[node name="@@32708" type="CollisionShape2D" parent="Butter9/32686"]
+shape = SubResource("CircleShape2D_k0x8h")
 
-[node name="@@410912" type="RemoteTransform2D" parent="Butter9/410889"]
-remote_path = NodePath("../../Skeleton2D/@@410889")
+[node name="@@32709" type="RemoteTransform2D" parent="Butter9/32686"]
+remote_path = NodePath("../../Skeleton2D/@@32686")
 update_rotation = false
 update_scale = false
 
-[node name="@@410969" type="DampedSpringJoint2D" parent="Butter9/410889"]
+[node name="@@32766" type="DampedSpringJoint2D" parent="Butter9/32686"]
 rotation = -3.92699
 node_a = NodePath("..")
-node_b = NodePath("../../410886")
+node_b = NodePath("../../32683")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410970" type="DampedSpringJoint2D" parent="Butter9/410889"]
+[node name="@@32767" type="DampedSpringJoint2D" parent="Butter9/32686"]
 rotation = 1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../410887")
+node_b = NodePath("../../32684")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410971" type="DampedSpringJoint2D" parent="Butter9/410889"]
+[node name="@@32768" type="DampedSpringJoint2D" parent="Butter9/32686"]
 rotation = -3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../410888")
+node_b = NodePath("../../32685")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410972" type="DampedSpringJoint2D" parent="Butter9/410889"]
+[node name="@@32769" type="DampedSpringJoint2D" parent="Butter9/32686"]
 rotation = -2.35619
 node_a = NodePath("..")
-node_b = NodePath("../../410892")
+node_b = NodePath("../../32689")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="410890" type="RigidBody2D" parent="Butter9"]
+[node name="32687" type="RigidBody2D" parent="Butter9"]
 position = Vector2(96.31, 28.31)
 mass = 0.1
 physics_material_override = ExtResource("3_y0dug")
-metadata/bone_name = &"@@410890"
+metadata/bone_name = &"@@32687"
 
-[node name="@@410913" type="CollisionShape2D" parent="Butter9/410890"]
-shape = SubResource("CircleShape2D_p7eow")
+[node name="@@32710" type="CollisionShape2D" parent="Butter9/32687"]
+shape = SubResource("CircleShape2D_qtxjv")
 
-[node name="@@410914" type="RemoteTransform2D" parent="Butter9/410890"]
-remote_path = NodePath("../../Skeleton2D/@@410890")
+[node name="@@32711" type="RemoteTransform2D" parent="Butter9/32687"]
+remote_path = NodePath("../../Skeleton2D/@@32687")
 update_rotation = false
 update_scale = false
 
-[node name="@@410973" type="DampedSpringJoint2D" parent="Butter9/410890"]
+[node name="@@32770" type="DampedSpringJoint2D" parent="Butter9/32687"]
 rotation = 1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../410883")
+node_b = NodePath("../../32680")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410974" type="DampedSpringJoint2D" parent="Butter9/410890"]
+[node name="@@32771" type="DampedSpringJoint2D" parent="Butter9/32687"]
 rotation = 0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../410884")
+node_b = NodePath("../../32681")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410975" type="DampedSpringJoint2D" parent="Butter9/410890"]
+[node name="@@32772" type="DampedSpringJoint2D" parent="Butter9/32687"]
 node_a = NodePath("..")
-node_b = NodePath("../../410891")
+node_b = NodePath("../../32688")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="410891" type="RigidBody2D" parent="Butter9"]
+[node name="32688" type="RigidBody2D" parent="Butter9"]
 position = Vector2(96.31, 57.31)
 mass = 0.1
 physics_material_override = ExtResource("3_y0dug")
-metadata/bone_name = &"@@410891"
+metadata/bone_name = &"@@32688"
 
-[node name="@@410915" type="CollisionShape2D" parent="Butter9/410891"]
-shape = SubResource("CircleShape2D_1s74c")
+[node name="@@32712" type="CollisionShape2D" parent="Butter9/32688"]
+shape = SubResource("CircleShape2D_4hsaf")
 
-[node name="@@410916" type="RemoteTransform2D" parent="Butter9/410891"]
-remote_path = NodePath("../../Skeleton2D/@@410891")
+[node name="@@32713" type="RemoteTransform2D" parent="Butter9/32688"]
+remote_path = NodePath("../../Skeleton2D/@@32688")
 update_rotation = false
 update_scale = false
 
-[node name="@@410976" type="DampedSpringJoint2D" parent="Butter9/410891"]
+[node name="@@32773" type="DampedSpringJoint2D" parent="Butter9/32688"]
 rotation = -3.92699
 node_a = NodePath("..")
-node_b = NodePath("../../410883")
+node_b = NodePath("../../32680")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410977" type="DampedSpringJoint2D" parent="Butter9/410891"]
+[node name="@@32774" type="DampedSpringJoint2D" parent="Butter9/32688"]
 rotation = 1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../410884")
+node_b = NodePath("../../32681")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410978" type="DampedSpringJoint2D" parent="Butter9/410891"]
+[node name="@@32775" type="DampedSpringJoint2D" parent="Butter9/32688"]
 rotation = 0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../410888")
+node_b = NodePath("../../32685")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410979" type="DampedSpringJoint2D" parent="Butter9/410891"]
+[node name="@@32776" type="DampedSpringJoint2D" parent="Butter9/32688"]
 rotation = -3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../410890")
+node_b = NodePath("../../32687")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410980" type="DampedSpringJoint2D" parent="Butter9/410891"]
+[node name="@@32777" type="DampedSpringJoint2D" parent="Butter9/32688"]
 node_a = NodePath("..")
-node_b = NodePath("../../410892")
+node_b = NodePath("../../32689")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="410892" type="RigidBody2D" parent="Butter9"]
+[node name="32689" type="RigidBody2D" parent="Butter9"]
 position = Vector2(96.31, 86.31)
 mass = 0.1
 physics_material_override = ExtResource("3_y0dug")
-metadata/bone_name = &"@@410892"
+metadata/bone_name = &"@@32689"
 
-[node name="@@410917" type="CollisionShape2D" parent="Butter9/410892"]
-shape = SubResource("CircleShape2D_oclq0")
+[node name="@@32714" type="CollisionShape2D" parent="Butter9/32689"]
+shape = SubResource("CircleShape2D_in6ye")
 
-[node name="@@410918" type="RemoteTransform2D" parent="Butter9/410892"]
-remote_path = NodePath("../../Skeleton2D/@@410892")
+[node name="@@32715" type="RemoteTransform2D" parent="Butter9/32689"]
+remote_path = NodePath("../../Skeleton2D/@@32689")
 update_rotation = false
 update_scale = false
 
-[node name="@@410981" type="DampedSpringJoint2D" parent="Butter9/410892"]
+[node name="@@32778" type="DampedSpringJoint2D" parent="Butter9/32689"]
 rotation = -3.92699
 node_a = NodePath("..")
-node_b = NodePath("../../410884")
+node_b = NodePath("../../32681")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410982" type="DampedSpringJoint2D" parent="Butter9/410892"]
+[node name="@@32779" type="DampedSpringJoint2D" parent="Butter9/32689"]
 rotation = 1.5708
 node_a = NodePath("..")
-node_b = NodePath("../../410888")
+node_b = NodePath("../../32685")
 bias = 0.4
 disable_collision = false
 length = 29.0
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410983" type="DampedSpringJoint2D" parent="Butter9/410892"]
+[node name="@@32780" type="DampedSpringJoint2D" parent="Butter9/32689"]
 rotation = 0.785398
 node_a = NodePath("..")
-node_b = NodePath("../../410889")
+node_b = NodePath("../../32686")
 bias = 0.4
 disable_collision = false
 length = 41.0122
 stiffness = 46.0
 damping = 2.9
 
-[node name="@@410984" type="DampedSpringJoint2D" parent="Butter9/410892"]
+[node name="@@32781" type="DampedSpringJoint2D" parent="Butter9/32689"]
 rotation = -3.14159
 node_a = NodePath("..")
-node_b = NodePath("../../410891")
+node_b = NodePath("../../32688")
 bias = 0.4
 disable_collision = false
 length = 29.0
@@ -28954,7 +28953,7 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44187"), NodePath("../@@44192"), NodePath("../@@44193"), NodePath("../@@44194")]
+follow = Array[NodePath]([NodePath("../@@44187"), NodePath("../@@44192"), NodePath("../@@44193"), NodePath("../@@44194")])
 metadata/vert_owned = [31, 32, 33, 34, 35, 36, 37, 38, 39, 40]
 
 [node name="@@44187" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -28964,7 +28963,7 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44186"), NodePath("../@@44188"), NodePath("../@@44193"), NodePath("../@@44194"), NodePath("../@@44212")]
+follow = Array[NodePath]([NodePath("../@@44186"), NodePath("../@@44188"), NodePath("../@@44193"), NodePath("../@@44194"), NodePath("../@@44212")])
 metadata/vert_owned = [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52]
 
 [node name="@@44188" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -28974,7 +28973,7 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44187"), NodePath("../@@44189"), NodePath("../@@44194"), NodePath("../@@44212"), NodePath("../@@44213")]
+follow = Array[NodePath]([NodePath("../@@44187"), NodePath("../@@44189"), NodePath("../@@44194"), NodePath("../@@44212"), NodePath("../@@44213")])
 metadata/vert_owned = [53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]
 
 [node name="@@44189" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -28984,7 +28983,7 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44188"), NodePath("../@@44190"), NodePath("../@@44212"), NodePath("../@@44213"), NodePath("../@@44214")]
+follow = Array[NodePath]([NodePath("../@@44188"), NodePath("../@@44190"), NodePath("../@@44212"), NodePath("../@@44213"), NodePath("../@@44214")])
 metadata/vert_owned = [64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76]
 
 [node name="@@44190" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -28995,19 +28994,18 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44189"), NodePath("../@@44213"), NodePath("../@@44214"), NodePath("../@@44215")]
+follow = Array[NodePath]([NodePath("../@@44189"), NodePath("../@@44213"), NodePath("../@@44214"), NodePath("../@@44215")])
 metadata/vert_owned = [77, 78, 79, 80, 81, 82, 83, 84, 85, 86]
 
 [node name="@@44191" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
 position = Vector2(44.65, 41.15)
 rotation = 0.32175
-scale = Vector2(1, 1)
 rest = Transform2D(0.948683, 0.316227, -0.316227, 0.948683, 44.65, 41.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44192"), NodePath("../@@44195"), NodePath("../@@44196"), NodePath("../@@44197")]
+follow = Array[NodePath]([NodePath("../@@44192"), NodePath("../@@44195"), NodePath("../@@44196"), NodePath("../@@44197")])
 metadata/vert_owned = [87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97]
 
 [node name="@@44192" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -29018,7 +29016,7 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44186"), NodePath("../@@44191"), NodePath("../@@44193"), NodePath("../@@44196"), NodePath("../@@44197"), NodePath("../@@44198")]
+follow = Array[NodePath]([NodePath("../@@44186"), NodePath("../@@44191"), NodePath("../@@44193"), NodePath("../@@44196"), NodePath("../@@44197"), NodePath("../@@44198")])
 metadata/vert_owned = [98, 99, 100, 101, 102]
 
 [node name="@@44193" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -29030,18 +29028,19 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44186"), NodePath("../@@44187"), NodePath("../@@44192"), NodePath("../@@44194"), NodePath("../@@44197"), NodePath("../@@44198"), NodePath("../@@44199")]
+follow = Array[NodePath]([NodePath("../@@44186"), NodePath("../@@44187"), NodePath("../@@44192"), NodePath("../@@44194"), NodePath("../@@44197"), NodePath("../@@44198"), NodePath("../@@44199")])
 metadata/vert_owned = [103, 104, 105, 106, 107, 108, 109, 110]
 
 [node name="@@44194" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
 position = Vector2(44.65, 116.15)
 rotation = 1.66234
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0914124, 0.995813, -0.995813, -0.0914124, 44.65, 116.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44186"), NodePath("../@@44187"), NodePath("../@@44188"), NodePath("../@@44193"), NodePath("../@@44198"), NodePath("../@@44199"), NodePath("../@@44212"), NodePath("../@@44216")]
+follow = Array[NodePath]([NodePath("../@@44186"), NodePath("../@@44187"), NodePath("../@@44188"), NodePath("../@@44193"), NodePath("../@@44198"), NodePath("../@@44199"), NodePath("../@@44212"), NodePath("../@@44216")])
 metadata/vert_owned = [111, 112, 113, 114, 115]
 
 [node name="@@44195" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -29052,7 +29051,7 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44191"), NodePath("../@@44196"), NodePath("../@@44200"), NodePath("../@@44201")]
+follow = Array[NodePath]([NodePath("../@@44191"), NodePath("../@@44196"), NodePath("../@@44200"), NodePath("../@@44201")])
 metadata/vert_owned = [116, 117, 118, 119, 120, 121, 122, 123]
 
 [node name="@@44196" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -29064,41 +29063,42 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44191"), NodePath("../@@44192"), NodePath("../@@44195"), NodePath("../@@44197"), NodePath("../@@44200"), NodePath("../@@44201"), NodePath("../@@44202")]
+follow = Array[NodePath]([NodePath("../@@44191"), NodePath("../@@44192"), NodePath("../@@44195"), NodePath("../@@44197"), NodePath("../@@44200"), NodePath("../@@44201"), NodePath("../@@44202")])
 metadata/vert_owned = [124, 125, 126, 127, 128]
 
 [node name="@@44197" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
 position = Vector2(69.65, 66.15)
 rotation = 1.66234
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0914124, 0.995813, -0.995813, -0.0914124, 69.65, 66.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44191"), NodePath("../@@44192"), NodePath("../@@44193"), NodePath("../@@44196"), NodePath("../@@44198"), NodePath("../@@44201"), NodePath("../@@44202"), NodePath("../@@44203")]
+follow = Array[NodePath]([NodePath("../@@44191"), NodePath("../@@44192"), NodePath("../@@44193"), NodePath("../@@44196"), NodePath("../@@44198"), NodePath("../@@44201"), NodePath("../@@44202"), NodePath("../@@44203")])
 metadata/vert_owned = [129, 130, 131, 132, 133, 134]
 
 [node name="@@44198" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
 position = Vector2(69.65, 91.15)
 rotation = 1.66233
-scale = Vector2(1, 1)
 rest = Transform2D(-0.0914094, 0.995813, -0.995813, -0.0914094, 69.65, 91.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44192"), NodePath("../@@44193"), NodePath("../@@44194"), NodePath("../@@44197"), NodePath("../@@44199"), NodePath("../@@44202"), NodePath("../@@44203"), NodePath("../@@44204")]
+follow = Array[NodePath]([NodePath("../@@44192"), NodePath("../@@44193"), NodePath("../@@44194"), NodePath("../@@44197"), NodePath("../@@44199"), NodePath("../@@44202"), NodePath("../@@44203"), NodePath("../@@44204")])
 metadata/vert_owned = [135, 136, 137, 138, 139, 140]
 
 [node name="@@44199" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
 position = Vector2(69.65, 116.15)
 rotation = 1.66234
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0914124, 0.995813, -0.995813, -0.0914124, 69.65, 116.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44193"), NodePath("../@@44194"), NodePath("../@@44198"), NodePath("../@@44203"), NodePath("../@@44204"), NodePath("../@@44212"), NodePath("../@@44216"), NodePath("../@@44221")]
+follow = Array[NodePath]([NodePath("../@@44193"), NodePath("../@@44194"), NodePath("../@@44198"), NodePath("../@@44203"), NodePath("../@@44204"), NodePath("../@@44212"), NodePath("../@@44216"), NodePath("../@@44221")])
 metadata/vert_owned = [141, 142, 143, 144, 145]
 
 [node name="@@44200" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -29110,7 +29110,7 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44195"), NodePath("../@@44196"), NodePath("../@@44201"), NodePath("../@@44205")]
+follow = Array[NodePath]([NodePath("../@@44195"), NodePath("../@@44196"), NodePath("../@@44201"), NodePath("../@@44205")])
 metadata/vert_owned = [146, 147, 148, 149, 150, 151, 152, 153, 154, 155]
 
 [node name="@@44201" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -29122,54 +29122,52 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44195"), NodePath("../@@44196"), NodePath("../@@44197"), NodePath("../@@44200"), NodePath("../@@44202"), NodePath("../@@44205"), NodePath("../@@44206")]
+follow = Array[NodePath]([NodePath("../@@44195"), NodePath("../@@44196"), NodePath("../@@44197"), NodePath("../@@44200"), NodePath("../@@44202"), NodePath("../@@44205"), NodePath("../@@44206")])
 metadata/vert_owned = [156, 157, 158, 159, 160, 161, 162]
 
 [node name="@@44202" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
 position = Vector2(94.65, 66.15)
 rotation = 1.66234
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0914124, 0.995813, -0.995813, -0.0914124, 94.65, 66.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44196"), NodePath("../@@44197"), NodePath("../@@44198"), NodePath("../@@44201"), NodePath("../@@44203"), NodePath("../@@44205"), NodePath("../@@44206"), NodePath("../@@44207")]
+follow = Array[NodePath]([NodePath("../@@44196"), NodePath("../@@44197"), NodePath("../@@44198"), NodePath("../@@44201"), NodePath("../@@44203"), NodePath("../@@44205"), NodePath("../@@44206"), NodePath("../@@44207")])
 metadata/vert_owned = [163, 164, 165, 166, 167, 168, 169]
 
 [node name="@@44203" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
 position = Vector2(94.65, 91.15)
 rotation = 1.66233
-scale = Vector2(1, 1)
 rest = Transform2D(-0.0914094, 0.995813, -0.995813, -0.0914094, 94.65, 91.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44197"), NodePath("../@@44198"), NodePath("../@@44199"), NodePath("../@@44202"), NodePath("../@@44204"), NodePath("../@@44206"), NodePath("../@@44207"), NodePath("../@@44208")]
+follow = Array[NodePath]([NodePath("../@@44197"), NodePath("../@@44198"), NodePath("../@@44199"), NodePath("../@@44202"), NodePath("../@@44204"), NodePath("../@@44206"), NodePath("../@@44207"), NodePath("../@@44208")])
 metadata/vert_owned = [170, 171, 172, 173]
 
 [node name="@@44204" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
 position = Vector2(94.65, 116.15)
 rotation = 1.66233
-scale = Vector2(1, 1)
 rest = Transform2D(-0.0914094, 0.995813, -0.995813, -0.0914094, 94.65, 116.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44198"), NodePath("../@@44199"), NodePath("../@@44203"), NodePath("../@@44207"), NodePath("../@@44208"), NodePath("../@@44216"), NodePath("../@@44221"), NodePath("../@@44226")]
+follow = Array[NodePath]([NodePath("../@@44198"), NodePath("../@@44199"), NodePath("../@@44203"), NodePath("../@@44207"), NodePath("../@@44208"), NodePath("../@@44216"), NodePath("../@@44221"), NodePath("../@@44226")])
 metadata/vert_owned = [174, 175, 176, 177, 178, 179, 180]
 
 [node name="@@44205" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
 position = Vector2(119.65, 41.15)
 rotation = 2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707106, 0.707108, -0.707108, -0.707106, 119.65, 41.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44200"), NodePath("../@@44201"), NodePath("../@@44202"), NodePath("../@@44206"), NodePath("../@@44209")]
+follow = Array[NodePath]([NodePath("../@@44200"), NodePath("../@@44201"), NodePath("../@@44202"), NodePath("../@@44206"), NodePath("../@@44209")])
 metadata/vert_owned = [181, 182, 183, 184, 185, 186, 187, 188, 189, 190]
 
 [node name="@@44206" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -29181,7 +29179,7 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44201"), NodePath("../@@44202"), NodePath("../@@44203"), NodePath("../@@44205"), NodePath("../@@44207"), NodePath("../@@44209"), NodePath("../@@44210")]
+follow = Array[NodePath]([NodePath("../@@44201"), NodePath("../@@44202"), NodePath("../@@44203"), NodePath("../@@44205"), NodePath("../@@44207"), NodePath("../@@44209"), NodePath("../@@44210")])
 metadata/vert_owned = [191, 192, 193, 194, 195, 196]
 
 [node name="@@44207" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -29193,19 +29191,18 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44202"), NodePath("../@@44203"), NodePath("../@@44204"), NodePath("../@@44206"), NodePath("../@@44208"), NodePath("../@@44209"), NodePath("../@@44210"), NodePath("../@@44211")]
+follow = Array[NodePath]([NodePath("../@@44202"), NodePath("../@@44203"), NodePath("../@@44204"), NodePath("../@@44206"), NodePath("../@@44208"), NodePath("../@@44209"), NodePath("../@@44210"), NodePath("../@@44211")])
 metadata/vert_owned = [197, 198, 199, 200, 201, 202, 203]
 
 [node name="@@44208" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
 position = Vector2(119.65, 116.15)
 rotation = 1.66233
-scale = Vector2(1, 1)
 rest = Transform2D(-0.0914094, 0.995813, -0.995813, -0.0914094, 119.65, 116.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44203"), NodePath("../@@44204"), NodePath("../@@44207"), NodePath("../@@44210"), NodePath("../@@44211"), NodePath("../@@44221"), NodePath("../@@44226"), NodePath("../@@44231")]
+follow = Array[NodePath]([NodePath("../@@44203"), NodePath("../@@44204"), NodePath("../@@44207"), NodePath("../@@44210"), NodePath("../@@44211"), NodePath("../@@44221"), NodePath("../@@44226"), NodePath("../@@44231")])
 metadata/vert_owned = [204, 205, 206, 207, 208, 209, 210]
 
 [node name="@@44209" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -29217,7 +29214,7 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44205"), NodePath("../@@44206"), NodePath("../@@44207"), NodePath("../@@44210")]
+follow = Array[NodePath]([NodePath("../@@44205"), NodePath("../@@44206"), NodePath("../@@44207"), NodePath("../@@44210")])
 metadata/vert_owned = [211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222]
 
 [node name="@@44210" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -29228,19 +29225,18 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44206"), NodePath("../@@44207"), NodePath("../@@44208"), NodePath("../@@44209"), NodePath("../@@44211"), NodePath("../@@44235")]
+follow = Array[NodePath]([NodePath("../@@44206"), NodePath("../@@44207"), NodePath("../@@44208"), NodePath("../@@44209"), NodePath("../@@44211"), NodePath("../@@44235")])
 metadata/vert_owned = [223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234]
 
 [node name="@@44211" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
 position = Vector2(144.65, 116.15)
 rotation = 2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, 0.707107, -0.707107, -0.707107, 144.65, 116.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44207"), NodePath("../@@44208"), NodePath("../@@44210"), NodePath("../@@44226"), NodePath("../@@44231"), NodePath("../@@44235"), NodePath("../@@44236")]
+follow = Array[NodePath]([NodePath("../@@44207"), NodePath("../@@44208"), NodePath("../@@44210"), NodePath("../@@44226"), NodePath("../@@44231"), NodePath("../@@44235"), NodePath("../@@44236")])
 metadata/vert_owned = [235, 236, 237, 238, 239, 240]
 
 [node name="@@44212" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -29251,19 +29247,18 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44187"), NodePath("../@@44188"), NodePath("../@@44189"), NodePath("../@@44194"), NodePath("../@@44199"), NodePath("../@@44213"), NodePath("../@@44216"), NodePath("../@@44217")]
+follow = Array[NodePath]([NodePath("../@@44187"), NodePath("../@@44188"), NodePath("../@@44189"), NodePath("../@@44194"), NodePath("../@@44199"), NodePath("../@@44213"), NodePath("../@@44216"), NodePath("../@@44217")])
 metadata/vert_owned = [241, 242, 243, 244, 245, 246]
 
 [node name="@@44213" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
 position = Vector2(44.65, 166.15)
 rotation = 1.66233
-scale = Vector2(1, 1)
 rest = Transform2D(-0.0914094, 0.995813, -0.995813, -0.0914094, 44.65, 166.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44188"), NodePath("../@@44189"), NodePath("../@@44190"), NodePath("../@@44212"), NodePath("../@@44214"), NodePath("../@@44216"), NodePath("../@@44217"), NodePath("../@@44218")]
+follow = Array[NodePath]([NodePath("../@@44188"), NodePath("../@@44189"), NodePath("../@@44190"), NodePath("../@@44212"), NodePath("../@@44214"), NodePath("../@@44216"), NodePath("../@@44217"), NodePath("../@@44218")])
 metadata/vert_owned = [247, 248, 249, 250, 251, 252]
 
 [node name="@@44214" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -29274,7 +29269,7 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44189"), NodePath("../@@44190"), NodePath("../@@44213"), NodePath("../@@44215"), NodePath("../@@44217"), NodePath("../@@44218"), NodePath("../@@44219")]
+follow = Array[NodePath]([NodePath("../@@44189"), NodePath("../@@44190"), NodePath("../@@44213"), NodePath("../@@44215"), NodePath("../@@44217"), NodePath("../@@44218"), NodePath("../@@44219")])
 metadata/vert_owned = [253, 254, 255, 256, 257, 258]
 
 [node name="@@44215" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -29286,41 +29281,42 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44190"), NodePath("../@@44214"), NodePath("../@@44218"), NodePath("../@@44219"), NodePath("../@@44220")]
+follow = Array[NodePath]([NodePath("../@@44190"), NodePath("../@@44214"), NodePath("../@@44218"), NodePath("../@@44219"), NodePath("../@@44220")])
 metadata/vert_owned = [259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270]
 
 [node name="@@44216" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
 position = Vector2(69.65, 141.15)
 rotation = 1.66234
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0914124, 0.995813, -0.995813, -0.0914124, 69.65, 141.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44194"), NodePath("../@@44199"), NodePath("../@@44204"), NodePath("../@@44212"), NodePath("../@@44213"), NodePath("../@@44217"), NodePath("../@@44221"), NodePath("../@@44222")]
+follow = Array[NodePath]([NodePath("../@@44194"), NodePath("../@@44199"), NodePath("../@@44204"), NodePath("../@@44212"), NodePath("../@@44213"), NodePath("../@@44217"), NodePath("../@@44221"), NodePath("../@@44222")])
 metadata/vert_owned = [271, 272, 273, 274, 275, 276, 277]
 
 [node name="@@44217" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
 position = Vector2(69.65, 166.15)
 rotation = 1.66233
-scale = Vector2(1, 1)
 rest = Transform2D(-0.0914094, 0.995813, -0.995813, -0.0914094, 69.65, 166.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44212"), NodePath("../@@44213"), NodePath("../@@44214"), NodePath("../@@44216"), NodePath("../@@44218"), NodePath("../@@44221"), NodePath("../@@44222"), NodePath("../@@44223")]
+follow = Array[NodePath]([NodePath("../@@44212"), NodePath("../@@44213"), NodePath("../@@44214"), NodePath("../@@44216"), NodePath("../@@44218"), NodePath("../@@44221"), NodePath("../@@44222"), NodePath("../@@44223")])
 metadata/vert_owned = [278, 279, 280, 281, 282]
 
 [node name="@@44218" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
 position = Vector2(69.65, 191.15)
 rotation = 1.66234
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0914124, 0.995813, -0.995813, -0.0914124, 69.65, 191.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44213"), NodePath("../@@44214"), NodePath("../@@44215"), NodePath("../@@44217"), NodePath("../@@44219"), NodePath("../@@44222"), NodePath("../@@44223"), NodePath("../@@44224")]
+follow = Array[NodePath]([NodePath("../@@44213"), NodePath("../@@44214"), NodePath("../@@44215"), NodePath("../@@44217"), NodePath("../@@44219"), NodePath("../@@44222"), NodePath("../@@44223"), NodePath("../@@44224")])
 metadata/vert_owned = [283, 284, 285, 286, 287, 288]
 
 [node name="@@44219" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -29331,7 +29327,7 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44214"), NodePath("../@@44215"), NodePath("../@@44218"), NodePath("../@@44220"), NodePath("../@@44223"), NodePath("../@@44224"), NodePath("../@@44225")]
+follow = Array[NodePath]([NodePath("../@@44214"), NodePath("../@@44215"), NodePath("../@@44218"), NodePath("../@@44220"), NodePath("../@@44223"), NodePath("../@@44224"), NodePath("../@@44225")])
 metadata/vert_owned = [289, 290, 291, 292, 293, 294]
 
 [node name="@@44220" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -29342,29 +29338,31 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44215"), NodePath("../@@44219"), NodePath("../@@44224"), NodePath("../@@44225")]
+follow = Array[NodePath]([NodePath("../@@44215"), NodePath("../@@44219"), NodePath("../@@44224"), NodePath("../@@44225")])
 metadata/vert_owned = [295, 296, 297, 298, 299, 300, 301]
 
 [node name="@@44221" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
 position = Vector2(94.65, 141.15)
 rotation = 1.66234
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0914124, 0.995813, -0.995813, -0.0914124, 94.65, 141.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44199"), NodePath("../@@44204"), NodePath("../@@44208"), NodePath("../@@44216"), NodePath("../@@44217"), NodePath("../@@44222"), NodePath("../@@44226"), NodePath("../@@44227")]
+follow = Array[NodePath]([NodePath("../@@44199"), NodePath("../@@44204"), NodePath("../@@44208"), NodePath("../@@44216"), NodePath("../@@44217"), NodePath("../@@44222"), NodePath("../@@44226"), NodePath("../@@44227")])
 metadata/vert_owned = [302, 303, 304, 305, 306, 307]
 
 [node name="@@44222" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
 position = Vector2(94.65, 166.15)
 rotation = 1.66234
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0914118, 0.995813, -0.995813, -0.0914118, 94.65, 166.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44216"), NodePath("../@@44217"), NodePath("../@@44218"), NodePath("../@@44221"), NodePath("../@@44223"), NodePath("../@@44226"), NodePath("../@@44227"), NodePath("../@@44228")]
+follow = Array[NodePath]([NodePath("../@@44216"), NodePath("../@@44217"), NodePath("../@@44218"), NodePath("../@@44221"), NodePath("../@@44223"), NodePath("../@@44226"), NodePath("../@@44227"), NodePath("../@@44228")])
 metadata/vert_owned = [308, 309, 310, 311, 312, 313, 314]
 
 [node name="@@44223" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -29375,18 +29373,19 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44217"), NodePath("../@@44218"), NodePath("../@@44219"), NodePath("../@@44222"), NodePath("../@@44224"), NodePath("../@@44227"), NodePath("../@@44228"), NodePath("../@@44229")]
+follow = Array[NodePath]([NodePath("../@@44217"), NodePath("../@@44218"), NodePath("../@@44219"), NodePath("../@@44222"), NodePath("../@@44224"), NodePath("../@@44227"), NodePath("../@@44228"), NodePath("../@@44229")])
 metadata/vert_owned = [315, 316, 317, 318, 319, 320]
 
 [node name="@@44224" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
 position = Vector2(94.65, 216.15)
 rotation = 1.66234
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0914124, 0.995813, -0.995813, -0.0914124, 94.65, 216.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44218"), NodePath("../@@44219"), NodePath("../@@44220"), NodePath("../@@44223"), NodePath("../@@44225"), NodePath("../@@44228"), NodePath("../@@44229"), NodePath("../@@44230")]
+follow = Array[NodePath]([NodePath("../@@44218"), NodePath("../@@44219"), NodePath("../@@44220"), NodePath("../@@44223"), NodePath("../@@44225"), NodePath("../@@44228"), NodePath("../@@44229"), NodePath("../@@44230")])
 metadata/vert_owned = [321, 322, 323, 324, 325, 326]
 
 [node name="@@44225" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -29397,30 +29396,30 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44219"), NodePath("../@@44220"), NodePath("../@@44224"), NodePath("../@@44229"), NodePath("../@@44230")]
+follow = Array[NodePath]([NodePath("../@@44219"), NodePath("../@@44220"), NodePath("../@@44224"), NodePath("../@@44229"), NodePath("../@@44230")])
 metadata/vert_owned = [327, 328, 329, 330, 331]
 
 [node name="@@44226" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
 position = Vector2(119.65, 141.15)
 rotation = 1.66233
-scale = Vector2(1, 1)
 rest = Transform2D(-0.0914094, 0.995813, -0.995813, -0.0914094, 119.65, 141.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44204"), NodePath("../@@44208"), NodePath("../@@44211"), NodePath("../@@44221"), NodePath("../@@44222"), NodePath("../@@44227"), NodePath("../@@44231"), NodePath("../@@44232")]
+follow = Array[NodePath]([NodePath("../@@44204"), NodePath("../@@44208"), NodePath("../@@44211"), NodePath("../@@44221"), NodePath("../@@44222"), NodePath("../@@44227"), NodePath("../@@44231"), NodePath("../@@44232")])
 metadata/vert_owned = [332, 333, 334, 335, 336, 337]
 
 [node name="@@44227" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
 position = Vector2(119.65, 166.15)
 rotation = 1.66234
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0914124, 0.995813, -0.995813, -0.0914124, 119.65, 166.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44221"), NodePath("../@@44222"), NodePath("../@@44223"), NodePath("../@@44226"), NodePath("../@@44228"), NodePath("../@@44231"), NodePath("../@@44232"), NodePath("../@@44233")]
+follow = Array[NodePath]([NodePath("../@@44221"), NodePath("../@@44222"), NodePath("../@@44223"), NodePath("../@@44226"), NodePath("../@@44228"), NodePath("../@@44231"), NodePath("../@@44232"), NodePath("../@@44233")])
 metadata/vert_owned = [338, 339, 340, 341, 342]
 
 [node name="@@44228" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -29431,19 +29430,18 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44222"), NodePath("../@@44223"), NodePath("../@@44224"), NodePath("../@@44227"), NodePath("../@@44229"), NodePath("../@@44232"), NodePath("../@@44233"), NodePath("../@@44234")]
+follow = Array[NodePath]([NodePath("../@@44222"), NodePath("../@@44223"), NodePath("../@@44224"), NodePath("../@@44227"), NodePath("../@@44229"), NodePath("../@@44232"), NodePath("../@@44233"), NodePath("../@@44234")])
 metadata/vert_owned = [343, 344, 345, 346, 347]
 
 [node name="@@44229" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
 position = Vector2(119.65, 216.15)
 rotation = -2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, -0.707107, 0.707107, -0.707107, 119.65, 216.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44223"), NodePath("../@@44224"), NodePath("../@@44225"), NodePath("../@@44228"), NodePath("../@@44230"), NodePath("../@@44233"), NodePath("../@@44234")]
+follow = Array[NodePath]([NodePath("../@@44223"), NodePath("../@@44224"), NodePath("../@@44225"), NodePath("../@@44228"), NodePath("../@@44230"), NodePath("../@@44233"), NodePath("../@@44234")])
 metadata/vert_owned = [348, 349, 350, 351, 352, 353, 354]
 
 [node name="@@44230" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -29454,52 +29452,54 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44224"), NodePath("../@@44225"), NodePath("../@@44229"), NodePath("../@@44234")]
+follow = Array[NodePath]([NodePath("../@@44224"), NodePath("../@@44225"), NodePath("../@@44229"), NodePath("../@@44234")])
 metadata/vert_owned = [355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366]
 
 [node name="@@44231" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
 position = Vector2(144.65, 141.15)
 rotation = 1.66233
-scale = Vector2(1, 1)
 rest = Transform2D(-0.0914094, 0.995813, -0.995813, -0.0914094, 144.65, 141.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44208"), NodePath("../@@44211"), NodePath("../@@44226"), NodePath("../@@44227"), NodePath("../@@44232"), NodePath("../@@44235"), NodePath("../@@44236"), NodePath("../@@44237")]
+follow = Array[NodePath]([NodePath("../@@44208"), NodePath("../@@44211"), NodePath("../@@44226"), NodePath("../@@44227"), NodePath("../@@44232"), NodePath("../@@44235"), NodePath("../@@44236"), NodePath("../@@44237")])
 metadata/vert_owned = [367, 368, 369, 370, 371]
 
 [node name="@@44232" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
 position = Vector2(144.65, 166.15)
 rotation = 1.66234
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0914124, 0.995813, -0.995813, -0.0914124, 144.65, 166.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44226"), NodePath("../@@44227"), NodePath("../@@44228"), NodePath("../@@44231"), NodePath("../@@44233"), NodePath("../@@44236"), NodePath("../@@44237"), NodePath("../@@44238")]
+follow = Array[NodePath]([NodePath("../@@44226"), NodePath("../@@44227"), NodePath("../@@44228"), NodePath("../@@44231"), NodePath("../@@44233"), NodePath("../@@44236"), NodePath("../@@44237"), NodePath("../@@44238")])
 metadata/vert_owned = [372, 373, 374, 375, 376, 377, 378]
 
 [node name="@@44233" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
 position = Vector2(144.65, 191.15)
 rotation = 1.66234
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0914129, 0.995813, -0.995813, -0.0914129, 144.65, 191.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44227"), NodePath("../@@44228"), NodePath("../@@44229"), NodePath("../@@44232"), NodePath("../@@44234"), NodePath("../@@44237"), NodePath("../@@44238"), NodePath("../@@44239")]
+follow = Array[NodePath]([NodePath("../@@44227"), NodePath("../@@44228"), NodePath("../@@44229"), NodePath("../@@44232"), NodePath("../@@44234"), NodePath("../@@44237"), NodePath("../@@44238"), NodePath("../@@44239")])
 metadata/vert_owned = [379, 380, 381, 382, 383, 384, 385]
 
 [node name="@@44234" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
 position = Vector2(144.65, 216.15)
 rotation = -2.03444
+scale = Vector2(1, 1)
 rest = Transform2D(-0.447214, -0.894427, 0.894427, -0.447214, 144.65, 216.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44228"), NodePath("../@@44229"), NodePath("../@@44230"), NodePath("../@@44233"), NodePath("../@@44238"), NodePath("../@@44239")]
+follow = Array[NodePath]([NodePath("../@@44228"), NodePath("../@@44229"), NodePath("../@@44230"), NodePath("../@@44233"), NodePath("../@@44238"), NodePath("../@@44239")])
 metadata/vert_owned = [386, 387, 388, 389, 390]
 
 [node name="@@44235" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -29511,7 +29511,7 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44210"), NodePath("../@@44211"), NodePath("../@@44231"), NodePath("../@@44236")]
+follow = Array[NodePath]([NodePath("../@@44210"), NodePath("../@@44211"), NodePath("../@@44231"), NodePath("../@@44236")])
 metadata/vert_owned = [391, 392, 393, 394, 395]
 
 [node name="@@44236" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -29522,7 +29522,7 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44211"), NodePath("../@@44231"), NodePath("../@@44232"), NodePath("../@@44235"), NodePath("../@@44237")]
+follow = Array[NodePath]([NodePath("../@@44211"), NodePath("../@@44231"), NodePath("../@@44232"), NodePath("../@@44235"), NodePath("../@@44237")])
 metadata/vert_owned = [396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406]
 
 [node name="@@44237" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -29533,7 +29533,7 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44231"), NodePath("../@@44232"), NodePath("../@@44233"), NodePath("../@@44236"), NodePath("../@@44238")]
+follow = Array[NodePath]([NodePath("../@@44231"), NodePath("../@@44232"), NodePath("../@@44233"), NodePath("../@@44236"), NodePath("../@@44238")])
 metadata/vert_owned = [407, 408, 409, 410, 411]
 
 [node name="@@44238" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -29544,7 +29544,7 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44232"), NodePath("../@@44233"), NodePath("../@@44234"), NodePath("../@@44237"), NodePath("../@@44239")]
+follow = Array[NodePath]([NodePath("../@@44232"), NodePath("../@@44233"), NodePath("../@@44234"), NodePath("../@@44237"), NodePath("../@@44239")])
 metadata/vert_owned = [412, 413, 414, 415, 416, 417]
 
 [node name="@@44239" type="Bone2D" parent="BoiledEggHalf/Skeleton2D"]
@@ -29555,7 +29555,7 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@44233"), NodePath("../@@44234"), NodePath("../@@44238")]
+follow = Array[NodePath]([NodePath("../@@44233"), NodePath("../@@44234"), NodePath("../@@44238")])
 metadata/vert_owned = [418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429]
 
 [node name="44186" type="RigidBody2D" parent="BoiledEggHalf"]
@@ -33034,12 +33034,13 @@ shape_circle_radius = 15
 [node name="@@43674" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(19.65, 91.15)
 rotation = 0.321751
+scale = Vector2(1, 1)
 rest = Transform2D(0.948683, 0.316228, -0.316228, 0.948683, 19.65, 91.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43675"), NodePath("../@@43680"), NodePath("../@@43681"), NodePath("../@@43682")]
+follow = Array[NodePath]([NodePath("../@@43675"), NodePath("../@@43680"), NodePath("../@@43681"), NodePath("../@@43682")])
 metadata/vert_owned = [31, 32, 33, 34, 35, 36, 37, 38, 39, 40]
 
 [node name="@@43675" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
@@ -33049,7 +33050,7 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43674"), NodePath("../@@43676"), NodePath("../@@43681"), NodePath("../@@43682"), NodePath("../@@43700")]
+follow = Array[NodePath]([NodePath("../@@43674"), NodePath("../@@43676"), NodePath("../@@43681"), NodePath("../@@43682"), NodePath("../@@43700")])
 metadata/vert_owned = [41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52]
 
 [node name="@@43676" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
@@ -33059,7 +33060,7 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43675"), NodePath("../@@43677"), NodePath("../@@43682"), NodePath("../@@43700"), NodePath("../@@43701")]
+follow = Array[NodePath]([NodePath("../@@43675"), NodePath("../@@43677"), NodePath("../@@43682"), NodePath("../@@43700"), NodePath("../@@43701")])
 metadata/vert_owned = [53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]
 
 [node name="@@43677" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
@@ -33069,30 +33070,30 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43676"), NodePath("../@@43678"), NodePath("../@@43700"), NodePath("../@@43701"), NodePath("../@@43702")]
+follow = Array[NodePath]([NodePath("../@@43676"), NodePath("../@@43678"), NodePath("../@@43700"), NodePath("../@@43701"), NodePath("../@@43702")])
 metadata/vert_owned = [64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76]
 
 [node name="@@43678" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(19.65, 191.15)
 rotation = -0.321748
+scale = Vector2(1, 1)
 rest = Transform2D(0.948684, -0.316225, 0.316225, 0.948684, 19.65, 191.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43677"), NodePath("../@@43701"), NodePath("../@@43702"), NodePath("../@@43703")]
+follow = Array[NodePath]([NodePath("../@@43677"), NodePath("../@@43701"), NodePath("../@@43702"), NodePath("../@@43703")])
 metadata/vert_owned = [77, 78, 79, 80, 81, 82, 83, 84, 85, 86]
 
 [node name="@@43679" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(44.65, 41.15)
 rotation = 0.32175
-scale = Vector2(1, 1)
 rest = Transform2D(0.948683, 0.316227, -0.316227, 0.948683, 44.65, 41.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43680"), NodePath("../@@43683"), NodePath("../@@43684"), NodePath("../@@43685")]
+follow = Array[NodePath]([NodePath("../@@43680"), NodePath("../@@43683"), NodePath("../@@43684"), NodePath("../@@43685")])
 metadata/vert_owned = [87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97]
 
 [node name="@@43680" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
@@ -33103,7 +33104,7 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43674"), NodePath("../@@43679"), NodePath("../@@43681"), NodePath("../@@43684"), NodePath("../@@43685"), NodePath("../@@43686")]
+follow = Array[NodePath]([NodePath("../@@43674"), NodePath("../@@43679"), NodePath("../@@43681"), NodePath("../@@43684"), NodePath("../@@43685"), NodePath("../@@43686")])
 metadata/vert_owned = [98, 99, 100, 101, 102]
 
 [node name="@@43681" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
@@ -33114,30 +33115,30 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43674"), NodePath("../@@43675"), NodePath("../@@43680"), NodePath("../@@43682"), NodePath("../@@43685"), NodePath("../@@43686"), NodePath("../@@43687")]
+follow = Array[NodePath]([NodePath("../@@43674"), NodePath("../@@43675"), NodePath("../@@43680"), NodePath("../@@43682"), NodePath("../@@43685"), NodePath("../@@43686"), NodePath("../@@43687")])
 metadata/vert_owned = [103, 104, 105, 106, 107, 108, 109, 110]
 
 [node name="@@43682" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(44.65, 116.15)
 rotation = 1.66234
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0914124, 0.995813, -0.995813, -0.0914124, 44.65, 116.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43674"), NodePath("../@@43675"), NodePath("../@@43676"), NodePath("../@@43681"), NodePath("../@@43686"), NodePath("../@@43687"), NodePath("../@@43700"), NodePath("../@@43704")]
+follow = Array[NodePath]([NodePath("../@@43674"), NodePath("../@@43675"), NodePath("../@@43676"), NodePath("../@@43681"), NodePath("../@@43686"), NodePath("../@@43687"), NodePath("../@@43700"), NodePath("../@@43704")])
 metadata/vert_owned = [111, 112, 113, 114, 115]
 
 [node name="@@43683" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(69.65, 16.15)
 rotation = 1.24905
-scale = Vector2(1, 1)
 rest = Transform2D(0.316227, 0.948684, -0.948684, 0.316227, 69.65, 16.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43679"), NodePath("../@@43684"), NodePath("../@@43688"), NodePath("../@@43689")]
+follow = Array[NodePath]([NodePath("../@@43679"), NodePath("../@@43684"), NodePath("../@@43688"), NodePath("../@@43689")])
 metadata/vert_owned = [116, 117, 118, 119, 120, 121, 122, 123]
 
 [node name="@@43684" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
@@ -33149,53 +33150,53 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43679"), NodePath("../@@43680"), NodePath("../@@43683"), NodePath("../@@43685"), NodePath("../@@43688"), NodePath("../@@43689"), NodePath("../@@43690")]
+follow = Array[NodePath]([NodePath("../@@43679"), NodePath("../@@43680"), NodePath("../@@43683"), NodePath("../@@43685"), NodePath("../@@43688"), NodePath("../@@43689"), NodePath("../@@43690")])
 metadata/vert_owned = [124, 125, 126, 127, 128]
 
 [node name="@@43685" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(69.65, 66.15)
 rotation = 1.66234
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0914124, 0.995813, -0.995813, -0.0914124, 69.65, 66.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43679"), NodePath("../@@43680"), NodePath("../@@43681"), NodePath("../@@43684"), NodePath("../@@43686"), NodePath("../@@43689"), NodePath("../@@43690"), NodePath("../@@43691")]
+follow = Array[NodePath]([NodePath("../@@43679"), NodePath("../@@43680"), NodePath("../@@43681"), NodePath("../@@43684"), NodePath("../@@43686"), NodePath("../@@43689"), NodePath("../@@43690"), NodePath("../@@43691")])
 metadata/vert_owned = [129, 130, 131, 132, 133, 134]
 
 [node name="@@43686" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(69.65, 91.15)
 rotation = 1.66233
-scale = Vector2(1, 1)
 rest = Transform2D(-0.0914094, 0.995813, -0.995813, -0.0914094, 69.65, 91.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43680"), NodePath("../@@43681"), NodePath("../@@43682"), NodePath("../@@43685"), NodePath("../@@43687"), NodePath("../@@43690"), NodePath("../@@43691"), NodePath("../@@43692")]
+follow = Array[NodePath]([NodePath("../@@43680"), NodePath("../@@43681"), NodePath("../@@43682"), NodePath("../@@43685"), NodePath("../@@43687"), NodePath("../@@43690"), NodePath("../@@43691"), NodePath("../@@43692")])
 metadata/vert_owned = [135, 136, 137, 138, 139, 140]
 
 [node name="@@43687" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(69.65, 116.15)
 rotation = 1.66233
-scale = Vector2(1, 1)
 rest = Transform2D(-0.0914094, 0.995813, -0.995813, -0.0914094, 69.65, 116.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43681"), NodePath("../@@43682"), NodePath("../@@43686"), NodePath("../@@43691"), NodePath("../@@43692"), NodePath("../@@43700"), NodePath("../@@43704"), NodePath("../@@43709")]
+follow = Array[NodePath]([NodePath("../@@43681"), NodePath("../@@43682"), NodePath("../@@43686"), NodePath("../@@43691"), NodePath("../@@43692"), NodePath("../@@43700"), NodePath("../@@43704"), NodePath("../@@43709")])
 metadata/vert_owned = [141, 142, 143, 144, 145]
 
 [node name="@@43688" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(94.65, 16.15)
 rotation = 1.89254
+scale = Vector2(1, 1)
 rest = Transform2D(-0.316225, 0.948684, -0.948684, -0.316225, 94.65, 16.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43683"), NodePath("../@@43684"), NodePath("../@@43689"), NodePath("../@@43693")]
+follow = Array[NodePath]([NodePath("../@@43683"), NodePath("../@@43684"), NodePath("../@@43689"), NodePath("../@@43693")])
 metadata/vert_owned = [146, 147, 148, 149, 150, 151, 152, 153, 154, 155]
 
 [node name="@@43689" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
@@ -33207,87 +33208,88 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43683"), NodePath("../@@43684"), NodePath("../@@43685"), NodePath("../@@43688"), NodePath("../@@43690"), NodePath("../@@43693"), NodePath("../@@43694")]
+follow = Array[NodePath]([NodePath("../@@43683"), NodePath("../@@43684"), NodePath("../@@43685"), NodePath("../@@43688"), NodePath("../@@43690"), NodePath("../@@43693"), NodePath("../@@43694")])
 metadata/vert_owned = [156, 157, 158, 159, 160, 161, 162]
 
 [node name="@@43690" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(94.65, 66.15)
 rotation = 1.66234
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0914124, 0.995813, -0.995813, -0.0914124, 94.65, 66.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43684"), NodePath("../@@43685"), NodePath("../@@43686"), NodePath("../@@43689"), NodePath("../@@43691"), NodePath("../@@43693"), NodePath("../@@43694"), NodePath("../@@43695")]
+follow = Array[NodePath]([NodePath("../@@43684"), NodePath("../@@43685"), NodePath("../@@43686"), NodePath("../@@43689"), NodePath("../@@43691"), NodePath("../@@43693"), NodePath("../@@43694"), NodePath("../@@43695")])
 metadata/vert_owned = [163, 164, 165, 166, 167, 168, 169]
 
 [node name="@@43691" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(94.65, 91.15)
 rotation = 1.66234
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0914124, 0.995813, -0.995813, -0.0914124, 94.65, 91.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43685"), NodePath("../@@43686"), NodePath("../@@43687"), NodePath("../@@43690"), NodePath("../@@43692"), NodePath("../@@43694"), NodePath("../@@43695"), NodePath("../@@43696")]
+follow = Array[NodePath]([NodePath("../@@43685"), NodePath("../@@43686"), NodePath("../@@43687"), NodePath("../@@43690"), NodePath("../@@43692"), NodePath("../@@43694"), NodePath("../@@43695"), NodePath("../@@43696")])
 metadata/vert_owned = [170, 171, 172, 173]
 
 [node name="@@43692" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(94.65, 116.15)
 rotation = 1.66233
-scale = Vector2(1, 1)
 rest = Transform2D(-0.0914094, 0.995813, -0.995813, -0.0914094, 94.65, 116.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43686"), NodePath("../@@43687"), NodePath("../@@43691"), NodePath("../@@43695"), NodePath("../@@43696"), NodePath("../@@43704"), NodePath("../@@43709"), NodePath("../@@43714")]
+follow = Array[NodePath]([NodePath("../@@43686"), NodePath("../@@43687"), NodePath("../@@43691"), NodePath("../@@43695"), NodePath("../@@43696"), NodePath("../@@43704"), NodePath("../@@43709"), NodePath("../@@43714")])
 metadata/vert_owned = [174, 175, 176, 177, 178, 179, 180]
 
 [node name="@@43693" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(119.65, 41.15)
 rotation = 2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707106, 0.707108, -0.707108, -0.707106, 119.65, 41.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43688"), NodePath("../@@43689"), NodePath("../@@43690"), NodePath("../@@43694"), NodePath("../@@43697")]
+follow = Array[NodePath]([NodePath("../@@43688"), NodePath("../@@43689"), NodePath("../@@43690"), NodePath("../@@43694"), NodePath("../@@43697")])
 metadata/vert_owned = [181, 182, 183, 184, 185, 186, 187, 188, 189, 190]
 
 [node name="@@43694" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(119.65, 66.15)
 rotation = 2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, 0.707107, -0.707107, -0.707107, 119.65, 66.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43689"), NodePath("../@@43690"), NodePath("../@@43691"), NodePath("../@@43693"), NodePath("../@@43695"), NodePath("../@@43697"), NodePath("../@@43698")]
+follow = Array[NodePath]([NodePath("../@@43689"), NodePath("../@@43690"), NodePath("../@@43691"), NodePath("../@@43693"), NodePath("../@@43695"), NodePath("../@@43697"), NodePath("../@@43698")])
 metadata/vert_owned = [191, 192, 193, 194, 195, 196]
 
 [node name="@@43695" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(119.65, 91.15)
 rotation = 1.66234
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0914124, 0.995813, -0.995813, -0.0914124, 119.65, 91.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43690"), NodePath("../@@43691"), NodePath("../@@43692"), NodePath("../@@43694"), NodePath("../@@43696"), NodePath("../@@43697"), NodePath("../@@43698"), NodePath("../@@43699")]
+follow = Array[NodePath]([NodePath("../@@43690"), NodePath("../@@43691"), NodePath("../@@43692"), NodePath("../@@43694"), NodePath("../@@43696"), NodePath("../@@43697"), NodePath("../@@43698"), NodePath("../@@43699")])
 metadata/vert_owned = [197, 198, 199, 200, 201, 202, 203]
 
 [node name="@@43696" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(119.65, 116.15)
 rotation = 1.66234
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0914124, 0.995813, -0.995813, -0.0914124, 119.65, 116.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43691"), NodePath("../@@43692"), NodePath("../@@43695"), NodePath("../@@43698"), NodePath("../@@43699"), NodePath("../@@43709"), NodePath("../@@43714"), NodePath("../@@43719")]
+follow = Array[NodePath]([NodePath("../@@43691"), NodePath("../@@43692"), NodePath("../@@43695"), NodePath("../@@43698"), NodePath("../@@43699"), NodePath("../@@43709"), NodePath("../@@43714"), NodePath("../@@43719")])
 metadata/vert_owned = [204, 205, 206, 207, 208, 209, 210]
 
 [node name="@@43697" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
@@ -33299,7 +33301,7 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43693"), NodePath("../@@43694"), NodePath("../@@43695"), NodePath("../@@43698")]
+follow = Array[NodePath]([NodePath("../@@43693"), NodePath("../@@43694"), NodePath("../@@43695"), NodePath("../@@43698")])
 metadata/vert_owned = [211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222]
 
 [node name="@@43698" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
@@ -33310,41 +33312,42 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43694"), NodePath("../@@43695"), NodePath("../@@43696"), NodePath("../@@43697"), NodePath("../@@43699"), NodePath("../@@43723")]
+follow = Array[NodePath]([NodePath("../@@43694"), NodePath("../@@43695"), NodePath("../@@43696"), NodePath("../@@43697"), NodePath("../@@43699"), NodePath("../@@43723")])
 metadata/vert_owned = [223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234]
 
 [node name="@@43699" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(144.65, 116.15)
 rotation = 2.35618
+scale = Vector2(1, 1)
 rest = Transform2D(-0.707098, 0.707116, -0.707116, -0.707098, 144.65, 116.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43695"), NodePath("../@@43696"), NodePath("../@@43698"), NodePath("../@@43714"), NodePath("../@@43719"), NodePath("../@@43723"), NodePath("../@@43724")]
+follow = Array[NodePath]([NodePath("../@@43695"), NodePath("../@@43696"), NodePath("../@@43698"), NodePath("../@@43714"), NodePath("../@@43719"), NodePath("../@@43723"), NodePath("../@@43724")])
 metadata/vert_owned = [235, 236, 237, 238, 239, 240]
 
 [node name="@@43700" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(44.65, 141.15)
 rotation = 1.66234
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0914124, 0.995813, -0.995813, -0.0914124, 44.65, 141.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43675"), NodePath("../@@43676"), NodePath("../@@43677"), NodePath("../@@43682"), NodePath("../@@43687"), NodePath("../@@43701"), NodePath("../@@43704"), NodePath("../@@43705")]
+follow = Array[NodePath]([NodePath("../@@43675"), NodePath("../@@43676"), NodePath("../@@43677"), NodePath("../@@43682"), NodePath("../@@43687"), NodePath("../@@43701"), NodePath("../@@43704"), NodePath("../@@43705")])
 metadata/vert_owned = [241, 242, 243, 244, 245, 246]
 
 [node name="@@43701" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(44.65, 166.15)
 rotation = 1.66233
-scale = Vector2(1, 1)
 rest = Transform2D(-0.0914094, 0.995813, -0.995813, -0.0914094, 44.65, 166.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43676"), NodePath("../@@43677"), NodePath("../@@43678"), NodePath("../@@43700"), NodePath("../@@43702"), NodePath("../@@43704"), NodePath("../@@43705"), NodePath("../@@43706")]
+follow = Array[NodePath]([NodePath("../@@43676"), NodePath("../@@43677"), NodePath("../@@43678"), NodePath("../@@43700"), NodePath("../@@43702"), NodePath("../@@43704"), NodePath("../@@43705"), NodePath("../@@43706")])
 metadata/vert_owned = [247, 248, 249, 250, 251, 252]
 
 [node name="@@43702" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
@@ -33355,7 +33358,7 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43677"), NodePath("../@@43678"), NodePath("../@@43701"), NodePath("../@@43703"), NodePath("../@@43705"), NodePath("../@@43706"), NodePath("../@@43707")]
+follow = Array[NodePath]([NodePath("../@@43677"), NodePath("../@@43678"), NodePath("../@@43701"), NodePath("../@@43703"), NodePath("../@@43705"), NodePath("../@@43706"), NodePath("../@@43707")])
 metadata/vert_owned = [253, 254, 255, 256, 257, 258]
 
 [node name="@@43703" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
@@ -33366,41 +33369,42 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43678"), NodePath("../@@43702"), NodePath("../@@43706"), NodePath("../@@43707"), NodePath("../@@43708")]
+follow = Array[NodePath]([NodePath("../@@43678"), NodePath("../@@43702"), NodePath("../@@43706"), NodePath("../@@43707"), NodePath("../@@43708")])
 metadata/vert_owned = [259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270]
 
 [node name="@@43704" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(69.65, 141.15)
 rotation = 1.66234
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0914124, 0.995813, -0.995813, -0.0914124, 69.65, 141.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43682"), NodePath("../@@43687"), NodePath("../@@43692"), NodePath("../@@43700"), NodePath("../@@43701"), NodePath("../@@43705"), NodePath("../@@43709"), NodePath("../@@43710")]
+follow = Array[NodePath]([NodePath("../@@43682"), NodePath("../@@43687"), NodePath("../@@43692"), NodePath("../@@43700"), NodePath("../@@43701"), NodePath("../@@43705"), NodePath("../@@43709"), NodePath("../@@43710")])
 metadata/vert_owned = [271, 272, 273, 274, 275, 276, 277]
 
 [node name="@@43705" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(69.65, 166.15)
 rotation = 1.66234
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0914124, 0.995813, -0.995813, -0.0914124, 69.65, 166.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43700"), NodePath("../@@43701"), NodePath("../@@43702"), NodePath("../@@43704"), NodePath("../@@43706"), NodePath("../@@43709"), NodePath("../@@43710"), NodePath("../@@43711")]
+follow = Array[NodePath]([NodePath("../@@43700"), NodePath("../@@43701"), NodePath("../@@43702"), NodePath("../@@43704"), NodePath("../@@43706"), NodePath("../@@43709"), NodePath("../@@43710"), NodePath("../@@43711")])
 metadata/vert_owned = [278, 279, 280, 281, 282]
 
 [node name="@@43706" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(69.65, 191.15)
 rotation = 1.66233
-scale = Vector2(1, 1)
 rest = Transform2D(-0.0914094, 0.995813, -0.995813, -0.0914094, 69.65, 191.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43701"), NodePath("../@@43702"), NodePath("../@@43703"), NodePath("../@@43705"), NodePath("../@@43707"), NodePath("../@@43710"), NodePath("../@@43711"), NodePath("../@@43712")]
+follow = Array[NodePath]([NodePath("../@@43701"), NodePath("../@@43702"), NodePath("../@@43703"), NodePath("../@@43705"), NodePath("../@@43707"), NodePath("../@@43710"), NodePath("../@@43711"), NodePath("../@@43712")])
 metadata/vert_owned = [283, 284, 285, 286, 287, 288]
 
 [node name="@@43707" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
@@ -33411,7 +33415,7 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43702"), NodePath("../@@43703"), NodePath("../@@43706"), NodePath("../@@43708"), NodePath("../@@43711"), NodePath("../@@43712"), NodePath("../@@43713")]
+follow = Array[NodePath]([NodePath("../@@43702"), NodePath("../@@43703"), NodePath("../@@43706"), NodePath("../@@43708"), NodePath("../@@43711"), NodePath("../@@43712"), NodePath("../@@43713")])
 metadata/vert_owned = [289, 290, 291, 292, 293, 294]
 
 [node name="@@43708" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
@@ -33422,52 +33426,54 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43703"), NodePath("../@@43707"), NodePath("../@@43712"), NodePath("../@@43713")]
+follow = Array[NodePath]([NodePath("../@@43703"), NodePath("../@@43707"), NodePath("../@@43712"), NodePath("../@@43713")])
 metadata/vert_owned = [295, 296, 297, 298, 299, 300, 301]
 
 [node name="@@43709" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(94.65, 141.15)
 rotation = 1.66234
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0914124, 0.995813, -0.995813, -0.0914124, 94.65, 141.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43687"), NodePath("../@@43692"), NodePath("../@@43696"), NodePath("../@@43704"), NodePath("../@@43705"), NodePath("../@@43710"), NodePath("../@@43714"), NodePath("../@@43715")]
+follow = Array[NodePath]([NodePath("../@@43687"), NodePath("../@@43692"), NodePath("../@@43696"), NodePath("../@@43704"), NodePath("../@@43705"), NodePath("../@@43710"), NodePath("../@@43714"), NodePath("../@@43715")])
 metadata/vert_owned = [302, 303, 304, 305, 306, 307]
 
 [node name="@@43710" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(94.65, 166.15)
 rotation = 1.66234
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0914124, 0.995813, -0.995813, -0.0914124, 94.65, 166.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43704"), NodePath("../@@43705"), NodePath("../@@43706"), NodePath("../@@43709"), NodePath("../@@43711"), NodePath("../@@43714"), NodePath("../@@43715"), NodePath("../@@43716")]
+follow = Array[NodePath]([NodePath("../@@43704"), NodePath("../@@43705"), NodePath("../@@43706"), NodePath("../@@43709"), NodePath("../@@43711"), NodePath("../@@43714"), NodePath("../@@43715"), NodePath("../@@43716")])
 metadata/vert_owned = [308, 309, 310, 311, 312, 313, 314]
 
 [node name="@@43711" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(94.65, 191.15)
 rotation = 1.66233
-scale = Vector2(1, 1)
 rest = Transform2D(-0.0914094, 0.995813, -0.995813, -0.0914094, 94.65, 191.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43705"), NodePath("../@@43706"), NodePath("../@@43707"), NodePath("../@@43710"), NodePath("../@@43712"), NodePath("../@@43715"), NodePath("../@@43716"), NodePath("../@@43717")]
+follow = Array[NodePath]([NodePath("../@@43705"), NodePath("../@@43706"), NodePath("../@@43707"), NodePath("../@@43710"), NodePath("../@@43712"), NodePath("../@@43715"), NodePath("../@@43716"), NodePath("../@@43717")])
 metadata/vert_owned = [315, 316, 317, 318, 319, 320]
 
 [node name="@@43712" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(94.65, 216.15)
 rotation = 1.66234
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0914118, 0.995813, -0.995813, -0.0914118, 94.65, 216.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43706"), NodePath("../@@43707"), NodePath("../@@43708"), NodePath("../@@43711"), NodePath("../@@43713"), NodePath("../@@43716"), NodePath("../@@43717"), NodePath("../@@43718")]
+follow = Array[NodePath]([NodePath("../@@43706"), NodePath("../@@43707"), NodePath("../@@43708"), NodePath("../@@43711"), NodePath("../@@43713"), NodePath("../@@43716"), NodePath("../@@43717"), NodePath("../@@43718")])
 metadata/vert_owned = [321, 322, 323, 324, 325, 326]
 
 [node name="@@43713" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
@@ -33478,53 +33484,53 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43707"), NodePath("../@@43708"), NodePath("../@@43712"), NodePath("../@@43717"), NodePath("../@@43718")]
+follow = Array[NodePath]([NodePath("../@@43707"), NodePath("../@@43708"), NodePath("../@@43712"), NodePath("../@@43717"), NodePath("../@@43718")])
 metadata/vert_owned = [327, 328, 329, 330, 331]
 
 [node name="@@43714" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(119.65, 141.15)
 rotation = 1.66233
-scale = Vector2(1, 1)
 rest = Transform2D(-0.0914094, 0.995813, -0.995813, -0.0914094, 119.65, 141.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43692"), NodePath("../@@43696"), NodePath("../@@43699"), NodePath("../@@43709"), NodePath("../@@43710"), NodePath("../@@43715"), NodePath("../@@43719"), NodePath("../@@43720")]
+follow = Array[NodePath]([NodePath("../@@43692"), NodePath("../@@43696"), NodePath("../@@43699"), NodePath("../@@43709"), NodePath("../@@43710"), NodePath("../@@43715"), NodePath("../@@43719"), NodePath("../@@43720")])
 metadata/vert_owned = [332, 333, 334, 335, 336, 337]
 
 [node name="@@43715" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(119.65, 166.15)
 rotation = 1.66234
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0914124, 0.995813, -0.995813, -0.0914124, 119.65, 166.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43709"), NodePath("../@@43710"), NodePath("../@@43711"), NodePath("../@@43714"), NodePath("../@@43716"), NodePath("../@@43719"), NodePath("../@@43720"), NodePath("../@@43721")]
+follow = Array[NodePath]([NodePath("../@@43709"), NodePath("../@@43710"), NodePath("../@@43711"), NodePath("../@@43714"), NodePath("../@@43716"), NodePath("../@@43719"), NodePath("../@@43720"), NodePath("../@@43721")])
 metadata/vert_owned = [338, 339, 340, 341, 342]
 
 [node name="@@43716" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(119.65, 191.15)
 rotation = 1.66234
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0914118, 0.995813, -0.995813, -0.0914118, 119.65, 191.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43710"), NodePath("../@@43711"), NodePath("../@@43712"), NodePath("../@@43715"), NodePath("../@@43717"), NodePath("../@@43720"), NodePath("../@@43721"), NodePath("../@@43722")]
+follow = Array[NodePath]([NodePath("../@@43710"), NodePath("../@@43711"), NodePath("../@@43712"), NodePath("../@@43715"), NodePath("../@@43717"), NodePath("../@@43720"), NodePath("../@@43721"), NodePath("../@@43722")])
 metadata/vert_owned = [343, 344, 345, 346, 347]
 
 [node name="@@43717" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(119.65, 216.15)
 rotation = -2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707104, -0.70711, 0.70711, -0.707104, 119.65, 216.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43711"), NodePath("../@@43712"), NodePath("../@@43713"), NodePath("../@@43716"), NodePath("../@@43718"), NodePath("../@@43721"), NodePath("../@@43722")]
+follow = Array[NodePath]([NodePath("../@@43711"), NodePath("../@@43712"), NodePath("../@@43713"), NodePath("../@@43716"), NodePath("../@@43718"), NodePath("../@@43721"), NodePath("../@@43722")])
 metadata/vert_owned = [348, 349, 350, 351, 352, 353, 354]
 
 [node name="@@43718" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
@@ -33535,64 +33541,65 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43712"), NodePath("../@@43713"), NodePath("../@@43717"), NodePath("../@@43722")]
+follow = Array[NodePath]([NodePath("../@@43712"), NodePath("../@@43713"), NodePath("../@@43717"), NodePath("../@@43722")])
 metadata/vert_owned = [355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366]
 
 [node name="@@43719" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(144.65, 141.15)
 rotation = 1.66233
-scale = Vector2(1, 1)
 rest = Transform2D(-0.0914094, 0.995813, -0.995813, -0.0914094, 144.65, 141.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43696"), NodePath("../@@43699"), NodePath("../@@43714"), NodePath("../@@43715"), NodePath("../@@43720"), NodePath("../@@43723"), NodePath("../@@43724"), NodePath("../@@43725")]
+follow = Array[NodePath]([NodePath("../@@43696"), NodePath("../@@43699"), NodePath("../@@43714"), NodePath("../@@43715"), NodePath("../@@43720"), NodePath("../@@43723"), NodePath("../@@43724"), NodePath("../@@43725")])
 metadata/vert_owned = [367, 368, 369, 370, 371]
 
 [node name="@@43720" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(144.65, 166.15)
 rotation = 1.66233
-scale = Vector2(1, 1)
 rest = Transform2D(-0.0914094, 0.995813, -0.995813, -0.0914094, 144.65, 166.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43714"), NodePath("../@@43715"), NodePath("../@@43716"), NodePath("../@@43719"), NodePath("../@@43721"), NodePath("../@@43724"), NodePath("../@@43725"), NodePath("../@@43726")]
+follow = Array[NodePath]([NodePath("../@@43714"), NodePath("../@@43715"), NodePath("../@@43716"), NodePath("../@@43719"), NodePath("../@@43721"), NodePath("../@@43724"), NodePath("../@@43725"), NodePath("../@@43726")])
 metadata/vert_owned = [372, 373, 374, 375, 376, 377, 378]
 
 [node name="@@43721" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(144.65, 191.15)
 rotation = 1.66234
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0914124, 0.995813, -0.995813, -0.0914124, 144.65, 191.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43715"), NodePath("../@@43716"), NodePath("../@@43717"), NodePath("../@@43720"), NodePath("../@@43722"), NodePath("../@@43725"), NodePath("../@@43726"), NodePath("../@@43727")]
+follow = Array[NodePath]([NodePath("../@@43715"), NodePath("../@@43716"), NodePath("../@@43717"), NodePath("../@@43720"), NodePath("../@@43722"), NodePath("../@@43725"), NodePath("../@@43726"), NodePath("../@@43727")])
 metadata/vert_owned = [379, 380, 381, 382, 383, 384, 385]
 
 [node name="@@43722" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(144.65, 216.15)
 rotation = -2.03444
+scale = Vector2(1, 1)
 rest = Transform2D(-0.447211, -0.894428, 0.894428, -0.447211, 144.65, 216.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43716"), NodePath("../@@43717"), NodePath("../@@43718"), NodePath("../@@43721"), NodePath("../@@43726"), NodePath("../@@43727")]
+follow = Array[NodePath]([NodePath("../@@43716"), NodePath("../@@43717"), NodePath("../@@43718"), NodePath("../@@43721"), NodePath("../@@43726"), NodePath("../@@43727")])
 metadata/vert_owned = [386, 387, 388, 389, 390]
 
 [node name="@@43723" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(169.65, 116.15)
 rotation = 2.81984
+scale = Vector2(1, 1)
 rest = Transform2D(-0.948683, 0.316227, -0.316227, -0.948683, 169.65, 116.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43698"), NodePath("../@@43699"), NodePath("../@@43719"), NodePath("../@@43724")]
+follow = Array[NodePath]([NodePath("../@@43698"), NodePath("../@@43699"), NodePath("../@@43719"), NodePath("../@@43724")])
 metadata/vert_owned = [391, 392, 393, 394, 395]
 
 [node name="@@43724" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
@@ -33603,7 +33610,7 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43699"), NodePath("../@@43719"), NodePath("../@@43720"), NodePath("../@@43723"), NodePath("../@@43725")]
+follow = Array[NodePath]([NodePath("../@@43699"), NodePath("../@@43719"), NodePath("../@@43720"), NodePath("../@@43723"), NodePath("../@@43725")])
 metadata/vert_owned = [396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406]
 
 [node name="@@43725" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
@@ -33614,7 +33621,7 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43719"), NodePath("../@@43720"), NodePath("../@@43721"), NodePath("../@@43724"), NodePath("../@@43726")]
+follow = Array[NodePath]([NodePath("../@@43719"), NodePath("../@@43720"), NodePath("../@@43721"), NodePath("../@@43724"), NodePath("../@@43726")])
 metadata/vert_owned = [407, 408, 409, 410, 411]
 
 [node name="@@43726" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
@@ -33625,19 +33632,18 @@ auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43720"), NodePath("../@@43721"), NodePath("../@@43722"), NodePath("../@@43725"), NodePath("../@@43727")]
+follow = Array[NodePath]([NodePath("../@@43720"), NodePath("../@@43721"), NodePath("../@@43722"), NodePath("../@@43725"), NodePath("../@@43727")])
 metadata/vert_owned = [412, 413, 414, 415, 416, 417]
 
 [node name="@@43727" type="Bone2D" parent="BoiledEggHalf2/Skeleton2D"]
 position = Vector2(169.65, 216.15)
 rotation = -2.35619
-scale = Vector2(1, 1)
 rest = Transform2D(-0.707107, -0.707107, 0.707107, -0.707107, 169.65, 216.15)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
 script = ExtResource("2_yb506")
-follow = [NodePath("../@@43721"), NodePath("../@@43722"), NodePath("../@@43726")]
+follow = Array[NodePath]([NodePath("../@@43721"), NodePath("../@@43722"), NodePath("../@@43726")])
 metadata/vert_owned = [418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429]
 
 [node name="43674" type="RigidBody2D" parent="BoiledEggHalf2"]

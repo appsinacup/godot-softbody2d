@@ -1,41 +1,62 @@
 # ![icon](https://raw.githubusercontent.com/Ughuuu/godot-4-softbody2d/main/addons/softbody2d/plugin_icon.png) softbody2d
 
-Generates polygon outline, internal vertices, bones, rigidbodies and joints so you can turn a texture into a softbody2d.
-Based on Polygon2d Generator.
-
-![Softbody2d-1](https://i.imgur.com/49s3PcJ.gif)
-
-![Softbody2d-2](https://i.imgur.com/trg3MZW.gif)
-
 ![Softbody2d-3](https://i.imgur.com/7uCPDqB.gif)
 
 ## Introduction
 
-This addon helps you create 2d softbodies using 2d bones and circle rigidbodies technique.
-The idea is to use a Polygon2D for the main texture(this works with one texture for now).
-Then, generate a polygon with inside vertices for it so it deforms nicely.
-After that, create a Skeleton2D with Bone2D nodes that all follow the center Bone2D node.
-After that, create for each Bone2D a matching Rigidbody2D with Circle shape and joints that tie them all togheter in a web pattern.
+Create squishy Softbody2D that can simulate bouncy or deformable or breakable bodies.
 
-This tool automates that.
+If you want Breakable Softbody2D add RigidbodyScript field to `breakable_rigidbody2d.gd`(done in inspector at SoftBody2D/Rigidbody/Rigidbody Script)
+, which you can also extend.
 
-## Steps
+Add Softbody2D script to Polygon2D with texture. Click bake.
 
-1. Select a Polygon2D node.
-2. Add a SoftBody2D script to it.
-3. Click Bake Softbody
+## How non breakable softbodies work
 
-NOTE: each step can be restarted but you will lose what you are trying to generate
-(eg. if you regenerate skeleton will delete old one)
+1. Creates a huge voronoi diagram:
 
-## Tips
+![Voronoi Diagram](docs/voronoi.png)
+
+This way we have a fairly random distribution of points and we know where each region is separated
+
+![Voronoi Polygon 1](docs/voronoi_poly1.png)
+
+![Voronoi Polygon 2](docs/voronoi_poly2.png)
+
+2. Assigns it to the `Polygon2D` node as polygons that are inside initial texture:
+
+![Voronoi Polygon 2](docs/poly.png)
 
 
-- If you make circle shapes too small, things might enter between them and ruin the phisics simulation.
-- If you make everything too loose, the phisics simulation might break. Play for begining with joint damping but careful not to make it too small.
-- You can also change the softbody2d_phys.tres that is used for the shapes to further customize the softbodies.
-- Increase physics/common/physics_ticks_per_second to 240.
-- If you make the polygon increment too big or too small, it will look triangly.
+3. Create a skeleton with `Bone2D` nodes for each voronoi region that is inside the polygon.
+
+![Voronoi Skeleton](docs/skeleton.png)
+
+![Voronoi Skeleton 2](docs/skeleton-2.png)
+
+4. Assign to the `Bone2D` weights with all points of that region, and also all overlapping points from neighbouring regions. Also notes on each bone what points it contained initially from voronoi region.
+
+![Voronoi Polygon 2](docs/bones.png)
+
+![Bone Metadata](docs/bone_metadata.png)
+
+5. Set direction of each `Bone2D` to follow the middle of each neighbouring bones. This is done by `look_at_center_2d.gd` script. This one follows all neighbour bones. These are assigned when baking.
+
+6. Creates for each bone a `Rigidbody2D` with a `CollisionShape2D`(with `Circle` of radius specified in inspector) child, a `RemoteTransform2D` child that targets thte `Bone2D` position, and either `DampedSprintJoint2D` or `PinJoint2D` children that connects each other neighbour nodes(the joint type is configurable from inspector).
+
+![Rigidbodies](docs/rigidbodies.png)
+
+## For breakable softbodies
+
+If you assign to each rigidbody a `breakable_rigidbody2d.gd` script(done in inspector at SoftBody2D/Rigidbody/Rigidbody Script)
+
+1. When the joint length is too big, the joints breaks. Then, the script `breakable_rigidbody2d.gd` calls on SoftBody2D script `remove_joint` function, which changes weights for both bones to no longer have weights in other voronoi region.
+
+![Before Break](docs/before-break.png)
+![After Break](docs/after-break.png)
+
+That's it. Because of the way the bones weights are built, they have overalapping points that just need to be removed when joint is broken. Easy!
+
 
 ## Changelog
 
