@@ -16,21 +16,21 @@ extends Polygon2D
 		return false
 
 @export_group("Polygon")
-@export_range(2, 50, 1, "or_greater") var polygon_vertex_interval := 20
+@export_range(2, 50, 1, "or_greater") var polygon_vertex_interval := 30
 @export_range(0.01, 0.6, 0.05) var polygon_voronoi_interval :float= 0.15
 
 @export_group("Joint")
 @export_enum("pin", "spring") var joint_type:= "pin"
-@export_range(0, 2, 0.1, "or_greater") var joint_bias : float = 0
+@export_range(0, 2, 0.1, "or_greater") var joint_bias : float = 0.1
 @export var joint_disable_collision := false
 @export_subgroup("DampedSpringJoint")
 @export_range(0.1, 128, 0.1, "or_greater") var joint_stiffness: float = 20
 @export_range(0.1, 16, 0.1, "or_greater") var joint_damping: float = 0.7
 @export_subgroup("PinJoint")
-@export_range(0, 100, 0.1, "or_greater") var joint_softness: float = 16
+@export_range(0, 100, 0.1, "or_greater") var joint_softness: float = 80
 
 @export_group("RigidBody")
-@export_range(2, 50, 1, "or_greater") var shape_circle_radius := 30
+@export_range(2, 50, 1, "or_greater") var shape_circle_radius := 20
 @export_flags_2d_physics var rigidbody_collision_layer := 1
 @export_flags_2d_physics var rigidbody_collision_mask := 1
 @export_range(0.1, 100, 0.1, "or_more") var rigidbody_mass := 0.1
