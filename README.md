@@ -1,7 +1,5 @@
 # ![icon](https://raw.githubusercontent.com/Ughuuu/godot-4-softbody2d/main/addons/softbody2d/plugin_icon.png) softbody2d
 
-![Softbody2d-3](https://i.imgur.com/7uCPDqB.gif)
-
 ## Introduction
 
 Create squishy Softbody2D that can simulate bouncy or deformable or breakable bodies.
