@@ -5,7 +5,7 @@
 /.gitattributes export-ignore
 /.gitignore export-ignore
 /README.md export-ignore
-/LICENSE.txt export-ignore
+/LICENSE export-ignore
 /CHANGELOG.md export-ignore
 /project.godot export-ignore
 /docs/example.png export-ignore
