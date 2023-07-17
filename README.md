@@ -2,6 +2,8 @@
 
 # Introduction
 
+![Example](docs/example.png)
+
 Create 2D SoftBodies from a Texture.
 
 1. Create a SoftBody2D node, add a texture to it.
