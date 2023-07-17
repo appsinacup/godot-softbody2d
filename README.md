@@ -17,9 +17,9 @@ If you want Breakable Softbody2D add RigidbodyScript field to `breakable_rigidbo
 * Non-Breakable and Breakable softbodies
 * Pin Joint or Groove Joint
 
-## How it works
+# How it works
 
-### Polygon
+## Polygon
 
 1. Creates edge vertices from texture.
 
@@ -33,12 +33,12 @@ If you want Breakable Softbody2D add RigidbodyScript field to `breakable_rigidbo
 
 4. Assigns these polygons to the `Polygon2D.polygon` and `Polygon2D.polygons`.
 
-### Skeleton2D
+## Skeleton2D
 
 1. Creates a `Skeleton2D` child.
 2. Creates a set of `Bone2D`` nodes of the `Skeleton2D`, each having a voronoi region and assign correct weights to them.
 
-### RigidBody2D
+## RigidBody2D
 
 1. Creates a set of `RigidBody2D` nodes, one for each voronoi region.
 2. Creates for each `Bone2D` a `Rigidody2D` with a `CollisionShape2D` (with a `CircleShape2D` shape) child, a `RemoteTransform2D` child that targets the `Bone2D` position, and either `DampedSprintJoint2D` or `PinJoint2D` children that connects each other neighbour nodes.
@@ -54,6 +54,6 @@ If you assign to each rigidbody a `breakable_rigidbody2d.gd` script(done in insp
 
 That's it. Because of the way the bones weights are built, they have overlapping points that just need to be removed when joint is broken. Easy!
 
-## Credits
+# Credits
 
 Uses parts of code from (godot-chunked-voronoi-generator)[https://github.com/arcanewright/godot-chunked-voronoi-generator]
