@@ -8,3 +8,6 @@
 /LICENSE.txt export-ignore
 /CHANGELOG.md export-ignore
 /project.godot export-ignore
+/docs/softbody.png export-ignore
+/docs/voronoi_cut.png export-ignore
+/docs/voronoi_object.png export-ignore

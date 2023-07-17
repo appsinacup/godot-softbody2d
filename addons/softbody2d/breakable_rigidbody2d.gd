@@ -6,7 +6,7 @@ extends RigidBody2D
 var hinges_bodies:= Dictionary()
 var hinges_distances := Dictionary()
 var softbody: SoftBody2D
-var dist_to_break := pow(200,2)
+var dist_to_break := pow(80,2)
 
 func _ready():
 	for hinge in hinges:
