@@ -1,39 +1,63 @@
 @tool
 @icon("res://addons/softbody2d/plugin_icon.png")
-class_name SoftBody2D
 extends Polygon2D
 
+## A 2D Softbody.
+##
+## Models an object as a softbody by creating set of circles connected with joints.[br]
+## 1. The object is defined by a texture, which is split into voronoi regions. Each region is then assigned a circle.
+## 2. Circles that are close to each other are then conencted with joints
+##
+## @tutorial: https://github.com/Ughuuu/godot-4-softbody2d/tree/main
+
+
+class_name SoftBody2D
+
+
+
+## Bake the softbody.[br]
+## 1. Create edge vertices from texture.[br]
+##  - Texture Edge Epsilon controls how accurately the polygons cover the bitmap: a lower epsilon corresponds to more points in the polygons.
+## [codeblock]
+## test
+## [/codeblock]
 @export var bake_softbody := false :
 	set (value):
-		create_softbody2d()
+		if value != false:
+			create_softbody2d()
 	get:
 		return false
 
 @export var clear_softbody := false :
 	set (value):
-		clear_softbody2d()
+		if value != false:
+			clear_softbody2d()
 	get:
 		return false
 
+@export_group("Texture Edge Polygon")
+@export var epsilon: float = 2.0
 @export_group("Polygon")
-@export_range(2, 50, 1, "or_greater") var polygon_vertex_interval := 30
+@export_range(2, 50, 1, "or_greater") var polygon_vertex_interval := 20
 @export_range(0.01, 0.6, 0.05) var polygon_voronoi_interval :float= 0.15
+@export var polygon_offset_x := 0.0
+@export var polygon_offset_y := 0.0
 
 @export_group("Joint")
 @export_enum("pin", "spring") var joint_type:= "pin"
-@export_range(0, 2, 0.1, "or_greater") var joint_bias : float = 0.1
+@export_range(0, 2, 0.1, "or_greater") var joint_bias : float = 0
 @export var joint_disable_collision := false
 @export_subgroup("DampedSpringJoint")
 @export_range(0.1, 128, 0.1, "or_greater") var joint_stiffness: float = 20
 @export_range(0.1, 16, 0.1, "or_greater") var joint_damping: float = 0.7
 @export_subgroup("PinJoint")
-@export_range(0, 100, 0.1, "or_greater") var joint_softness: float = 80
+@export_range(0, 100, 0.1, "or_greater") var joint_softness: float = 16
 
 @export_group("RigidBody")
-@export_range(2, 50, 1, "or_greater") var shape_circle_radius := 20
+@export_range(2, 50, 1, "or_greater") var shape_circle_radius := 30
 @export_flags_2d_physics var rigidbody_collision_layer := 1
 @export_flags_2d_physics var rigidbody_collision_mask := 1
-@export_range(0.1, 100, 0.1, "or_more") var rigidbody_mass := 0.1
+@export_range(0, 100) var rigidbody_mass := 0.01
 @export var rigidbody_script : Script
 @export var rigidbody_pickable := false
 @export var rigidbody_lock_rotation := false
@@ -76,9 +100,9 @@ func _get_polygon_verts():
 func _create_external_vertices_from_texture():
 	skeleton = ""
 	var bitmap = BitMap.new()
-	bitmap.create_from_image_alpha(texture.get_image())
+	bitmap.create_from_image_alpha(texture.get_image(), 0.01)
 	var rect = Rect2(0, 0, texture.get_width(), texture.get_height())
-	var poly = bitmap.opaque_to_polygons(rect)
+	var poly = bitmap.opaque_to_polygons(rect, 2)
 	set_polygon(PackedVector2Array(poly[0]))
 	set_uv(PackedVector2Array([]))
 
@@ -103,7 +127,8 @@ func _generate_points_voronoi(lim_min: Vector2, lim_max: Vector2, polygon_verts)
 	var polygon_size = lim_max - lim_min
 	var polygon_num = Vector2(int(polygon_size.x / polygon_vertex_interval), int(polygon_size.y / polygon_vertex_interval))
 	var voronoi = Voronoi2D.generateVoronoi(polygon_size, polygon_vertex_interval, \
-		Vector2(polygon_voronoi_interval, polygon_voronoi_interval) + lim_min + polygon_size/2, polygon_voronoi_interval)
+		lim_min + Vector2(polygon_offset_x, polygon_offset_y) - \
+		Vector2(polygon_vertex_interval,polygon_vertex_interval)/2, polygon_voronoi_interval)
 	
 	var polygons = []
 	var new_voronoi = []
@@ -271,9 +296,12 @@ func _create_bones(voronoi) -> Array[Bone2D]:
 	var bones: Array[Bone2D] = []
 	var polygon_limits = _calculate_polygon_limits()
 	var polygon_verts = _get_polygon_verts()
+	var bone_idx = 0
 	for each in voronoi:
 		var bone := Bone2D.new()
 		var point = each[0]
+		bone.name = "BoneFromRegion-"+str(bone_idx)
+		bone_idx += 1
 		bone.global_position = point
 		bone.set_autocalculate_length_and_angle(false)
 		bone.set_length(polygon_vertex_interval)
@@ -348,6 +376,7 @@ func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D):
 	var shape = CircleShape2D.new()
 	shape.radius = shape_circle_radius / 2.0
 	collision_shape.shape = shape
+	collision_shape.name = "CircleShape2D"
 	rigid_body.mass = rigidbody_mass
 	rigid_body.global_position = skeleton.transform * bone.position
 	rigid_body.physics_material_override = physics_material_override
@@ -358,6 +387,7 @@ func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D):
 	rigid_body.lock_rotation = rigidbody_lock_rotation
 	rigid_body.set_script(rigidbody_script)
 	var remote_transform = RemoteTransform2D.new()
+	remote_transform.name = "RemoteTransform2D"
 	rigid_body.add_child(remote_transform)
 	remote_transform.remote_path = "../../" + skeleton.name + "/" + bone.name
 	remote_transform.update_rotation = false
@@ -388,6 +418,7 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D]):
 			connected_nodes[idx_a].append(node_b)
 			if joint_type == "pin":
 				var joint = PinJoint2D.new()
+				joint.name = "PinJoint2D-"+node_a.name+"-"+node_b.name
 				joint.node_a = ".."
 				joint.node_b = "../../" + node_b.name
 				joint.softness = joint_softness
@@ -431,10 +462,11 @@ var _bones_array
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if get_child_count() == 0:
-		print("SoftBody2D not initialized")
-		return
-	_bones_array = get_node(skeleton).get_children().filter(func(node): return node is Bone2D)
+	if !Engine.is_editor_hint():
+		if get_child_count() == 0:
+			push_warning("Softbody2d not created")
+			return
+		_bones_array = get_node(skeleton).get_children().filter(func(node): return node is Bone2D)
 
 func remove_joint(bone_a_name, bone_b_name):
 	var polygon_weights: Array[float] = []

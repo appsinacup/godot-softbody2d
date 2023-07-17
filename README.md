@@ -2,12 +2,25 @@
 
 ## Introduction
 
-Create squishy Softbody2D that can simulate bouncy or deformable or breakable bodies.
+Create 2D SoftBodies from a Texture.
+
+1. Create a Polygon2D node, add a texture to it.
+2. Then add a SoftBody2D script. Then click bake.
+
+This will create multiple rigidbodies for each region of the object.
 
 If you want Breakable Softbody2D add RigidbodyScript field to `breakable_rigidbody2d.gd`(done in inspector at SoftBody2D/Rigidbody/Rigidbody Script)
 , which you can also extend.
 
-Add Softbody2D script to Polygon2D with texture. Click bake.
+## Features
+
+* Non-Breakable SoftBody
+* Breakable SoftBody
+* Pin Joint
+* Groove Joint
+* Configure Polygon Vertex Interval
+* Two Types of Joints supported(pin and groovy) to create different effects.
+
 
 ## How non breakable softbodies work
 
@@ -55,41 +68,6 @@ If you assign to each rigidbody a `breakable_rigidbody2d.gd` script(done in insp
 
 That's it. Because of the way the bones weights are built, they have overalapping points that just need to be removed when joint is broken. Easy!
 
+## Credits
 
-## Changelog
-
-### Version 0.8
-
-- Fix issue that occured when breaking softbody and bone wouldn't look in correct direction. Also improved how bones look for direction in general.
-
-### Version 0.7
-
-- Use also PinJoin2D for joints to obtain more bouncy softbodies. Also let option to generate with old SpringJoint.
-
-### Version 0.6
-
-- Change how softbodies are generated. Use voronoi for generating polygons, then store polygons for each bone. This is used for cutting softbodies.
-- There is now option to cut softbodies, making them breakable. This is done by adding breakable_rigidboy2d.gd script(you can also extend it). Still wip.
-
-### Version 0.5
-
-- Create just one script, SoftBody2D that you can put on a Polygon2D that generates all nodes below.
-
-### Version 0.4
-
-- Fix bug where if object is rotated weight generation isn't correct.
-
-### Version 0.3
-
-- Add more tips on how to get a good simulation
-- Fix case where if root object is rotated, generation doesn't work.
-
-### Version 0.2
-
-- Fix bug with version 4.0 RC3.
-- Add more options, make defaults more stable.
-- Add more docs on how to use.
-
-### Version 0.1
-
-- Initial Release
+Uses parts of code from (godot-chunked-voronoi-generator)[https://github.com/arcanewright/godot-chunked-voronoi-generator]

@@ -12,3 +12,5 @@ export_presets.cfg
 data_*/
 **/.DS_Store
 *.avi
+
+*.import

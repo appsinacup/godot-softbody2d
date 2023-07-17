@@ -131,7 +131,8 @@ static func generateVoronoi(size: Vector2, distBtwPoints: float, start:= Vector2
 			0.3, 0, distBtwPoints, edgeDist)
 			for each in voronoi:
 				var newPolyPoints := PackedVector2Array();
-				var offset = Vector2(chunkLoc.x*sizePerChunk*distBtwPoints,chunkLoc.y*sizePerChunk*distBtwPoints) + start
+				var offset = Vector2(chunkLoc.x*sizePerChunk*distBtwPoints,\
+				chunkLoc.y*sizePerChunk*distBtwPoints) + start
 				for point in each[1]:
 					newPolyPoints.append(point + offset);
 				polygons.append([each[0] + offset, newPolyPoints])

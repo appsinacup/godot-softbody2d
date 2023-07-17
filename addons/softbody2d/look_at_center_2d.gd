@@ -15,7 +15,9 @@ func look_at_nodes():
 		active = false
 
 # follow has to be a valid node
-func _physics_process(delta):
+func _process(delta):
+	if Engine.get_process_frames() % 10 != 0:
+		return
 	if not active:
 		return
 	if _follow_nodes.size() == 0:
@@ -24,11 +26,11 @@ func _physics_process(delta):
 		look_at(get_dir_to_follow(global_position, _follow_nodes))
 
 static func get_dir_to_follow(pos, follow_nodes: Array) -> Vector2:
-	var follow_dir = Vector2()
+	var follow_dir = Vector2(10,10)
 	for to_follow in follow_nodes:
 		follow_dir += to_follow.global_position
 	if follow_nodes.size() >= 8:
-		return pos + Vector2(10,0)
+		return pos + follow_dir
 	return follow_dir/follow_nodes.size()
 
 func filter_out(bone_b):

@@ -1,3 +1,4 @@
+class_name BreakableRigidbody2D
 extends RigidBody2D
 
 @onready var hinges := get_children().filter(func(node): return node is Joint2D)
@@ -5,20 +6,23 @@ extends RigidBody2D
 var hinges_bodies:= Dictionary()
 var hinges_distances := Dictionary()
 var softbody: SoftBody2D
+var dist_to_break := pow(200,2)
 
 func _ready():
 	for hinge in hinges:
 		var joint := hinge as Joint2D
 		hinges_bodies[joint.node_a] = get_node(joint.node_a.get_concatenated_names().substr(1)) as RigidBody2D
 		hinges_bodies[joint.node_b] = get_node(joint.node_b.get_concatenated_names().substr(1)) as RigidBody2D
-		hinges_distances[joint.name] = hinges_bodies[joint.node_a].global_position.distance_to(hinges_bodies[joint.node_b].global_position)
+		hinges_distances[joint.name] = hinges_bodies[joint.node_a].global_position.distance_squared_to(hinges_bodies[joint.node_b].global_position)
 	softbody = (get_parent() as SoftBody2D)
 
 func is_hinge_broken(joint: Joint2D):
-	return hinges_distances[joint.name] * 1.8 < hinges_bodies[joint.node_a].position.distance_to(hinges_bodies[joint.node_b].position)
+	return hinges_distances[joint.name]  + dist_to_break < hinges_bodies[joint.node_a].position.distance_squared_to(hinges_bodies[joint.node_b].position)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _process(delta):
+	if Engine.get_process_frames() % 3 != 0:
+		return
 	if is_queued_for_deletion():
 		return
 	var to_remove_hinge = []
