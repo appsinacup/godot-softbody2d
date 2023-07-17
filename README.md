@@ -11,13 +11,17 @@ Create 2D SoftBodies from a Texture.
 
 This will create multiple rigidbodies for each region of the object.
 
-If you want Breakable Softbody2D add RigidbodyScript field to `breakable_rigidbody2d.gd` (done in inspector at SoftBody2D/Rigidbody/Rigidbody Script)
-, which you can also extend.
+# How to install
+
+Download the sourcecode and move only the addons folder it contains into your project folder addons folder. 
 
 # Features
 
 * Non-Breakable and Breakable softbodies
 * Pin Joint or Groove Joint
+
+If you want Breakable Softbody2D add RigidbodyScript field to `breakable_rigidbody2d.gd` (done in inspector at SoftBody2D/Rigidbody/Rigidbody Script)
+, which you can also extend.
 
 # How it works
 
