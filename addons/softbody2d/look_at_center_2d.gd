@@ -16,7 +16,7 @@ func look_at_nodes():
 
 # follow has to be a valid node
 func _process(delta):
-	if Engine.get_process_frames() % 10 != 0:
+	if Engine.get_process_frames() % 2 != 0:
 		return
 	if not active:
 		return
@@ -26,11 +26,11 @@ func _process(delta):
 		look_at(get_dir_to_follow(global_position, _follow_nodes))
 
 static func get_dir_to_follow(pos, follow_nodes: Array) -> Vector2:
-	var follow_dir = Vector2(10,10)
+	var follow_dir = Vector2(0,0)
 	for to_follow in follow_nodes:
 		follow_dir += to_follow.global_position
 	if follow_nodes.size() >= 8:
-		return pos + follow_dir
+		return pos + Vector2(10,10)
 	return follow_dir/follow_nodes.size()
 
 func filter_out(bone_b):

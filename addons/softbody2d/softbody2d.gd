@@ -52,7 +52,7 @@ class_name SoftBody2D
 ## Distance between internal vertices
 @export_range(2, 50, 1, "or_greater") var vertex_interval := 20
 ## How far randomly should the points move.
-@export_range(0.01, 0.6, 0.05) var voronoi_interval:= 0.15
+@export_range(0.01, 0.5, 0.05) var voronoi_interval:= 0.15
 ## Offset from Texture Center for the polygon. Use this if some rigidbodies are positioned weirdly.
 @export var polygon_offset := Vector2()
 ## Minimum area of a region that was cut. If it's less than this, it will be added to another region close to it.
@@ -67,6 +67,8 @@ class_name SoftBody2D
 @export_range(0.01, 1, 0.01, "or_greater") var min_alpha := 0.05
 
 @export_group("Joint")
+## Wether to look_at center bone(if not breakable) or to look at adjacent center bone. Usually look_at_center gives better results.
+@export var look_at_center := true
 ## The joint type. Pin yields a more sturdy softbody, and uses [PinJoint2D], while sprint a more soft one, and uses [DampedSpringJoint2D].
 @export_enum("pin", "spring") var joint_type:= "pin"
 ## Sets the [member Joint2D.bias] property of the joint.
@@ -91,6 +93,8 @@ class_name SoftBody2D
 @export_flags_2d_physics var collision_mask := 1
 ## Sets the [member RigidBody2D.mass].
 @export_range(0, 100) var mass := 0.01
+## If true, makes the center most rigidbodies have less mass
+@export var soft_on_inside: bool = false
 ## Sets a script to attach the [RigidBody2D] created.
 @export var rigidbody_script : Script
 ## Sets the [member RigidBody2D.pickable].
@@ -215,7 +219,7 @@ func _generate_points_voronoi(lim_min: Vector2, lim_max: Vector2, polygon_verts)
 	var polygon_size = lim_max - lim_min
 	var polygon_num = Vector2(int(polygon_size.x / vertex_interval), int(polygon_size.y / vertex_interval))
 	var voronoi = Voronoi2D.generate_voronoi(polygon_size * 1.2, vertex_interval, \
-		lim_min + polygon_offset, voronoi_interval)
+		lim_min + polygon_offset, voronoi_interval, randi())
 	var polygons = []
 	var new_voronoi: Array[Voronoi2D.VoronoiRegion2D]
 	var voronoi_regions_to_move = []
@@ -223,13 +227,13 @@ func _generate_points_voronoi(lim_min: Vector2, lim_max: Vector2, polygon_verts)
 	for region_idx in len(voronoi):
 		var each: Voronoi2D.VoronoiRegion2D = voronoi[region_idx]
 		var total_area := _polygon_area(each.polygon_points[0])
-		var is_middle_inside = _is_point_in_area(each.fixed_center, polygon_verts)
+		var is_middle_inside = _is_point_in_area(each.fixed_center, polygon_verts, 1.1)
 		
 		var is_inside = true
 		# if there is a point not inside the polygon vertices, cut it.
 		# it may result in multiple polygons
 		for polygon_vert in each.polygon_points[0]:
-			if not _is_point_in_area(polygon_vert, polygon_verts, 1):
+			if not _is_point_in_area(polygon_vert, polygon_verts, 1.1):
 				is_inside = false
 				var intersect = Geometry2D.intersect_polygons(polygon_verts, each.polygon_points[0])
 				if (intersect.is_empty()):
@@ -455,13 +459,23 @@ func _add_rigid_body_for_bones(skeleton: Skeleton2D) -> Array[RigidBody2D]:
 	var bones = skeleton.get_children()
 	var link_pair = {}
 	var rigidbodies : Array[RigidBody2D] = []
+	var center_bone := _get_node_to_follow(bones)
+	var polygon_limits = _calculate_polygon_limits()
+	var max_dist_sq = polygon_limits[0].distance_squared_to(polygon_limits[1])/4
 	for bone in bones:
-		var rigid_body = _create_rigid_body(skeleton, bone)
+		var distance_ratio = 1
+		if soft_on_inside:
+			var current_distance = bone.global_position.distance_squared_to(center_bone.global_position)
+			if (current_distance <= 0.00001):
+				current_distance = 0.00001
+			distance_ratio = current_distance/max_dist_sq + 0.01
+		print(distance_ratio)
+		var rigid_body = _create_rigid_body(skeleton, bone, mass * distance_ratio)
 		rigid_body.set_meta("bone_name", bone.name)
 		rigidbodies.append(rigid_body)
 	return rigidbodies
 
-func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D):
+func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D, mass):
 	var rigid_body = RigidBody2D.new()
 	rigid_body.name = bone.name
 	var collision_shape = CollisionShape2D.new()
@@ -541,12 +555,15 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D]):
 					joint.set_owner(get_tree().get_edited_scene_root())
 	var follow_node := _get_node_to_follow(bones)
 	for i in bones.size():
-		var bone = bones[i]
-		#bone.follow = [NodePath("../"+follow_node.name)]
-		#bone._follow_nodes = [follow_node]
-		bone.follow = connected_nodes_paths[i]
-		bone._follow_nodes = connected_nodes[i]
-		bone.look_at(LookAtCenter2D.get_dir_to_follow(bone.global_position, connected_nodes[i]))
+		var bone: LookAtCenter2D = bones[i]
+		if look_at_center:
+			bone.follow = [NodePath("../"+follow_node.name)]
+			bone._follow_nodes = [follow_node]
+			bone.look_at(LookAtCenter2D.get_dir_to_follow(bone.global_position, [follow_node]))
+		else:
+			bone.follow = connected_nodes_paths[i]
+			bone._follow_nodes = connected_nodes[i]
+			bone.look_at(LookAtCenter2D.get_dir_to_follow(bone.global_position, connected_nodes[i]))
 		bone.set_rest(bone.transform)
 
 # used internally, computed at _ready once

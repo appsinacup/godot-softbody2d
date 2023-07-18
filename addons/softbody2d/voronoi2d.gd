@@ -31,6 +31,7 @@ class_name Voronoi2D
 	get:
 		return false
 
+## Aproximate size of the  regions
 @export var size := Vector2(100,100);
 ## Distance between points in the region defined with [member Voronoi2D.size]
 @export var distance_between_points: float = 10;
@@ -163,16 +164,16 @@ class VoronoiRegion2D:
 ## [param start] - start place for voronoi regions.[br]
 ## [param edge_dist] - how far randomly should the points move, relative to the distBtwPoints variable.[br]
 ## Returns Array of regions, where each region
-static func generate_voronoi(size: Vector2, distance_between_points: float, start:= Vector2(), edge_dist := 0.3) -> Array[VoronoiRegion2D]:
+static func generate_voronoi(size: Vector2, distance_between_points: float, start:= Vector2(), edge_dist := 0.3, rand_seed = 0) -> Array[VoronoiRegion2D]:
 	var polygons:Array[VoronoiRegion2D] = []
-	var sizePerChunk = 5
+	var sizePerChunk := 5.0
 	var totalX = size.x / (distance_between_points*sizePerChunk)
 	var totalY = size.y / (distance_between_points*sizePerChunk)
 	for w in int(totalX + 1):
 		for h in int(totalY + 1):
 			var chunkLoc = Vector2(w ,h)
 			var voronoi = _generate_chunk_voronoi(chunkLoc, sizePerChunk, \
-			0.4, 0, distance_between_points, edge_dist)
+			0.4, rand_seed, distance_between_points, edge_dist)
 			for each in voronoi:
 				var newPolyPoints := PackedVector2Array();
 				var offset = Vector2(chunkLoc.x*sizePerChunk*distance_between_points,\
