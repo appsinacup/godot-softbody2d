@@ -47,7 +47,7 @@ The softbody is constructed out of multiple pieces. The texture is first split i
 
 # How it works
 
-## Polygon
+## 1. Creating the Polygon
 
 1. Creates edge vertices from texture.
 
@@ -61,12 +61,12 @@ The softbody is constructed out of multiple pieces. The texture is first split i
 
 4. Assigns these polygons to the `Polygon2D.polygon` and `Polygon2D.polygons`.
 
-## Skeleton2D
+## 2. Creating the Skeleton2D
 
 1. Creates a `Skeleton2D` child.
 2. Creates a set of `Bone2D`` nodes of the `Skeleton2D`, each having a voronoi region and assign correct weights to them.
 
-## RigidBody2D
+## 3. Creating the RigidBody2D nodes and the joints
 
 1. Creates a set of `RigidBody2D` nodes, one for each voronoi region.
 2. Creates for each `Bone2D` a `Rigidody2D` with a `CollisionShape2D` (with a `CircleShape2D` shape) child, a `RemoteTransform2D` child that targets the `Bone2D` position, and either `DampedSprintJoint2D` or `PinJoint2D` children that connects each other neighbour nodes.
@@ -74,7 +74,7 @@ The softbody is constructed out of multiple pieces. The texture is first split i
 
 ![Soft Body](docs/softbody.png)
 
-## For breakable softbodies
+## 4. For breakable softbodies
 
 If you assign to each rigidbody a `breakable_rigidbody2d.gd` script(done in inspector at SoftBody2D/Rigidbody/Rigidbody Script)
 
