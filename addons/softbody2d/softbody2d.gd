@@ -469,7 +469,6 @@ func _add_rigid_body_for_bones(skeleton: Skeleton2D) -> Array[RigidBody2D]:
 			if (current_distance <= 0.00001):
 				current_distance = 0.00001
 			distance_ratio = current_distance/max_dist_sq + 0.01
-		print(distance_ratio)
 		var rigid_body = _create_rigid_body(skeleton, bone, mass * distance_ratio)
 		rigid_body.set_meta("bone_name", bone.name)
 		rigidbodies.append(rigid_body)
