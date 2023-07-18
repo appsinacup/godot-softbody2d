@@ -17,6 +17,34 @@ Download the sourcecode and move only the addons folder it contains into your pr
 
 # Features
 
+The softbody is constructed out of multiple pieces. The texture is first split into multiple polygons from a source image, the rigidbodies are created and connected with joints.
+
+## Polygon
+
+* Bake from inspector
+* Vertex Interval: This sets how far apart two rigidbodies will be.
+* Voronoi Interval: This sets how much will the rigidbodies move relative to their original center.
+* Polygon Offset: Do manual adjustments if bodies are not generated how you want them.
+* Min Area: If the resulting area of a body is too small, merge it with a nearby area.
+
+## Image
+
+* Margin Pixels: Shrink or Expand the original image
+* Texture Epsilon: Get more or less points on the polygon outline
+* Min Alpha: Minimum alpha needed to consider texture part of softbody.
+
+## Joint
+
+* Look at center: Wether the resulting bone (which transforms the texture based on rigidbody position) should look at center bone (if you have breakable bodies enabled, then the center bone will change) or to look at the middle most adjacent bone.
+* Joint Type: This plugin supports Pin or Spring joint
+* Bias, Disable Collision, Stiffness, Damping, Softness: Joint specific properties
+
+## Rigidbody
+
+* Soft on inside: Make the inside bodies have less mass.
+* Script: Add a custom script to be added to the rigidbody. Eg. BreakableRigidBody2D script
+* Radius, collision layer, collision mask, mass, pickable, lock rotation, material override: Rigidbody specific properties
+
 * Non-Breakable and Breakable softbodies
 * Pin Joint or Groove Joint
 
