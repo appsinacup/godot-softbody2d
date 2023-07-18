@@ -42,14 +42,8 @@ The softbody is constructed out of multiple pieces. The texture is first split i
 ## Rigidbody
 
 * Soft on inside: Make the inside bodies have less mass.
-* Script: Add a custom script to be added to the rigidbody. Eg. BreakableRigidBody2D script
-* Radius, collision layer, collision mask, mass, pickable, lock rotation, material override: Rigidbody specific properties
-
-* Non-Breakable and Breakable softbodies
-* Pin Joint or Groove Joint
-
-If you want Breakable Softbody2D add RigidbodyScript field to `breakable_rigidbody2d.gd` (done in inspector at SoftBody2D/Rigidbody/Rigidbody Script)
-, which you can also extend.
+* Script: Add a custom script to be added to the rigidbody. Eg. `breakable_rigidbody2d.gd` script
+* Radius, collision layer, collision mask, mass, pickable, lock rotation, material override: Rigidbody specific properties.
 
 # How it works
 
