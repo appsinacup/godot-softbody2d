@@ -4,7 +4,6 @@
 
 - Add soft_on_inside propert. This makes them look more squishy.
 - Add look_at_center option. This makes them look more natural, if you don't need breakable objects.
-- Only export addons folder to asset store.
 
 ## [v0.9](https://github.com/Ughuuu/godot-4-softbody2d/releases/tag/v0.9)
 
