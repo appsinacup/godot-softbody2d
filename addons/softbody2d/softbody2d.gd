@@ -5,7 +5,7 @@ extends Polygon2D
 ## A 2D Softbody.
 ##
 ## Models an object as a softbody by creating:[br]
-## - a set of [RigidBody2D] nodes, each with one [CollisionShape2D] with a [CircleShape2D] and a set of [Joint2D] nodes connected to adjacent bodies.[br]
+## - a set of [RigidBody2D] nodes, each with one [CollisionShape2D] with a [Shape2D] and a set of [Joint2D] nodes connected to adjacent bodies.[br]
 ## - one [Skeleton2D] node with a set of [Bone2D] nodes, each getting their position set from a [RemoteTransform2D] node, located on the rigidbodies.[br]
 ##
 ## How it does it:[br]
@@ -22,7 +22,7 @@ extends Polygon2D
 ## [br]
 ## [b]RigidtBody2D[/b]:[br]
 ## 1. Creates a set of [RigidBody2D] nodes, one for each voronoi region.[br]
-## 2. Creates for each [Bone2D] a [Rigidody2D] with a [CollisionShape2D] (with a [CircleShape2D] shape) child, a [RemoteTransform2D] child that targets thte [Bone2D] position, and either [DampedSprintJoint2D] or [PinJoint2D] children that connects each other neighbour nodes.[br]
+## 2. Creates for each [Bone2D] a [Rigidody2D] with a [CollisionShape2D] (with a [Shape2D] shape) child, a [RemoteTransform2D] child that targets thte [Bone2D] position, and either [DampedSprintJoint2D] or [PinJoint2D] children that connects each other neighbour nodes.[br]
 ##
 ## @tutorial: https://github.com/Ughuuu/godot-4-softbody2d/tree/main
 
@@ -35,7 +35,7 @@ class_name SoftBody2D
 	set (value):
 		if value != false:
 			if vertex_interval < radius:
-				push_warning("Vertex Interval is less than Radius. This will create bigger bigger circles than needed.")
+				push_warning("Vertex Interval is less than Radius. This will create bigger bigger shapes than needed.")
 			create_softbody2d()
 	get:
 		return false
@@ -48,7 +48,11 @@ class_name SoftBody2D
 	get:
 		return false
 
+
 @export_group("Polygon")
+
+## Random seed for generation of voronoi regions
+@export var voronoi_rand_seed : int= 0
 ## Distance between internal vertices
 @export_range(2, 50, 1, "or_greater") var vertex_interval := 20
 ## How far randomly should the points move.
@@ -85,7 +89,9 @@ class_name SoftBody2D
 @export_range(0, 100, 0.1, "or_greater") var softness: float = 16
 
 @export_group("RigidBody")
-## Sets the [member CircleShape2D.radius].
+## What kind of shape to create for each rigidbody
+@export_enum("Circle", "Rectangle") var shape_type:= "Circle"
+## Sets the [member Shape2D size].
 @export_range(2, 50, 1, "or_greater") var radius := 30
 ## Sets the [member RigidBody2D.collision_layer].
 @export_flags_2d_physics var collision_layer := 1
@@ -219,7 +225,7 @@ func _generate_points_voronoi(lim_min: Vector2, lim_max: Vector2, polygon_verts)
 	var polygon_size = lim_max - lim_min
 	var polygon_num = Vector2(int(polygon_size.x / vertex_interval), int(polygon_size.y / vertex_interval))
 	var voronoi = Voronoi2D.generate_voronoi(polygon_size * 1.2, vertex_interval, \
-		lim_min + polygon_offset, voronoi_interval, randi())
+		lim_min + polygon_offset, voronoi_interval, voronoi_rand_seed)
 	var polygons = []
 	var new_voronoi: Array[Voronoi2D.VoronoiRegion2D]
 	var voronoi_regions_to_move = []
@@ -241,6 +247,7 @@ func _generate_points_voronoi(lim_min: Vector2, lim_max: Vector2, polygon_verts)
 					break
 				each.polygon_points = []
 				each.polygon_points.append_array(intersect)
+				# update center if we change the polygon
 				each.fixed_center = _polygon_center(each.polygon_points)
 				each.center = _polygon_center(each.polygon_points)
 				new_voronoi.append(each)
@@ -267,6 +274,9 @@ func _generate_points_voronoi(lim_min: Vector2, lim_max: Vector2, polygon_verts)
 				dist = current_dist
 				closest_idx = voronoi_idx
 		new_voronoi[closest_idx].polygon_points.append_array(to_remove.polygon_points)
+		# update center if we change the polygon
+		new_voronoi[closest_idx].fixed_center = _polygon_center(new_voronoi[closest_idx].polygon_points)
+		new_voronoi[closest_idx].center = _polygon_center(new_voronoi[closest_idx].polygon_points)
 	voronoi_regions_to_move.sort_custom(func (x,y): return x>y)
 	# remove them
 	for region_to_move in voronoi_regions_to_move:
@@ -478,10 +488,15 @@ func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D, mass):
 	var rigid_body = RigidBody2D.new()
 	rigid_body.name = bone.name
 	var collision_shape = CollisionShape2D.new()
-	var shape = CircleShape2D.new()
-	shape.radius = radius / 2.0
+	var shape: Shape2D
+	if shape_type == "Circle":
+		shape = CircleShape2D.new()
+		shape.radius = radius / 2.0
+	elif shape_type == "Rectangle":
+		shape = RectangleShape2D.new()
+		shape.size = Vector2(radius, radius)
 	collision_shape.shape = shape
-	collision_shape.name = "CircleShape2D"
+	collision_shape.name = shape_type + "Shape2D"
 	rigid_body.mass = mass
 	rigid_body.global_position = skeleton.transform * bone.position
 	rigid_body.physics_material_override = physics_material_override

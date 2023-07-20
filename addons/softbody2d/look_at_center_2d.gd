@@ -27,11 +27,16 @@ func _process(delta):
 
 static func get_dir_to_follow(pos, follow_nodes: Array) -> Vector2:
 	var follow_dir = Vector2(0,0)
-	for to_follow in follow_nodes:
-		follow_dir += to_follow.global_position
+	# if we have 2 nodes, middle of them will always be wrong. Pick one.
+	if follow_nodes.size() == 2:
+		follow_dir = follow_nodes[follow_nodes.size()-1].global_position
+	else:
+		for to_follow in follow_nodes:
+			follow_dir += to_follow.global_position
+		follow_dir /= follow_nodes.size()
 	if follow_nodes.size() >= 8:
 		return pos + Vector2(10,10)
-	return follow_dir/follow_nodes.size()
+	return follow_dir
 
 func filter_out(bone_b):
 	_follow_nodes = _follow_nodes.filter(func (node: Node): return node.name != bone_b.name)

@@ -1,5 +1,11 @@
 # Changelog
 
+## [v1.1](https://github.com/Ughuuu/godot-4-softbody2d/releases/tag/v1.1)
+
+- Fix center calculation
+- Add square as shape type
+- Fix look_at_center if it's connected to only 2 shapes
+
 ## [v1.0](https://github.com/Ughuuu/godot-4-softbody2d/releases/tag/v1.0)
 
 - Add soft_on_inside propert. This makes them look more squishy.
