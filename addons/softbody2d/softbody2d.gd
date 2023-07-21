@@ -81,6 +81,8 @@ class_name SoftBody2D
 ## Sets the [member Joint2D.bias] property of the joint.[br]Can be changed at runtime.
 @export_range(0, 2, 0.1, "or_greater") var bias : float = 0 :
 	set (value):
+		if bias == value:
+			return
 		bias = value
 		for body in get_rigid_bodies():
 			for joint in body.joints:
@@ -91,6 +93,8 @@ class_name SoftBody2D
 ## Sets the [member Joint2D.disable_collision] property of the joint.[br]Can be changed at runtime.
 @export var disable_collision := false :
 	set (value):
+		if disable_collision == value:
+			return
 		disable_collision = value
 		for body in get_rigid_bodies():
 			for joint in body.joints:
@@ -101,6 +105,8 @@ class_name SoftBody2D
 ## Relevant only if you picked [member SoftBody2D.joint_type] = "spring". Sets the [member DampedSpringJoint2D.stiffness] property of the joint.[br]Can be changed at runtime.
 @export_range(0.1, 128, 0.1, "or_greater") var stiffness: float = 20  :
 	set (value):
+		if stiffness == value:
+			return
 		stiffness = value
 		for body in get_rigid_bodies():
 			for joint in body.joints:
@@ -111,6 +117,8 @@ class_name SoftBody2D
 ## Relevant only if you picked [member SoftBody2D.joint_type] = "spring". Sets the [member DampedSpringJoint2D.damping] property of the joint.[br]Can be changed at runtime.
 @export_range(0.1, 16, 0.1, "or_greater") var damping: float = 0.7  :
 	set (value):
+		if damping == value:
+			return
 		damping = value
 		for body in get_rigid_bodies():
 			for joint in body.joints:
@@ -122,6 +130,8 @@ class_name SoftBody2D
 ## Relevant only if you picked [member SoftBody2D.joint_type] = "pin". Sets the [member PinJoint2D.softness] property of the joint.[br]Can be changed at runtime.
 @export_range(0, 100, 0.1, "or_greater") var softness: float = 16 :
 	set (value):
+		if softness == value:
+			return
 		softness = value
 		for body in get_rigid_bodies():
 			for joint in body.joints:
@@ -135,10 +145,10 @@ class_name SoftBody2D
 ## What kind of shape to create for each rigidbody.[br]Can be changed at runtime.
 @export_enum("Circle", "Rectangle") var shape_type:= "Circle" :
 	set (value):
+		if shape_type == value:
+			return
 		shape_type = value
-		print(get_rigid_bodies())
 		for body in get_rigid_bodies():
-			print(body.shape)
 			var shape = body.shape
 			if shape_type == "Circle":
 				shape.shape = CircleShape2D.new()
@@ -153,6 +163,8 @@ class_name SoftBody2D
 ## Sets the [member Shape2D size].[br]Can be changed at runtime.
 @export_range(2, 50, 1, "or_greater") var radius := 30 :
 	set (value):
+		if radius == value:
+			return
 		radius = value
 		for body in get_rigid_bodies():
 			var shape = body.shape
@@ -167,6 +179,8 @@ class_name SoftBody2D
 ## Sets the [member RigidBody2D.collision_layer].[br]Can be changed at runtime.
 @export_flags_2d_physics var collision_layer := 1 :
 	set (value):
+		if collision_layer == value:
+			return
 		collision_layer = value
 		for body in get_rigid_bodies():
 			body.rigidbody.collision_layer = collision_layer
@@ -175,6 +189,8 @@ class_name SoftBody2D
 ## Sets the [member RigidBody2D.collision_mask].[br]Can be changed at runtime.
 @export_flags_2d_physics var collision_mask := 1 :
 	set (value):
+		if collision_mask == value:
+			return
 		collision_mask = value
 		for body in get_rigid_bodies():
 			body.rigidbody.collision_mask = collision_mask
@@ -183,15 +199,19 @@ class_name SoftBody2D
 ## Sets the [member RigidBody2D.mass].[br]Can be changed at runtime.
 @export_range(0, 100) var mass := 0.01 :
 	set (value):
+		if mass == value:
+			return
 		mass = value
-		_update_bodies_mass()
+		call_deferred("_update_bodies_mass")
 	get:
 		return mass
 ## If true, makes the center most rigidbodies have less mass.[br]Can be changed at runtime.
 @export var soft_on_inside: bool = false :
 	set (value):
+		if soft_on_inside == value:
+			return
 		soft_on_inside = value
-		_update_bodies_mass()
+		call_deferred("_update_bodies_mass")
 	get:
 		return soft_on_inside
 
@@ -212,6 +232,8 @@ func _update_bodies_mass():
 ## Sets a script to attach the [RigidBody2D] created.[br]Can be changed at runtime.
 @export var rigidbody_script : Script :
 	set (value):
+		if rigidbody_script == value:
+			return
 		rigidbody_script = value
 		for body in get_rigid_bodies():
 			body.rigidbody.set_script(rigidbody_script)
@@ -220,6 +242,8 @@ func _update_bodies_mass():
 ## Sets the [member RigidBody2D.pickable].[br]Can be changed at runtime.
 @export var pickable := false :
 	set (value):
+		if pickable == value:
+			return
 		pickable = value
 		for body in get_rigid_bodies():
 			body.rigidbody.input_pickable = pickable
@@ -228,6 +252,8 @@ func _update_bodies_mass():
 ## Sets the [member RigidBody2D.lock_rotation].[br]Can be changed at runtime.
 @export var lock_rotation := false :
 	set (value):
+		if lock_rotation == value:
+			return
 		lock_rotation = value
 		for body in get_rigid_bodies():
 			body.rigidbody.lock_rotation = lock_rotation
@@ -236,6 +262,8 @@ func _update_bodies_mass():
 ## Sets the [member RigidBody2D.physics_material_override].[br]Can be changed at runtime.
 @export var physics_material_override: PhysicsMaterial :
 	set (value):
+		if physics_material_override == value:
+			return
 		physics_material_override = value
 		for body in get_rigid_bodies():
 			body.rigidbody.physics_material_override = physics_material_override
