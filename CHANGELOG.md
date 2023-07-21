@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.2](https://github.com/Ughuuu/godot-4-softbody2d/releases/tag/v1.2)
+
+- Add realtime updates to softbody
+
 ## [v1.1](https://github.com/Ughuuu/godot-4-softbody2d/releases/tag/v1.1)
 
 - Fix center calculation

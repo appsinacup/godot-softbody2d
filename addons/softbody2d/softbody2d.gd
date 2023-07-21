@@ -49,6 +49,7 @@ class_name SoftBody2D
 		return false
 
 
+## If these are changed at runtime, no changes will be made unless you call bake.
 @export_group("Polygon")
 
 ## Random seed for generation of voronoi regions
@@ -62,6 +63,7 @@ class_name SoftBody2D
 ## Minimum area of a region that was cut. If it's less than this, it will be added to another region close to it.
 @export_range(0.01, 1, 0.01) var min_area:= 0.4
 
+## If these are changed at runtime, no changes will be made unless you call bake.
 @export_group("Image")
 ## Amount to grow or shrink the image with in pixels. Adds dilatation if positive, if negative adds erosion.
 @export_range(-50, 50, 1, "or_grater") var margin_pixels := 0
@@ -70,45 +72,175 @@ class_name SoftBody2D
 ## Min alpha to consider the point part of polygon
 @export_range(0.01, 1, 0.01, "or_greater") var min_alpha := 0.05
 
+## Only [member SoftBody2D.bias], [member SoftBody2D.disable_collision], [member SoftBody2D.stiffness], [member SoftBody2D.damping] and [member SoftBody2D.softness] can be changed at runtime.
 @export_group("Joint")
 ## Wether to look_at center bone(if not breakable) or to look at adjacent center bone. Usually look_at_center gives better results.
 @export var look_at_center := true
 ## The joint type. Pin yields a more sturdy softbody, and uses [PinJoint2D], while sprint a more soft one, and uses [DampedSpringJoint2D].
 @export_enum("pin", "spring") var joint_type:= "pin"
-## Sets the [member Joint2D.bias] property of the joint.
-@export_range(0, 2, 0.1, "or_greater") var bias : float = 0
-## Sets the [member Joint2D.disable_collision] property of the joint.
-@export var disable_collision := false
-@export_subgroup("DampedSpringJoint")
-## Relevant only if you picked [member SoftBody2D.joint_type] = "spring". Sets the [member DampedSpringJoint2D.stiffness] property of the joint.
-@export_range(0.1, 128, 0.1, "or_greater") var stiffness: float = 20
-## Relevant only if you picked [member SoftBody2D.joint_type] = "spring". Sets the [member DampedSpringJoint2D.damping] property of the joint.
-@export_range(0.1, 16, 0.1, "or_greater") var damping: float = 0.7
-@export_subgroup("PinJoint")
-## Relevant only if you picked [member SoftBody2D.joint_type] = "pin". Sets the [member PinJoint2D.softness] property of the joint.
-@export_range(0, 100, 0.1, "or_greater") var softness: float = 16
+## Sets the [member Joint2D.bias] property of the joint.[br]Can be changed at runtime.
+@export_range(0, 2, 0.1, "or_greater") var bias : float = 0 :
+	set (value):
+		bias = value
+		for body in get_rigid_bodies():
+			for joint in body.joints:
+				joint.bias = bias
+	get:
+		return bias
 
+## Sets the [member Joint2D.disable_collision] property of the joint.[br]Can be changed at runtime.
+@export var disable_collision := false :
+	set (value):
+		disable_collision = value
+		for body in get_rigid_bodies():
+			for joint in body.joints:
+				joint.disable_collision = disable_collision
+	get:
+		return disable_collision
+@export_subgroup("DampedSpringJoint")
+## Relevant only if you picked [member SoftBody2D.joint_type] = "spring". Sets the [member DampedSpringJoint2D.stiffness] property of the joint.[br]Can be changed at runtime.
+@export_range(0.1, 128, 0.1, "or_greater") var stiffness: float = 20  :
+	set (value):
+		stiffness = value
+		for body in get_rigid_bodies():
+			for joint in body.joints:
+				if joint is DampedSpringJoint2D:
+					joint.stiffness = stiffness
+	get:
+		return stiffness
+## Relevant only if you picked [member SoftBody2D.joint_type] = "spring". Sets the [member DampedSpringJoint2D.damping] property of the joint.[br]Can be changed at runtime.
+@export_range(0.1, 16, 0.1, "or_greater") var damping: float = 0.7  :
+	set (value):
+		damping = value
+		for body in get_rigid_bodies():
+			for joint in body.joints:
+				if joint is DampedSpringJoint2D:
+					joint.damping = damping
+	get:
+		return damping
+@export_subgroup("PinJoint")
+## Relevant only if you picked [member SoftBody2D.joint_type] = "pin". Sets the [member PinJoint2D.softness] property of the joint.[br]Can be changed at runtime.
+@export_range(0, 100, 0.1, "or_greater") var softness: float = 16 :
+	set (value):
+		softness = value
+		for body in get_rigid_bodies():
+			for joint in body.joints:
+				if joint is PinJoint2D:
+					joint.softness = softness
+	get:
+		return softness
+
+## All these properties can be changed at runtime.
 @export_group("RigidBody")
-## What kind of shape to create for each rigidbody
-@export_enum("Circle", "Rectangle") var shape_type:= "Circle"
-## Sets the [member Shape2D size].
-@export_range(2, 50, 1, "or_greater") var radius := 30
-## Sets the [member RigidBody2D.collision_layer].
-@export_flags_2d_physics var collision_layer := 1
-## Sets the [member RigidBody2D.collision_mask].
-@export_flags_2d_physics var collision_mask := 1
-## Sets the [member RigidBody2D.mass].
-@export_range(0, 100) var mass := 0.01
-## If true, makes the center most rigidbodies have less mass
-@export var soft_on_inside: bool = false
-## Sets a script to attach the [RigidBody2D] created.
-@export var rigidbody_script : Script
-## Sets the [member RigidBody2D.pickable].
-@export var pickable := false
-## Sets the [member RigidBody2D.lock_rotation].
-@export var lock_rotation := false
-## Sets the [member RigidBody2D.physics_material_override].
-@export var physics_material_override: PhysicsMaterial
+## What kind of shape to create for each rigidbody.[br]Can be changed at runtime.
+@export_enum("Circle", "Rectangle") var shape_type:= "Circle" :
+	set (value):
+		shape_type = value
+		print(get_rigid_bodies())
+		for body in get_rigid_bodies():
+			print(body.shape)
+			var shape = body.shape
+			if shape_type == "Circle":
+				shape.shape = CircleShape2D.new()
+				shape.shape.radius = radius / 2.0
+			elif shape_type == "Rectangle":
+				shape.shape = RectangleShape2D.new()
+				shape.shape.size = Vector2(radius, radius)
+			else:
+				push_error("Wrong shape used for shape_type")
+	get:
+		return shape_type
+## Sets the [member Shape2D size].[br]Can be changed at runtime.
+@export_range(2, 50, 1, "or_greater") var radius := 30 :
+	set (value):
+		radius = value
+		for body in get_rigid_bodies():
+			var shape = body.shape
+			if shape_type == "Circle":
+				shape.shape.radius = radius / 2.0
+			elif shape_type == "Circle":
+				shape.shape.size = Vector2(radius, radius)
+			else:
+				push_error("Wrong shape used for shape_type")
+	get:
+		return radius
+## Sets the [member RigidBody2D.collision_layer].[br]Can be changed at runtime.
+@export_flags_2d_physics var collision_layer := 1 :
+	set (value):
+		collision_layer = value
+		for body in get_rigid_bodies():
+			body.rigidbody.collision_layer = collision_layer
+	get:
+		return collision_layer
+## Sets the [member RigidBody2D.collision_mask].[br]Can be changed at runtime.
+@export_flags_2d_physics var collision_mask := 1 :
+	set (value):
+		collision_mask = value
+		for body in get_rigid_bodies():
+			body.rigidbody.collision_mask = collision_mask
+	get:
+		return collision_mask
+## Sets the [member RigidBody2D.mass].[br]Can be changed at runtime.
+@export_range(0, 100) var mass := 0.01 :
+	set (value):
+		mass = value
+		_update_bodies_mass()
+	get:
+		return mass
+## If true, makes the center most rigidbodies have less mass.[br]Can be changed at runtime.
+@export var soft_on_inside: bool = false :
+	set (value):
+		soft_on_inside = value
+		_update_bodies_mass()
+	get:
+		return soft_on_inside
+
+func _update_bodies_mass():
+	var bones = get_node(skeleton).get_children()
+	var center_bone := _get_node_to_follow(bones)
+	var polygon_limits = _calculate_polygon_limits()
+	var max_dist_sq = polygon_limits[0].distance_squared_to(polygon_limits[1])/4
+	for body in get_rigid_bodies():
+		var distance_ratio = 1
+		if soft_on_inside:
+			var current_distance = body.rigidbody.global_position.distance_squared_to(center_bone.global_position)
+			if (current_distance <= 0.00001):
+				current_distance = 0.00001
+			distance_ratio = current_distance/max_dist_sq + 0.01
+		body.rigidbody.mass = mass * distance_ratio
+
+## Sets a script to attach the [RigidBody2D] created.[br]Can be changed at runtime.
+@export var rigidbody_script : Script :
+	set (value):
+		rigidbody_script = value
+		for body in get_rigid_bodies():
+			body.rigidbody.set_script(rigidbody_script)
+	get:
+		return rigidbody_script
+## Sets the [member RigidBody2D.pickable].[br]Can be changed at runtime.
+@export var pickable := false :
+	set (value):
+		pickable = value
+		for body in get_rigid_bodies():
+			body.rigidbody.input_pickable = pickable
+	get:
+		return pickable
+## Sets the [member RigidBody2D.lock_rotation].[br]Can be changed at runtime.
+@export var lock_rotation := false :
+	set (value):
+		lock_rotation = value
+		for body in get_rigid_bodies():
+			body.rigidbody.lock_rotation = lock_rotation
+	get:
+		return lock_rotation
+## Sets the [member RigidBody2D.physics_material_override].[br]Can be changed at runtime.
+@export var physics_material_override: PhysicsMaterial :
+	set (value):
+		physics_material_override = value
+		for body in get_rigid_bodies():
+			body.rigidbody.physics_material_override = physics_material_override
+	get:
+		return physics_material_override
 
 @export_group("Debug")
 ## Draw voronoi region of edge polygon.[br]
@@ -143,6 +275,7 @@ func create_softbody2d():
 		return
 	var skeleton2d = _construct_skeleton2d(voronoi[0], voronoi[1])
 	_create_rigidbodies2d(skeleton2d)
+	_update_soft_body_rigidbodies()
 
 ## Call this to clear all children, polygons and bones.
 func clear_softbody2d():
@@ -151,6 +284,7 @@ func clear_softbody2d():
 		child.queue_free()
 		remove_child(child)
 	clear_bones()
+	_update_soft_body_rigidbodies()
 
 func _clear_polygon():
 	polygon.clear()
@@ -467,9 +601,9 @@ func _create_rigidbodies2d(skeleton: Skeleton2D):
 
 func _add_rigid_body_for_bones(skeleton: Skeleton2D) -> Array[RigidBody2D]:
 	var bones = skeleton.get_children()
+	var center_bone := _get_node_to_follow(bones)
 	var link_pair = {}
 	var rigidbodies : Array[RigidBody2D] = []
-	var center_bone := _get_node_to_follow(bones)
 	var polygon_limits = _calculate_polygon_limits()
 	var max_dist_sq = polygon_limits[0].distance_squared_to(polygon_limits[1])/4
 	for bone in bones:
@@ -495,6 +629,8 @@ func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D, mass):
 	elif shape_type == "Rectangle":
 		shape = RectangleShape2D.new()
 		shape.size = Vector2(radius, radius)
+	else:
+		push_error("Wrong shape used for shape_type")
 	collision_shape.shape = shape
 	collision_shape.name = shape_type + "Shape2D"
 	rigid_body.mass = mass
@@ -582,6 +718,8 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D]):
 
 # used internally, computed at _ready once
 var _bones_array
+var _soft_body_rigidbodies_array: Array[SoftBodyRigidBody2D]
+var _soft_body_rigidbodies_dict: Dictionary
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -590,6 +728,7 @@ func _ready():
 			push_warning("Softbody2d not created")
 			return
 		_bones_array = get_node(skeleton).get_children().filter(func(node): return node is Bone2D)
+	_update_soft_body_rigidbodies()
 
 ## Remove joint between bone_a_name and bone_b_name. Useful if you want to make breakable softbodies.[br]
 ## This also handles recreating the polygon and correcting everything else so it works as expected.
@@ -620,3 +759,33 @@ func remove_joint(bone_a_name, bone_b_name):
 		bone_a_weights[i] = 0.0
 	set_bone_weights(bone_a_idx, bone_a_weights)
 	set_bone_weights(bone_b_idx, bone_b_weights)
+	_update_soft_body_rigidbodies()
+
+class SoftBodyRigidBody2D:
+	var rigidbody: RigidBody2D
+	var joints: Array[Joint2D]
+	var shape: CollisionShape2D
+
+func get_rigid_bodies() -> Array[SoftBodyRigidBody2D]:
+	return _soft_body_rigidbodies_array
+
+func get_center_body() -> SoftBodyRigidBody2D:
+	var bodies := _soft_body_rigidbodies_array
+	var rb_array := bodies.map(func(body): return body.rigidbody)
+	var center_rb := _get_node_to_follow(bodies)
+	return _soft_body_rigidbodies_dict[center_rb]
+	
+func _update_soft_body_rigidbodies():
+	var result: Array[SoftBodyRigidBody2D]
+	var children = get_children().filter(func (node: Node): return node is RigidBody2D)
+	for child in children:
+		var softbodyrb = SoftBodyRigidBody2D.new()
+		softbodyrb.rigidbody = child as RigidBody2D
+		var rb_children = child.get_children()
+		softbodyrb.shape = rb_children.filter(func (node): return node is CollisionShape2D)[0]
+		var joints = rb_children.filter(func (node): return node is Joint2D)
+		for joint in joints:
+			softbodyrb.joints.append(joint)
+		result.append(softbodyrb)
+		_soft_body_rigidbodies_dict[softbodyrb.rigidbody] = softbodyrb
+	_soft_body_rigidbodies_array = result
