@@ -720,8 +720,7 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D]):
 				joint.node_b = "../../" + node_b.name
 				joint.stiffness = stiffness
 				joint.disable_collision = disable_collision
-				#joint.rest_length = ((node_a.global_position - node_b.global_position).length()) * 1
-				#joint.rest_length = 0
+				joint.rest_length = ((node_a.global_position - node_b.global_position).length()) * 1
 				joint.length = ((node_a.global_position - node_b.global_position).length()) * 1
 				joint.look_at(node_b.global_position)
 				joint.rotation = node_a.position.angle_to_point(node_b.position) - PI/2
