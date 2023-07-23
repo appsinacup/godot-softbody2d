@@ -565,7 +565,7 @@ func _create_bones(voronoi: Array) -> Array[Bone2D]:
 	for each in voronoi:
 		var bone := Bone2D.new()
 		var point = each.fixed_center
-		bone.name = "BoneFromRegion-"+str(bone_idx)
+		bone.name = "Bone-"+str(bone_idx)
 		bone_idx += 1
 		bone.global_position = point
 		bone.set_autocalculate_length_and_angle(false)
@@ -612,7 +612,7 @@ func _generate_weights(bones: Array[Bone2D], voronoi, bone_vert_arr):
 		
 		for bone_index in bone_count:
 			for poly in voronoi[bone_index].polygon_points:
-				if _is_point_in_area(point, poly):
+				if _is_point_in_area(point, poly, 1.1):
 					weights[bone_index][point_index] = 1
 	return weights
 
@@ -780,10 +780,23 @@ func remove_joint(bone_a_name, bone_b_name):
 	var bone_b_weights = get_bone_weights(bone_b_idx)
 	var bone_a_owned_verts = _bones_array[bone_a_idx].get_meta("vert_owned")
 	var bone_b_owned_verts = _bones_array[bone_b_idx].get_meta("vert_owned")
-	for i in bone_a_owned_verts:
-		bone_b_weights[i] = 0.0
-	for i in bone_b_owned_verts:
-		bone_a_weights[i] = 0.0
+	for i in bone_a_weights.size():
+		var should_remove_a = true
+		var should_remove_b = true
+		# both nodes have weight, check if it's not their own vert
+		if bone_a_weights[i] > 0 && bone_b_weights[i] > 0:
+			for point_a in bone_a_owned_verts:
+				if i == point_a:
+					should_remove_a = false
+					break
+			for point_b in bone_b_owned_verts:
+				if i == point_b:
+					should_remove_b = false
+					break
+			if should_remove_a:
+				bone_a_weights[i] = 0.0
+			if should_remove_b:
+				bone_b_weights[i] = 0.0
 	set_bone_weights(bone_a_idx, bone_a_weights)
 	set_bone_weights(bone_b_idx, bone_b_weights)
 	_update_soft_body_rigidbodies()
@@ -793,9 +806,11 @@ class SoftBodyRigidBody2D:
 	var joints: Array[Joint2D]
 	var shape: CollisionShape2D
 
+## Get all the bodies, including joints and shape
 func get_rigid_bodies() -> Array[SoftBodyRigidBody2D]:
 	return _soft_body_rigidbodies_array
 
+## Get the body located in the center
 func get_center_body() -> SoftBodyRigidBody2D:
 	var bodies := _soft_body_rigidbodies_array
 	var rb_array := bodies.map(func(body): return body.rigidbody)

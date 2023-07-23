@@ -2,6 +2,7 @@
 
 ## [v1.2](https://github.com/Ughuuu/godot-4-softbody2d/releases/tag/v1.2)
 
+- Fix problem that would happen when cutting and vertices would remain
 - Add realtime updates to softbody
 
 ## [v1.1](https://github.com/Ughuuu/godot-4-softbody2d/releases/tag/v1.1)
