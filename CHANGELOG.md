@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.4](https://github.com/Ughuuu/godot-4-softbody2d/releases/tag/v1.3)
+
+- Add `rest_length_ratio` and `length_ratio`, useful to set rest_length and length of damped spring based on the distance between bones. This number is multiplied with that distance.
+
 ## [v1.3](https://github.com/Ughuuu/godot-4-softbody2d/releases/tag/v1.3)
 
 - Add license to exported addons also

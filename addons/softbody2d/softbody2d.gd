@@ -89,6 +89,30 @@ class_name SoftBody2D
 				joint.bias = bias
 	get:
 		return bias
+## Sets the [member DampedSpringJoint2D.rest_length] property of the joint based on the distance between bones.[br]Can be changed at runtime.
+@export_range(0, 2, 0.1, "or_greater") var rest_length_ratio : float = 1.1 :
+	set (value):
+		if rest_length_ratio == value:
+			return
+		rest_length_ratio = value
+		for body in get_rigid_bodies():
+			for joint in body.joints:
+				if joint is DampedSpringJoint2D:
+					joint.rest_length = joint.get_meta("joint_distance") * rest_length_ratio
+	get:
+		return rest_length_ratio
+## Sets the [member DampedSpringJoint2D.length] property of the joint based on the distance between bones.[br]Can be changed at runtime.
+@export_range(0, 2, 0.1, "or_greater") var length_ratio : float = 0.1 :
+	set (value):
+		if length_ratio == value:
+			return
+		length_ratio = value
+		for body in get_rigid_bodies():
+			for joint in body.joints:
+				if joint is DampedSpringJoint2D:
+					joint.length = joint.get_meta("joint_distance") * length_ratio
+	get:
+		return length_ratio
 
 ## Sets the [member Joint2D.disable_collision] property of the joint.[br]Can be changed at runtime.
 @export var disable_collision := false :
@@ -720,8 +744,10 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D]):
 				joint.node_b = "../../" + node_b.name
 				joint.stiffness = stiffness
 				joint.disable_collision = disable_collision
-				joint.rest_length = ((node_a.global_position - node_b.global_position).length()) * 1
-				joint.length = ((node_a.global_position - node_b.global_position).length()) * 1
+				var joint_distance := (node_a.global_position - node_b.global_position).length()
+				joint.set_meta("joint_distance", joint_distance)
+				joint.rest_length = joint_distance * rest_length_ratio
+				joint.length = joint_distance * length_ratio
 				joint.look_at(node_b.global_position)
 				joint.rotation = node_a.position.angle_to_point(node_b.position) - PI/2
 				joint.damping = damping
