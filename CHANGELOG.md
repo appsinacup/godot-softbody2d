@@ -1,6 +1,14 @@
 # Changelog
 
-## [v1.4](https://github.com/Ughuuu/godot-4-softbody2d/releases/tag/v1.3)
+## [v1.5](https://github.com/Ughuuu/godot-4-softbody2d/releases/tag/v1.4)
+
+- Add `exclude_texture` to support hollow softbodies.
+- Remove `soft_center` as it makes physics simulation unstable
+- Remove `look_at_center`
+- Add `SkeletonModification2DLookAt` and remove `LookAtCenter2D` script
+- Remove `bake` and `clear` options and only allow baking if you change a property
+
+## [v1.4](https://github.com/Ughuuu/godot-4-softbody2d/releases/tag/v1.4)
 
 - Add `rest_length_ratio` and `length_ratio`, useful to set rest_length and length of damped spring based on the distance between bones. This number is multiplied with that distance.
 

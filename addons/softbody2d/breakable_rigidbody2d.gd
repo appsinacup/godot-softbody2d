@@ -50,5 +50,6 @@ func _process(delta):
 			remove_bone(bone_a, bone_b)
 			remove_bone(bone_b, bone_a)
 
-func remove_bone(bone_a: LookAtCenter2D, bone_b: LookAtCenter2D):
-	bone_a.filter_out(bone_b)
+func remove_bone(bone_a: Bone2D, bone_b: Bone2D):
+	pass
+	#bone_a.filter_out(bone_b)

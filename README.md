@@ -1,15 +1,10 @@
-# ![icon](https://raw.githubusercontent.com/Ughuuu/godot-4-softbody2d/main/addons/softbody2d/plugin_icon.png) SoftBody2D
+# ![icon](https://raw.githubusercontent.com/Ughuuu/godot-4-softbody2d/main/addons/softbody2d/softbody2d.svg) SoftBody2D
 
 # Introduction
 
 ![Example](docs/example.png)
 
-Create 2D SoftBodies from a Texture.
-
-1. Create a SoftBody2D node, add a texture to it.
-2. Then click bake.
-
-This will create multiple rigidbodies for each region of the object.
+Create a 2D Soft Body from a Texture.
 
 # How to install
 
@@ -21,7 +16,6 @@ The softbody is constructed out of multiple pieces. The texture is first split i
 
 ## Polygon
 
-* Bake from inspector
 * Vertex Interval: This sets how far apart two rigidbodies will be.
 * Voronoi Interval: This sets how much will the rigidbodies move relative to their original center.
 * Polygon Offset: Do manual adjustments if bodies are not generated how you want them.
@@ -32,16 +26,16 @@ The softbody is constructed out of multiple pieces. The texture is first split i
 * Margin Pixels: Shrink or Expand the original image
 * Texture Epsilon: Get more or less points on the polygon outline
 * Min Alpha: Minimum alpha needed to consider texture part of softbody.
+* Exclude Texture: Texture to be used in order to exclude area. This is used to make soft bodies with holes.
 
 ## Joint
 
-* Look at center: Wether the resulting bone (which transforms the texture based on rigidbody position) should look at center bone (if you have breakable bodies enabled, then the center bone will change) or to look at the middle most adjacent bone.
+* Max Joint Distance Ratio: Max distance ratio to connect rigidbodies with joints, relative to vertex_interval distance.
 * Joint Type: This plugin supports Pin or Spring joint
 * Bias, Disable Collision, Stiffness, Damping, Softness: Joint specific properties
 
 ## Rigidbody
 
-* Soft on inside: Make the inside bodies have less mass.
 * Script: Add a custom script to be added to the rigidbody. Eg. `breakable_rigidbody2d.gd` script
 * Radius, collision layer, collision mask, mass, pickable, lock rotation, material override: Rigidbody specific properties.
 

@@ -13,3 +13,14 @@
 /docs/softbody.png export-ignore
 /docs/voronoi_cut.png export-ignore
 /docs/voronoi_object.png export-ignore
+/demo export-ignore
+/demo/Asparagus.png export-ignore
+/demo/Boil.png export-ignore
+/demo/Boiled_Egg_Half.png export-ignore
+/demo/demo.tscn export-ignore
+/demo/softbody2d_full.png export-ignore
+/demo/softbody2d_inner.png export-ignore
+/demo/softbody2d.png export-ignore
+/demo/softbody2d_phys_bouncy.tres export-ignore
+/demo/softbody2d_phys_slippery.tres export-ignore
+
