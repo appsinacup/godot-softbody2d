@@ -1,6 +1,11 @@
 # Changelog
 
-## [v1.5](https://github.com/Ughuuu/godot-4-softbody2d/releases/tag/v1.4)
+## [v1.5.1](https://github.com/Ughuuu/godot-4-softbody2d/releases/tag/v1.5.1)
+
+- Fix lookat for case of breaking rigidbodies
+- Remove breakable_rigidbody script, instead do all logic on SoftBody2D script
+
+## [v1.5](https://github.com/Ughuuu/godot-4-softbody2d/releases/tag/v1.5)
 
 - Add `exclude_texture` to support hollow softbodies.
 - Remove `soft_center` as it makes physics simulation unstable

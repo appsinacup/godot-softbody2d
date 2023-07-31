@@ -36,7 +36,7 @@ The softbody is constructed out of multiple pieces. The texture is first split i
 
 ## Rigidbody
 
-* Script: Add a custom script to be added to the rigidbody. Eg. `breakable_rigidbody2d.gd` script
+* Script: Add a custom script to be added to the rigidbody.
 * Radius, collision layer, collision mask, mass, pickable, lock rotation, material override: Rigidbody specific properties.
 
 # How it works
@@ -70,9 +70,8 @@ The softbody is constructed out of multiple pieces. The texture is first split i
 
 ## 4. For breakable softbodies
 
-If you assign to each rigidbody a `breakable_rigidbody2d.gd` script(done in inspector at SoftBody2D/Rigidbody/Rigidbody Script)
 
-1. When the joint length is too big, the joints breaks. Then, the script `breakable_rigidbody2d.gd` calls on SoftBody2D script `remove_joint` function, which changes weights for both bones to no longer have weights in other voronoi region.
+1. When the joint length is too big, the joints breaks. Then, the weights for both bones are updated to no longer have weights in other voronoi region.
 
 That's it. Because of the way the bones weights are built, they have overlapping points that just need to be removed when joint is broken. Easy!
 
