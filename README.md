@@ -36,7 +36,7 @@ The softbody is constructed out of multiple pieces. The texture is first split i
 
 ## Rigidbody
 
-* Script: Add a custom script to be added to the rigidbody.
+* Script: Add a custom scene to be added instead of rigidbody.
 * Radius, collision layer, collision mask, mass, pickable, lock rotation, material override: Rigidbody specific properties.
 
 # How it works

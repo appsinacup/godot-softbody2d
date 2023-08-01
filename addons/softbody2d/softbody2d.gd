@@ -76,7 +76,7 @@ signal joint_removed(rigid_body_a: SoftBodyChild, rigid_body_b: SoftBodyChild)
 		if total_mass == value:
 			return
 		total_mass = value
-		call_deferred("_update_bodies_mass")
+		_update_bodies_mass()
 	get:
 		return total_mass
 ## What kind of shape to create for each rigidbody.
@@ -131,7 +131,14 @@ signal joint_removed(rigid_body_a: SoftBodyChild, rigid_body_b: SoftBodyChild)
 			body.rigidbody.collision_mask = collision_mask
 	get:
 		return collision_mask
-
+@export var rigidbody_scene: PackedScene :
+	set (value):
+		if rigidbody_scene == value:
+			return
+		rigidbody_scene = value
+		create_softbody2d()
+	get:
+		return rigidbody_scene
 #region Image
 ## Properties that relate to the image used to generate the polygon
 @export_group("Image")
@@ -322,20 +329,9 @@ func _update_bodies_mass():
 		return
 	var bones = get_node_or_null(skeleton).get_children()
 	var polygon_limits = _calculate_polygon_limits()
-	var max_dist_sq = polygon_limits[0].distance_squared_to(polygon_limits[1])/4
 	for body in get_rigid_bodies():
 		body.rigidbody.mass = total_mass / get_rigid_bodies().size()
 
-## Sets a script to attach the [RigidBody2D] created.
-@export var rigidbody_script : Script :
-	set (value):
-		if rigidbody_script == value:
-			return
-		rigidbody_script = value
-		for body in get_rigid_bodies():
-			body.rigidbody.set_script(rigidbody_script)
-	get:
-		return rigidbody_script
 ## Sets the [member RigidBody2D.pickable].
 @export var pickable := false :
 	set (value):
@@ -746,15 +742,19 @@ func _add_rigid_body_for_bones(skeleton: Skeleton2D) -> Array[RigidBody2D]:
 	var link_pair = {}
 	var rigidbodies : Array[RigidBody2D] = []
 	var polygon_limits = _calculate_polygon_limits()
-	var max_dist_sq = polygon_limits[0].distance_squared_to(polygon_limits[1])/4
+	var follow = _get_node_to_follow(bones)
 	for bone in bones:
-		var rigid_body = _create_rigid_body(skeleton, bone, total_mass / bones.size())
+		var rigid_body = _create_rigid_body(skeleton, bone, total_mass / bones.size(), bone == follow)
 		rigid_body.set_meta("bone_name", bone.name)
 		rigidbodies.append(rigid_body)
 	return rigidbodies
 
-func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D, mass):
-	var rigid_body = RigidBody2D.new()
+func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D, mass, is_center: bool):
+	var rigid_body: RigidBody2D
+	if rigidbody_scene && is_center:
+		rigid_body = rigidbody_scene.instantiate()
+	else:
+		rigid_body = RigidBody2D.new()
 	rigid_body.name = bone.name
 	var collision_shape = CollisionShape2D.new()
 	var shape: Shape2D
@@ -777,7 +777,6 @@ func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D, mass):
 	rigid_body.collision_mask = collision_mask
 	rigid_body.input_pickable = pickable
 	rigid_body.lock_rotation = lock_rotation
-	rigid_body.set_script(rigidbody_script)
 	var remote_transform = RemoteTransform2D.new()
 	remote_transform.name = "RemoteTransform2D"
 	rigid_body.add_child(remote_transform)
@@ -815,7 +814,7 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D]):
 			if joint_type == "pin":
 				var joint = PinJoint2D.new()
 				joint.visible = false
-				joint.name = "PinJoint2D-"+node_a.name+"-"+node_b.name
+				joint.name = "Joint2D-"+node_a.name+"-"+node_b.name
 				joint.node_a = ".."
 				joint.node_b = "../../" + node_b.name
 				joint.softness = softness
@@ -829,7 +828,7 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D]):
 					joint.set_owner(get_tree().get_edited_scene_root())
 			else:
 				var joint = DampedSpringJoint2D.new()
-				joint.name = "DampedSpringJoint2D-"+node_a.name+"-"+node_b.name
+				joint.name = "Joint2D-"+node_a.name+"-"+node_b.name
 				joint.visible = false
 				joint.node_a = ".."
 				joint.node_b = "../../" + node_b.name
@@ -976,6 +975,8 @@ func remove_joint(rigid_body_child: SoftBodyChild, joint: Joint2D):
 
 ## Get all the bodies, including joints and shape
 func get_rigid_bodies() -> Array[SoftBodyChild]:
+	if _soft_body_rigidbodies_array.is_empty():
+		_update_soft_body_rigidbodies()
 	return _soft_body_rigidbodies_array
 
 ## Computes the center of the softbody.
@@ -988,9 +989,9 @@ func get_bones_center_position() -> Vector2:
 	
 ## Get the body located in the center
 func get_center_body() -> SoftBodyChild:
-	var bodies := _soft_body_rigidbodies_array
+	var bodies := get_rigid_bodies()
 	var rb_array := bodies.map(func(body): return body.rigidbody)
-	var center_rb := _get_node_to_follow(bodies)
+	var center_rb := _get_node_to_follow(rb_array)
 	return _soft_body_rigidbodies_dict[center_rb]
 	
 func _update_soft_body_rigidbodies():

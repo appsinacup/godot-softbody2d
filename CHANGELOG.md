@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.5.2](https://github.com/Ughuuu/godot-4-softbody2d/releases/tag/v1.5.2)
+
+- Make rigidbody configuration be without script but with scene instead.
+
 ## [v1.5.1](https://github.com/Ughuuu/godot-4-softbody2d/releases/tag/v1.5.1)
 
 - Fix lookat for case of breaking rigidbodies
