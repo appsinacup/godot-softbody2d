@@ -185,7 +185,7 @@ signal joint_removed(rigid_body_a: SoftBodyChild, rigid_body_b: SoftBodyChild)
 	get:
 		return voronoi_rand_seed
 ## How far randomly should the points move.
-@export_range(0.01, 0.5, 0.05) var voronoi_interval:= 0.15:
+@export_range(0, 0.5, 0.05) var voronoi_interval:= 0.01:
 	set (value):
 		if voronoi_interval == value:
 			return
@@ -218,6 +218,16 @@ signal joint_removed(rigid_body_a: SoftBodyChild, rigid_body_b: SoftBodyChild)
 
 ## Set properties related to the generated joints between rigidbodies.
 @export_group("Joint")
+
+## Should create a joint between node a->b and b->a (2 joints per 2 nodes) or just 1 joint per 2 nodes.
+@export var joint_both_ways : bool = true:
+	set (value):
+		if joint_both_ways == value:
+			return
+		joint_both_ways = value
+		create_softbody2d()
+	get:
+		return joint_both_ways
 ## Maximum distance ratio until to create joints multiplied by [member SoftBody2D.vertex_interval]
 @export_range(0.1, 2, 0.01, "or_greater") var max_joint_distance_ratio : float = 1.2:
 	set (value):
@@ -228,7 +238,14 @@ signal joint_removed(rigid_body_a: SoftBodyChild, rigid_body_b: SoftBodyChild)
 	get:
 		return max_joint_distance_ratio
 ## The joint type. Pin yields a more sturdy softbody, and uses [PinJoint2D], while sprint a more soft one, and uses [DampedSpringJoint2D].
-@export_enum("pin", "spring") var joint_type:= "pin"
+@export_enum("pin", "spring") var joint_type:= "pin":
+	set (value):
+		if joint_type == value:
+			return
+		joint_type = value
+		create_softbody2d()
+	get:
+		return joint_type
 ## Sets the [member Joint2D.bias] property of the joint.
 @export_range(0, 2, 0.1, "or_greater") var bias : float = 0 :
 	set (value):
@@ -342,16 +359,6 @@ func _update_bodies_mass():
 			body.rigidbody.input_pickable = pickable
 	get:
 		return pickable
-## Sets the [member RigidBody2D.lock_rotation].
-@export var lock_rotation := false :
-	set (value):
-		if lock_rotation == value:
-			return
-		lock_rotation = value
-		for body in get_rigid_bodies():
-			body.rigidbody.lock_rotation = lock_rotation
-	get:
-		return lock_rotation
 ## Sets the [member RigidBody2D.physics_material_override].
 @export var physics_material_override: PhysicsMaterial :
 	set (value):
@@ -397,7 +404,7 @@ func create_softbody2d():
 		return
 	var skeleton2d = _construct_skeleton2d(voronoi[0], voronoi[1])
 	_create_rigidbodies2d(skeleton2d)
-	_update_soft_body_rigidbodies()
+	_update_soft_body_rigidbodies(skeleton2d)
 
 ## Call this to clear all children, polygons and bones.
 
@@ -407,7 +414,7 @@ func clear_softbody2d():
 		child.queue_free()
 		remove_child(child)
 	clear_bones()
-	_update_soft_body_rigidbodies()
+	_soft_body_rigidbodies_array = []
 
 func _clear_polygon():
 	polygon.clear()
@@ -645,7 +652,6 @@ func _construct_skeleton2d(voronoi: Array, bone_vert_arr) -> Skeleton2D:
 	var skeleton_nodes = get_children().filter(func (node): return node is Skeleton2D)
 	var skeleton2d : Skeleton2D
 	if len(skeleton_nodes) == 0:
-		print("Skeleton2D is null. Creating one for you.")
 		skeleton2d = _create_skeleton()
 	else:
 		skeleton2d = skeleton_nodes[0] as Skeleton2D
@@ -722,7 +728,7 @@ func _generate_weights(bones: Array[Bone2D], voronoi, bone_vert_arr):
 		for bone_index in bone_count:
 			for poly in voronoi[bone_index].polygon_points:
 				if _is_point_in_area(point, poly, max_joint_distance_ratio):
-					weights[bone_index][point_index] = 1
+					weights[bone_index][point_index] = 0.7
 	return weights
 
 #endregion
@@ -743,20 +749,6 @@ func _add_rigid_body_for_bones(skeleton: Skeleton2D) -> Array[RigidBody2D]:
 	var rigidbodies : Array[RigidBody2D] = []
 	var polygon_limits = _calculate_polygon_limits()
 	var follow = _get_node_to_follow(bones)
-	for bone in bones:
-		var rigid_body = _create_rigid_body(skeleton, bone, total_mass / bones.size(), bone == follow)
-		rigid_body.set_meta("bone_name", bone.name)
-		rigidbodies.append(rigid_body)
-	return rigidbodies
-
-func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D, mass, is_center: bool):
-	var rigid_body: RigidBody2D
-	if rigidbody_scene && is_center:
-		rigid_body = rigidbody_scene.instantiate()
-	else:
-		rigid_body = RigidBody2D.new()
-	rigid_body.name = bone.name
-	var collision_shape = CollisionShape2D.new()
 	var shape: Shape2D
 	if shape_type == "Circle":
 		shape = CircleShape2D.new()
@@ -767,6 +759,20 @@ func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D, mass, is_center: boo
 	else:
 		push_error("Wrong shape used for shape_type")
 	shape.resource_local_to_scene = true
+	for bone in bones:
+		var rigid_body = _create_rigid_body(skeleton, bone, total_mass / bones.size(), bone == follow, shape)
+		rigid_body.set_meta("bone_name", bone.name)
+		rigidbodies.append(rigid_body)
+	return rigidbodies
+
+func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D, mass, is_center: bool, shape: Shape2D):
+	var rigid_body: RigidBody2D
+	if rigidbody_scene && is_center:
+		rigid_body = rigidbody_scene.instantiate()
+	else:
+		rigid_body = RigidBody2D.new()
+	rigid_body.name = bone.name
+	var collision_shape = CollisionShape2D.new()
 	collision_shape.shape = shape
 	collision_shape.name = shape_type + "Shape2D"
 	rigid_body.mass = mass
@@ -776,7 +782,6 @@ func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D, mass, is_center: boo
 	rigid_body.collision_layer = collision_layer
 	rigid_body.collision_mask = collision_mask
 	rigid_body.input_pickable = pickable
-	rigid_body.lock_rotation = lock_rotation
 	var remote_transform = RemoteTransform2D.new()
 	remote_transform.name = "RemoteTransform2D"
 	rigid_body.add_child(remote_transform)
@@ -805,6 +810,9 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D]):
 	for idx_a in len(rigid_bodies):
 		var node_a := rigid_bodies[idx_a]
 		for idx_b in len(rigid_bodies):
+			# only create joint once
+			if idx_b > idx_a && !joint_both_ways:
+				continue
 			var node_b := rigid_bodies[idx_b]
 			if node_a == node_b or \
 				node_a.global_position.distance_to(node_b.global_position) > vertex_interval * scale.length() * max_joint_distance_ratio:
@@ -813,7 +821,7 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D]):
 			connected_nodes[idx_a].append(node_b)
 			if joint_type == "pin":
 				var joint = PinJoint2D.new()
-				joint.visible = false
+				#joint.visible = false
 				joint.name = "Joint2D-"+node_a.name+"-"+node_b.name
 				joint.node_a = ".."
 				joint.node_b = "../../" + node_b.name
@@ -829,7 +837,7 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D]):
 			else:
 				var joint = DampedSpringJoint2D.new()
 				joint.name = "Joint2D-"+node_a.name+"-"+node_b.name
-				joint.visible = false
+				#joint.visible = false
 				joint.node_a = ".."
 				joint.node_b = "../../" + node_b.name
 				joint.stiffness = stiffness
@@ -847,7 +855,7 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D]):
 				if Engine.is_editor_hint():
 					joint.set_owner(get_tree().get_edited_scene_root())
 	var skeleton_node: Skeleton2D = get_node_or_null(skeleton)
-	skeleton_node.visible = false
+	#skeleton_node.visible = false
 	var skeleton_modification_stack:=SkeletonModificationStack2D.new()
 	for i in bones.size():
 		var skeleton_modification :=SkeletonModification2DLookAt.new()
@@ -856,6 +864,7 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D]):
 		skeleton_modification.resource_local_to_scene = true
 		skeleton_modification.set_editor_draw_gizmo(false)
 		_update_bone_lookat(skeleton_node, skeleton_modification, bones[i], connected_nodes_paths[i], i)
+		
 		bones[i].set_rest(bones[i].transform)
 		skeleton_modification_stack.add_modification(skeleton_modification)
 	skeleton_modification_stack.enable_all_modifications(true)
@@ -867,14 +876,22 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D]):
 		bones[i].set_meta("connected_nodes_paths", connected_nodes_paths[i])
 
 func _update_bone_lookat(skeleton_node: Skeleton2D, skeleton_modification :SkeletonModification2DLookAt, bone: Bone2D, connected_nodes_paths, bone_idx: int):
-	bone.look_at(skeleton_node.get_node(connected_nodes_paths[connected_nodes_paths.size()/2]).global_position)
+	if connected_nodes_paths.is_empty():
+		push_warning("Softbody" + name +" bone has no node to look at")
+		return
+	var node_lookat = skeleton_node.get_node(connected_nodes_paths[connected_nodes_paths.size()/2])
+	
+	bone.look_at(node_lookat.global_position)
+	#bone.set_bone_angle(position.angle_to_point(node_lookat.position))
+	
 	skeleton_node.set_bone_local_pose_override(bone_idx, bone.get_transform(), 1, true)
 	skeleton_modification.target_nodepath = connected_nodes_paths[connected_nodes_paths.size()/2]
-
+	
 #endregion
 
 # used internally, computed at _ready once
 var _bones_array
+var _skeleton_node: Skeleton2D
 var _soft_body_rigidbodies_array: Array[SoftBodyChild]
 var _soft_body_rigidbodies_dict: Dictionary
 var _hinges_bodies:= Dictionary()
@@ -887,11 +904,12 @@ var _hinges_distances_squared := Dictionary()
 func _ready():
 	if Engine.is_editor_hint():
 		return
-	if get_child_count() == 0 || !get_node_or_null(skeleton):
+	_skeleton_node = get_node_or_null(skeleton)
+	if get_child_count() == 0 || !_skeleton_node:
 		push_warning("Softbody2d not created")
 		return
-	_bones_array = get_node_or_null(skeleton).get_children().filter(func(node): return node is Bone2D)
-	_update_soft_body_rigidbodies()
+	_bones_array = _skeleton_node.get_children().filter(func(node): return node is Bone2D)
+	_update_soft_body_rigidbodies(_skeleton_node)
 	# This is needed for breaking the rigidbody
 	for rigid_body in get_rigid_bodies():
 		for hinge in rigid_body.joints:
@@ -945,11 +963,20 @@ func remove_joint(rigid_body_child: SoftBodyChild, joint: Joint2D):
 	var bone_b_weights = get_bone_weights(bone_b_idx)
 	var bone_a_owned_verts = _bones_array[bone_a_idx].get_meta("vert_owned")
 	var bone_b_owned_verts = _bones_array[bone_b_idx].get_meta("vert_owned")
+	var bone_a_owned_weights = []
+	var bone_b_owned_weights = []
+	var bone_a_owned_after = []
+	var bone_b_owned_after = []
+	var MIN_WEIGHT = 0.01
 	for i in bone_a_weights.size():
+		if bone_a_weights[i] > MIN_WEIGHT :
+			bone_a_owned_weights.append(i)
+		if bone_b_weights[i] > MIN_WEIGHT :
+			bone_b_owned_weights.append(i)
 		var should_remove_a = true
 		var should_remove_b = true
 		# both nodes have weight, check if it's not their own vert
-		if bone_a_weights[i] > 0 && bone_b_weights[i] > 0:
+		if bone_a_weights[i] > MIN_WEIGHT && bone_b_weights[i] > MIN_WEIGHT:
 			for point_a in bone_a_owned_verts:
 				if i == point_a:
 					should_remove_a = false
@@ -962,21 +989,36 @@ func remove_joint(rigid_body_child: SoftBodyChild, joint: Joint2D):
 				bone_a_weights[i] = 0.0
 			if should_remove_b:
 				bone_b_weights[i] = 0.0
+		if bone_a_weights[i] > MIN_WEIGHT :
+			bone_a_owned_after.append(i)
+		if bone_b_weights[i] > MIN_WEIGHT :
+			bone_b_owned_after.append(i)
 	set_bone_weights(bone_a_idx, bone_a_weights)
 	set_bone_weights(bone_b_idx, bone_b_weights)
-	var skeleton_node: Skeleton2D = get_node(skeleton)
-	var skeleton_modification_stack: SkeletonModificationStack2D = skeleton_node.get_modification_stack()
-	
-	_update_bone_lookat(skeleton_node, skeleton_modification_stack.get_modification(bone_a_idx), bone_a, bone_a.get_meta("connected_nodes_paths"), bone_a_idx)
-	_update_bone_lookat(skeleton_node, skeleton_modification_stack.get_modification(bone_b_idx), bone_b, bone_b.get_meta("connected_nodes_paths"), bone_b_idx)
-	_update_soft_body_rigidbodies()
+	var skeleton_modification_stack: SkeletonModificationStack2D = _skeleton_node.get_modification_stack()
+	var connected_nodes_paths_a: Array = bone_a.get_meta("connected_nodes_paths")
+	connected_nodes_paths_a.erase(NodePath(bone_b_name))
+	bone_a.set_meta("connected_nodes_paths", connected_nodes_paths_a)
+	var connected_nodes_paths_b: Array = bone_b.get_meta("connected_nodes_paths")
+	connected_nodes_paths_b.erase(NodePath(bone_a_name))
+	bone_b.set_meta("connected_nodes_paths", connected_nodes_paths_b)
+	var modification_a := skeleton_modification_stack.get_modification(bone_a_idx)
+	var modification_b := skeleton_modification_stack.get_modification(bone_b_idx)
+	_update_bone_lookat(_skeleton_node, skeleton_modification_stack.get_modification(bone_a_idx), bone_a, bone_a.get_meta("connected_nodes_paths"), bone_a_idx)
+	_update_bone_lookat(_skeleton_node, skeleton_modification_stack.get_modification(bone_b_idx), bone_b, bone_b.get_meta("connected_nodes_paths"), bone_b_idx)
+	skeleton_modification_stack.set_modification(bone_a_idx, modification_a)
+	skeleton_modification_stack.set_modification(bone_b_idx, modification_b)
+	_skeleton_node.set_modification_stack(skeleton_modification_stack)
+	_update_soft_body_rigidbodies(_skeleton_node)
 	
 	joint_removed.emit(rigid_body_a, rigid_body_b)
 
 ## Get all the bodies, including joints and shape
 func get_rigid_bodies() -> Array[SoftBodyChild]:
 	if _soft_body_rigidbodies_array.is_empty():
-		_update_soft_body_rigidbodies()
+		if !_skeleton_node:
+			_skeleton_node = get_node_or_null(skeleton)
+		_update_soft_body_rigidbodies(_skeleton_node)
 	return _soft_body_rigidbodies_array
 
 ## Computes the center of the softbody.
@@ -994,13 +1036,12 @@ func get_center_body() -> SoftBodyChild:
 	var center_rb := _get_node_to_follow(rb_array)
 	return _soft_body_rigidbodies_dict[center_rb]
 	
-func _update_soft_body_rigidbodies():
+func _update_soft_body_rigidbodies(skeleton_node:Skeleton2D = null):
 	var result: Array[SoftBodyChild]
 	var children = get_children().filter(func (node: Node): return node is RigidBody2D)
-	if !get_node_or_null(skeleton):
-		push_warning("Skeleton is null")
+	if !skeleton_node:
 		return
-	var bones = get_node_or_null(skeleton).get_children()
+	var bones = skeleton_node.get_children()
 	for child in children:
 		var softbodyrb = SoftBodyChild.new()
 		softbodyrb.rigidbody = child as RigidBody2D
@@ -1018,13 +1059,16 @@ func _update_soft_body_rigidbodies():
 
 var max_deletions = 6
 
+var _last_texture = null
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Engine.is_editor_hint():
+		if texture != _last_texture:
+			create_softbody2d()
+		_last_texture = texture
 		return
-	if Engine.get_process_frames() % 3 != 0:
-		return
-	if break_distance_ratio <= 0:
+	if Engine.get_process_frames() % 3 != 0 || break_distance_ratio <= 0 || !_skeleton_node:
 		return
 	var deleted_count = 0
 	for rigid_body in get_rigid_bodies():
