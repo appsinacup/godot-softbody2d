@@ -11,7 +11,6 @@ extends Node2D;
 
 class_name Voronoi2D
 
-
 ## Bake the voronoi regions as [Polygon2D] nodes children. Removes old children.
 @export var bake := false :
 	set (value):

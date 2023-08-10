@@ -31,6 +31,13 @@ class_name SoftBody2D
 ## Called after a joint is removed.
 signal joint_removed(rigid_body_a: SoftBodyChild, rigid_body_b: SoftBodyChild)
 
+func _set(property, value):
+	if property == "texture":
+		texture = value
+		create_softbody2d()
+		return true
+	return false
+
 ## Draw regions of edge polygon.[br]
 ## 1a. Creates edge vertices from texture.[br]
 ## 1b. Creates multiple voronoi regions with roughly same total size as the edge vertices AABB.[br]
@@ -45,7 +52,7 @@ signal joint_removed(rigid_body_a: SoftBodyChild, rigid_body_b: SoftBodyChild)
 		return draw_regions
 
 ## Distance between internal vertices
-@export_range(2, 50, 1, "or_greater") var vertex_interval := 30:
+@export_range(10, 50, 1, "or_greater") var vertex_interval := 30:
 	set (value):
 		if vertex_interval == value:
 			return
@@ -71,7 +78,7 @@ signal joint_removed(rigid_body_a: SoftBodyChild, rigid_body_b: SoftBodyChild)
 		return radius
 
 ## Sets the total mass. Each rigidbody will have some [member RigidBody2D.mass] totaling this amount.
-@export_range(0, 100, 0.1, "or_greater") var total_mass := 1.0 :
+@export_range(0.01, 100, 0.1, "or_greater") var total_mass := 1.0 :
 	set (value):
 		if total_mass == value:
 			return
@@ -229,7 +236,7 @@ signal joint_removed(rigid_body_a: SoftBodyChild, rigid_body_b: SoftBodyChild)
 	get:
 		return joint_both_ways
 ## Maximum distance ratio until to create joints multiplied by [member SoftBody2D.vertex_interval]
-@export_range(0.1, 2, 0.01, "or_greater") var max_joint_distance_ratio : float = 1.2:
+@export_range(0.1, 2, 0.01, "or_greater") var max_joint_distance_ratio : float = 1:
 	set (value):
 		if max_joint_distance_ratio == value:
 			return
