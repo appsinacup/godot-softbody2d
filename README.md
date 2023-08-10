@@ -24,6 +24,10 @@ You can create multiple types of softbodies with this plugin, such as:
 - Line shaped softbody
 - Really any shape softbody
 
+# Video Tutorial
+
+[![Tutorial](https://img.youtube.com/vi/By_AfqLxAKw/0.jpg)](https://www.youtube.com/watch?v=By_AfqLxAKw)
+
 # How this plugin creates a softbody
 
 <table>
@@ -92,12 +96,12 @@ You can create multiple types of softbodies with this plugin, such as:
 </tr>
 </table>
 
+# [Discord](https://discord.gg/56dMud8HYn)
+
+A vibrant community for discussion, user support and showcases.
+
 # License
 
 Godot SoftBody2D is distributed under the MIT license. See `LICENSE` for more details.
 
 Uses parts of code from (godot-chunked-voronoi-generator)[https://github.com/arcanewright/godot-chunked-voronoi-generator]
-
-# [Discord](https://discord.gg/56dMud8HYn)
-
-A vibrant community for discussion, user support and showcases.
