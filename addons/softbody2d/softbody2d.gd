@@ -8,23 +8,7 @@ extends Polygon2D
 ## - a set of [RigidBody2D] nodes, each with one [CollisionShape2D] with a [Shape2D] and a set of [Joint2D] nodes connected to adjacent bodies.[br]
 ## - one [Skeleton2D] node with a set of [Bone2D] nodes, each getting their position set from a [RemoteTransform2D] node, located on the rigidbodies.[br]
 ##
-## How it does it:[br]
-## [br]
-## [b]Polygon[/b]:[br]
-## 1. Creates edge vertices from texture.[br]
-## 2. Creates multiple voronoi regions with roughly same total size as the edge vertices AABB.[br]
-## 3. Delete the voronoi regions not inside the polygon.[br]
-## 4. Assigns these polygons to the [member Polygon2D.polygon] and [member Polygon2D.polygons][br]
-## [br]
-## [b]Skeleton2D[/b]:[br]
-## 1. Creates a [Skeleton2D] child.[br]
-## 2. Creates a set of [Bone2D] nodes of the [Skeleton2D], each having a voronoi region and assign correct weights to them.[br]
-## [br]
-## [b]RigidtBody2D[/b]:[br]
-## 1. Creates a set of [RigidBody2D] nodes, one for each voronoi region.[br]
-## 2. Creates for each [Bone2D] a [Rigidody2D] with a [CollisionShape2D] (with a [Shape2D] shape) child, a [RemoteTransform2D] child that targets thte [Bone2D] position, and either [DampedSprintJoint2D] or [PinJoint2D] children that connects each other neighbour nodes.[br]
-##
-## @tutorial: https://github.com/Ughuuu/godot-4-softbody2d/tree/main
+## @tutorial: https://appsinacup.com/godot-softbody2d-tutorial/
 
 class_name SoftBody2D
 
@@ -182,6 +166,14 @@ func _set(property, value):
 ## Properties that relate to the generated polygon.
 @export_group("Polygon")
 
+## Maximum amount of rigidbodies to create. If it creates more than these, pushes an error.
+@export var max_regions := 200:
+	set (value):
+		if max_regions == value:
+			return
+		max_regions = value
+	get:
+		return max_regions
 ## Random seed for generation of voronoi regions
 @export var voronoi_rand_seed : int= 0:
 	set (value):
@@ -407,7 +399,7 @@ func create_softbody2d():
 		create_regions()
 		return
 	var voronoi = _create_polygon2d()
-	if (!voronoi):
+	if (!voronoi || voronoi[0].is_empty()):
 		return
 	var skeleton2d = _construct_skeleton2d(voronoi[0], voronoi[1])
 	_create_rigidbodies2d(skeleton2d)
@@ -548,6 +540,9 @@ func _generate_points_voronoi(lim_min: Vector2, lim_max: Vector2, polygon_verts)
 	var new_vert = get_polygon()
 	var bone_vert_arr = []
 	var in_vert_count = 0
+	if new_voronoi.size() > max_regions:
+		push_error("Too many regions. Current max_regions is " + str(max_regions) + ", total current regions " + str(new_voronoi.size()) + ". Increase the vertex_interval or max_regions.")
+		new_voronoi = []
 	for each in new_voronoi:
 		# multiple polygons
 		var bone_vert_combined_array := []
@@ -828,7 +823,7 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D]):
 			connected_nodes[idx_a].append(node_b)
 			if joint_type == "pin":
 				var joint = PinJoint2D.new()
-				#joint.visible = false
+				joint.visible = false
 				joint.name = "Joint2D-"+node_a.name+"-"+node_b.name
 				joint.node_a = ".."
 				joint.node_b = "../../" + node_b.name
@@ -844,7 +839,7 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D]):
 			else:
 				var joint = DampedSpringJoint2D.new()
 				joint.name = "Joint2D-"+node_a.name+"-"+node_b.name
-				#joint.visible = false
+				joint.visible = false
 				joint.node_a = ".."
 				joint.node_b = "../../" + node_b.name
 				joint.stiffness = stiffness
@@ -862,12 +857,11 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D]):
 				if Engine.is_editor_hint():
 					joint.set_owner(get_tree().get_edited_scene_root())
 	var skeleton_node: Skeleton2D = get_node_or_null(skeleton)
-	#skeleton_node.visible = false
+	skeleton_node.visible = false
 	var skeleton_modification_stack:=SkeletonModificationStack2D.new()
 	for i in bones.size():
 		var skeleton_modification :=SkeletonModification2DLookAt.new()
 		skeleton_modification.bone2d_node = NodePath(bones[i].name)
-		#skeleton_modification.execution_mode = 1
 		skeleton_modification.resource_local_to_scene = true
 		skeleton_modification.set_editor_draw_gizmo(false)
 		_update_bone_lookat(skeleton_node, skeleton_modification, bones[i], connected_nodes_paths[i], i)
@@ -889,7 +883,6 @@ func _update_bone_lookat(skeleton_node: Skeleton2D, skeleton_modification :Skele
 	var node_lookat = skeleton_node.get_node(connected_nodes_paths[connected_nodes_paths.size()/2])
 	
 	bone.look_at(node_lookat.global_position)
-	#bone.set_bone_angle(position.angle_to_point(node_lookat.position))
 	
 	skeleton_node.set_bone_local_pose_override(bone_idx, bone.get_transform(), 1, true)
 	skeleton_modification.target_nodepath = connected_nodes_paths[connected_nodes_paths.size()/2]
