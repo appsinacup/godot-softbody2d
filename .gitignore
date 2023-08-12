@@ -14,3 +14,4 @@ data_*/
 *.avi
 
 *.import
+!/addons/softbody2d/softbody2d.svg.import
