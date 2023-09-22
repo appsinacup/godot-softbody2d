@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://e43003nmrylg"]
+
+[ext_resource type="Script" path="res://demo/pickable_rigidbody.gd" id="1_5o2ep"]
+
+[node name="PickableRigidBody" type="RigidBody2D"]
+input_pickable = true
+script = ExtResource("1_5o2ep")

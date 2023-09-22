@@ -122,6 +122,7 @@ func _set(property, value):
 			body.rigidbody.collision_mask = collision_mask
 	get:
 		return collision_mask
+## A custom rigidbody scene from which to create the rigidbody. Useful if you want to have custom rigidbodies with custom scripts.
 @export var rigidbody_scene: PackedScene :
 	set (value):
 		if rigidbody_scene == value:
@@ -348,16 +349,6 @@ func _update_bodies_mass():
 	for body in get_rigid_bodies():
 		body.rigidbody.mass = total_mass / get_rigid_bodies().size()
 
-## Sets the [member RigidBody2D.pickable].
-@export var pickable := false :
-	set (value):
-		if pickable == value:
-			return
-		pickable = value
-		for body in get_rigid_bodies():
-			body.rigidbody.input_pickable = pickable
-	get:
-		return pickable
 ## Sets the [member RigidBody2D.physics_material_override].
 @export var physics_material_override: PhysicsMaterial :
 	set (value):
@@ -769,7 +760,7 @@ func _add_rigid_body_for_bones(skeleton: Skeleton2D) -> Array[RigidBody2D]:
 
 func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D, mass, is_center: bool, shape: Shape2D):
 	var rigid_body: RigidBody2D
-	if rigidbody_scene && is_center:
+	if rigidbody_scene:
 		rigid_body = rigidbody_scene.instantiate()
 	else:
 		rigid_body = RigidBody2D.new()
@@ -783,7 +774,6 @@ func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D, mass, is_center: boo
 	rigid_body.add_child(collision_shape)
 	rigid_body.collision_layer = collision_layer
 	rigid_body.collision_mask = collision_mask
-	rigid_body.input_pickable = pickable
 	var remote_transform = RemoteTransform2D.new()
 	remote_transform.name = "RemoteTransform2D"
 	rigid_body.add_child(remote_transform)
@@ -796,6 +786,8 @@ func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D, mass, is_center: boo
 		collision_shape.set_owner(get_tree().get_edited_scene_root())
 		remote_transform.set_owner(get_tree().get_edited_scene_root())
 		rigid_body.set_owner(get_tree().get_edited_scene_root())
+	if rigid_body is SoftBody2DRigidBody:
+		(rigid_body as SoftBody2DRigidBody).rigidbody_created.emit(collision_shape, is_center)
 	return rigid_body
 
 #endregion
