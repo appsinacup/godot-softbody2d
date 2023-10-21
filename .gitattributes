@@ -6,6 +6,7 @@
 /.gitignore export-ignore
 /README.md export-ignore
 /LICENSE export-ignore
+/softbody2d_banner.jpg export-ignore
 /CHANGELOG.md export-ignore
 /project.godot export-ignore
 /docs export-ignore
@@ -18,6 +19,7 @@
 /docs/softbody_final.png export-ignore
 /demo export-ignore
 /demo/Asparagus.png export-ignore
+/demo/stickman.png export-ignore
 /demo/Boil.png export-ignore
 /demo/Boiled_Egg_Half.png export-ignore
 /demo/demo.tscn export-ignore

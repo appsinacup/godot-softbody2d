@@ -1,12 +1,21 @@
 <p align="center">
 	<img width="128px" src="addons/softbody2d/softbody2d.svg"/> 
-	<h1 align="center">Godot SoftBody2D <img src="https://img.shields.io/badge/Godot-v4.1-%23478cbf?logo=godot-engine&logoColor=white"/></h1> 
+	<h1 align="center">Godot SoftBody2D </h1> 
 </p>
 <p align="center">
+	<a href="https://github.com/godotengine/godot-cpp" alt="Godot Version">
+		<img src="https://img.shields.io/badge/Godot-v4.2-%23478cbf?logo=godot-engine&logoColor=white"/></a>
+	<a href="https://github.com/appsinacup/godot-box2d/graphs/contributors" alt="Contributors">
+		<img src="https://img.shields.io/github/contributors/appsinacup/godot-box2d" /></a>
+	<a href="https://github.com/appsinacup/godot-box2d/pulse" alt="Activity">
+		<img src="https://img.shields.io/github/commit-activity/m/appsinacup/godot-box2d" /></a>
+	<a href="https://discord.gg/56dMud8HYn">
+		<img src="https://img.shields.io/discord/1138836561102897172?logo=discord"
+			alt="Chat on Discord"></a>
 <img src="docs/godot_softbody.gif"/>
 </p>
 
-A SoftBody2D is defined by a set of RigidBody2Ds used to simulate it and a Skeleton2D used to deform the polygon.
+A SoftBody2D is defined by a set of RigidBody2Ds and Joint2Ds used to simulate it and a Skeleton2D used to deform the texture.
 
 # Installation
 
@@ -17,12 +26,9 @@ A SoftBody2D is defined by a set of RigidBody2Ds used to simulate it and a Skele
 
 You can create multiple types of softbodies with this plugin, such as:
 
-- Bouncy softbody
-- Breakable/Deformable softbody
-- Softbody with hole
-- Circle shaped softbody
-- Line shaped softbody
-- Really any shape softbody
+- Bouncy SoftBody2D
+- Breakable/Deformable SoftBody2D
+- SoftBody2D with Hole
 
 # Video Tutorial
 

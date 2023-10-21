@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.6](https://github.com/Ughuuu/godot-4-softbody2d/releases/tag/v1.6)
+
+- Update to support angular limits (Godot 4.2)
+
 ## [v1.5.5](https://github.com/Ughuuu/godot-4-softbody2d/releases/tag/v1.5.5)
 
 - Fix issue where the addon icon would be too small.

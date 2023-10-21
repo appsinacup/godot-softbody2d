@@ -70,6 +70,16 @@ func _set(property, value):
 		_update_bodies_mass()
 	get:
 		return total_mass
+## Sets the gravity scale. Each rigidbody will have [member RigidBody2D.gravity_scale] set to this amount.
+@export_range(-1, 1, 0.01) var gravity_scale := 1.0 :
+	set (value):
+		if gravity_scale == value:
+			return
+		gravity_scale = value
+		for body in get_rigid_bodies():
+			body.rigidbody.gravity_scale = gravity_scale
+	get:
+		return gravity_scale
 ## What kind of shape to create for each rigidbody.
 @export_enum("Circle", "Rectangle") var shape_type:= "Circle" :
 	set (value):
@@ -91,7 +101,7 @@ func _set(property, value):
 	get:
 		return shape_type
 ## If this is greater than 0, the softbody will be breakable. This number is multiplied by [member SoftBody2D.vertex_interval]
-@export_range(0, 100, 0.1, "or_greater") var break_distance_ratio:= 0.0
+@export_range(0, 2, 0.1, "or_greater") var break_distance_ratio:= 0.0
 ## Create softbody with holes
 @export var exclude_texture: Texture2D:
 	set (value):
@@ -229,7 +239,7 @@ func _set(property, value):
 	get:
 		return joint_both_ways
 ## Maximum distance ratio until to create joints multiplied by [member SoftBody2D.vertex_interval]
-@export_range(0.1, 2, 0.01, "or_greater") var max_joint_distance_ratio : float = 1:
+@export_range(0.1, 2, 0.01, "or_greater") var max_joint_distance_ratio : float = 1.1:
 	set (value):
 		if max_joint_distance_ratio == value:
 			return
@@ -332,7 +342,42 @@ func _set(property, value):
 					joint.softness = softness
 	get:
 		return softness
-
+## Relevant only if you picked [member SoftBody2D.joint_type] = "pin". Sets the [member PinJoint2D.angular_limit_enabled] property of the joint.
+@export var angular_limit_enabled := false :
+	set (value):
+		if angular_limit_enabled == value:
+			return
+		angular_limit_enabled = value
+		for body in get_rigid_bodies():
+			for joint in body.joints:
+				if joint is PinJoint2D:
+					joint.angular_limit_enabled = angular_limit_enabled
+	get:
+		return angular_limit_enabled
+## Relevant only if you picked [member SoftBody2D.joint_type] = "pin". Sets the [member PinJoint2D.angular_limit_lower] property of the joint.
+@export_range(-180,180,0.001, "radians_as_degrees") var angular_limit_lower :float= 0 :
+	set (value):
+		if angular_limit_lower == value:
+			return
+		angular_limit_lower = value
+		for body in get_rigid_bodies():
+			for joint in body.joints:
+				if joint is PinJoint2D:
+					joint.angular_limit_lower = angular_limit_lower
+	get:
+		return angular_limit_lower
+## Relevant only if you picked [member SoftBody2D.joint_type] = "pin". Sets the [member PinJoint2D.angular_limit_upper] property of the joint.
+@export_range(-180,180,0.001, "radians_as_degrees")var angular_limit_upper :float= 0 :
+	set (value):
+		if angular_limit_upper == value:
+			return
+		angular_limit_upper = value
+		for body in get_rigid_bodies():
+			for joint in body.joints:
+				if joint is PinJoint2D:
+					joint.angular_limit_upper = angular_limit_upper
+	get:
+		return angular_limit_upper
 #endregion
 
 #region RigidBody
@@ -769,6 +814,7 @@ func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D, mass, is_center: boo
 	collision_shape.shape = shape
 	collision_shape.name = shape_type + "Shape2D"
 	rigid_body.mass = mass
+	rigid_body.gravity_scale = gravity_scale
 	rigid_body.global_position = skeleton.transform * bone.position
 	rigid_body.physics_material_override = physics_material_override
 	rigid_body.add_child(collision_shape)
@@ -820,6 +866,9 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D]):
 				joint.node_a = ".."
 				joint.node_b = "../../" + node_b.name
 				joint.softness = softness
+				joint.angular_limit_enabled = angular_limit_enabled
+				joint.angular_limit_lower = angular_limit_lower
+				joint.angular_limit_upper = angular_limit_upper
 				joint.disable_collision = disable_collision
 				joint.look_at(node_b.global_position)
 				joint.rotation = node_a.position.angle_to_point(node_b.position) - PI/2
@@ -1049,24 +1098,27 @@ func _update_soft_body_rigidbodies(skeleton_node:Skeleton2D = null):
 		_soft_body_rigidbodies_dict[softbodyrb.rigidbody] = softbodyrb
 	_soft_body_rigidbodies_array = result
 
-var max_deletions = 6
+var _max_deletions = 6
 
-var _last_texture = null
+@onready var _last_texture = texture
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# Needed in case texture changes
 	if Engine.is_editor_hint():
 		if texture != _last_texture:
 			create_softbody2d()
 		_last_texture = texture
 		return
+	# Break joints only every 3 frames
 	if Engine.get_process_frames() % 3 != 0 || break_distance_ratio <= 0 || !_skeleton_node:
 		return
+	# Break at max max_deletions joints
 	var deleted_count = 0
 	for rigid_body in get_rigid_bodies():
 		for node in rigid_body.joints:
 			var joint := node as Joint2D
-			if joint.is_queued_for_deletion() || deleted_count >= max_deletions:
+			if joint.is_queued_for_deletion() || deleted_count >= _max_deletions:
 				continue
 			if _hinges_distances_squared[joint.name] * break_distance_ratio * break_distance_ratio < _hinges_bodies[rigid_body.rigidbody.name].global_position.distance_squared_to(_hinges_bodies[joint.node_b].global_position):
 				deleted_count = deleted_count + 1
