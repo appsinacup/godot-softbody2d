@@ -351,7 +351,8 @@ func _set(property, value):
 		for body in get_rigid_bodies():
 			for joint in body.joints:
 				if joint is PinJoint2D:
-					joint.angular_limit_enabled = angular_limit_enabled
+					if "angular_limit_enabled" in joint:
+						joint.angular_limit_enabled = angular_limit_enabled
 	get:
 		return angular_limit_enabled
 ## Relevant only if you picked [member SoftBody2D.joint_type] = "pin". Sets the [member PinJoint2D.angular_limit_lower] property of the joint.
@@ -363,7 +364,8 @@ func _set(property, value):
 		for body in get_rigid_bodies():
 			for joint in body.joints:
 				if joint is PinJoint2D:
-					joint.angular_limit_lower = angular_limit_lower
+					if "angular_limit_enabled" in joint:
+						joint.angular_limit_lower = angular_limit_lower
 	get:
 		return angular_limit_lower
 ## Relevant only if you picked [member SoftBody2D.joint_type] = "pin". Sets the [member PinJoint2D.angular_limit_upper] property of the joint.
@@ -375,7 +377,8 @@ func _set(property, value):
 		for body in get_rigid_bodies():
 			for joint in body.joints:
 				if joint is PinJoint2D:
-					joint.angular_limit_upper = angular_limit_upper
+					if "angular_limit_enabled" in joint:
+						joint.angular_limit_upper = angular_limit_upper
 	get:
 		return angular_limit_upper
 #endregion
@@ -866,9 +869,10 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D]):
 				joint.node_a = ".."
 				joint.node_b = "../../" + node_b.name
 				joint.softness = softness
-				joint.angular_limit_enabled = angular_limit_enabled
-				joint.angular_limit_lower = angular_limit_lower
-				joint.angular_limit_upper = angular_limit_upper
+				if "angular_limit_enabled" in joint:
+					joint.angular_limit_enabled = angular_limit_enabled
+					joint.angular_limit_lower = angular_limit_lower
+					joint.angular_limit_upper = angular_limit_upper
 				joint.disable_collision = disable_collision
 				joint.look_at(node_b.global_position)
 				joint.rotation = node_a.position.angle_to_point(node_b.position) - PI/2
