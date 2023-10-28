@@ -77,7 +77,8 @@ func _set(property, value):
 			return
 		gravity_scale = value
 		for body in get_rigid_bodies():
-			body.rigidbody.gravity_scale = gravity_scale
+			if "gravity_scale" in body.rigidbody:
+				body.rigidbody.gravity_scale = gravity_scale
 	get:
 		return gravity_scale
 ## What kind of shape to create for each rigidbody.
@@ -112,7 +113,7 @@ func _set(property, value):
 	get:
 		return exclude_texture
 
-## Sets the [member RigidBody2D.collision_layer].
+## Sets the [member PhysicsBody2D.collision_layer].
 @export_flags_2d_physics var collision_layer := 1 :
 	set (value):
 		if collision_layer == value:
@@ -122,7 +123,7 @@ func _set(property, value):
 			body.rigidbody.collision_layer = collision_layer
 	get:
 		return collision_layer
-## Sets the [member RigidBody2D.collision_mask].
+## Sets the [member PhysicsBody2D.collision_mask].
 @export_flags_2d_physics var collision_mask := 1 :
 	set (value):
 		if collision_mask == value:
@@ -364,7 +365,7 @@ func _set(property, value):
 		for body in get_rigid_bodies():
 			for joint in body.joints:
 				if joint is PinJoint2D:
-					if "angular_limit_enabled" in joint:
+					if "angular_limit_lower" in joint:
 						joint.angular_limit_lower = angular_limit_lower
 	get:
 		return angular_limit_lower
@@ -377,7 +378,7 @@ func _set(property, value):
 		for body in get_rigid_bodies():
 			for joint in body.joints:
 				if joint is PinJoint2D:
-					if "angular_limit_enabled" in joint:
+					if "angular_limit_upper" in joint:
 						joint.angular_limit_upper = angular_limit_upper
 	get:
 		return angular_limit_upper
@@ -395,7 +396,8 @@ func _update_bodies_mass():
 	var bones = get_node_or_null(skeleton).get_children()
 	var polygon_limits = _calculate_polygon_limits()
 	for body in get_rigid_bodies():
-		body.rigidbody.mass = total_mass / get_rigid_bodies().size()
+		if "mass" in body.rigidbody:
+			body.rigidbody.mass = total_mass / get_rigid_bodies().size()
 
 ## Sets the [member RigidBody2D.physics_material_override].
 @export var physics_material_override: PhysicsMaterial :
@@ -959,14 +961,14 @@ func _ready():
 	for rigid_body in get_rigid_bodies():
 		for hinge in rigid_body.joints:
 			var joint := hinge as Joint2D
-			_hinges_bodies[rigid_body.rigidbody.name] = get_node(NodePath(rigid_body.rigidbody.name)) as RigidBody2D
-			_hinges_bodies[joint.node_b] = get_node(joint.node_b.get_concatenated_names().substr(4)) as RigidBody2D
+			_hinges_bodies[rigid_body.rigidbody.name] = get_node(NodePath(rigid_body.rigidbody.name)) as PhysicsBody2D
+			_hinges_bodies[joint.node_b] = get_node(joint.node_b.get_concatenated_names().substr(4)) as PhysicsBody2D
 			_hinges_distances_squared[joint.name] = _hinges_bodies[rigid_body.rigidbody.name].global_position.distance_squared_to(_hinges_bodies[joint.node_b].global_position)
 
 #region Public API
 
 class SoftBodyChild:
-	var rigidbody: RigidBody2D
+	var rigidbody: PhysicsBody2D
 	var bone: Bone2D
 	var joints: Array[Joint2D]
 	var shape: CollisionShape2D
@@ -1083,13 +1085,13 @@ func get_center_body() -> SoftBodyChild:
 	
 func _update_soft_body_rigidbodies(skeleton_node:Skeleton2D = null):
 	var result: Array[SoftBodyChild]
-	var children = get_children().filter(func (node: Node): return node is RigidBody2D)
+	var children = get_children().filter(func (node: Node): return !(node is Skeleton2D))
 	if !skeleton_node:
 		return
 	var bones = skeleton_node.get_children()
 	for child in children:
 		var softbodyrb = SoftBodyChild.new()
-		softbodyrb.rigidbody = child as RigidBody2D
+		softbodyrb.rigidbody = child as PhysicsBody2D
 		softbodyrb.bone = bones.filter(func(bone): return bone.name == child.name)[0]
 		var rb_children = child.get_children()
 		softbodyrb.shape = rb_children.filter(func (node): return node is CollisionShape2D)[0]
