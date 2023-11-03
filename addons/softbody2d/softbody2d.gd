@@ -816,6 +816,7 @@ func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D, mass, is_center: boo
 		rigid_body = RigidBody2D.new()
 	rigid_body.name = bone.name
 	var collision_shape = CollisionShape2D.new()
+	collision_shape.visible = false
 	collision_shape.shape = shape
 	collision_shape.name = shape_type + "Shape2D"
 	rigid_body.mass = mass
@@ -826,6 +827,7 @@ func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D, mass, is_center: boo
 	rigid_body.collision_layer = collision_layer
 	rigid_body.collision_mask = collision_mask
 	var remote_transform = RemoteTransform2D.new()
+	remote_transform.visible = false
 	remote_transform.name = "RemoteTransform2D"
 	rigid_body.add_child(remote_transform)
 	remote_transform.remote_path = "../../" + skeleton.name + "/" + bone.name
@@ -1092,6 +1094,10 @@ func _update_soft_body_rigidbodies(skeleton_node:Skeleton2D = null):
 	for child in children:
 		var softbodyrb = SoftBodyChild.new()
 		softbodyrb.rigidbody = child as PhysicsBody2D
+		var nodes_found = bones.filter(func(bone): return bone.name == child.name);
+		if bones.filter(func(bone): return bone.name == child.name).is_empty():
+			push_error("Cannot find node " + child.name + " on " + skeleton_node.get_path().get_concatenated_names())
+			return
 		softbodyrb.bone = bones.filter(func(bone): return bone.name == child.name)[0]
 		var rb_children = child.get_children()
 		softbodyrb.shape = rb_children.filter(func (node): return node is CollisionShape2D)[0]
