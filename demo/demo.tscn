@@ -1,4 +1,4 @@
-[gd_scene load_steps=481 format=3 uid="uid://8rlq77lfpm27"]
+[gd_scene load_steps=482 format=3 uid="uid://8rlq77lfpm27"]
 
 [ext_resource type="Texture2D" uid="uid://ber3ewk5ro3yp" path="res://demo/Asparagus.png" id="1_bb0nr"]
 [ext_resource type="Script" path="res://addons/softbody2d/softbody2d.gd" id="2_2dapw"]
@@ -6,98 +6,99 @@
 [ext_resource type="PhysicsMaterial" uid="uid://2kay8j53abmv" path="res://demo/softbody2d_phys_slippery.tres" id="3_durpg"]
 [ext_resource type="Texture2D" uid="uid://xhr3luyotjmm" path="res://demo/Butter.png" id="4_xackp"]
 [ext_resource type="PhysicsMaterial" uid="uid://deqagbq7eod2b" path="res://demo/softbody2d_phys_bouncy.tres" id="5_221ya"]
+[ext_resource type="Script" path="res://demo/pickable_rigidbody.gd" id="5_yk0yk"]
 [ext_resource type="Texture2D" uid="uid://bgt3808m8fgwm" path="res://demo/Boiled_Egg_Half.png" id="6_du2cs"]
 [ext_resource type="Texture2D" uid="uid://be4efliwl1p13" path="res://demo/softbody2d.png" id="8_r18ij"]
 [ext_resource type="Texture2D" uid="uid://bomdc4wfqnog" path="res://demo/softbody2d_full.png" id="9_56vnr"]
 [ext_resource type="Texture2D" uid="uid://cr4ry1wmv30ni" path="res://demo/softbody2d_inner.png" id="9_ia0mn"]
 [ext_resource type="Texture2D" uid="uid://cuevtxvd6v2x2" path="res://demo/stickman.png" id="11_1biik"]
 
-[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_wxlon"]
+[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_ugyd3"]
 resource_local_to_scene = true
 bone_index = 0
 bone2d_node = NodePath("Bone-0")
 target_nodepath = NodePath("Bone-1")
 editor/draw_gizmo = false
 
-[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_1pe45"]
+[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_6m8rj"]
 resource_local_to_scene = true
 bone_index = 1
 bone2d_node = NodePath("Bone-1")
 target_nodepath = NodePath("Bone-2")
 editor/draw_gizmo = false
 
-[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_mjv1m"]
+[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_ov50b"]
 resource_local_to_scene = true
 bone_index = 2
 bone2d_node = NodePath("Bone-2")
 target_nodepath = NodePath("Bone-3")
 editor/draw_gizmo = false
 
-[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_yvp5o"]
+[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_onvcn"]
 resource_local_to_scene = true
 bone_index = 3
 bone2d_node = NodePath("Bone-3")
 target_nodepath = NodePath("Bone-4")
 editor/draw_gizmo = false
 
-[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_5xee8"]
+[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_rcuor"]
 resource_local_to_scene = true
 bone_index = 4
 bone2d_node = NodePath("Bone-4")
 target_nodepath = NodePath("Bone-5")
 editor/draw_gizmo = false
 
-[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_08p5i"]
+[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_bsq58"]
 resource_local_to_scene = true
 bone_index = 5
 bone2d_node = NodePath("Bone-5")
 target_nodepath = NodePath("Bone-6")
 editor/draw_gizmo = false
 
-[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_dyjpl"]
+[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_7e6y7"]
 resource_local_to_scene = true
 bone_index = 6
 bone2d_node = NodePath("Bone-6")
 target_nodepath = NodePath("Bone-7")
 editor/draw_gizmo = false
 
-[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_46so4"]
+[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_j4lyp"]
 resource_local_to_scene = true
 bone_index = 7
 bone2d_node = NodePath("Bone-7")
 target_nodepath = NodePath("Bone-8")
 editor/draw_gizmo = false
 
-[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_cfyee"]
+[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_1tba2"]
 resource_local_to_scene = true
 bone_index = 8
 bone2d_node = NodePath("Bone-8")
 target_nodepath = NodePath("Bone-7")
 editor/draw_gizmo = false
 
-[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_6akbi"]
+[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_vm6ob"]
 resource_local_to_scene = true
 bone_index = 9
 bone2d_node = NodePath("Bone-9")
 target_nodepath = NodePath("Bone-8")
 editor/draw_gizmo = false
 
-[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_5hdgd"]
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_xyqt6"]
 resource_local_to_scene = true
 enabled = true
 modification_count = 10
-modifications/0 = SubResource("SkeletonModification2DLookAt_wxlon")
-modifications/1 = SubResource("SkeletonModification2DLookAt_1pe45")
-modifications/2 = SubResource("SkeletonModification2DLookAt_mjv1m")
-modifications/3 = SubResource("SkeletonModification2DLookAt_yvp5o")
-modifications/4 = SubResource("SkeletonModification2DLookAt_5xee8")
-modifications/5 = SubResource("SkeletonModification2DLookAt_08p5i")
-modifications/6 = SubResource("SkeletonModification2DLookAt_dyjpl")
-modifications/7 = SubResource("SkeletonModification2DLookAt_46so4")
-modifications/8 = SubResource("SkeletonModification2DLookAt_cfyee")
-modifications/9 = SubResource("SkeletonModification2DLookAt_6akbi")
+modifications/0 = SubResource("SkeletonModification2DLookAt_ugyd3")
+modifications/1 = SubResource("SkeletonModification2DLookAt_6m8rj")
+modifications/2 = SubResource("SkeletonModification2DLookAt_ov50b")
+modifications/3 = SubResource("SkeletonModification2DLookAt_onvcn")
+modifications/4 = SubResource("SkeletonModification2DLookAt_rcuor")
+modifications/5 = SubResource("SkeletonModification2DLookAt_bsq58")
+modifications/6 = SubResource("SkeletonModification2DLookAt_7e6y7")
+modifications/7 = SubResource("SkeletonModification2DLookAt_j4lyp")
+modifications/8 = SubResource("SkeletonModification2DLookAt_1tba2")
+modifications/9 = SubResource("SkeletonModification2DLookAt_vm6ob")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlrmt"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7minw"]
 resource_local_to_scene = true
 size = Vector2(35, 35)
 
@@ -3639,7 +3640,7 @@ physics_material_override = ExtResource("3_durpg")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Asparagus"]
 visible = false
-modification_stack = SubResource("SkeletonModificationStack2D_5hdgd")
+modification_stack = SubResource("SkeletonModificationStack2D_xyqt6")
 
 [node name="Bone-0" type="Bone2D" parent="Asparagus/Skeleton2D"]
 position = Vector2(30, 40.0251)
@@ -3656,6 +3657,7 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-1" type="Bone2D" parent="Asparagus/Skeleton2D"]
 position = Vector2(29, 85.4907)
 rotation = 1.52331
+scale = Vector2(1, 1)
 rest = Transform2D(0.0474652, 0.998873, -0.998873, 0.0474652, 29, 85.4907)
 auto_calculate_length_and_angle = false
 length = 37.0
@@ -3667,6 +3669,7 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-2" type="Bone2D" parent="Asparagus/Skeleton2D"]
 position = Vector2(30.7143, 121.567)
 rotation = 1.59948
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0286785, 0.999589, -0.999589, -0.0286785, 30.7143, 121.567)
 auto_calculate_length_and_angle = false
 length = 37.0
@@ -3676,7 +3679,7 @@ metadata/connected_nodes_paths = [NodePath("Bone-1"), NodePath("Bone-3"), NodePa
 metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone-3" type="Bone2D" parent="Asparagus/Skeleton2D"]
-position = Vector2(29.6521, 158.592)
+position = Vector2(29.652, 158.592)
 rotation = 1.45819
 rest = Transform2D(0.112373, 0.993666, -0.993666, 0.112373, 29.6521, 158.592)
 auto_calculate_length_and_angle = false
@@ -3689,7 +3692,6 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-4" type="Bone2D" parent="Asparagus/Skeleton2D"]
 position = Vector2(34, 197.039)
 rotation = 1.50548
-scale = Vector2(1, 1)
 rest = Transform2D(0.0652709, 0.997868, -0.997868, 0.0652709, 34, 197.039)
 auto_calculate_length_and_angle = false
 length = 37.0
@@ -3701,6 +3703,7 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-5" type="Bone2D" parent="Asparagus/Skeleton2D"]
 position = Vector2(36.4704, 234.807)
 rotation = 1.50162
+scale = Vector2(1, 1)
 rest = Transform2D(0.0691196, 0.997608, -0.997608, 0.0691196, 36.4704, 234.807)
 auto_calculate_length_and_angle = false
 length = 37.0
@@ -3712,7 +3715,6 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-6" type="Bone2D" parent="Asparagus/Skeleton2D"]
 position = Vector2(38.9404, 270.456)
 rotation = 1.50355
-scale = Vector2(1, 1)
 rest = Transform2D(0.0671995, 0.99774, -0.99774, 0.0671995, 38.9404, 270.456)
 auto_calculate_length_and_angle = false
 length = 37.0
@@ -3754,22 +3756,24 @@ metadata/vert_owned = [333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 34
 metadata/connected_nodes_paths = [NodePath("Bone-7"), NodePath("Bone-8")]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-0" parent="Asparagus" instance=ExtResource("3_6ern4")]
+[node name="Bone-0" type="RigidBody2D" parent="Asparagus" instance=ExtResource("3_6ern4")]
 position = Vector2(30, 40.0251)
+input_pickable = true
 mass = 0.1
 physics_material_override = ExtResource("3_durpg")
+script = ExtResource("5_yk0yk")
 metadata/bone_name = &"Bone-0"
 
 [node name="RectangleShape2D" type="CollisionShape2D" parent="Asparagus/Bone-0"]
-shape = SubResource("RectangleShape2D_jlrmt")
+shape = SubResource("RectangleShape2D_7minw")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Asparagus/Bone-0"]
+visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-0")
 update_rotation = false
 update_scale = false
 
 [node name="Joint2D-Bone-0-Bone-1" type="PinJoint2D" parent="Asparagus/Bone-0"]
-visible = false
 rotation = 0.0219911
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-1")
@@ -3778,22 +3782,24 @@ angular_limit_enabled = true
 angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
-[node name="Bone-1" parent="Asparagus" instance=ExtResource("3_6ern4")]
+[node name="Bone-1" type="RigidBody2D" parent="Asparagus" instance=ExtResource("3_6ern4")]
 position = Vector2(29, 85.4907)
+input_pickable = true
 mass = 0.1
 physics_material_override = ExtResource("3_durpg")
+script = ExtResource("5_yk0yk")
 metadata/bone_name = &"Bone-1"
 
 [node name="RectangleShape2D" type="CollisionShape2D" parent="Asparagus/Bone-1"]
-shape = SubResource("RectangleShape2D_jlrmt")
+shape = SubResource("RectangleShape2D_7minw")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Asparagus/Bone-1"]
+visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-1")
 update_rotation = false
 update_scale = false
 
 [node name="Joint2D-Bone-1-Bone-0" type="PinJoint2D" parent="Asparagus/Bone-1"]
-visible = false
 rotation = -3.1196
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-0")
@@ -3803,7 +3809,6 @@ angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
 [node name="Joint2D-Bone-1-Bone-2" type="PinJoint2D" parent="Asparagus/Bone-1"]
-visible = false
 rotation = -0.0474829
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-2")
@@ -3813,7 +3818,6 @@ angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
 [node name="Joint2D-Bone-1-Bone-3" type="PinJoint2D" parent="Asparagus/Bone-1"]
-visible = false
 rotation = -0.00891955
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-3")
@@ -3822,22 +3826,24 @@ angular_limit_enabled = true
 angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
-[node name="Bone-2" parent="Asparagus" instance=ExtResource("3_6ern4")]
+[node name="Bone-2" type="RigidBody2D" parent="Asparagus" instance=ExtResource("3_6ern4")]
 position = Vector2(30.7143, 121.567)
+input_pickable = true
 mass = 0.1
 physics_material_override = ExtResource("3_durpg")
+script = ExtResource("5_yk0yk")
 metadata/bone_name = &"Bone-2"
 
 [node name="RectangleShape2D" type="CollisionShape2D" parent="Asparagus/Bone-2"]
-shape = SubResource("RectangleShape2D_jlrmt")
+shape = SubResource("RectangleShape2D_7minw")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Asparagus/Bone-2"]
+visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-2")
 update_rotation = false
 update_scale = false
 
 [node name="Joint2D-Bone-2-Bone-1" type="PinJoint2D" parent="Asparagus/Bone-2"]
-visible = false
 rotation = -3.18908
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-1")
@@ -3847,7 +3853,6 @@ angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
 [node name="Joint2D-Bone-2-Bone-3" type="PinJoint2D" parent="Asparagus/Bone-2"]
-visible = false
 rotation = 0.0286819
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-3")
@@ -3857,7 +3862,6 @@ angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
 [node name="Joint2D-Bone-2-Bone-4" type="PinJoint2D" parent="Asparagus/Bone-2"]
-visible = false
 rotation = -0.0435079
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-4")
@@ -3866,22 +3870,24 @@ angular_limit_enabled = true
 angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
-[node name="Bone-3" parent="Asparagus" instance=ExtResource("3_6ern4")]
+[node name="Bone-3" type="RigidBody2D" parent="Asparagus" instance=ExtResource("3_6ern4")]
 position = Vector2(29.6521, 158.592)
+input_pickable = true
 mass = 0.1
 physics_material_override = ExtResource("3_durpg")
+script = ExtResource("5_yk0yk")
 metadata/bone_name = &"Bone-3"
 
 [node name="RectangleShape2D" type="CollisionShape2D" parent="Asparagus/Bone-3"]
-shape = SubResource("RectangleShape2D_jlrmt")
+shape = SubResource("RectangleShape2D_7minw")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Asparagus/Bone-3"]
+visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-3")
 update_rotation = false
 update_scale = false
 
 [node name="Joint2D-Bone-3-Bone-1" type="PinJoint2D" parent="Asparagus/Bone-3"]
-visible = false
 rotation = -3.15051
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-1")
@@ -3891,7 +3897,6 @@ angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
 [node name="Joint2D-Bone-3-Bone-2" type="PinJoint2D" parent="Asparagus/Bone-3"]
-visible = false
 rotation = -3.11291
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-2")
@@ -3901,7 +3906,6 @@ angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
 [node name="Joint2D-Bone-3-Bone-4" type="PinJoint2D" parent="Asparagus/Bone-3"]
-visible = false
 rotation = -0.112611
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-4")
@@ -3911,7 +3915,6 @@ angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
 [node name="Joint2D-Bone-3-Bone-5" type="PinJoint2D" parent="Asparagus/Bone-3"]
-visible = false
 rotation = -0.0892249
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-5")
@@ -3920,22 +3923,24 @@ angular_limit_enabled = true
 angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
-[node name="Bone-4" parent="Asparagus" instance=ExtResource("3_6ern4")]
+[node name="Bone-4" type="RigidBody2D" parent="Asparagus" instance=ExtResource("3_6ern4")]
 position = Vector2(34, 197.039)
+input_pickable = true
 mass = 0.1
 physics_material_override = ExtResource("3_durpg")
+script = ExtResource("5_yk0yk")
 metadata/bone_name = &"Bone-4"
 
 [node name="RectangleShape2D" type="CollisionShape2D" parent="Asparagus/Bone-4"]
-shape = SubResource("RectangleShape2D_jlrmt")
+shape = SubResource("RectangleShape2D_7minw")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Asparagus/Bone-4"]
+visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-4")
 update_rotation = false
 update_scale = false
 
 [node name="Joint2D-Bone-4-Bone-2" type="PinJoint2D" parent="Asparagus/Bone-4"]
-visible = false
 rotation = -3.1851
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-2")
@@ -3945,7 +3950,6 @@ angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
 [node name="Joint2D-Bone-4-Bone-3" type="PinJoint2D" parent="Asparagus/Bone-4"]
-visible = false
 rotation = -3.2542
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-3")
@@ -3955,7 +3959,6 @@ angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
 [node name="Joint2D-Bone-4-Bone-5" type="PinJoint2D" parent="Asparagus/Bone-4"]
-visible = false
 rotation = -0.0653178
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-5")
@@ -3965,7 +3968,6 @@ angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
 [node name="Joint2D-Bone-4-Bone-6" type="PinJoint2D" parent="Asparagus/Bone-4"]
-visible = false
 rotation = -0.0671908
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-6")
@@ -3974,22 +3976,24 @@ angular_limit_enabled = true
 angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
-[node name="Bone-5" parent="Asparagus" instance=ExtResource("3_6ern4")]
+[node name="Bone-5" type="RigidBody2D" parent="Asparagus" instance=ExtResource("3_6ern4")]
 position = Vector2(36.4704, 234.807)
+input_pickable = true
 mass = 0.1
 physics_material_override = ExtResource("3_durpg")
+script = ExtResource("5_yk0yk")
 metadata/bone_name = &"Bone-5"
 
 [node name="RectangleShape2D" type="CollisionShape2D" parent="Asparagus/Bone-5"]
-shape = SubResource("RectangleShape2D_jlrmt")
+shape = SubResource("RectangleShape2D_7minw")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Asparagus/Bone-5"]
+visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-5")
 update_rotation = false
 update_scale = false
 
 [node name="Joint2D-Bone-5-Bone-3" type="PinJoint2D" parent="Asparagus/Bone-5"]
-visible = false
 rotation = -3.23082
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-3")
@@ -3999,7 +4003,6 @@ angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
 [node name="Joint2D-Bone-5-Bone-4" type="PinJoint2D" parent="Asparagus/Bone-5"]
-visible = false
 rotation = -3.20691
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-4")
@@ -4009,7 +4012,6 @@ angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
 [node name="Joint2D-Bone-5-Bone-6" type="PinJoint2D" parent="Asparagus/Bone-5"]
-visible = false
 rotation = -0.0691747
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-6")
@@ -4019,7 +4021,6 @@ angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
 [node name="Joint2D-Bone-5-Bone-7" type="PinJoint2D" parent="Asparagus/Bone-5"]
-visible = false
 rotation = -0.0681816
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-7")
@@ -4028,22 +4029,24 @@ angular_limit_enabled = true
 angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
-[node name="Bone-6" parent="Asparagus" instance=ExtResource("3_6ern4")]
+[node name="Bone-6" type="RigidBody2D" parent="Asparagus" instance=ExtResource("3_6ern4")]
 position = Vector2(38.9404, 270.456)
+input_pickable = true
 mass = 0.1
 physics_material_override = ExtResource("3_durpg")
+script = ExtResource("5_yk0yk")
 metadata/bone_name = &"Bone-6"
 
 [node name="RectangleShape2D" type="CollisionShape2D" parent="Asparagus/Bone-6"]
-shape = SubResource("RectangleShape2D_jlrmt")
+shape = SubResource("RectangleShape2D_7minw")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Asparagus/Bone-6"]
+visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-6")
 update_rotation = false
 update_scale = false
 
 [node name="Joint2D-Bone-6-Bone-4" type="PinJoint2D" parent="Asparagus/Bone-6"]
-visible = false
 rotation = -3.20878
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-4")
@@ -4053,7 +4056,6 @@ angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
 [node name="Joint2D-Bone-6-Bone-5" type="PinJoint2D" parent="Asparagus/Bone-6"]
-visible = false
 rotation = -3.21077
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-5")
@@ -4063,7 +4065,6 @@ angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
 [node name="Joint2D-Bone-6-Bone-7" type="PinJoint2D" parent="Asparagus/Bone-6"]
-visible = false
 rotation = -0.0672498
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-7")
@@ -4073,7 +4074,6 @@ angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
 [node name="Joint2D-Bone-6-Bone-8" type="PinJoint2D" parent="Asparagus/Bone-6"]
-visible = false
 rotation = -0.0348056
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-8")
@@ -4082,22 +4082,24 @@ angular_limit_enabled = true
 angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
-[node name="Bone-7" parent="Asparagus" instance=ExtResource("3_6ern4")]
+[node name="Bone-7" type="RigidBody2D" parent="Asparagus" instance=ExtResource("3_6ern4")]
 position = Vector2(41.5, 308.46)
+input_pickable = true
 mass = 0.1
 physics_material_override = ExtResource("3_durpg")
+script = ExtResource("5_yk0yk")
 metadata/bone_name = &"Bone-7"
 
 [node name="RectangleShape2D" type="CollisionShape2D" parent="Asparagus/Bone-7"]
-shape = SubResource("RectangleShape2D_jlrmt")
+shape = SubResource("RectangleShape2D_7minw")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Asparagus/Bone-7"]
+visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-7")
 update_rotation = false
 update_scale = false
 
 [node name="Joint2D-Bone-7-Bone-5" type="PinJoint2D" parent="Asparagus/Bone-7"]
-visible = false
 rotation = -3.20977
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-5")
@@ -4107,7 +4109,6 @@ angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
 [node name="Joint2D-Bone-7-Bone-6" type="PinJoint2D" parent="Asparagus/Bone-7"]
-visible = false
 rotation = -3.20884
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-6")
@@ -4117,7 +4118,6 @@ angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
 [node name="Joint2D-Bone-7-Bone-8" type="PinJoint2D" parent="Asparagus/Bone-7"]
-visible = false
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-8")
 softness = 60.0
@@ -4126,7 +4126,6 @@ angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
 [node name="Joint2D-Bone-7-Bone-9" type="PinJoint2D" parent="Asparagus/Bone-7"]
-visible = false
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-9")
 softness = 60.0
@@ -4134,22 +4133,24 @@ angular_limit_enabled = true
 angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
-[node name="Bone-8" parent="Asparagus" instance=ExtResource("3_6ern4")]
+[node name="Bone-8" type="RigidBody2D" parent="Asparagus" instance=ExtResource("3_6ern4")]
 position = Vector2(41.5, 343.967)
+input_pickable = true
 mass = 0.1
 physics_material_override = ExtResource("3_durpg")
+script = ExtResource("5_yk0yk")
 metadata/bone_name = &"Bone-8"
 
 [node name="RectangleShape2D" type="CollisionShape2D" parent="Asparagus/Bone-8"]
-shape = SubResource("RectangleShape2D_jlrmt")
+shape = SubResource("RectangleShape2D_7minw")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Asparagus/Bone-8"]
+visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-8")
 update_rotation = false
 update_scale = false
 
 [node name="Joint2D-Bone-8-Bone-6" type="PinJoint2D" parent="Asparagus/Bone-8"]
-visible = false
 rotation = -3.1764
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-6")
@@ -4159,7 +4160,6 @@ angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
 [node name="Joint2D-Bone-8-Bone-7" type="PinJoint2D" parent="Asparagus/Bone-8"]
-visible = false
 rotation = -3.14159
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-7")
@@ -4169,7 +4169,6 @@ angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
 [node name="Joint2D-Bone-8-Bone-9" type="PinJoint2D" parent="Asparagus/Bone-8"]
-visible = false
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-9")
 softness = 60.0
@@ -4177,22 +4176,24 @@ angular_limit_enabled = true
 angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
-[node name="Bone-9" parent="Asparagus" instance=ExtResource("3_6ern4")]
+[node name="Bone-9" type="RigidBody2D" parent="Asparagus" instance=ExtResource("3_6ern4")]
 position = Vector2(41.5, 377.476)
+input_pickable = true
 mass = 0.1
 physics_material_override = ExtResource("3_durpg")
+script = ExtResource("5_yk0yk")
 metadata/bone_name = &"Bone-9"
 
 [node name="RectangleShape2D" type="CollisionShape2D" parent="Asparagus/Bone-9"]
-shape = SubResource("RectangleShape2D_jlrmt")
+shape = SubResource("RectangleShape2D_7minw")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Asparagus/Bone-9"]
+visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-9")
 update_rotation = false
 update_scale = false
 
 [node name="Joint2D-Bone-9-Bone-7" type="PinJoint2D" parent="Asparagus/Bone-9"]
-visible = false
 rotation = -3.14159
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-7")
@@ -4202,7 +4203,6 @@ angular_limit_lower = -0.349066
 angular_limit_upper = 0.349066
 
 [node name="Joint2D-Bone-9-Bone-8" type="PinJoint2D" parent="Asparagus/Bone-9"]
-visible = false
 rotation = -3.14159
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-8")
@@ -5293,7 +5293,6 @@ radius = 19
 rigidbody_scene = ExtResource("3_6ern4")
 margin_pixels = -1
 voronoi_interval = 0.15
-max_joint_distance_ratio = 1.1
 stiffness = 0.1
 damping = 9.1
 rest_length_ratio = 1.1
@@ -6152,7 +6151,6 @@ radius = 19
 rigidbody_scene = ExtResource("3_6ern4")
 margin_pixels = -1
 voronoi_interval = 0.15
-max_joint_distance_ratio = 1.1
 stiffness = 0.1
 damping = 9.1
 rest_length_ratio = 1.1
@@ -7439,7 +7437,6 @@ vertex_interval = 26
 rigidbody_scene = ExtResource("3_6ern4")
 margin_pixels = -1
 voronoi_interval = 0.15
-max_joint_distance_ratio = 1.1
 stiffness = 0.1
 damping = 9.1
 rest_length_ratio = 1.1
@@ -8402,7 +8399,6 @@ radius = 19
 rigidbody_scene = ExtResource("3_6ern4")
 margin_pixels = -1
 voronoi_interval = 0.15
-max_joint_distance_ratio = 1.1
 stiffness = 0.1
 damping = 9.1
 rest_length_ratio = 1.1
@@ -9688,7 +9684,6 @@ radius = 19
 rigidbody_scene = ExtResource("3_6ern4")
 margin_pixels = -1
 voronoi_interval = 0.15
-max_joint_distance_ratio = 1.1
 stiffness = 0.1
 damping = 9.1
 rest_length_ratio = 1.1
@@ -10974,7 +10969,6 @@ radius = 19
 rigidbody_scene = ExtResource("3_6ern4")
 margin_pixels = -1
 voronoi_interval = 0.15
-max_joint_distance_ratio = 1.1
 stiffness = 0.1
 damping = 9.1
 rest_length_ratio = 1.1
@@ -12261,7 +12255,6 @@ radius = 19
 rigidbody_scene = ExtResource("3_6ern4")
 margin_pixels = -1
 voronoi_interval = 0.15
-max_joint_distance_ratio = 1.1
 stiffness = 0.1
 damping = 9.1
 rest_length_ratio = 1.1
@@ -13547,7 +13540,6 @@ radius = 19
 rigidbody_scene = ExtResource("3_6ern4")
 margin_pixels = -1
 voronoi_interval = 0.15
-max_joint_distance_ratio = 1.1
 stiffness = 0.1
 damping = 9.1
 rest_length_ratio = 1.1
@@ -14834,7 +14826,6 @@ radius = 19
 rigidbody_scene = ExtResource("3_6ern4")
 margin_pixels = -1
 voronoi_interval = 0.15
-max_joint_distance_ratio = 1.1
 stiffness = 0.1
 damping = 9.1
 rest_length_ratio = 1.1
@@ -16121,7 +16112,6 @@ radius = 19
 rigidbody_scene = ExtResource("3_6ern4")
 margin_pixels = -1
 voronoi_interval = 0.15
-max_joint_distance_ratio = 1.1
 stiffness = 0.1
 damping = 9.1
 rest_length_ratio = 1.1
@@ -27933,8 +27923,9 @@ metadata/connected_nodes_paths = [NodePath("Bone-1"), NodePath("Bone-4"), NodePa
 metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone-4" type="Bone2D" parent="Stickman/Skeleton2D"]
-position = Vector2(288.114, 69.2807)
+position = Vector2(288.113, 69.2807)
 rotation = 1.88902
+scale = Vector2(1, 1)
 rest = Transform2D(-0.312884, 0.949791, -0.949791, -0.312884, 288.113, 69.2807)
 auto_calculate_length_and_angle = false
 length = 48.0
@@ -27991,6 +27982,7 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-9" type="Bone2D" parent="Stickman/Skeleton2D"]
 position = Vector2(165.067, 260.116)
 rotation = 1.57378
+scale = Vector2(1, 1)
 rest = Transform2D(-0.00298862, 0.999996, -0.999996, -0.00298862, 165.067, 260.116)
 auto_calculate_length_and_angle = false
 length = 48.0
@@ -28024,7 +28016,6 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-12" type="Bone2D" parent="Stickman/Skeleton2D"]
 position = Vector2(322.927, 276.199)
 rotation = -2.39587
-scale = Vector2(1, 1)
 rest = Transform2D(-0.734595, -0.678505, 0.678505, -0.734595, 322.927, 276.199)
 auto_calculate_length_and_angle = false
 length = 48.0
@@ -28036,7 +28027,6 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-13" type="Bone2D" parent="Stickman/Skeleton2D"]
 position = Vector2(364.863, 129.408)
 rotation = 1.56836
-scale = Vector2(1, 1)
 rest = Transform2D(0.00243385, 0.999997, -0.999997, 0.00243385, 364.863, 129.408)
 auto_calculate_length_and_angle = false
 length = 48.0
@@ -28060,7 +28050,6 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-15" type="Bone2D" parent="Stickman/Skeleton2D"]
 position = Vector2(404.979, 166)
 rotation = 3.01206
-scale = Vector2(1, 1)
 rest = Transform2D(-0.991622, 0.129171, -0.129171, -0.991622, 404.979, 166)
 auto_calculate_length_and_angle = false
 length = 48.0

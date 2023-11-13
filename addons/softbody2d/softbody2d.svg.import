@@ -1,3 +1,19 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bxx5v7b42j4kf"
+path="res://.godot/imported/softbody2d.svg-10ab834be780722c00cf50ffddb981c8.ctex"
+metadata={
+"has_editor_variant": true,
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://addons/softbody2d/softbody2d.svg"
+dest_files=["res://.godot/imported/softbody2d.svg-10ab834be780722c00cf50ffddb981c8.ctex"]
+
 [params]
 
 compress/mode=0

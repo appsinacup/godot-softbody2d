@@ -1,5 +1,9 @@
 # Changelog
 
+## [v1.6.2](https://github.com/Ughuuu/godot-4-softbody2d/releases/tag/v1.6.2)
+
+- Hide some items so speed is better in editor(skeleton and remote transform)
+
 ## [v1.6](https://github.com/Ughuuu/godot-4-softbody2d/releases/tag/v1.6)
 
 - Update to support angular limits (Godot 4.2)
