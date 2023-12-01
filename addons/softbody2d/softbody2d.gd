@@ -723,7 +723,6 @@ func _create_bones(voronoi: Array) -> Array[Bone2D]:
 	var bone_idx = 0
 	for each in voronoi:
 		var bone := Bone2D.new()
-		bone.resource_local_to_scene = true
 		var point = each.fixed_center
 		bone.name = "Bone-"+str(bone_idx)
 		bone_idx += 1
