@@ -17,10 +17,20 @@ signal joint_removed(rigid_body_a: SoftBodyChild, rigid_body_b: SoftBodyChild)
 
 func _set(property, value):
 	if property == "texture":
-		texture = value
+		texture = value as Texture2D
+		vertex_interval = texture.get_size().length() / 10
 		create_softbody2d()
 		return true
 	return false
+
+func _get_configuration_warnings():
+	if texture == null:
+		return ["No texture set."]
+	if get_child_count() == 0:
+		return ["No rigidbodies created. Check the vertex_interval to be lower than texture size."]
+	else:
+		return []
+
 
 ## Draw regions of edge polygon.[br]
 ## 1a. Creates edge vertices from texture.[br]
@@ -36,83 +46,17 @@ func _set(property, value):
 		return draw_regions
 
 ## Distance between internal vertices
-@export_range(10, 50, 1, "or_greater") var vertex_interval := 30:
+@export_range(0.1, 50, 1, "or_greater") var vertex_interval := 30:
 	set (value):
 		if vertex_interval == value:
 			return
 		vertex_interval = value
+		radius = value
 		create_softbody2d()
 	get:
 		return vertex_interval
-## Sets the [member Shape2D size].
-@export_range(2, 50, 1, "or_greater") var radius := 20 :
-	set (value):
-		if radius == value:
-			return
-		radius = value
-		for body in get_rigid_bodies():
-			var shape = body.shape
-			if shape_type == "Circle":
-				shape.shape.radius = radius / 2.0
-			elif shape_type == "Rectangle":
-				shape.shape.size = Vector2(radius, radius)
-			else:
-				push_error("Wrong shape used for shape_type. " + shape_type)
-	get:
-		return radius
 
-## Sets the total mass. Each rigidbody will have some [member RigidBody2D.mass] totaling this amount.
-@export_range(0.01, 100, 0.1, "or_greater") var total_mass := 1.0 :
-	set (value):
-		if total_mass == value:
-			return
-		total_mass = value
-		_update_bodies_mass()
-	get:
-		return total_mass
-## Sets the gravity scale. Each rigidbody will have [member RigidBody2D.gravity_scale] set to this amount.
-@export_range(-1, 1, 0.01) var gravity_scale := 1.0 :
-	set (value):
-		if gravity_scale == value:
-			return
-		gravity_scale = value
-		for body in get_rigid_bodies():
-			if "gravity_scale" in body.rigidbody:
-				body.rigidbody.gravity_scale = gravity_scale
-	get:
-		return gravity_scale
-## What kind of shape to create for each rigidbody.
-@export_enum("Circle", "Rectangle") var shape_type:= "Circle" :
-	set (value):
-		if shape_type == value:
-			return
-		shape_type = value
-		for body in get_rigid_bodies():
-			var shape = body.shape
-			if shape_type == "Circle":
-				shape.shape = CircleShape2D.new()
-				shape.shape.resource_local_to_scene = true
-				shape.shape.radius = radius / 2.0
-			elif shape_type == "Rectangle":
-				shape.shape = RectangleShape2D.new()
-				shape.shape.resource_local_to_scene = true
-				shape.shape.size = Vector2(radius, radius)
-			else:
-				push_error("Wrong shape used for shape_type")
-	get:
-		return shape_type
-## If this is greater than 0, the softbody will be breakable. This number is multiplied by [member SoftBody2D.vertex_interval]
-@export_range(0, 2, 0.1, "or_greater") var break_distance_ratio:= 0.0
-## Create softbody with holes
-@export var exclude_texture: Texture2D:
-	set (value):
-		if exclude_texture == value:
-			return
-		exclude_texture = value
-		create_softbody2d()
-	get:
-		return exclude_texture
-
+@export_group("Collision")
 ## Sets the [member PhysicsBody2D.collision_layer].
 @export_flags_2d_physics var collision_layer := 1 :
 	set (value):
@@ -145,6 +89,15 @@ func _set(property, value):
 #region Image
 ## Properties that relate to the image used to generate the polygon
 @export_group("Image")
+## Create softbody with holes
+@export var exclude_texture: Texture2D:
+	set (value):
+		if exclude_texture == value:
+			return
+		exclude_texture = value
+		create_softbody2d()
+	get:
+		return exclude_texture
 ## Epsilon for making polygon from texture. Smaller value results in more accurate result, but more vertices
 @export_range(0.1, 50, 0.01, "or_greater") var texture_epsilon := 1:
 	set (value):
@@ -388,6 +341,65 @@ func _set(property, value):
 
 ## Properties that change every rigidbody created for this softbody.
 @export_group("RigidBody")
+## Sets the [member Shape2D size].
+@export_range(2, 50, 1, "or_greater") var radius := 20 :
+	set (value):
+		if radius == value:
+			return
+		radius = value
+		for body in get_rigid_bodies():
+			var shape = body.shape
+			if shape_type == "Circle":
+				shape.shape.radius = radius / 2.0
+			elif shape_type == "Rectangle":
+				shape.shape.size = Vector2(radius, radius)
+			else:
+				push_error("Wrong shape used for shape_type. " + shape_type)
+	get:
+		return radius
+
+## Sets the total mass. Each rigidbody will have some [member RigidBody2D.mass] totaling this amount.
+@export_range(0.01, 100, 0.1, "or_greater") var total_mass := 1.0 :
+	set (value):
+		if total_mass == value:
+			return
+		total_mass = value
+		_update_bodies_mass()
+	get:
+		return total_mass
+## Sets the gravity scale. Each rigidbody will have [member RigidBody2D.gravity_scale] set to this amount.
+@export_range(-1, 1, 0.01) var gravity_scale := 1.0 :
+	set (value):
+		if gravity_scale == value:
+			return
+		gravity_scale = value
+		for body in get_rigid_bodies():
+			if "gravity_scale" in body.rigidbody:
+				body.rigidbody.gravity_scale = gravity_scale
+	get:
+		return gravity_scale
+## What kind of shape to create for each rigidbody.
+@export_enum("Circle", "Rectangle") var shape_type:= "Circle" :
+	set (value):
+		if shape_type == value:
+			return
+		shape_type = value
+		for body in get_rigid_bodies():
+			var shape = body.shape
+			if shape_type == "Circle":
+				shape.shape = CircleShape2D.new()
+				shape.shape.resource_local_to_scene = true
+				shape.shape.radius = radius / 2.0
+			elif shape_type == "Rectangle":
+				shape.shape = RectangleShape2D.new()
+				shape.shape.resource_local_to_scene = true
+				shape.shape.size = Vector2(radius, radius)
+			else:
+				push_error("Wrong shape used for shape_type")
+	get:
+		return shape_type
+## If this is greater than 0, the softbody will be breakable. This number is multiplied by [member SoftBody2D.vertex_interval]
+@export_range(0, 2, 0.1, "or_greater") var break_distance_ratio:= 0.0
 
 func _update_bodies_mass():
 	if !get_node_or_null(skeleton):
@@ -429,7 +441,6 @@ func create_regions():
 		voronoi_node.set_owner(get_tree().get_edited_scene_root())
 	voronoi_node.draw_voronoi(voronoi_regions[0])
 
-
 ## Call this to create a new softbody at runtime.
 func create_softbody2d():
 	# At runtime if we already have skeleton, don't create it.
@@ -445,9 +456,9 @@ func create_softbody2d():
 	var skeleton2d = _construct_skeleton2d(voronoi[0], voronoi[1])
 	_create_rigidbodies2d(skeleton2d)
 	_update_soft_body_rigidbodies(skeleton2d)
+	
 
 ## Call this to clear all children, polygons and bones.
-
 func clear_softbody2d():
 	_clear_polygon()
 	for child in get_children():
@@ -866,6 +877,7 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D]):
 			connected_nodes[idx_a].append(node_b)
 			if joint_type == "pin":
 				var joint = PinJoint2D.new()
+				joint.visible = false
 				joint.name = "Joint2D-"+node_a.name+"-"+node_b.name
 				joint.node_a = ".."
 				joint.node_b = "../../" + node_b.name
@@ -884,6 +896,7 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D]):
 					joint.set_owner(get_tree().get_edited_scene_root())
 			else:
 				var joint = DampedSpringJoint2D.new()
+				joint.visible = false
 				joint.name = "Joint2D-"+node_a.name+"-"+node_b.name
 				joint.node_a = ".."
 				joint.node_b = "../../" + node_b.name
@@ -1081,6 +1094,8 @@ func get_center_body() -> SoftBodyChild:
 	var center_rb := _get_node_to_follow(rb_array)
 	return _soft_body_rigidbodies_dict[center_rb]
 	
+#endregion
+
 func _update_soft_body_rigidbodies(skeleton_node:Skeleton2D = null):
 	var result: Array[SoftBodyChild]
 	var children = get_children().filter(func (node: Node): return !(node is Skeleton2D))
