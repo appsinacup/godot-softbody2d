@@ -28,8 +28,9 @@ func _get_configuration_warnings():
 		return ["No texture set."]
 	if get_child_count() == 0:
 		return ["No rigidbodies created. Check the vertex_interval to be lower than texture size."]
-	else:
-		return []
+	if !get_node_or_null(skeleton):
+		return ["Skeleton2D empty."]
+	return []
 
 
 ## Draw regions of edge polygon.[br]
@@ -149,7 +150,7 @@ func _get_configuration_warnings():
 	get:
 		return voronoi_rand_seed
 ## How far randomly should the points move.
-@export_range(0, 0.5, 0.05) var voronoi_interval:= 0.01:
+@export_range(0.01, 0.4, 0.05) var voronoi_interval:= 0.01:
 	set (value):
 		if voronoi_interval == value:
 			return
@@ -167,7 +168,7 @@ func _get_configuration_warnings():
 	get:
 		return polygon_offset
 ## Minimum area of a region that was cut. If it's less than this, it will be added to another region close to it.
-@export_range(0.01, 1, 0.01) var min_area:= 0.3:
+@export_range(0.01, 1, 0.01) var min_area:= 0.35:
 	set (value):
 		if min_area == value:
 			return
@@ -296,46 +297,6 @@ func _get_configuration_warnings():
 					joint.softness = softness
 	get:
 		return softness
-## Relevant only if you picked [member SoftBody2D.joint_type] = "pin". Sets the [member PinJoint2D.angular_limit_enabled] property of the joint.
-@export var angular_limit_enabled := false :
-	set (value):
-		if angular_limit_enabled == value:
-			return
-		angular_limit_enabled = value
-		for body in get_rigid_bodies():
-			for joint in body.joints:
-				if joint is PinJoint2D:
-					if "angular_limit_enabled" in joint:
-						joint.angular_limit_enabled = angular_limit_enabled
-	get:
-		return angular_limit_enabled
-## Relevant only if you picked [member SoftBody2D.joint_type] = "pin". Sets the [member PinJoint2D.angular_limit_lower] property of the joint.
-@export_range(-180,180,0.001, "radians_as_degrees") var angular_limit_lower :float= 0 :
-	set (value):
-		if angular_limit_lower == value:
-			return
-		angular_limit_lower = value
-		for body in get_rigid_bodies():
-			for joint in body.joints:
-				if joint is PinJoint2D:
-					if "angular_limit_lower" in joint:
-						joint.angular_limit_lower = angular_limit_lower
-	get:
-		return angular_limit_lower
-## Relevant only if you picked [member SoftBody2D.joint_type] = "pin". Sets the [member PinJoint2D.angular_limit_upper] property of the joint.
-@export_range(-180,180,0.001, "radians_as_degrees")var angular_limit_upper :float= 0 :
-	set (value):
-		if angular_limit_upper == value:
-			return
-		angular_limit_upper = value
-		for body in get_rigid_bodies():
-			for joint in body.joints:
-				if joint is PinJoint2D:
-					if "angular_limit_upper" in joint:
-						joint.angular_limit_upper = angular_limit_upper
-	get:
-		return angular_limit_upper
-#endregion
 
 #region RigidBody
 
@@ -364,7 +325,12 @@ func _get_configuration_warnings():
 		if total_mass == value:
 			return
 		total_mass = value
-		_update_bodies_mass()
+		if !get_node_or_null(skeleton):
+			push_warning("Skeleton2D not created")
+			return
+		for body in get_rigid_bodies():
+			if "mass" in body.rigidbody:
+				body.rigidbody.mass = total_mass / get_rigid_bodies().size()
 	get:
 		return total_mass
 ## Sets the gravity scale. Each rigidbody will have [member RigidBody2D.gravity_scale] set to this amount.
@@ -378,6 +344,31 @@ func _get_configuration_warnings():
 				body.rigidbody.gravity_scale = gravity_scale
 	get:
 		return gravity_scale
+
+## Sets the constant force. Each rigidbody will have [member RigidBody2D.constant_force] set to this amount.
+@export var constant_force := Vector2() :
+	set (value):
+		if constant_force == value:
+			return
+		constant_force = value
+		for body in get_rigid_bodies():
+			if "constant_force" in body.rigidbody:
+				body.rigidbody.constant_force = constant_force
+	get:
+		return constant_force
+
+## Sets the constant torque. Each rigidbody will have [member RigidBody2D.constant_torque] set to this amount.
+@export var constant_torque := 0.0 :
+	set (value):
+		if constant_torque == value:
+			return
+		constant_torque = value
+		for body in get_rigid_bodies():
+			if "constant_torque" in body.rigidbody:
+				body.rigidbody.constant_torque = constant_torque
+	get:
+		return constant_torque
+
 ## What kind of shape to create for each rigidbody.
 @export_enum("Circle", "Rectangle") var shape_type:= "Circle" :
 	set (value):
@@ -400,16 +391,6 @@ func _get_configuration_warnings():
 		return shape_type
 ## If this is greater than 0, the softbody will be breakable. This number is multiplied by [member SoftBody2D.vertex_interval]
 @export_range(0, 2, 0.1, "or_greater") var break_distance_ratio:= 0.0
-
-func _update_bodies_mass():
-	if !get_node_or_null(skeleton):
-		push_warning("Skeleton2D not created")
-		return
-	var bones = get_node_or_null(skeleton).get_children()
-	var polygon_limits = _calculate_polygon_limits()
-	for body in get_rigid_bodies():
-		if "mass" in body.rigidbody:
-			body.rigidbody.mass = total_mass / get_rigid_bodies().size()
 
 ## Sets the [member RigidBody2D.physics_material_override].
 @export var physics_material_override: PhysicsMaterial :
@@ -539,15 +520,12 @@ func _generate_points_voronoi(lim_min: Vector2, lim_max: Vector2, polygon_verts)
 	for region_idx in len(voronoi):
 		var each: Voronoi2D.VoronoiRegion2D = voronoi[region_idx]
 		var total_area := _polygon_area(each.polygon_points[0])
-		var is_middle_inside = _is_point_in_area(each.fixed_center, polygon_verts, 1.1)
 		# initially the intersect is the starting polygon
 		var intersect: Array[PackedVector2Array] = each.polygon_points
-		var is_inside = true
 		# if there is a point not inside the polygon vertices, cut it.
 		# it may result in multiple polygons
 		for polygon_vert in each.polygon_points[0]:
-			if not _is_point_in_area(polygon_vert, polygon_verts, 1.1):
-				is_inside = false
+			if not _is_point_in_area(polygon_vert, polygon_verts, 1.01):
 				intersect = Geometry2D.intersect_polygons(polygon_verts, each.polygon_points[0])
 				break
 		# exclude eclude_polygon part
@@ -564,9 +542,11 @@ func _generate_points_voronoi(lim_min: Vector2, lim_max: Vector2, polygon_verts)
 			var cut_area := 0.0
 			for intersected in intersect:
 				cut_area += _polygon_area(intersected)
+			var is_middle_inside = _is_point_in_area(each.fixed_center, polygon_verts, 1.1)
 			# if area of polygon is too smal, move it to another region
 			if cut_area / total_area < min_area || !is_middle_inside:
 				voronoi_regions_to_move.append(new_voronoi.size() - 1)
+		
 	# move regions first
 	for region_to_move in voronoi_regions_to_move:
 		var dist := -1.0
@@ -654,7 +634,7 @@ func _calculate_polygon_limits() -> Array[Vector2]:
 			lim_max.y = point.y
 	return [lim_min, lim_max]
 
-func _is_point_in_area(point: Vector2, polygon_verts: PackedVector2Array, scale_amount := 1.1) -> bool:
+func _is_point_in_area(point: Vector2, polygon_verts: PackedVector2Array, scale_amount := 1.01) -> bool:
 	var scaled_poly = polygon_verts.duplicate()
 	var center = Vector2()
 	for vert in polygon_verts:
@@ -663,6 +643,26 @@ func _is_point_in_area(point: Vector2, polygon_verts: PackedVector2Array, scale_
 	for i in len(scaled_poly):
 		scaled_poly[i] = (scaled_poly[i] - center) * scale_amount + center
 	return Geometry2D.is_point_in_polygon(point, scaled_poly)
+
+func _distance_from_point_to_polygon(point: Vector2, polygon_verts: PackedVector2Array):
+	var min_dist:= -1.0
+	for i in len(polygon_verts):
+		var p1 = polygon_verts[i]
+		var p2 = polygon_verts[(i+1)%len(polygon_verts)]
+		var r = (p2 - p1).dot(point - p1)
+		r /= (p2 - p1).length() ** 2
+		var dist = -1
+		if r < 0:
+			dist = (point - p1).length()
+		elif r > 1:
+			dist = (p2 - point).length()
+		else:
+			dist = sqrt((point - p1).length_squared() - (r * (p2-p1)).length_squared())
+		if min_dist < 0:
+			min_dist = dist
+		if dist > 0 && min_dist > dist:
+			min_dist = dist
+	return min_dist
 
 func _triangulate_polygon(polygon: PackedVector2Array, polygon_verts: PackedVector2Array, offset:= 0, validate_inside:= false):
 	var points = Array(Geometry2D.triangulate_polygon(polygon))
@@ -780,8 +780,8 @@ func _generate_weights(bones: Array[Bone2D], voronoi, bone_vert_arr):
 		
 		for bone_index in bone_count:
 			for poly in voronoi[bone_index].polygon_points:
-				if _is_point_in_area(point, poly, max_joint_distance_ratio):
-					weights[bone_index][point_index] = 0.7
+				if _distance_from_point_to_polygon(point, poly) < 2:
+					weights[bone_index][point_index] = 0.5
 	return weights
 
 #endregion
@@ -830,6 +830,8 @@ func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D, mass, is_center: boo
 	collision_shape.name = shape_type + "Shape2D"
 	rigid_body.mass = mass
 	rigid_body.gravity_scale = gravity_scale
+	rigid_body.constant_torque = constant_torque
+	rigid_body.constant_force = constant_force
 	rigid_body.global_position = skeleton.transform * bone.position
 	rigid_body.physics_material_override = physics_material_override
 	rigid_body.add_child(collision_shape)
@@ -882,10 +884,6 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D]):
 				joint.node_a = ".."
 				joint.node_b = "../../" + node_b.name
 				joint.softness = softness
-				if "angular_limit_enabled" in joint:
-					joint.angular_limit_enabled = angular_limit_enabled
-					joint.angular_limit_lower = angular_limit_lower
-					joint.angular_limit_upper = angular_limit_upper
 				joint.disable_collision = disable_collision
 				joint.look_at(node_b.global_position)
 				joint.rotation = node_a.position.angle_to_point(node_b.position) - PI/2
@@ -1093,7 +1091,19 @@ func get_center_body() -> SoftBodyChild:
 	var rb_array := bodies.map(func(body): return body.rigidbody)
 	var center_rb := _get_node_to_follow(rb_array)
 	return _soft_body_rigidbodies_dict[center_rb]
-	
+
+func apply_impulse(impulse: Vector2, position: Vector2 = Vector2(0, 0)):
+	for softbody_el in get_rigid_bodies():
+		var rigidbody := softbody_el.rigidbody
+		if rigidbody is RigidBody2D:
+			(rigidbody as RigidBody2D).apply_impulse(impulse, position)
+
+func apply_force(force: Vector2, position: Vector2 = Vector2(0, 0)):
+	for softbody_el in get_rigid_bodies():
+		var rigidbody := softbody_el.rigidbody
+		if rigidbody is RigidBody2D:
+			(rigidbody as RigidBody2D).apply_force(force, position)
+
 #endregion
 
 func _update_soft_body_rigidbodies(skeleton_node:Skeleton2D = null):

@@ -1,7 +1,7 @@
 @tool
 extends SoftBody2DRigidBody
 
-var SPEED : float = 800
+var SPEED : float = 1600
 
 static var selected_node: SoftBody2DRigidBody = null
 static var hovering: Array[SoftBody2DRigidBody] = []

@@ -3796,11 +3796,11 @@ vertex_interval = 36
 rigidbody_scene = ExtResource("3_6ern4")
 margin_pixels = -1
 voronoi_interval = 0.15
+min_area = 0.3
 max_joint_distance_ratio = 1.5
-angular_limit_enabled = true
-angular_limit_lower = -0.349066
-angular_limit_upper = 0.349066
 radius = 35
+constant_force = null
+constant_torque = null
 shape_type = "Rectangle"
 physics_material_override = ExtResource("3_durpg")
 
@@ -4408,6 +4408,7 @@ vertex_interval = 37
 rigidbody_scene = ExtResource("3_6ern4")
 margin_pixels = -1
 voronoi_interval = 0.15
+min_area = 0.3
 max_joint_distance_ratio = 1.5
 disable_collision = false
 stiffness = 128.0
@@ -4415,6 +4416,8 @@ damping = 0.6
 rest_length_ratio = 1.1
 length_ratio = 0.1
 radius = 35
+constant_force = null
+constant_torque = null
 shape_type = "Rectangle"
 physics_material_override = ExtResource("3_durpg")
 
@@ -4952,6 +4955,7 @@ vertex_interval = 37
 rigidbody_scene = ExtResource("3_6ern4")
 margin_pixels = -1
 voronoi_interval = 0.15
+min_area = 0.3
 max_joint_distance_ratio = 1.5
 disable_collision = false
 stiffness = 128.0
@@ -4959,6 +4963,8 @@ damping = 0.6
 rest_length_ratio = 1.1
 length_ratio = 0.1
 radius = 35
+constant_force = null
+constant_torque = null
 shape_type = "Rectangle"
 physics_material_override = ExtResource("3_durpg")
 
@@ -5495,6 +5501,7 @@ script = ExtResource("2_2dapw")
 rigidbody_scene = ExtResource("3_6ern4")
 margin_pixels = -1
 voronoi_interval = 0.15
+min_area = 0.3
 stiffness = 0.1
 damping = 9.1
 rest_length_ratio = 1.1
@@ -5502,6 +5509,8 @@ length_ratio = 0.1
 softness = 100.0
 radius = 19
 gravity_scale = 2.08167e-17
+constant_force = null
+constant_torque = null
 physics_material_override = ExtResource("5_221ya")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Butter"]
@@ -6382,12 +6391,15 @@ vertex_interval = 25
 rigidbody_scene = ExtResource("3_6ern4")
 margin_pixels = -1
 voronoi_interval = 0.15
+min_area = 0.3
 stiffness = 0.1
 damping = 9.1
 rest_length_ratio = 1.1
 length_ratio = 0.1
 softness = 100.0
 radius = 19
+constant_force = null
+constant_torque = null
 physics_material_override = ExtResource("5_221ya")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Butter6"]
@@ -7689,11 +7701,15 @@ vertex_interval = 26
 rigidbody_scene = ExtResource("3_6ern4")
 margin_pixels = -1
 voronoi_interval = 0.15
+min_area = 0.3
 stiffness = 0.1
 damping = 9.1
 rest_length_ratio = 1.1
 length_ratio = 0.1
 softness = 100.0
+radius = 26
+constant_force = null
+constant_torque = null
 physics_material_override = ExtResource("5_221ya")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Butter7"]
@@ -8666,12 +8682,15 @@ vertex_interval = 25
 rigidbody_scene = ExtResource("3_6ern4")
 margin_pixels = -1
 voronoi_interval = 0.15
+min_area = 0.3
 stiffness = 0.1
 damping = 9.1
 rest_length_ratio = 1.1
 length_ratio = 0.1
 softness = 100.0
 radius = 19
+constant_force = null
+constant_torque = null
 physics_material_override = ExtResource("5_221ya")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Butter8"]
@@ -9971,12 +9990,15 @@ vertex_interval = 25
 rigidbody_scene = ExtResource("3_6ern4")
 margin_pixels = -1
 voronoi_interval = 0.15
+min_area = 0.3
 stiffness = 0.1
 damping = 9.1
 rest_length_ratio = 1.1
 length_ratio = 0.1
 softness = 100.0
 radius = 19
+constant_force = null
+constant_torque = null
 physics_material_override = ExtResource("5_221ya")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Butter9"]
@@ -11276,12 +11298,15 @@ vertex_interval = 25
 rigidbody_scene = ExtResource("3_6ern4")
 margin_pixels = -1
 voronoi_interval = 0.15
+min_area = 0.3
 stiffness = 0.1
 damping = 9.1
 rest_length_ratio = 1.1
 length_ratio = 0.1
 softness = 100.0
 radius = 19
+constant_force = null
+constant_torque = null
 physics_material_override = ExtResource("5_221ya")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Butter10"]
@@ -12582,12 +12607,15 @@ vertex_interval = 25
 rigidbody_scene = ExtResource("3_6ern4")
 margin_pixels = -1
 voronoi_interval = 0.15
+min_area = 0.3
 stiffness = 0.1
 damping = 9.1
 rest_length_ratio = 1.1
 length_ratio = 0.1
 softness = 100.0
 radius = 19
+constant_force = null
+constant_torque = null
 physics_material_override = ExtResource("5_221ya")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Butter2"]
@@ -13887,12 +13915,15 @@ vertex_interval = 25
 rigidbody_scene = ExtResource("3_6ern4")
 margin_pixels = -1
 voronoi_interval = 0.15
+min_area = 0.3
 stiffness = 0.1
 damping = 9.1
 rest_length_ratio = 1.1
 length_ratio = 0.1
 softness = 100.0
 radius = 19
+constant_force = null
+constant_torque = null
 physics_material_override = ExtResource("5_221ya")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Butter3"]
@@ -15193,12 +15224,15 @@ vertex_interval = 25
 rigidbody_scene = ExtResource("3_6ern4")
 margin_pixels = -1
 voronoi_interval = 0.15
+min_area = 0.3
 stiffness = 0.1
 damping = 9.1
 rest_length_ratio = 1.1
 length_ratio = 0.1
 softness = 100.0
 radius = 19
+constant_force = null
+constant_torque = null
 physics_material_override = ExtResource("5_221ya")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Butter4"]
@@ -16499,12 +16533,15 @@ vertex_interval = 25
 rigidbody_scene = ExtResource("3_6ern4")
 margin_pixels = -1
 voronoi_interval = 0.15
+min_area = 0.3
 stiffness = 0.1
 damping = 9.1
 rest_length_ratio = 1.1
 length_ratio = 0.1
 softness = 100.0
 radius = 19
+constant_force = null
+constant_torque = null
 physics_material_override = ExtResource("5_221ya")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Butter5"]
@@ -17814,6 +17851,8 @@ length_ratio = 0.1
 softness = 50.0
 radius = 22
 total_mass = 5.0
+constant_force = null
+constant_torque = null
 break_distance_ratio = 1.5
 physics_material_override = ExtResource("3_durpg")
 
@@ -21077,6 +21116,7 @@ script = ExtResource("2_2dapw")
 rigidbody_scene = ExtResource("3_6ern4")
 margin_pixels = -1
 voronoi_interval = 0.15
+min_area = 0.3
 max_joint_distance_ratio = 1.3
 bias = 0.2
 stiffness = 3.8
@@ -21085,6 +21125,8 @@ rest_length_ratio = 1.1
 length_ratio = 0.1
 softness = 8.0
 radius = 27
+constant_force = null
+constant_torque = null
 shape_type = "Rectangle"
 break_distance_ratio = 1.2
 physics_material_override = ExtResource("3_durpg")
@@ -21643,10 +21685,9 @@ min_area = 0.5
 max_joint_distance_ratio = 1.4
 bias = 0.2
 softness = 20.0
-angular_limit_enabled = true
-angular_limit_lower = -0.872665
-angular_limit_upper = 0.872665
 radius = 30
+constant_force = null
+constant_torque = null
 physics_material_override = ExtResource("5_221ya")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Softbody2d3"]
@@ -23048,6 +23089,8 @@ min_area = 0.5
 bias = 0.2
 softness = 100.0
 radius = 30
+constant_force = null
+constant_torque = null
 physics_material_override = ExtResource("5_221ya")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Softbody2d4"]
@@ -25647,6 +25690,9 @@ bones = ["Bone-0", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 internal_vertex_count = 197
 script = ExtResource("2_2dapw")
 rigidbody_scene = ExtResource("3_6ern4")
+min_area = 0.3
+constant_force = null
+constant_torque = null
 
 [node name="Skeleton2D" type="Skeleton2D" parent="SoftBody2D"]
 visible = false
@@ -26424,6 +26470,9 @@ bones = ["Bone-0", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0.7, 0.7, 0.7, 0.7
 internal_vertex_count = 318
 script = ExtResource("2_2dapw")
 rigidbody_scene = ExtResource("3_6ern4")
+min_area = 0.3
+constant_force = null
+constant_torque = null
 
 [node name="Skeleton2D" type="Skeleton2D" parent="SoftBody2D2"]
 visible = false
@@ -28343,7 +28392,10 @@ bones = ["Bone-0", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 internal_vertex_count = 343
 script = ExtResource("2_2dapw")
 vertex_interval = 31
+min_area = 0.3
 radius = 31
+constant_force = null
+constant_torque = null
 
 [node name="Skeleton2D" type="Skeleton2D" parent="Stickman"]
 visible = false
@@ -28362,7 +28414,8 @@ metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone-1" type="Bone2D" parent="Stickman/Skeleton2D"]
 position = Vector2(42.6365, 41.8233)
-rotation = -0.310015
+rotation = -0.310014
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(0.952329, -0.305073, 0.305073, 0.952329, 42.6365, 41.8233)
 auto_calculate_length_and_angle = false
 length = 31.0
@@ -28386,6 +28439,7 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-3" type="Bone2D" parent="Stickman/Skeleton2D"]
 position = Vector2(32.4064, 102.98)
 rotation = -0.698619
+scale = Vector2(1, 1)
 rest = Transform2D(0.765731, -0.643161, 0.643161, 0.765731, 32.4064, 102.98)
 auto_calculate_length_and_angle = false
 length = 31.0
@@ -28420,7 +28474,6 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-6" type="Bone2D" parent="Stickman/Skeleton2D"]
 position = Vector2(69.1061, 72.1543)
 rotation = 1.57237
-scale = Vector2(1, 1)
 rest = Transform2D(-0.00157253, 0.999999, -0.999999, -0.00157253, 69.1061, 72.1543)
 auto_calculate_length_and_angle = false
 length = 31.0
@@ -28442,7 +28495,7 @@ metadata/connected_nodes_paths = [NodePath("Bone-2"), NodePath("Bone-3"), NodePa
 metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone-8" type="Bone2D" parent="Stickman/Skeleton2D"]
-position = Vector2(68.9456, 134.043)
+position = Vector2(68.9455, 134.043)
 rotation = -0.00203292
 scale = Vector2(1, 1)
 rest = Transform2D(0.999998, -0.00203292, 0.00203292, 0.999998, 68.9455, 134.043)
@@ -28511,6 +28564,7 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-14" type="Bone2D" parent="Stickman/Skeleton2D"]
 position = Vector2(131.057, 36.8511)
 rotation = 2.29241
+scale = Vector2(1, 1)
 rest = Transform2D(-0.660601, 0.750737, -0.750737, -0.660601, 131.057, 36.8511)
 auto_calculate_length_and_angle = false
 length = 31.0
@@ -28533,7 +28587,6 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-16" type="Bone2D" parent="Stickman/Skeleton2D"]
 position = Vector2(131.149, 103.151)
 rotation = 1.57397
-scale = Vector2(1, 1)
 rest = Transform2D(-0.00317685, 0.999995, -0.999995, -0.00317685, 131.149, 103.151)
 auto_calculate_length_and_angle = false
 length = 31.0
@@ -28555,7 +28608,7 @@ metadata/connected_nodes_paths = [NodePath("Bone-12"), NodePath("Bone-13"), Node
 metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone-18" type="Bone2D" parent="Stickman/Skeleton2D"]
-position = Vector2(14.7003, 165.049)
+position = Vector2(14.7002, 165.049)
 rotation = 0.000529336
 rest = Transform2D(1, 0.000529336, -0.000529336, 1, 14.7002, 165.049)
 auto_calculate_length_and_angle = false
@@ -28600,8 +28653,9 @@ metadata/connected_nodes_paths = [NodePath("Bone-20"), NodePath("Bone-23"), Node
 metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone-22" type="Bone2D" parent="Stickman/Skeleton2D"]
-position = Vector2(69.0278, 165.02)
+position = Vector2(69.0279, 165.02)
 rotation = 3.14027
+scale = Vector2(1, 1)
 rest = Transform2D(-0.999999, 0.00132647, -0.00132647, -0.999999, 69.0279, 165.02)
 auto_calculate_length_and_angle = false
 length = 31.0
@@ -28688,8 +28742,9 @@ metadata/connected_nodes_paths = [NodePath("Bone-25"), NodePath("Bone-26"), Node
 metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone-30" type="Bone2D" parent="Stickman/Skeleton2D"]
-position = Vector2(130.927, 229.161)
+position = Vector2(130.926, 229.161)
 rotation = -1.5671
+scale = Vector2(1, 1)
 rest = Transform2D(0.00369997, -0.999993, 0.999993, 0.00369997, 130.926, 229.161)
 auto_calculate_length_and_angle = false
 length = 31.0
@@ -28721,7 +28776,7 @@ metadata/connected_nodes_paths = [NodePath("Bone-15"), NodePath("Bone-16"), Node
 metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone-33" type="Bone2D" parent="Stickman/Skeleton2D"]
-position = Vector2(164.141, 133.929)
+position = Vector2(164.142, 133.929)
 rotation = 2.38591
 rest = Transform2D(-0.727802, 0.685787, -0.685787, -0.727802, 164.142, 133.929)
 auto_calculate_length_and_angle = false
@@ -28745,7 +28800,6 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-35" type="Bone2D" parent="Stickman/Skeleton2D"]
 position = Vector2(164.097, 195.858)
 rotation = 2.35421
-scale = Vector2(1, 1)
 rest = Transform2D(-0.705704, 0.708507, -0.708507, -0.705704, 164.097, 195.858)
 auto_calculate_length_and_angle = false
 length = 31.0
@@ -28757,7 +28811,6 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-36" type="Bone2D" parent="Stickman/Skeleton2D"]
 position = Vector2(160.158, 224.264)
 rotation = 2.97562
-scale = Vector2(1, 1)
 rest = Transform2D(-0.986258, 0.165215, -0.165215, -0.986258, 160.158, 224.264)
 auto_calculate_length_and_angle = false
 length = 31.0
@@ -28766,9 +28819,8 @@ metadata/vert_owned = [429, 430, 431, 432, 433, 434, 435, 436, 437, 438]
 metadata/connected_nodes_paths = [NodePath("Bone-29"), NodePath("Bone-30"), NodePath("Bone-35")]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-0" type="RigidBody2D" parent="Stickman"]
+[node name="Bone-0" type="StaticBody2D" parent="Stickman"]
 position = Vector2(14.6845, 134.019)
-mass = 0.027027
 metadata/bone_name = &"Bone-0"
 
 [node name="CircleShape2D" type="CollisionShape2D" parent="Stickman/Bone-0"]
@@ -28808,9 +28860,8 @@ node_a = NodePath("..")
 node_b = NodePath("../../Bone-19")
 softness = 60.0
 
-[node name="Bone-1" type="RigidBody2D" parent="Stickman"]
+[node name="Bone-1" type="StaticBody2D" parent="Stickman"]
 position = Vector2(42.6365, 41.8233)
-mass = 0.027027
 metadata/bone_name = &"Bone-1"
 
 [node name="CircleShape2D" type="CollisionShape2D" parent="Stickman/Bone-1"]
@@ -28839,6 +28890,7 @@ softness = 60.0
 [node name="Joint2D-Bone-1-Bone-6" type="PinJoint2D" parent="Stickman/Bone-1"]
 visible = false
 rotation = -0.717521
+scale = Vector2(1, 1)
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-6")
 softness = 60.0
@@ -30813,3 +30865,6 @@ softness = 60.0
 [node name="SoftBody2D3" type="Polygon2D" parent="."]
 position = Vector2(1131, -700)
 script = ExtResource("2_2dapw")
+min_area = 0.3
+constant_force = null
+constant_torque = null
