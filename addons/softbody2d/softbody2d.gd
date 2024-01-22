@@ -1153,12 +1153,12 @@ func _process(delta):
 	# Break at max max_deletions joints
 	var deleted_count = 0
 	for rigid_body in get_rigid_bodies():
-		if rigid_body.joints.size() > 4 && rigid_body.is_outside_facing:
-			for node in rigid_body.joints:
-				var joint := node as Joint2D
-				if joint.is_queued_for_deletion() || deleted_count >= _max_deletions:
-					continue
-				if _hinges_distances_squared[joint.name] * break_distance_ratio * break_distance_ratio < _hinges_bodies[rigid_body.rigidbody.name].global_position.distance_squared_to(_hinges_bodies[joint.node_b].global_position):
-					deleted_count = deleted_count + 1
-					remove_joint(rigid_body, joint)
-					_last_delete_time = Time.get_ticks_msec()
+		#if rigid_body.is_outside_facing:
+		for node in rigid_body.joints:
+			var joint := node as Joint2D
+			if joint.is_queued_for_deletion() || deleted_count >= _max_deletions:
+				continue
+			if _hinges_distances_squared[joint.name] * break_distance_ratio * break_distance_ratio < _hinges_bodies[rigid_body.rigidbody.name].global_position.distance_squared_to(_hinges_bodies[joint.node_b].global_position):
+				deleted_count = deleted_count + 1
+				remove_joint(rigid_body, joint)
+				_last_delete_time = Time.get_ticks_msec()
