@@ -35,30 +35,6 @@ class_name Voronoi2D
 ## Distance between points in the region defined with [member Voronoi2D.size]
 @export var distance_between_points: float = 10;
 
-static func _random_num_on_coords(coords:Vector2, initialSeed:int):
-	var result = initialSeed
-	var randGen = RandomNumberGenerator.new();
-	randGen.seed = coords.x;
-	result += randGen.randi();
-	var newy = randGen.randi() + coords.y;
-	randGen.seed = newy;
-	result += randGen.randi();
-	randGen.seed = result;
-	result = randGen.randi();
-	return result;
-
-static func _generate_chunk_points(coords:Vector2, wRange: Vector2, hRange:Vector2, randomSeed: int, distance_between_points: float, distBtwVariation: float) -> PackedVector2Array:
-	var localRandSeed = _random_num_on_coords(coords, randomSeed);
-	var initPoints = PackedVector2Array();
-	for w in range(wRange.x, wRange.y):
-		for h in range(hRange.x, hRange.y):
-			var randGen = RandomNumberGenerator.new();
-			var pointRandSeed = _random_num_on_coords(Vector2(w,h), localRandSeed);
-			randGen.seed = pointRandSeed;
-			var newPoint = Vector2(w*distance_between_points + randGen.randf_range(-distBtwVariation, distBtwVariation)*distance_between_points, h*distance_between_points + randGen.randf_range(-distBtwVariation, distBtwVariation)*distance_between_points);
-			initPoints.append(newPoint)
-	return initPoints;
-
 static func _generate_chunk_points_fixed(coords:Vector2, wRange: Vector2, hRange:Vector2, distance_between_points: float) -> PackedVector2Array:
 	var initPoints = PackedVector2Array();
 	for w in range(wRange.x, wRange.y):
@@ -67,8 +43,8 @@ static func _generate_chunk_points_fixed(coords:Vector2, wRange: Vector2, hRange
 			initPoints.append(newPoint)
 	return initPoints;
 
-static func _generate_chunk_voronoi(coords:Vector2, sizePerChunk: int, voronoiTolerance: float, randomSeed: int, distance_between_points: float, distBtwVariation: float) -> Array:
-	var initPoints = _generate_chunk_points(coords, Vector2(0, sizePerChunk), Vector2(0, sizePerChunk), randomSeed, distance_between_points, distBtwVariation);
+static func _generate_chunk_voronoi(coords:Vector2, sizePerChunk: int, voronoiTolerance: float, distance_between_points: float) -> Array:
+	var initPoints = _generate_chunk_points_fixed(coords, Vector2(0, sizePerChunk), Vector2(0, sizePerChunk), distance_between_points);
 	var sorroundingPoints = PackedVector2Array();
 	for i in range(-1, 2):
 		for j in range(-1, 2):
@@ -85,10 +61,10 @@ static func _generate_chunk_voronoi(coords:Vector2, sizePerChunk: int, voronoiTo
 					ymin = 1 - voronoiTolerance;
 				if (j== 1):
 					ymax = voronoiTolerance;
-				var tempPoints = _generate_chunk_points(Vector2(coords.x+i, coords.y+j), \
-				Vector2(xmin*sizePerChunk, xmax*sizePerChunk), \
-				Vector2(ymin*sizePerChunk, ymax*sizePerChunk), \
-				randomSeed, distance_between_points, distBtwVariation);
+				var tempPoints = _generate_chunk_points_fixed(Vector2(coords.x+i, coords.y+j), \
+					Vector2(xmin*sizePerChunk, xmax*sizePerChunk), \
+					Vector2(ymin*sizePerChunk, ymax*sizePerChunk), \
+					distance_between_points);
 				var resultPoints = PackedVector2Array();
 				for point in tempPoints:
 					var tempPoint = point + Vector2(i * sizePerChunk * distance_between_points, j * sizePerChunk * distance_between_points);
@@ -110,6 +86,7 @@ static func _generate_chunk_voronoi(coords:Vector2, sizePerChunk: int, voronoiTo
 			if (point == triangleArray[triangle][0] || point == triangleArray[triangle][1] || point == triangleArray[triangle][2]):
 				tempVerts.append(circumcenters[triangle]);
 		tempVerts = _clowckwise_points(initPoints[point], tempVerts)
+		
 		vCtrIdxWithVerts.append([initPoints[point], fixed_points[point], tempVerts]);
 	
 	return vCtrIdxWithVerts;
@@ -138,18 +115,26 @@ static func _clowckwise_points(center:Vector2, sorrounding:PackedVector2Array) -
 
 static func _get_circumcenter(a:Vector2, b:Vector2, c:Vector2):
 	var result = Vector2(0,0)
-	var midpointAB = Vector2((a.x+b.x)/2,(a.y+b.y)/2);
+	var midpointAB = Vector2((a.x+b.x) * 0.5,(a.y+b.y) * 0.5);
 	var slopePerpAB = -((b.x-a.x)/(b.y-a.y));
-	var midpointAC = Vector2((a.x+c.x)/2,(a.y+c.y)/2);
+	if (b.x-a.x) == 0 || (b.y-a.y) == 0:
+		slopePerpAB = 0
+	var midpointAC = Vector2((a.x+c.x) * 0.5,(a.y+c.y) * 0.5);
 	var slopePerpAC = -((c.x-a.x)/(c.y-a.y));
+	if (c.y-a.y) == 0 || (c.x-a.x) == 0:
+		slopePerpAC = 0
 	var bOfPerpAB = midpointAB.y - (midpointAB.x * slopePerpAB);
 	var bOfPerpAC = midpointAC.y - (midpointAC.x * slopePerpAC);
 	result.x = (bOfPerpAB - bOfPerpAC)/(slopePerpAC - slopePerpAB);
+	if (bOfPerpAB - bOfPerpAC) == 0 || (slopePerpAC - slopePerpAB) == 0:
+		result.x = 0
 	result.y = slopePerpAB*result.x + bOfPerpAB;
 	return result;
 
 ## A Voronoi 2D Region
 class VoronoiRegion2D:
+	var w: int
+	var h: int
 	## Center of the region
 	var center: Vector2
 	## Fixed center of the region
@@ -161,9 +146,8 @@ class VoronoiRegion2D:
 ## [param size] - total size of the resulting region.[br]
 ## [param distance_between_points] - distance between voronoi regions.[br]
 ## [param start] - start place for voronoi regions.[br]
-## [param edge_dist] - how far randomly should the points move, relative to the distBtwPoints variable.[br]
 ## Returns Array of regions, where each region
-static func generate_voronoi(size: Vector2, distance_between_points: float, start:= Vector2(), edge_dist := 0.3, rand_seed = 0) -> Array[VoronoiRegion2D]:
+static func generate_voronoi(size: Vector2, distance_between_points: float, start:= Vector2(), rand_seed = 0) -> Array[VoronoiRegion2D]:
 	var polygons:Array[VoronoiRegion2D] = []
 	var sizePerChunk := 5.0
 	var totalX = size.x / (distance_between_points*sizePerChunk)
@@ -172,7 +156,8 @@ static func generate_voronoi(size: Vector2, distance_between_points: float, star
 		for h in int(totalY + 1):
 			var chunkLoc = Vector2(w ,h)
 			var voronoi = _generate_chunk_voronoi(chunkLoc, sizePerChunk, \
-			0.4, rand_seed, distance_between_points, edge_dist)
+			0, distance_between_points)
+			var i = 0
 			for each in voronoi:
 				var newPolyPoints := PackedVector2Array();
 				var offset = Vector2(chunkLoc.x*sizePerChunk*distance_between_points,\
@@ -180,9 +165,16 @@ static func generate_voronoi(size: Vector2, distance_between_points: float, star
 				for point in each[2]:
 					newPolyPoints.append(point + offset);
 				var voronoi_region := VoronoiRegion2D.new()
+				voronoi_region.w = (w) * 5 + (i / 5)
+				voronoi_region.h = (h) * 5 + (i % 5)
+				i += 1
 				voronoi_region.center = each[0] + offset
 				voronoi_region.fixed_center = each[1] + offset
-				voronoi_region.polygon_points = [newPolyPoints]
+				var center = voronoi_region.fixed_center
+				var dist = distance_between_points
+				voronoi_region.polygon_points = [[center + Vector2(-dist, -dist) * 0.5,\
+				center + Vector2(dist, -dist) * 0.5, center + Vector2(dist, dist) * 0.5,\
+				center + Vector2(-dist, dist) * 0.5]]
 				polygons.append(voronoi_region)
 	return polygons
 
@@ -192,11 +184,9 @@ func display_voronoi():
 	draw_voronoi(voronoi)
 
 func draw_voronoi(voronoi: Array[VoronoiRegion2D]):
-	var randSeed = 0
 	for each in voronoi:
-		randSeed = _display_polygon(Vector2(), each.polygon_points, randSeed);
+		_display_polygon(Vector2(), each);
 		_display_point(Vector2(), each.center)
-		_display_point(Vector2(), each.fixed_center, Color(1,1,1,0.2))
 
 func _display_point(offset:Vector2, point: Vector2, color:Color = Color(1,1,1,1)):
 	var newPointPoly = Polygon2D.new();
@@ -207,18 +197,17 @@ func _display_point(offset:Vector2, point: Vector2, color:Color = Color(1,1,1,1)
 	if Engine.is_editor_hint():
 		newPointPoly.set_owner(get_tree().get_edited_scene_root())
 
-func _display_polygon(offset:Vector2, polygons:Array[PackedVector2Array], randSeed):
-	var randGen = RandomNumberGenerator.new()
-	var random_color = Color(randGen.randf(), randGen.randf(), randGen.randf(), 1)
-	for polygon in polygons:
-		var newPoly = Polygon2D.new();
-		var newPolyPoints = PackedVector2Array();
+func _display_polygon(offset:Vector2, polygons: VoronoiRegion2D):
+	var random_color = Color(randf(), randf(), randf(), 1)
+	for polygon in polygons.polygon_points:
+		var newPoly = Polygon2D.new()
+		var newPolyPoints = PackedVector2Array()
 		for point in polygon:
-			newPolyPoints.append(point + offset);
-		newPoly.polygon = newPolyPoints;
-		randGen.seed = randSeed;
-		newPoly.color = random_color;
+			newPolyPoints.append(point + offset)
+		newPoly.polygon = newPolyPoints
+		newPoly.color = random_color
+		newPoly.set_meta("w", polygons.w)
+		newPoly.set_meta("h", polygons.h)
 		add_child(newPoly)
 		if Engine.is_editor_hint():
 			newPoly.set_owner(get_tree().get_edited_scene_root())
-	return randGen.randi();

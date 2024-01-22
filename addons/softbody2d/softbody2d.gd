@@ -15,6 +15,8 @@ class_name SoftBody2D
 ## Called after a joint is removed.
 signal joint_removed(rigid_body_a: SoftBodyChild, rigid_body_b: SoftBodyChild)
 
+#region Properties
+
 func _set(property, value):
 	if property == "texture":
 		texture = value as Texture2D
@@ -87,6 +89,9 @@ func _get_configuration_warnings():
 		create_softbody2d()
 	get:
 		return rigidbody_scene
+
+#endregion
+
 #region Image
 ## Properties that relate to the image used to generate the polygon
 @export_group("Image")
@@ -118,7 +123,7 @@ func _get_configuration_warnings():
 	get:
 		return min_alpha
 ## Amount to grow or shrink the image with in pixels. Adds dilatation if positive, if negative adds erosion.
-@export_range(-50, 50, 1, "or_greater") var margin_pixels := 0:
+@export_range(-50, 50, 1, "or_greater") var margin_pixels := 3:
 	set (value):
 		if margin_pixels == value:
 			return
@@ -132,32 +137,6 @@ func _get_configuration_warnings():
 ## Properties that relate to the generated polygon.
 @export_group("Polygon")
 
-## Maximum amount of rigidbodies to create. If it creates more than these, pushes an error.
-@export var max_regions := 200:
-	set (value):
-		if max_regions == value:
-			return
-		max_regions = value
-	get:
-		return max_regions
-## Random seed for generation of voronoi regions
-@export var voronoi_rand_seed : int= 0:
-	set (value):
-		if voronoi_rand_seed == value:
-			return
-		voronoi_rand_seed = value
-		create_softbody2d()
-	get:
-		return voronoi_rand_seed
-## How far randomly should the points move.
-@export_range(0.01, 0.4, 0.05) var voronoi_interval:= 0.01:
-	set (value):
-		if voronoi_interval == value:
-			return
-		voronoi_interval = value
-		create_softbody2d()
-	get:
-		return voronoi_interval
 ## Offset from Texture Center for the polygon. Use this if some rigidbodies are positioned weirdly.
 @export var polygon_offset := Vector2():
 	set (value):
@@ -176,6 +155,9 @@ func _get_configuration_warnings():
 		create_softbody2d()
 	get:
 		return min_area
+
+const MAX_REGIONS := 200
+const MIN_POINT_DISTANCE_SQ := 5
 
 #endregion
 
@@ -298,6 +280,8 @@ func _get_configuration_warnings():
 	get:
 		return softness
 
+#endregion
+
 #region RigidBody
 
 ## Properties that change every rigidbody created for this softbody.
@@ -405,6 +389,8 @@ func _get_configuration_warnings():
 
 #endregion
 
+#region CreateSoftbody
+
 ## Create debug regions. Good to visualize how softbody regions will look in the end
 func create_regions():
 	var voronoi_regions = _create_polygon2d()
@@ -454,6 +440,8 @@ func _clear_polygon():
 	uv.clear()
 	internal_vertex_count = 0
 
+#endregion
+
 #region Create Polygon
 
 func _create_polygon2d():
@@ -483,9 +471,18 @@ func _create_external_vertices_from_texture(texture):
 				break
 			resulting_poly = merged_polygon[0]
 		poly[0] = resulting_poly
-	if poly[0].is_empty():
+	var new_points = []
+	var current_point = 0
+	for i in poly[0].size():
+		var point_a := poly[0][current_point] as Vector2
+		var next_point := (i + 1)%(poly[0].size())
+		var point_b := poly[0][(i + 1)%(poly[0].size())] as Vector2
+		if point_a.distance_squared_to(point_b) > MIN_POINT_DISTANCE_SQ:
+			new_points.append(poly[0][i])
+			current_point = next_point
+	if new_points.is_empty():
 		push_error("Resulting polygon is empty")
-	return PackedVector2Array(poly[0])
+	return PackedVector2Array(new_points)
 
 func _create_internal_vertices():
 	var polygon_verts = _get_polygon_verts()
@@ -508,7 +505,7 @@ func _generate_points_voronoi(lim_min: Vector2, lim_max: Vector2, polygon_verts)
 	var polygon_size = lim_max - lim_min
 	var polygon_num = Vector2(int(polygon_size.x / vertex_interval), int(polygon_size.y / vertex_interval))
 	var voronoi = Voronoi2D.generate_voronoi(polygon_size * 1.2, vertex_interval, \
-		lim_min + polygon_offset, voronoi_interval, voronoi_rand_seed)
+		lim_min + polygon_offset)
 	var polygons = []
 	var new_voronoi: Array[Voronoi2D.VoronoiRegion2D]
 	var voronoi_regions_to_move = []
@@ -572,8 +569,8 @@ func _generate_points_voronoi(lim_min: Vector2, lim_max: Vector2, polygon_verts)
 	var new_vert = get_polygon()
 	var bone_vert_arr = []
 	var in_vert_count = 0
-	if new_voronoi.size() > max_regions:
-		push_error("Too many regions. Current max_regions is " + str(max_regions) + ", total current regions " + str(new_voronoi.size()) + ". Increase the vertex_interval or max_regions.")
+	if new_voronoi.size() > MAX_REGIONS:
+		push_error("Too many regions. Current max_regions is " + str(MAX_REGIONS) + ", total current regions " + str(new_voronoi.size()) + ". Increase the vertex_interval.")
 		new_voronoi = []
 	for each in new_voronoi:
 		# multiple polygons
@@ -702,7 +699,7 @@ func _create_skeleton() -> Skeleton2D:
 	clear_bones()
 	return skeleton2d
 
-func _construct_skeleton2d(voronoi: Array, bone_vert_arr) -> Skeleton2D:
+func _construct_skeleton2d(voronoi: Array[Voronoi2D.VoronoiRegion2D], bone_vert_arr) -> Skeleton2D:
 	var skeleton_nodes = get_children().filter(func (node): return node is Skeleton2D)
 	var skeleton2d : Skeleton2D
 	if len(skeleton_nodes) == 0:
@@ -727,7 +724,7 @@ func _construct_skeleton2d(voronoi: Array, bone_vert_arr) -> Skeleton2D:
 			bone.set_owner(get_tree().get_edited_scene_root())
 	return skeleton2d
 
-func _create_bones(voronoi: Array) -> Array[Bone2D]:
+func _create_bones(voronoi: Array[Voronoi2D.VoronoiRegion2D]) -> Array[Bone2D]:
 	var bones: Array[Bone2D] = []
 	var polygon_limits = _calculate_polygon_limits()
 	var polygon_verts = _get_polygon_verts()
@@ -773,15 +770,15 @@ func _generate_weights(bones: Array[Bone2D], voronoi, bone_vert_arr):
 		for point_idx in bone_vert_arr[bone_index]:
 			weights[bone_index][point_idx] = 1
 	# Set weights to regions close to the bone also
+	# One point should be pulled on at most 2 bones
 	for point_index in points_size:
-		var point = polygon[point_index]
-		var bones_data = []
-		var dist_sum : float = 0
+		var point := polygon[point_index]
 		
 		for bone_index in bone_count:
 			for poly in voronoi[bone_index].polygon_points:
-				if _distance_from_point_to_polygon(point, poly) < 2:
-					weights[bone_index][point_index] = 0.5
+				for poly_point in poly:
+					if point.distance_squared_to(poly_point) < 2:
+						weights[bone_index][point_index] = 1
 	return weights
 
 #endregion
@@ -946,7 +943,7 @@ func _update_bone_lookat(skeleton_node: Skeleton2D, skeleton_modification :Skele
 #endregion
 
 # used internally, computed at _ready once
-var _bones_array
+var _bones_array: Array[Bone2D]
 var _skeleton_node: Skeleton2D
 var _soft_body_rigidbodies_array: Array[SoftBodyChild]
 var _soft_body_rigidbodies_dict: Dictionary
@@ -964,7 +961,10 @@ func _ready():
 	if get_child_count() == 0 || !_skeleton_node:
 		push_warning("Softbody2d not created")
 		return
-	_bones_array = _skeleton_node.get_children().filter(func(node): return node is Bone2D)
+	var bone_nodes := _skeleton_node.get_children().filter(func(node): return node is Bone2D)
+	_bones_array.clear()
+	for bone in bone_nodes:
+		_bones_array.append(bone as Bone2D)
 	_update_soft_body_rigidbodies(_skeleton_node)
 	# This is needed for breaking the rigidbody
 	for rigid_body in get_rigid_bodies():
@@ -977,6 +977,7 @@ func _ready():
 #region Public API
 
 class SoftBodyChild:
+	var is_outside_facing: bool
 	var rigidbody: PhysicsBody2D
 	var bone: Bone2D
 	var joints: Array[Joint2D]
@@ -986,6 +987,7 @@ class SoftBodyChild:
 ## This also handles recreating the polygon, updating the bones to look at the right target and the weights of polygons.
 func remove_joint(rigid_body_child: SoftBodyChild, joint: Joint2D):
 	rigid_body_child.rigidbody.remove_child(joint)
+	rigid_body_child.joints.erase(joint)
 	joint.queue_free()
 	var bone_a_name = _hinges_bodies[rigid_body_child.rigidbody.name].get_meta("bone_name")
 	var bone_b_name = _hinges_bodies[joint.node_b].get_meta("bone_name")
@@ -1132,6 +1134,8 @@ func _update_soft_body_rigidbodies(skeleton_node:Skeleton2D = null):
 	_soft_body_rigidbodies_array = result
 
 var _max_deletions = 6
+var _last_delete_time := 0
+const WAIT_DELETE_MSEC = 100
 
 @onready var _last_texture = texture
 
@@ -1143,16 +1147,18 @@ func _process(delta):
 			create_softbody2d()
 		_last_texture = texture
 		return
-	# Break joints only every 3 frames
-	if Engine.get_process_frames() % 3 != 0 || break_distance_ratio <= 0 || !_skeleton_node:
+	# Wait a little before breaking bones
+	if break_distance_ratio <= 0 || !_skeleton_node || Time.get_ticks_msec() - _last_delete_time < WAIT_DELETE_MSEC:
 		return
 	# Break at max max_deletions joints
 	var deleted_count = 0
 	for rigid_body in get_rigid_bodies():
-		for node in rigid_body.joints:
-			var joint := node as Joint2D
-			if joint.is_queued_for_deletion() || deleted_count >= _max_deletions:
-				continue
-			if _hinges_distances_squared[joint.name] * break_distance_ratio * break_distance_ratio < _hinges_bodies[rigid_body.rigidbody.name].global_position.distance_squared_to(_hinges_bodies[joint.node_b].global_position):
-				deleted_count = deleted_count + 1
-				remove_joint(rigid_body, joint)
+		if rigid_body.joints.size() > 4 && rigid_body.is_outside_facing:
+			for node in rigid_body.joints:
+				var joint := node as Joint2D
+				if joint.is_queued_for_deletion() || deleted_count >= _max_deletions:
+					continue
+				if _hinges_distances_squared[joint.name] * break_distance_ratio * break_distance_ratio < _hinges_bodies[rigid_body.rigidbody.name].global_position.distance_squared_to(_hinges_bodies[joint.node_b].global_position):
+					deleted_count = deleted_count + 1
+					remove_joint(rigid_body, joint)
+					_last_delete_time = Time.get_ticks_msec()
