@@ -1042,8 +1042,9 @@ func remove_joint(rigid_body_child: SoftBodyChild, joint: Joint2D):
 		# Remove from where it's not owned by them.
 		# Also check if no other bone has this weight, if it does, leave it as it's
 		# a common weight
-		
-		for i in bone_a_weights.size():
+		var is_common_weight := false
+		for bone_idx in get_bone_count():
+			if bone_weight_matrix[bone_idx][i]
 		if bone_a_weights[i] > MIN_WEIGHT && bone_b_weights[i] > MIN_WEIGHT:
 			for point_a in bone_a_owned_verts:
 				if i == point_a:
