@@ -811,8 +811,11 @@ func _add_rigid_body_for_bones(skeleton: Skeleton2D) -> Array[RigidBody2D]:
 	else:
 		push_error("Wrong shape used for shape_type")
 	shape.resource_local_to_scene = true
+	var idx := 0
 	for bone in bones:
 		var rigid_body = _create_rigid_body(skeleton, bone, total_mass / bones.size(), bone == follow, shape)
+		rigid_body.set_meta("idx", idx)
+		idx += 1
 		rigid_body.set_meta("bone_name", bone.name)
 		rigidbodies.append(rigid_body)
 	return rigidbodies
@@ -860,9 +863,11 @@ func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D, mass, is_center: boo
 func _generate_joints(rigid_bodies: Array[RigidBody2D], connected_bones: Array):
 	var bones = get_node_or_null(skeleton).get_children()
 	var connected_nodes_paths = []
+	var connected_nodes_idx = []
 	var connected_nodes = []
 	for _i in bones.size():
 		connected_nodes_paths.append([])
+		connected_nodes_idx.append([])
 		connected_nodes.append([])
 	for idx_a in len(rigid_bodies):
 		var node_a := rigid_bodies[idx_a]
@@ -874,6 +879,7 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D], connected_bones: Array):
 			if node_a == node_b:
 				continue
 			connected_nodes_paths[idx_a].append(NodePath(bones[idx_b].name))
+			connected_nodes_idx[idx_a].append(idx_b)
 			connected_nodes[idx_a].append(node_b)
 			if joint_type == "pin":
 				var joint = PinJoint2D.new()
@@ -928,7 +934,9 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D], connected_bones: Array):
 	skeleton_node.set_modification_stack(skeleton_modification_stack)
 
 	for i in bones.size():
+		bones[i].set_meta("idx", i)
 		bones[i].set_meta("connected_nodes_paths", connected_nodes_paths[i])
+		bones[i].set_meta("connected_nodes_idx", connected_nodes_idx[i])
 
 func _update_bone_lookat(skeleton_node: Skeleton2D, skeleton_modification :SkeletonModification2DLookAt, bone: Bone2D, connected_nodes_paths, bone_idx: int, initiate_step: bool = false):
 	if connected_nodes_paths.is_empty():
@@ -1035,6 +1043,12 @@ func remove_joint(rigid_body_child: SoftBodyChild, joint: Joint2D):
 		bone_weight_matrix.append(get_bone_weights(i))
 	var bone_a_weights : PackedFloat32Array = bone_weight_matrix[bone_a_idx]
 	var bone_b_weights : PackedFloat32Array = bone_weight_matrix[bone_b_idx]
+	var bone_a_connections := {}
+	var bone_b_connections := {}
+	#for joint_iterator in rigid_body_a.joints:
+	#	var idx = joint_iterator.node_a.get_meta("idx")
+	#	if idx != bone_a_idx && idx != bone_b_idx:
+	#		bone_a_connections[idx] = true
 	for i in bone_a_weights.size():
 		var should_remove_a = true
 		var should_remove_b = true
@@ -1043,9 +1057,13 @@ func remove_joint(rigid_body_child: SoftBodyChild, joint: Joint2D):
 		# Also check if no other bone has this weight, if it does, leave it as it's
 		# a common weight
 		var is_common_weight := false
+		var shared_weight = bone_a_weights[i] > MIN_WEIGHT && bone_b_weights[i] > MIN_WEIGHT
 		for bone_idx in get_bone_count():
-			if bone_weight_matrix[bone_idx][i]
-		if bone_a_weights[i] > MIN_WEIGHT && bone_b_weights[i] > MIN_WEIGHT:
+			if bone_idx != bone_a_idx && bone_idx != bone_b_idx && bone_weight_matrix[bone_idx][i] > MIN_WEIGHT:#\
+				#&& rigid_body_a.joints.has():
+				is_common_weight = true
+				break
+		if shared_weight && !is_common_weight:
 			for point_a in bone_a_owned_verts:
 				if i == point_a:
 					should_remove_a = false
@@ -1063,11 +1081,17 @@ func remove_joint(rigid_body_child: SoftBodyChild, joint: Joint2D):
 	var skeleton_modification_stack: SkeletonModificationStack2D = _skeleton_node.get_modification_stack()
 	# Erase connected node from meta (in case we save the resource)
 	var connected_nodes_paths_a: Array = bone_a.get_meta("connected_nodes_paths")
+	var connected_nodes_idx_a: Array = bone_a.get_meta("connected_nodes_idx")
 	connected_nodes_paths_a.erase(NodePath(bone_b_name))
+	connected_nodes_idx_a.erase(bone_b_idx)
 	bone_a.set_meta("connected_nodes_paths", connected_nodes_paths_a)
+	bone_a.set_meta("connected_nodes_idx", connected_nodes_idx_a)
 	var connected_nodes_paths_b: Array = bone_b.get_meta("connected_nodes_paths")
+	var connected_nodes_idx_b: Array = bone_b.get_meta("connected_nodes_idx")
 	connected_nodes_paths_b.erase(NodePath(bone_a_name))
+	connected_nodes_idx_b.erase(bone_a_idx)
 	bone_b.set_meta("connected_nodes_paths", connected_nodes_paths_b)
+	bone_b.set_meta("connected_nodes_idx", connected_nodes_idx_b)
 	# Change modification stack for nodes lookat
 	var modification_a := skeleton_modification_stack.get_modification(bone_a_idx)
 	var modification_b := skeleton_modification_stack.get_modification(bone_b_idx)
