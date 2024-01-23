@@ -175,15 +175,6 @@ const MIN_POINT_DISTANCE_SQ := 5
 		create_softbody2d()
 	get:
 		return joint_both_ways
-## Maximum distance ratio until to create joints multiplied by [member SoftBody2D.vertex_interval]
-@export_range(0.1, 2, 0.01, "or_greater") var max_joint_distance_ratio : float = 1.1:
-	set (value):
-		if max_joint_distance_ratio == value:
-			return
-		max_joint_distance_ratio = value
-		create_softbody2d()
-	get:
-		return max_joint_distance_ratio
 ## The joint type. Pin yields a more sturdy softbody, and uses [PinJoint2D], while sprint a more soft one, and uses [DampedSpringJoint2D].
 @export_enum("pin", "spring") var joint_type:= "pin":
 	set (value):
@@ -420,9 +411,9 @@ func create_softbody2d():
 	var voronoi = _create_polygon2d()
 	if (!voronoi || voronoi[0].is_empty()):
 		return
-	var skeleton2d = _construct_skeleton2d(voronoi[0], voronoi[1])
-	_create_rigidbodies2d(skeleton2d)
-	_update_soft_body_rigidbodies(skeleton2d)
+	var skeleton2d_and_connected_bones = _construct_skeleton2d(voronoi[0], voronoi[1])
+	_create_rigidbodies2d(skeleton2d_and_connected_bones[0], skeleton2d_and_connected_bones[1])
+	_update_soft_body_rigidbodies(skeleton2d_and_connected_bones[0])
 	
 
 ## Call this to clear all children, polygons and bones.
@@ -699,7 +690,7 @@ func _create_skeleton() -> Skeleton2D:
 	clear_bones()
 	return skeleton2d
 
-func _construct_skeleton2d(voronoi: Array[Voronoi2D.VoronoiRegion2D], bone_vert_arr) -> Skeleton2D:
+func _construct_skeleton2d(voronoi: Array[Voronoi2D.VoronoiRegion2D], bone_vert_arr) -> Array:
 	var skeleton_nodes = get_children().filter(func (node): return node is Skeleton2D)
 	var skeleton2d : Skeleton2D
 	if len(skeleton_nodes) == 0:
@@ -713,7 +704,8 @@ func _construct_skeleton2d(voronoi: Array[Voronoi2D.VoronoiRegion2D], bone_vert_
 		skeleton2d.remove_child(child)
 	clear_bones()
 	var bones = _create_bones(voronoi)
-	var weights = _generate_weights(bones, voronoi, bone_vert_arr)
+	var weights_and_connected_nodes = _generate_weights(bones, voronoi, bone_vert_arr)
+	var weights = weights_and_connected_nodes[0]
 	var bone_count = skeleton2d.get_bone_count()
 	for bone_index in len(bones):
 		var bone : Bone2D = bones[bone_index]
@@ -722,7 +714,7 @@ func _construct_skeleton2d(voronoi: Array[Voronoi2D.VoronoiRegion2D], bone_vert_
 		add_bone(NodePath(bone.name), PackedFloat32Array(weights[bone_index]))
 		if Engine.is_editor_hint():
 			bone.set_owner(get_tree().get_edited_scene_root())
-	return skeleton2d
+	return [skeleton2d, weights_and_connected_nodes[1]]
 
 func _create_bones(voronoi: Array[Voronoi2D.VoronoiRegion2D]) -> Array[Bone2D]:
 	var bones: Array[Bone2D] = []
@@ -769,29 +761,39 @@ func _generate_weights(bones: Array[Bone2D], voronoi, bone_vert_arr):
 	for bone_index in bone_count:
 		for point_idx in bone_vert_arr[bone_index]:
 			weights[bone_index][point_idx] = 1
+	var bone_connections := []
+	for bone_index in bone_count:
+		bone_connections.append({})
 	# Set weights to regions close to the bone also
 	# One point should be pulled on at most 2 bones
 	for point_index in points_size:
 		var point := polygon[point_index]
 		
+		var bones_connected_to_point := []
 		for bone_index in bone_count:
 			for poly in voronoi[bone_index].polygon_points:
 				for poly_point in poly:
 					if point.distance_squared_to(poly_point) < 2:
+						bones_connected_to_point.append(bone_index)
 						weights[bone_index][point_index] = 1
-	return weights
+		# connect all bones connected to this point to each other
+		for bone_connected_to_point in bones_connected_to_point:
+			for other_bone_connected_to_point in bones_connected_to_point:
+				if bone_connected_to_point != other_bone_connected_to_point:
+					bone_connections[bone_connected_to_point][other_bone_connected_to_point] = true
+	return [weights, bone_connections]
 
 #endregion
 
 #region Create Rigidbody
 
-func _create_rigidbodies2d(skeleton: Skeleton2D):
+func _create_rigidbodies2d(skeleton: Skeleton2D, connected_bones: Array):
 	for child in get_children():
 		if not child is Skeleton2D:
 			remove_child(child)
 			child.queue_free()
 	var rigidbodies := _add_rigid_body_for_bones(skeleton)
-	_generate_joints(rigidbodies)
+	_generate_joints(rigidbodies, connected_bones)
 
 func _add_rigid_body_for_bones(skeleton: Skeleton2D) -> Array[RigidBody2D]:
 	var bones = skeleton.get_children()
@@ -855,7 +857,7 @@ func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D, mass, is_center: boo
 
 #region Create Joint
 
-func _generate_joints(rigid_bodies: Array[RigidBody2D]):
+func _generate_joints(rigid_bodies: Array[RigidBody2D], connected_bones: Array):
 	var bones = get_node_or_null(skeleton).get_children()
 	var connected_nodes_paths = []
 	var connected_nodes = []
@@ -864,13 +866,12 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D]):
 		connected_nodes.append([])
 	for idx_a in len(rigid_bodies):
 		var node_a := rigid_bodies[idx_a]
-		for idx_b in len(rigid_bodies):
+		for idx_b in connected_bones[idx_a].keys():
 			# only create joint once
 			if idx_b > idx_a && !joint_both_ways:
 				continue
 			var node_b := rigid_bodies[idx_b]
-			if node_a == node_b or \
-				node_a.global_position.distance_to(node_b.global_position) > vertex_interval * scale.length() * max_joint_distance_ratio:
+			if node_a == node_b:
 				continue
 			connected_nodes_paths[idx_a].append(NodePath(bones[idx_b].name))
 			connected_nodes[idx_a].append(node_b)
@@ -917,7 +918,7 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D]):
 		skeleton_modification.bone2d_node = NodePath(bones[i].name)
 		skeleton_modification.resource_local_to_scene = true
 		skeleton_modification.set_editor_draw_gizmo(false)
-		_update_bone_lookat(skeleton_node, skeleton_modification, bones[i], connected_nodes_paths[i], i)
+		_update_bone_lookat(skeleton_node, skeleton_modification, bones[i], connected_nodes_paths[i], i, true)
 		
 		bones[i].set_rest(bones[i].transform)
 		skeleton_modification_stack.add_modification(skeleton_modification)
@@ -929,16 +930,20 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D]):
 	for i in bones.size():
 		bones[i].set_meta("connected_nodes_paths", connected_nodes_paths[i])
 
-func _update_bone_lookat(skeleton_node: Skeleton2D, skeleton_modification :SkeletonModification2DLookAt, bone: Bone2D, connected_nodes_paths, bone_idx: int):
+func _update_bone_lookat(skeleton_node: Skeleton2D, skeleton_modification :SkeletonModification2DLookAt, bone: Bone2D, connected_nodes_paths, bone_idx: int, initiate_step: bool = false):
 	if connected_nodes_paths.is_empty():
-		push_warning("Softbody" + name +" bone has no node to look at")
-		return
-	var node_lookat = skeleton_node.get_node(connected_nodes_paths[connected_nodes_paths.size()/2])
-	
+		skeleton_modification.enabled = false
+		push_warning("Softbody" + name + " bone has no node to look at")
+		return false
+	var node_lookat = skeleton_node.get_node(connected_nodes_paths[floor(connected_nodes_paths.size()/2)])
+	var prev_rotation = bone.rotation
 	bone.look_at(node_lookat.global_position)
+	if !initiate_step:
+		skeleton_modification.set_additional_rotation(prev_rotation - bone.rotation)
 	
 	skeleton_node.set_bone_local_pose_override(bone_idx, bone.get_transform(), 1, true)
-	skeleton_modification.target_nodepath = connected_nodes_paths[connected_nodes_paths.size()/2]
+	skeleton_modification.target_nodepath = connected_nodes_paths[floor(connected_nodes_paths.size()/2)]
+	return true
 	
 #endregion
 
@@ -957,6 +962,9 @@ var _hinges_distances_squared := Dictionary()
 func _ready():
 	if Engine.is_editor_hint():
 		return
+	_update_vars()
+
+func _update_vars():
 	_skeleton_node = get_node_or_null(skeleton)
 	if get_child_count() == 0 || !_skeleton_node:
 		push_warning("Softbody2d not created")
@@ -974,6 +982,7 @@ func _ready():
 			_hinges_bodies[joint.node_b] = get_node(joint.node_b.get_concatenated_names().substr(4)) as PhysicsBody2D
 			_hinges_distances_squared[joint.name] = _hinges_bodies[rigid_body.rigidbody.name].global_position.distance_squared_to(_hinges_bodies[joint.node_b].global_position)
 
+
 #region Public API
 
 class SoftBodyChild:
@@ -986,20 +995,18 @@ class SoftBodyChild:
 ## Remove joint between bone_a_name and bone_b_name. Useful if you want to make breakable softbodies.[br]
 ## This also handles recreating the polygon, updating the bones to look at the right target and the weights of polygons.
 func remove_joint(rigid_body_child: SoftBodyChild, joint: Joint2D):
-	rigid_body_child.rigidbody.remove_child(joint)
-	rigid_body_child.joints.erase(joint)
-	joint.queue_free()
-	var bone_a_name = _hinges_bodies[rigid_body_child.rigidbody.name].get_meta("bone_name")
-	var bone_b_name = _hinges_bodies[joint.node_b].get_meta("bone_name")
-	var polygon_weights: Array[float] = []
-	polygon_weights.resize(len(polygon))
-	var weights: Array[PackedFloat32Array] = []
+	# In case calling from @tool script
+	if Engine.is_editor_hint():
+		_update_vars()
+	var bone_a_name : String = _hinges_bodies[rigid_body_child.rigidbody.name].get_meta("bone_name")
+	var bone_b_name : String = _hinges_bodies[joint.node_b].get_meta("bone_name")
 	var bone_a_idx = -1
 	var bone_b_idx = -1
 	var bone_a: Bone2D
 	var bone_b: Bone2D
 	var rigid_body_a: SoftBodyChild
 	var rigid_body_b: SoftBodyChild
+	# find bones and rigidbodies
 	for i in len(_bones_array):
 		var bone = _bones_array[i]
 		if bone_a_idx != -1 && bone_b_idx != -1:
@@ -1017,23 +1024,26 @@ func remove_joint(rigid_body_child: SoftBodyChild, joint: Joint2D):
 			rigid_body_a = rigid_body
 		if rigid_body.bone == bone_b:
 			rigid_body_b = rigid_body
-	var bone_a_weights = get_bone_weights(bone_a_idx)
-	var bone_b_weights = get_bone_weights(bone_b_idx)
-	var bone_a_owned_verts = _bones_array[bone_a_idx].get_meta("vert_owned")
-	var bone_b_owned_verts = _bones_array[bone_b_idx].get_meta("vert_owned")
-	var bone_a_owned_weights = []
-	var bone_b_owned_weights = []
-	var bone_a_owned_after = []
-	var bone_b_owned_after = []
+	
+	rigid_body_a.joints.erase(joint)
+	rigid_body_b.joints.erase(joint)
+	var bone_a_owned_verts : Array = _bones_array[bone_a_idx].get_meta("vert_owned")
+	var bone_b_owned_verts : Array = _bones_array[bone_b_idx].get_meta("vert_owned")
 	var MIN_WEIGHT = 0.01
+	var bone_weight_matrix = []
+	for i in get_bone_count():
+		bone_weight_matrix.append(get_bone_weights(i))
+	var bone_a_weights : PackedFloat32Array = bone_weight_matrix[bone_a_idx]
+	var bone_b_weights : PackedFloat32Array = bone_weight_matrix[bone_b_idx]
 	for i in bone_a_weights.size():
-		if bone_a_weights[i] > MIN_WEIGHT :
-			bone_a_owned_weights.append(i)
-		if bone_b_weights[i] > MIN_WEIGHT :
-			bone_b_owned_weights.append(i)
 		var should_remove_a = true
 		var should_remove_b = true
-		# both nodes have weight, check if it's not their own vert
+		# Both nodes have weight, check if it's not their own vert.
+		# Remove from where it's not owned by them.
+		# Also check if no other bone has this weight, if it does, leave it as it's
+		# a common weight
+		
+		for i in bone_a_weights.size():
 		if bone_a_weights[i] > MIN_WEIGHT && bone_b_weights[i] > MIN_WEIGHT:
 			for point_a in bone_a_owned_verts:
 				if i == point_a:
@@ -1045,35 +1055,40 @@ func remove_joint(rigid_body_child: SoftBodyChild, joint: Joint2D):
 					break
 			if should_remove_a:
 				bone_a_weights[i] = 0.0
-			if should_remove_b:
+			elif should_remove_b:
 				bone_b_weights[i] = 0.0
-		if bone_a_weights[i] > MIN_WEIGHT :
-			bone_a_owned_after.append(i)
-		if bone_b_weights[i] > MIN_WEIGHT :
-			bone_b_owned_after.append(i)
 	set_bone_weights(bone_a_idx, bone_a_weights)
 	set_bone_weights(bone_b_idx, bone_b_weights)
 	var skeleton_modification_stack: SkeletonModificationStack2D = _skeleton_node.get_modification_stack()
+	# Erase connected node from meta (in case we save the resource)
 	var connected_nodes_paths_a: Array = bone_a.get_meta("connected_nodes_paths")
 	connected_nodes_paths_a.erase(NodePath(bone_b_name))
 	bone_a.set_meta("connected_nodes_paths", connected_nodes_paths_a)
 	var connected_nodes_paths_b: Array = bone_b.get_meta("connected_nodes_paths")
 	connected_nodes_paths_b.erase(NodePath(bone_a_name))
 	bone_b.set_meta("connected_nodes_paths", connected_nodes_paths_b)
+	# Change modification stack for nodes lookat
 	var modification_a := skeleton_modification_stack.get_modification(bone_a_idx)
 	var modification_b := skeleton_modification_stack.get_modification(bone_b_idx)
-	_update_bone_lookat(_skeleton_node, skeleton_modification_stack.get_modification(bone_a_idx), bone_a, bone_a.get_meta("connected_nodes_paths"), bone_a_idx)
-	_update_bone_lookat(_skeleton_node, skeleton_modification_stack.get_modification(bone_b_idx), bone_b, bone_b.get_meta("connected_nodes_paths"), bone_b_idx)
+	if !_update_bone_lookat(_skeleton_node, skeleton_modification_stack.get_modification(bone_a_idx), bone_a, bone_a.get_meta("connected_nodes_paths"), bone_a_idx):
+		var remote_transform_a : RemoteTransform2D= rigid_body_a.rigidbody.get_children().filter(func (node): return node is RemoteTransform2D)[0]
+		rigid_body_a.rigidbody.rotation = bone_a.rotation
+		remote_transform_a.update_rotation = true
+	if !_update_bone_lookat(_skeleton_node, skeleton_modification_stack.get_modification(bone_b_idx), bone_b, bone_b.get_meta("connected_nodes_paths"), bone_b_idx):
+		var remote_transform_b : RemoteTransform2D= rigid_body_b.rigidbody.get_children().filter(func (node): return node is RemoteTransform2D)[0]
+		rigid_body_b.rigidbody.rotation = bone_b.rotation
+		remote_transform_b.update_rotation = true
 	skeleton_modification_stack.set_modification(bone_a_idx, modification_a)
 	skeleton_modification_stack.set_modification(bone_b_idx, modification_b)
 	_skeleton_node.set_modification_stack(skeleton_modification_stack)
 	_update_soft_body_rigidbodies(_skeleton_node)
 	
 	joint_removed.emit(rigid_body_a, rigid_body_b)
+	joint.queue_free()
 
 ## Get all the bodies, including joints and shape
 func get_rigid_bodies() -> Array[SoftBodyChild]:
-	if _soft_body_rigidbodies_array.is_empty():
+	if _soft_body_rigidbodies_array.is_empty() || Engine.is_editor_hint():
 		if !_skeleton_node:
 			_skeleton_node = get_node_or_null(skeleton)
 		_update_soft_body_rigidbodies(_skeleton_node)
@@ -1153,9 +1168,11 @@ func _process(delta):
 	# Break at max max_deletions joints
 	var deleted_count = 0
 	for rigid_body in get_rigid_bodies():
-		#if rigid_body.is_outside_facing:
+		#if rigid_body.joints.size() > 2:# && rigid_body.is_outside_facing:
 		for node in rigid_body.joints:
-			var joint := node as Joint2D
+			var joint := node
+			if joint == null:
+				continue
 			if joint.is_queued_for_deletion() || deleted_count >= _max_deletions:
 				continue
 			if _hinges_distances_squared[joint.name] * break_distance_ratio * break_distance_ratio < _hinges_bodies[rigid_body.rigidbody.name].global_position.distance_squared_to(_hinges_bodies[joint.node_b].global_position):
