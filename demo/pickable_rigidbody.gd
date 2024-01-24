@@ -1,7 +1,7 @@
 @tool
 extends SoftBody2DRigidBody
 
-var SPEED : float = 1600
+var SPEED : float = 3600
 
 static var selected_node: SoftBody2DRigidBody = null
 static var hovering: Array[SoftBody2DRigidBody] = []
@@ -38,4 +38,4 @@ func _process(delta):
 			length = SPEED;
 		if length < 1:
 			length = 1;
-		apply_central_impulse(dir * length * mass)
+		apply_central_impulse(dir * length)

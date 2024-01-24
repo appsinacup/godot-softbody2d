@@ -173,8 +173,24 @@ static func generate_voronoi(size: Vector2, distance_between_points: float, star
 				var center = voronoi_region.fixed_center
 				var dist = distance_between_points
 				voronoi_region.polygon_points = [[center + Vector2(-dist, -dist) * 0.5,\
-				center + Vector2(dist, -dist) * 0.5, center + Vector2(dist, dist) * 0.5,\
-				center + Vector2(-dist, dist) * 0.5]]
+				center + Vector2(0, -dist) * 0.5, \
+				center + Vector2(0, 0) * 0.5,\
+				center + Vector2(-dist, 0) * 0.5], \
+				
+				[center + Vector2(0, 0) * 0.5,\
+				center + Vector2(dist, 0) * 0.5, \
+				center + Vector2(dist, dist) * 0.5,\
+				center + Vector2(0, dist) * 0.5], \
+				
+				[center + Vector2(-dist, 0) * 0.5,\
+				center + Vector2(0, 0) * 0.5, \
+				center + Vector2(0, dist) * 0.5,\
+				center + Vector2(-dist, dist) * 0.5], \
+				
+				[center + Vector2(0, -dist) * 0.5,\
+				center + Vector2(dist, -dist) * 0.5, \
+				center + Vector2(dist, 0) * 0.5,\
+				center + Vector2(0, 0) * 0.5],]
 				polygons.append(voronoi_region)
 	return polygons
 

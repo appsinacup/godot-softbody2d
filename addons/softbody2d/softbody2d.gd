@@ -55,6 +55,7 @@ func _get_configuration_warnings():
 			return
 		vertex_interval = value
 		radius = value
+		margin_pixels = vertex_interval / 4
 		create_softbody2d()
 	get:
 		return vertex_interval
@@ -157,7 +158,6 @@ func _get_configuration_warnings():
 		return min_area
 
 const MAX_REGIONS := 200
-const MIN_POINT_DISTANCE_SQ := 5
 
 #endregion
 
@@ -444,7 +444,7 @@ func _create_polygon2d():
 	set_uv(PackedVector2Array([]))
 	return _create_internal_vertices()
 
-func _create_external_vertices_from_texture(texture):
+func _create_external_vertices_from_texture(texture) -> PackedVector2Array:
 	var bitmap = BitMap.new()
 	bitmap.create_from_image_alpha(texture.get_image(), min_alpha)
 	var rect = Rect2(0, 0, texture.get_width(), texture.get_height())
@@ -467,13 +467,13 @@ func _create_external_vertices_from_texture(texture):
 	for i in poly[0].size():
 		var point_a := poly[0][current_point] as Vector2
 		var next_point := (i + 1)%(poly[0].size())
-		var point_b := poly[0][(i + 1)%(poly[0].size())] as Vector2
-		if point_a.distance_squared_to(point_b) > MIN_POINT_DISTANCE_SQ:
+		var point_b := poly[0][next_point] as Vector2
+		if point_a.distance_squared_to(point_b) > vertex_interval * vertex_interval / 4 || i == 0:
 			new_points.append(poly[0][i])
 			current_point = next_point
 	if new_points.is_empty():
 		push_error("Resulting polygon is empty")
-	return PackedVector2Array(new_points)
+	return new_points
 
 func _create_internal_vertices():
 	var polygon_verts = _get_polygon_verts()
@@ -507,7 +507,9 @@ func _generate_points_voronoi(lim_min: Vector2, lim_max: Vector2, polygon_verts)
 	# find out what regions to remove
 	for region_idx in len(voronoi):
 		var each: Voronoi2D.VoronoiRegion2D = voronoi[region_idx]
-		var total_area := _polygon_area(each.polygon_points[0])
+		var total_area := 0.01
+		for polygon_point in each.polygon_points:
+			total_area += _polygon_area(polygon_point)
 		# initially the intersect is the starting polygon
 		var intersect: Array[PackedVector2Array] = each.polygon_points
 		# if there is a point not inside the polygon vertices, cut it.
@@ -1034,21 +1036,31 @@ func remove_joint(rigid_body_child: SoftBodyChild, joint: Joint2D):
 			rigid_body_b = rigid_body
 	
 	rigid_body_a.joints.erase(joint)
-	rigid_body_b.joints.erase(joint)
-	var bone_a_owned_verts : Array = _bones_array[bone_a_idx].get_meta("vert_owned")
-	var bone_b_owned_verts : Array = _bones_array[bone_b_idx].get_meta("vert_owned")
+	for joint_b in rigid_body_b.joints:
+		if joint_b.node_a.get_name(joint_b.node_a.get_name_count() - 1) == rigid_body_a.rigidbody.name || joint_b.node_b.get_name(joint_b.node_b.get_name_count() - 1) == rigid_body_a.rigidbody.name:
+			rigid_body_b.joints.erase(joint_b)
+			joint_b.queue_free()
+			break
+	joint.queue_free()
+	var owned_verts = []
 	var MIN_WEIGHT = 0.01
 	var bone_weight_matrix = []
 	for i in get_bone_count():
+		owned_verts.append(_bones_array[i].get_meta("vert_owned"))
 		bone_weight_matrix.append(get_bone_weights(i))
+	var bone_a_owned_verts : Array = owned_verts[bone_a_idx]
+	var bone_b_owned_verts : Array = owned_verts[bone_b_idx]
 	var bone_a_weights : PackedFloat32Array = bone_weight_matrix[bone_a_idx]
 	var bone_b_weights : PackedFloat32Array = bone_weight_matrix[bone_b_idx]
+	var connected_nodes_idx_a: Array = bone_a.get_meta("connected_nodes_idx")
+	var connected_nodes_idx_b: Array = bone_b.get_meta("connected_nodes_idx")
 	var bone_a_connections := {}
 	var bone_b_connections := {}
-	#for joint_iterator in rigid_body_a.joints:
-	#	var idx = joint_iterator.node_a.get_meta("idx")
-	#	if idx != bone_a_idx && idx != bone_b_idx:
-	#		bone_a_connections[idx] = true
+	for idx in connected_nodes_idx_a:
+		bone_a_connections[idx] = true
+	for idx in connected_nodes_idx_b:
+		bone_b_connections[idx] = true
+	var bones_to_update = {}
 	for i in bone_a_weights.size():
 		var should_remove_a = true
 		var should_remove_b = true
@@ -1056,14 +1068,27 @@ func remove_joint(rigid_body_child: SoftBodyChild, joint: Joint2D):
 		# Remove from where it's not owned by them.
 		# Also check if no other bone has this weight, if it does, leave it as it's
 		# a common weight
-		var is_common_weight := false
+		var is_common_weight := 0
 		var shared_weight = bone_a_weights[i] > MIN_WEIGHT && bone_b_weights[i] > MIN_WEIGHT
-		for bone_idx in get_bone_count():
-			if bone_idx != bone_a_idx && bone_idx != bone_b_idx && bone_weight_matrix[bone_idx][i] > MIN_WEIGHT:#\
-				#&& rigid_body_a.joints.has():
-				is_common_weight = true
-				break
-		if shared_weight && !is_common_weight:
+		var common_bone := -1
+		if shared_weight:
+			for bone_idx in get_bone_count():
+				if bone_idx != bone_a_idx && bone_idx != bone_b_idx && bone_weight_matrix[bone_idx][i] > MIN_WEIGHT:
+					if bone_a_connections.has(bone_idx) && bone_b_connections.has(bone_idx):
+						if is_common_weight == 0:
+							is_common_weight = 1
+					elif !bone_a_connections.has(bone_idx) || !bone_b_connections.has(bone_idx):
+						# If there is a connection with this node but it's not it's own node, remove it
+						var is_owned_vert := false
+						for owned_vert in owned_verts[bone_idx]:
+							if i == owned_vert:
+								is_owned_vert = true
+								break
+						if !is_owned_vert:
+							is_common_weight = -1
+							bones_to_update[bone_idx] = true
+							bone_weight_matrix[bone_idx][i] = 0.0
+		if shared_weight && is_common_weight <= 0:
 			for point_a in bone_a_owned_verts:
 				if i == point_a:
 					should_remove_a = false
@@ -1074,20 +1099,22 @@ func remove_joint(rigid_body_child: SoftBodyChild, joint: Joint2D):
 					break
 			if should_remove_a:
 				bone_a_weights[i] = 0.0
-			elif should_remove_b:
+			if should_remove_b:
 				bone_b_weights[i] = 0.0
 	set_bone_weights(bone_a_idx, bone_a_weights)
 	set_bone_weights(bone_b_idx, bone_b_weights)
+	# Also update bones that had common weights with a or b
+	for bone_to_update in bones_to_update.keys():
+		if bone_to_update != bone_a_idx && bone_to_update != bone_b_idx:
+			set_bone_weights(bone_to_update, bone_weight_matrix[bone_to_update])
 	var skeleton_modification_stack: SkeletonModificationStack2D = _skeleton_node.get_modification_stack()
 	# Erase connected node from meta (in case we save the resource)
 	var connected_nodes_paths_a: Array = bone_a.get_meta("connected_nodes_paths")
-	var connected_nodes_idx_a: Array = bone_a.get_meta("connected_nodes_idx")
 	connected_nodes_paths_a.erase(NodePath(bone_b_name))
 	connected_nodes_idx_a.erase(bone_b_idx)
 	bone_a.set_meta("connected_nodes_paths", connected_nodes_paths_a)
 	bone_a.set_meta("connected_nodes_idx", connected_nodes_idx_a)
 	var connected_nodes_paths_b: Array = bone_b.get_meta("connected_nodes_paths")
-	var connected_nodes_idx_b: Array = bone_b.get_meta("connected_nodes_idx")
 	connected_nodes_paths_b.erase(NodePath(bone_a_name))
 	connected_nodes_idx_b.erase(bone_a_idx)
 	bone_b.set_meta("connected_nodes_paths", connected_nodes_paths_b)
@@ -1109,7 +1136,6 @@ func remove_joint(rigid_body_child: SoftBodyChild, joint: Joint2D):
 	_update_soft_body_rigidbodies(_skeleton_node)
 	
 	joint_removed.emit(rigid_body_a, rigid_body_b)
-	joint.queue_free()
 
 ## Get all the bodies, including joints and shape
 func get_rigid_bodies() -> Array[SoftBodyChild]:
