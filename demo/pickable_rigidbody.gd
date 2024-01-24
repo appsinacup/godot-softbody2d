@@ -1,7 +1,7 @@
 @tool
 extends SoftBody2DRigidBody
 
-var SPEED : float = 3600
+var SPEED : float = 200
 
 static var selected_node: SoftBody2DRigidBody = null
 static var hovering: Array[SoftBody2DRigidBody] = []
@@ -33,7 +33,7 @@ func _process(delta):
 		var dir = (get_global_mouse_position() - global_position - linear_velocity * delta)
 		var length = dir.length()
 		dir /= length
-		length *= 2
+		length /= mass
 		if length > SPEED:
 			length = SPEED;
 		if length < 1:

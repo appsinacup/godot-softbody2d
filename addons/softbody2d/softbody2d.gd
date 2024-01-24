@@ -54,8 +54,7 @@ func _get_configuration_warnings():
 		if vertex_interval == value:
 			return
 		vertex_interval = value
-		radius = value
-		margin_pixels = vertex_interval / 4
+		radius = value - value * 0.2
 		create_softbody2d()
 	get:
 		return vertex_interval
@@ -81,15 +80,6 @@ func _get_configuration_warnings():
 			body.rigidbody.collision_mask = collision_mask
 	get:
 		return collision_mask
-## A custom rigidbody scene from which to create the rigidbody. Useful if you want to have custom rigidbodies with custom scripts.
-@export var rigidbody_scene: PackedScene :
-	set (value):
-		if rigidbody_scene == value:
-			return
-		rigidbody_scene = value
-		create_softbody2d()
-	get:
-		return rigidbody_scene
 
 #endregion
 
@@ -124,7 +114,7 @@ func _get_configuration_warnings():
 	get:
 		return min_alpha
 ## Amount to grow or shrink the image with in pixels. Adds dilatation if positive, if negative adds erosion.
-@export_range(-50, 50, 1, "or_greater") var margin_pixels := 3:
+@export_range(-50, 50, 1, "or_greater") var margin_pixels := 0:
 	set (value):
 		if margin_pixels == value:
 			return
@@ -367,6 +357,16 @@ const MAX_REGIONS := 200
 ## If this is greater than 0, the softbody will be breakable. This number is multiplied by [member SoftBody2D.vertex_interval]
 @export_range(0, 2, 0.1, "or_greater") var break_distance_ratio:= 0.0
 
+## A custom rigidbody scene from which to create the rigidbody. Useful if you want to have custom rigidbodies with custom scripts.
+@export var rigidbody_scene: PackedScene :
+	set (value):
+		if rigidbody_scene == value:
+			return
+		rigidbody_scene = value
+		create_softbody2d()
+	get:
+		return rigidbody_scene
+
 ## Sets the [member RigidBody2D.physics_material_override].
 @export var physics_material_override: PhysicsMaterial :
 	set (value):
@@ -444,12 +444,15 @@ func _create_polygon2d():
 	set_uv(PackedVector2Array([]))
 	return _create_internal_vertices()
 
-func _create_external_vertices_from_texture(texture) -> PackedVector2Array:
-	var bitmap = BitMap.new()
+func _create_external_vertices_from_texture(texture, inside = true) -> PackedVector2Array:
+	var bitmap := BitMap.new()
 	bitmap.create_from_image_alpha(texture.get_image(), min_alpha)
 	var rect = Rect2(0, 0, texture.get_width(), texture.get_height())
 	if margin_pixels != 0:
-		bitmap.grow_mask(margin_pixels, rect)
+		if inside:
+			bitmap.grow_mask(margin_pixels, rect)
+		else:
+			bitmap.grow_mask(-margin_pixels, rect)
 	var poly = bitmap.opaque_to_polygons(rect, texture_epsilon)
 	if poly.is_empty():
 		push_error("Could not generate polygon outline")
@@ -462,18 +465,9 @@ func _create_external_vertices_from_texture(texture) -> PackedVector2Array:
 				break
 			resulting_poly = merged_polygon[0]
 		poly[0] = resulting_poly
-	var new_points = []
-	var current_point = 0
-	for i in poly[0].size():
-		var point_a := poly[0][current_point] as Vector2
-		var next_point := (i + 1)%(poly[0].size())
-		var point_b := poly[0][next_point] as Vector2
-		if point_a.distance_squared_to(point_b) > vertex_interval * vertex_interval / 4 || i == 0:
-			new_points.append(poly[0][i])
-			current_point = next_point
-	if new_points.is_empty():
+	if poly[0].is_empty():
 		push_error("Resulting polygon is empty")
-	return new_points
+	return poly[0]
 
 func _create_internal_vertices():
 	var polygon_verts = _get_polygon_verts()
@@ -503,7 +497,7 @@ func _generate_points_voronoi(lim_min: Vector2, lim_max: Vector2, polygon_verts)
 	var exclude_polygon = PackedVector2Array([])
 	# read exclude polygon
 	if exclude_texture:
-		exclude_polygon = _create_external_vertices_from_texture(exclude_texture)
+		exclude_polygon = _create_external_vertices_from_texture(exclude_texture, false)
 	# find out what regions to remove
 	for region_idx in len(voronoi):
 		var each: Voronoi2D.VoronoiRegion2D = voronoi[region_idx]
@@ -511,13 +505,18 @@ func _generate_points_voronoi(lim_min: Vector2, lim_max: Vector2, polygon_verts)
 		for polygon_point in each.polygon_points:
 			total_area += _polygon_area(polygon_point)
 		# initially the intersect is the starting polygon
-		var intersect: Array[PackedVector2Array] = each.polygon_points
+		var intersect: Array[PackedVector2Array]
 		# if there is a point not inside the polygon vertices, cut it.
 		# it may result in multiple polygons
-		for polygon_vert in each.polygon_points[0]:
-			if not _is_point_in_area(polygon_vert, polygon_verts, 1.01):
-				intersect = Geometry2D.intersect_polygons(polygon_verts, each.polygon_points[0])
-				break
+		for voronoi_polygon in each.polygon_points:
+			var added := false
+			for polygon_vert in voronoi_polygon:
+				if not _is_point_in_area(polygon_vert, polygon_verts, 1.01):
+					intersect.append_array(Geometry2D.intersect_polygons(polygon_verts, voronoi_polygon))
+					added = true
+					break
+			if !added:
+				intersect.append(voronoi_polygon)
 		# exclude eclude_polygon part
 		var new_intersect_poly: Array[PackedVector2Array]
 		for intersect_poly in intersect:
@@ -944,6 +943,9 @@ func _update_bone_lookat(skeleton_node: Skeleton2D, skeleton_modification :Skele
 	if connected_nodes_paths.is_empty():
 		skeleton_modification.enabled = false
 		push_warning("Softbody" + name + " bone has no node to look at")
+		# Hide this particle probably
+		# TODO also deactivate it.
+		create_tween().tween_property(bone, "scale", Vector2(), 1)#.finished.connect(func(): bone.process_mode = Node.PROCESS_MODE_DISABLED)
 		return false
 	var node_lookat = skeleton_node.get_node(connected_nodes_paths[floor(connected_nodes_paths.size()/2)])
 	var prev_rotation = bone.rotation
@@ -1125,10 +1127,14 @@ func remove_joint(rigid_body_child: SoftBodyChild, joint: Joint2D):
 	if !_update_bone_lookat(_skeleton_node, skeleton_modification_stack.get_modification(bone_a_idx), bone_a, bone_a.get_meta("connected_nodes_paths"), bone_a_idx):
 		var remote_transform_a : RemoteTransform2D= rigid_body_a.rigidbody.get_children().filter(func (node): return node is RemoteTransform2D)[0]
 		rigid_body_a.rigidbody.rotation = bone_a.rotation
+		# TODO deactivate it.
+		create_tween().tween_property(rigid_body_a.shape, "scale", Vector2(), 0)#.finished.connect(func(): rigid_body_a.process_mode = Node.PROCESS_MODE_DISABLED)
 		remote_transform_a.update_rotation = true
 	if !_update_bone_lookat(_skeleton_node, skeleton_modification_stack.get_modification(bone_b_idx), bone_b, bone_b.get_meta("connected_nodes_paths"), bone_b_idx):
 		var remote_transform_b : RemoteTransform2D= rigid_body_b.rigidbody.get_children().filter(func (node): return node is RemoteTransform2D)[0]
 		rigid_body_b.rigidbody.rotation = bone_b.rotation
+		# TODO deactivate it.
+		create_tween().tween_property(rigid_body_b.shape, "scale", Vector2(), 0)#.finished.connect(func(): rigid_body_b.process_mode = Node.PROCESS_MODE_DISABLED)
 		remote_transform_b.update_rotation = true
 	skeleton_modification_stack.set_modification(bone_a_idx, modification_a)
 	skeleton_modification_stack.set_modification(bone_b_idx, modification_b)
@@ -1226,7 +1232,7 @@ func _process(delta):
 				continue
 			if joint.is_queued_for_deletion() || deleted_count >= _max_deletions:
 				continue
-			if _hinges_distances_squared[joint.name] * break_distance_ratio * break_distance_ratio < _hinges_bodies[rigid_body.rigidbody.name].global_position.distance_squared_to(_hinges_bodies[joint.node_b].global_position):
+			if _hinges_distances_squared[joint.name] * break_distance_ratio * break_distance_ratio * rigid_body.joints.size() < _hinges_bodies[rigid_body.rigidbody.name].global_position.distance_squared_to(_hinges_bodies[joint.node_b].global_position):
 				deleted_count = deleted_count + 1
 				remove_joint(rigid_body, joint)
 				_last_delete_time = Time.get_ticks_msec()
