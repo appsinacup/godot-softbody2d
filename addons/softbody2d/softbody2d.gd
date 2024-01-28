@@ -48,6 +48,9 @@ func _get_configuration_warnings():
 	get:
 		return draw_regions
 
+## Should we automatically hide single particles
+@export var hide_single_particles := false
+
 ## Distance between internal vertices
 @export_range(0.1, 50, 1, "or_greater") var vertex_interval := 30:
 	set (value):
@@ -249,18 +252,30 @@ const MAX_REGIONS := 200
 
 @export_subgroup("PinJoint")
 ## Relevant only if you picked [member SoftBody2D.joint_type] = "pin". Sets the [member PinJoint2D.softness] property of the joint.
-@export_range(0, 100, 0.1, "or_greater") var softness: float = 60 :
+@export_range(0, 100, 0.1, "or_greater") var inside_softness: float = 60 :
 	set (value):
-		if softness == value:
+		if inside_softness == value:
 			return
-		softness = value
+		inside_softness = value
 		for body in get_rigid_bodies():
 			for joint in body.joints:
-				if joint is PinJoint2D:
-					joint.softness = softness
+				if joint is PinJoint2D && joint.get_meta("is_inside"):
+					joint.softness = inside_softness
 	get:
-		return softness
+		return inside_softness
 
+## Relevant only if you picked [member SoftBody2D.joint_type] = "pin". Sets the [member PinJoint2D.softness] property of the joint.
+@export_range(0, 100, 0.1, "or_greater") var outside_softness: float = 60 :
+	set (value):
+		if outside_softness == value:
+			return
+		outside_softness = value
+		for body in get_rigid_bodies():
+			for joint in body.joints:
+				if joint is PinJoint2D && !joint.get_meta("is_inside"):
+					joint.softness = outside_softness
+	get:
+		return outside_softness
 #endregion
 
 #region RigidBody
@@ -725,6 +740,8 @@ func _create_bones(voronoi: Array[Voronoi2D.VoronoiRegion2D]) -> Array[Bone2D]:
 	for each in voronoi:
 		var bone := Bone2D.new()
 		var point = each.fixed_center
+		bone.set_meta("w", each.w)
+		bone.set_meta("h", each.h)
 		bone.name = "Bone-"+str(bone_idx)
 		bone_idx += 1
 		bone.global_position = point
@@ -813,11 +830,27 @@ func _add_rigid_body_for_bones(skeleton: Skeleton2D) -> Array[RigidBody2D]:
 		push_error("Wrong shape used for shape_type")
 	shape.resource_local_to_scene = true
 	var idx := 0
+	var bones_matrix = {}
+	# Store in a matrix each bone position
+	for bone in bones:
+		var w = bone.get_meta("w")
+		var h = bone.get_meta("h")
+		var w_map = bones_matrix.get(w, {})
+		w_map[h] = 1
+		bones_matrix[w] = w_map
 	for bone in bones:
 		var rigid_body = _create_rigid_body(skeleton, bone, total_mass / bones.size(), bone == follow, shape)
 		rigid_body.set_meta("idx", idx)
 		idx += 1
 		rigid_body.set_meta("bone_name", bone.name)
+		# Find out which are inside and which are outside bones
+		var w = bone.get_meta("w")
+		var h = bone.get_meta("h")
+		var is_inside = bones_matrix.get(w-1, {}).get(h, 0) && \
+			bones_matrix.get(w, {}).get(h-1, 0) && \
+			bones_matrix.get(w+1, {}).get(h, 0) && \
+			bones_matrix.get(w, {}).get(h+1, 0)
+		rigid_body.set_meta("is_inside", is_inside)
 		rigidbodies.append(rigid_body)
 	return rigidbodies
 
@@ -888,7 +921,12 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D], connected_bones: Array):
 				joint.name = "Joint2D-"+node_a.name+"-"+node_b.name
 				joint.node_a = ".."
 				joint.node_b = "../../" + node_b.name
-				joint.softness = softness
+				if !node_a.get_meta("is_inside") || !node_b.get_meta("is_inside"):
+					joint.softness = outside_softness
+					joint.set_meta("is_inside", false)
+				else:
+					joint.softness = inside_softness
+					joint.set_meta("is_inside", true)
 				joint.disable_collision = disable_collision
 				joint.look_at(node_b.global_position)
 				joint.rotation = node_a.position.angle_to_point(node_b.position) - PI/2
@@ -945,7 +983,8 @@ func _update_bone_lookat(skeleton_node: Skeleton2D, skeleton_modification :Skele
 		push_warning("Softbody" + name + " bone has no node to look at")
 		# Hide this particle probably
 		# TODO also deactivate it.
-		create_tween().tween_property(bone, "scale", Vector2(), 1)#.finished.connect(func(): bone.process_mode = Node.PROCESS_MODE_DISABLED)
+		if hide_single_particles:
+			create_tween().tween_property(bone, "scale", Vector2(), 1)#.finished.connect(func(): bone.process_mode = Node.PROCESS_MODE_DISABLED)
 		return false
 	var node_lookat = skeleton_node.get_node(connected_nodes_paths[floor(connected_nodes_paths.size()/2)])
 	var prev_rotation = bone.rotation
@@ -1128,13 +1167,15 @@ func remove_joint(rigid_body_child: SoftBodyChild, joint: Joint2D):
 		var remote_transform_a : RemoteTransform2D= rigid_body_a.rigidbody.get_children().filter(func (node): return node is RemoteTransform2D)[0]
 		rigid_body_a.rigidbody.rotation = bone_a.rotation
 		# TODO deactivate it.
-		create_tween().tween_property(rigid_body_a.shape, "scale", Vector2(), 0)#.finished.connect(func(): rigid_body_a.process_mode = Node.PROCESS_MODE_DISABLED)
+		if hide_single_particles:
+			create_tween().tween_property(rigid_body_a.shape, "scale", Vector2(), 0)#.finished.connect(func(): rigid_body_a.process_mode = Node.PROCESS_MODE_DISABLED)
 		remote_transform_a.update_rotation = true
 	if !_update_bone_lookat(_skeleton_node, skeleton_modification_stack.get_modification(bone_b_idx), bone_b, bone_b.get_meta("connected_nodes_paths"), bone_b_idx):
 		var remote_transform_b : RemoteTransform2D= rigid_body_b.rigidbody.get_children().filter(func (node): return node is RemoteTransform2D)[0]
 		rigid_body_b.rigidbody.rotation = bone_b.rotation
 		# TODO deactivate it.
-		create_tween().tween_property(rigid_body_b.shape, "scale", Vector2(), 0)#.finished.connect(func(): rigid_body_b.process_mode = Node.PROCESS_MODE_DISABLED)
+		if hide_single_particles:
+			create_tween().tween_property(rigid_body_b.shape, "scale", Vector2(), 0)#.finished.connect(func(): rigid_body_b.process_mode = Node.PROCESS_MODE_DISABLED)
 		remote_transform_b.update_rotation = true
 	skeleton_modification_stack.set_modification(bone_a_idx, modification_a)
 	skeleton_modification_stack.set_modification(bone_b_idx, modification_b)
@@ -1225,7 +1266,6 @@ func _process(delta):
 	# Break at max max_deletions joints
 	var deleted_count = 0
 	for rigid_body in get_rigid_bodies():
-		#if rigid_body.joints.size() > 2:# && rigid_body.is_outside_facing:
 		for node in rigid_body.joints:
 			var joint := node
 			if joint == null:
