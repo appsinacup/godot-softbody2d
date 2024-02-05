@@ -23,6 +23,10 @@ func _set(property, value):
 		vertex_interval = texture.get_size().length() / 10
 		create_softbody2d()
 		return true
+	if property == "scale":
+		scale = value
+		create_softbody2d()
+		return true
 	return false
 
 func _get_configuration_warnings():
@@ -400,9 +404,9 @@ func create_regions():
 	voronoi_node.draw_voronoi(voronoi_regions[0])
 
 ## Call this to create a new softbody at runtime.
-func create_softbody2d():
+func create_softbody2d(runtime: bool = false):
 	# At runtime if we already have skeleton, don't create it.
-	if !Engine.is_editor_hint() || !get_tree():
+	if (!Engine.is_editor_hint() || !get_tree()) && !runtime:
 		return
 	clear_softbody2d()
 	if draw_regions:
@@ -805,10 +809,10 @@ func _add_rigid_body_for_bones(skeleton: Skeleton2D) -> Array[RigidBody2D]:
 	var shape: Shape2D
 	if shape_type == "Circle":
 		shape = CircleShape2D.new()
-		shape.radius = radius / 2.0
+		shape.radius = (radius / 2.0) * scale.x
 	elif shape_type == "Rectangle":
 		shape = RectangleShape2D.new()
-		shape.size = Vector2(radius, radius)
+		shape.size = Vector2(radius, radius) * scale
 	else:
 		push_error("Wrong shape used for shape_type")
 	shape.resource_local_to_scene = true
