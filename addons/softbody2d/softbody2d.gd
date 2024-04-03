@@ -58,7 +58,8 @@ func _get_configuration_warnings():
 		if vertex_interval == value:
 			return
 		vertex_interval = value
-		radius = value - value * 0.2
+		radius = value - value * 0.05
+		margin_offset_edge = value / 5
 		create_softbody2d()
 	get:
 		return vertex_interval
@@ -141,8 +142,17 @@ func _get_configuration_warnings():
 		create_softbody2d()
 	get:
 		return polygon_offset
+## Offset from edge of the polygon inwards.
+@export var margin_offset_edge := 0.0:
+	set (value):
+		if margin_offset_edge == value:
+			return
+		margin_offset_edge = value
+		create_softbody2d()
+	get:
+		return margin_offset_edge
 ## Minimum area of a region that was cut. If it's less than this, it will be added to another region close to it.
-@export_range(0.01, 1, 0.01) var min_area:= 0.35:
+@export_range(0.01, 1, 0.01) var min_area:= 0.2:
 	set (value):
 		if min_area == value:
 			return
@@ -203,7 +213,7 @@ const MAX_REGIONS := 200
 		return disable_collision
 @export_subgroup("DampedSpringJoint")
 ## Relevant only if you picked [member SoftBody2D.joint_type] = "spring". Sets the [member DampedSpringJoint2D.stiffness] property of the joint.
-@export_range(0.1, 128, 0.1, "or_greater") var stiffness: float = 20  :
+@export_range(0.1, 128, 0.1, "or_greater") var stiffness: float = 10  :
 	set (value):
 		if stiffness == value:
 			return
@@ -215,7 +225,7 @@ const MAX_REGIONS := 200
 	get:
 		return stiffness
 ## Relevant only if you picked [member SoftBody2D.joint_type] = "spring". Sets the [member DampedSpringJoint2D.damping] property of the joint.
-@export_range(0.1, 16, 0.1, "or_greater") var damping: float = 0.7  :
+@export_range(0.01, 16, 0.1, "or_greater") var damping: float = 0.2  :
 	set (value):
 		if damping == value:
 			return
@@ -227,7 +237,7 @@ const MAX_REGIONS := 200
 	get:
 		return damping
 ## Sets the [member DampedSpringJoint2D.rest_length] property of the joint based on the distance between bones.
-@export_range(0, 2, 0.1, "or_greater") var rest_length_ratio : float = 1 :
+@export_range(0, 2, 0.1, "or_greater") var rest_length_ratio : float = 0 :
 	set (value):
 		if rest_length_ratio == value:
 			return
@@ -239,7 +249,7 @@ const MAX_REGIONS := 200
 	get:
 		return rest_length_ratio
 ## Sets the [member DampedSpringJoint2D.length] property of the joint based on the distance between bones.
-@export_range(0, 2, 0.1, "or_greater") var length_ratio : float = 1:
+@export_range(0, 2, 0.1, "or_greater") var length_ratio : float = 0:
 	set (value):
 		if length_ratio == value:
 			return
@@ -339,7 +349,7 @@ const MAX_REGIONS := 200
 		return constant_torque
 
 ## What kind of shape to create for each rigidbody.
-@export_enum("Circle", "Rectangle") var shape_type:= "Circle" :
+@export_enum("Circle", "Rectangle") var shape_type:= "Rectangle" :
 	set (value):
 		if shape_type == value:
 			return
@@ -499,6 +509,7 @@ func _generate_points_voronoi(lim_min: Vector2, lim_max: Vector2, polygon_verts)
 	var new_voronoi: Array[Voronoi2D.VoronoiRegion2D]
 	var voronoi_regions_to_move = []
 	var exclude_polygon = PackedVector2Array([])
+	var center = _polygon_center([polygon_verts])
 	# read exclude polygon
 	if exclude_texture:
 		exclude_polygon = _create_external_vertices_from_texture(exclude_texture, false)
@@ -530,7 +541,6 @@ func _generate_points_voronoi(lim_min: Vector2, lim_max: Vector2, polygon_verts)
 			each.polygon_points = intersect
 			# update center if we change the polygon
 			each.fixed_center = _polygon_center(each.polygon_points)
-			each.center = _polygon_center(each.polygon_points)
 			new_voronoi.append(each)
 			var cut_area := 0.0
 			for intersected in intersect:
@@ -539,6 +549,9 @@ func _generate_points_voronoi(lim_min: Vector2, lim_max: Vector2, polygon_verts)
 			# if area of polygon is too smal, move it to another region
 			if cut_area / total_area < min_area || !is_middle_inside:
 				voronoi_regions_to_move.append(new_voronoi.size() - 1)
+			if margin_offset_edge != 0.0:
+				var dir_to_center = (each.fixed_center - center).normalized()
+				each.fixed_center -= dir_to_center * margin_offset_edge
 		
 	# move regions first
 	for region_to_move in voronoi_regions_to_move:
@@ -556,7 +569,11 @@ func _generate_points_voronoi(lim_min: Vector2, lim_max: Vector2, polygon_verts)
 		new_voronoi[closest_idx].polygon_points.append_array(to_remove.polygon_points)
 		# update center if we change the polygon
 		new_voronoi[closest_idx].fixed_center = _polygon_center(new_voronoi[closest_idx].polygon_points)
-		new_voronoi[closest_idx].center = _polygon_center(new_voronoi[closest_idx].polygon_points)
+		if margin_offset_edge != 0.0:
+			var dir_to_center = (new_voronoi[closest_idx].fixed_center - center).normalized()
+			new_voronoi[closest_idx].fixed_center -= dir_to_center * margin_offset_edge
+		#var dir_to_center = (new_voronoi[closest_idx].fixed_center - center).normalized()
+		#new_voronoi[closest_idx].fixed_center -= dir_to_center * 10
 	voronoi_regions_to_move.sort_custom(func (x,y): return x>y)
 	# remove them
 	for region_to_move in voronoi_regions_to_move:
@@ -597,7 +614,7 @@ func _polygon_center(polygon_verts: Array[PackedVector2Array]) -> Vector2:
 			min_vec = _minv(min_vec, poly[i])
 			max_vec = _maxv(max_vec, poly[i])
 	return min_vec + (max_vec - min_vec)/2
-
+	
 func _minv(curvec,newvec):
 	return Vector2(min(curvec.x,newvec.x),min(curvec.y,newvec.y))
 
@@ -1002,7 +1019,6 @@ func _update_vars():
 #region Public API
 
 class SoftBodyChild:
-	var is_outside_facing: bool
 	var rigidbody: PhysicsBody2D
 	var bone: Bone2D
 	var joints: Array[Joint2D]
@@ -1229,7 +1245,6 @@ func _process(delta):
 	# Break at max max_deletions joints
 	var deleted_count = 0
 	for rigid_body in get_rigid_bodies():
-		#if rigid_body.joints.size() > 2:# && rigid_body.is_outside_facing:
 		for node in rigid_body.joints:
 			var joint := node
 			if joint == null:
