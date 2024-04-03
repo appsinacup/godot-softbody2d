@@ -51,7 +51,16 @@ func _get_configuration_warnings():
 		create_softbody2d()
 	get:
 		return draw_regions
-
+@export var show_shapes := false :
+	set (value):
+		if show_shapes == value:
+			return
+		show_shapes = value
+		for body in get_rigid_bodies():
+			var shape = body.shape
+			shape.visible = show_shapes
+	get:
+		return show_shapes
 ## Distance between internal vertices
 @export_range(0.1, 50, 1, "or_greater") var vertex_interval := 30:
 	set (value):
@@ -852,6 +861,7 @@ func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D, mass, is_center: boo
 	var collision_shape = CollisionShape2D.new()
 	collision_shape.shape = shape
 	collision_shape.name = shape_type + "Shape2D"
+	collision_shape.visible = show_shapes
 	rigid_body.mass = mass
 	rigid_body.gravity_scale = gravity_scale
 	rigid_body.constant_torque = constant_torque
