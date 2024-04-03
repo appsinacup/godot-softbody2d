@@ -289,6 +289,7 @@ const MAX_REGIONS := 200
 		radius = value
 		for body in get_rigid_bodies():
 			var shape = body.shape
+			shape.visible = false
 			if shape_type == "Circle":
 				shape.shape.radius = radius / 2.0
 			elif shape_type == "Rectangle":
@@ -298,20 +299,20 @@ const MAX_REGIONS := 200
 	get:
 		return radius
 
-## Sets the total mass. Each rigidbody will have some [member RigidBody2D.mass] totaling this amount.
-@export_range(0.01, 100, 0.1, "or_greater") var total_mass := 1.0 :
+## Sets the mass.
+@export_range(0.01, 100, 0.1, "or_greater") var mass := 1.0 :
 	set (value):
-		if total_mass == value:
+		if mass == value:
 			return
-		total_mass = value
+		mass = value
 		if !get_node_or_null(skeleton):
 			push_warning("Skeleton2D not created")
 			return
 		for body in get_rigid_bodies():
 			if "mass" in body.rigidbody:
-				body.rigidbody.mass = total_mass / get_rigid_bodies().size()
+				body.rigidbody.mass = mass
 	get:
-		return total_mass
+		return mass
 ## Sets the gravity scale. Each rigidbody will have [member RigidBody2D.gravity_scale] set to this amount.
 @export_range(-1, 1, 0.01) var gravity_scale := 1.0 :
 	set (value):
@@ -835,7 +836,7 @@ func _add_rigid_body_for_bones(skeleton: Skeleton2D) -> Array[RigidBody2D]:
 	shape.resource_local_to_scene = true
 	var idx := 0
 	for bone in bones:
-		var rigid_body = _create_rigid_body(skeleton, bone, total_mass / bones.size(), bone == follow, shape)
+		var rigid_body = _create_rigid_body(skeleton, bone, mass, bone == follow, shape)
 		rigid_body.set_meta("idx", idx)
 		idx += 1
 		rigid_body.set_meta("bone_name", bone.name)
