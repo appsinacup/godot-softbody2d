@@ -289,7 +289,6 @@ const MAX_REGIONS := 200
 		radius = value
 		for body in get_rigid_bodies():
 			var shape = body.shape
-			shape.visible = false
 			if shape_type == "Circle":
 				shape.shape.radius = radius / 2.0
 			elif shape_type == "Rectangle":
