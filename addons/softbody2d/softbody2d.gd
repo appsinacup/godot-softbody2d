@@ -308,7 +308,7 @@ const MAX_REGIONS := 200
 		return radius
 
 ## Sets the mass.
-@export_range(0.01, 100, 0.1, "or_greater") var mass := 1.0 :
+@export var mass := 0.1 :
 	set (value):
 		if mass == value:
 			return
@@ -559,8 +559,11 @@ func _generate_points_voronoi(lim_min: Vector2, lim_max: Vector2, polygon_verts)
 			if cut_area / total_area < min_area || !is_middle_inside:
 				voronoi_regions_to_move.append(new_voronoi.size() - 1)
 			if margin_offset_edge != 0.0:
-				var dir_to_center = (each.fixed_center - center).normalized()
-				each.fixed_center -= dir_to_center * margin_offset_edge
+				var dir_to_center = each.fixed_center - center
+				if dir_to_center.length_squared() > margin_offset_edge * margin_offset_edge:
+					each.fixed_center -= dir_to_center.normalized() * margin_offset_edge
+				else:
+					each.fixed_center -= dir_to_center
 		
 	# move regions first
 	for region_to_move in voronoi_regions_to_move:
@@ -1242,7 +1245,7 @@ const WAIT_DELETE_MSEC = 100
 @onready var _last_texture = texture
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	# Needed in case texture changes
 	if Engine.is_editor_hint():
 		if texture != _last_texture:

@@ -135,6 +135,8 @@ static func _get_circumcenter(a:Vector2, b:Vector2, c:Vector2):
 class VoronoiRegion2D:
 	var w: int
 	var h: int
+	## Center of the region
+	var center: Vector2
 	## Fixed center of the region
 	var fixed_center: Vector2
 	## Points defining the region
@@ -166,6 +168,7 @@ static func generate_voronoi(size: Vector2, distance_between_points: float, star
 				voronoi_region.w = (w) * 5 + (i / 5)
 				voronoi_region.h = (h) * 5 + (i % 5)
 				i += 1
+				voronoi_region.center = each[0] + offset
 				voronoi_region.fixed_center = each[1] + offset
 				var center = voronoi_region.fixed_center
 				var dist = distance_between_points
@@ -199,7 +202,7 @@ func display_voronoi():
 func draw_voronoi(voronoi: Array[VoronoiRegion2D]):
 	for each in voronoi:
 		_display_polygon(Vector2(), each);
-		_display_point(Vector2(), each.fixed_center)
+		_display_point(Vector2(), each.center)
 
 func _display_point(offset:Vector2, point: Vector2, color:Color = Color(1,1,1,1)):
 	var newPointPoly = Polygon2D.new();
