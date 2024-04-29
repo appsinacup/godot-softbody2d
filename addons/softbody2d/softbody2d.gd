@@ -308,14 +308,11 @@ const MAX_REGIONS := 200
 		return radius
 
 ## Sets the mass.
-@export_range(0.01, 100, 0.1, "or_greater") var mass := 1.0 :
+@export var mass := 0.1 :
 	set (value):
 		if mass == value:
 			return
 		mass = value
-		if !get_node_or_null(skeleton):
-			push_warning("Skeleton2D not created")
-			return
 		for body in get_rigid_bodies():
 			if "mass" in body.rigidbody:
 				body.rigidbody.mass = mass
@@ -559,8 +556,11 @@ func _generate_points_voronoi(lim_min: Vector2, lim_max: Vector2, polygon_verts)
 			if cut_area / total_area < min_area || !is_middle_inside:
 				voronoi_regions_to_move.append(new_voronoi.size() - 1)
 			if margin_offset_edge != 0.0:
-				var dir_to_center = (each.fixed_center - center).normalized()
-				each.fixed_center -= dir_to_center * margin_offset_edge
+				var dir_to_center = each.fixed_center - center
+				if dir_to_center.length_squared() > margin_offset_edge * margin_offset_edge:
+					each.fixed_center -= dir_to_center.normalized() * margin_offset_edge
+				else:
+					each.fixed_center -= dir_to_center
 		
 	# move regions first
 	for region_to_move in voronoi_regions_to_move:
@@ -973,7 +973,6 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D], connected_bones: Array):
 func _update_bone_lookat(skeleton_node: Skeleton2D, skeleton_modification :SkeletonModification2DLookAt, bone: Bone2D, connected_nodes_paths, bone_idx: int, initiate_step: bool = false):
 	if connected_nodes_paths.is_empty():
 		skeleton_modification.enabled = false
-		push_warning("Softbody" + name + " bone has no node to look at")
 		# Hide this particle probably
 		# TODO also deactivate it.
 		create_tween().tween_property(bone, "scale", Vector2(), 1)#.finished.connect(func(): bone.process_mode = Node.PROCESS_MODE_DISABLED)
@@ -1158,13 +1157,13 @@ func remove_joint(rigid_body_child: SoftBodyChild, joint: Joint2D):
 		var remote_transform_a : RemoteTransform2D= rigid_body_a.rigidbody.get_children().filter(func (node): return node is RemoteTransform2D)[0]
 		rigid_body_a.rigidbody.rotation = bone_a.rotation
 		# TODO deactivate it.
-		create_tween().tween_property(rigid_body_a.shape, "scale", Vector2(), 0)#.finished.connect(func(): rigid_body_a.process_mode = Node.PROCESS_MODE_DISABLED)
+		create_tween().tween_property(rigid_body_a.shape, "scale", Vector2(), 0).finished.connect(func(): rigid_body_a.rigidbody.process_mode = Node.PROCESS_MODE_DISABLED)
 		remote_transform_a.update_rotation = true
 	if !_update_bone_lookat(_skeleton_node, skeleton_modification_stack.get_modification(bone_b_idx), bone_b, bone_b.get_meta("connected_nodes_paths"), bone_b_idx):
 		var remote_transform_b : RemoteTransform2D= rigid_body_b.rigidbody.get_children().filter(func (node): return node is RemoteTransform2D)[0]
 		rigid_body_b.rigidbody.rotation = bone_b.rotation
 		# TODO deactivate it.
-		create_tween().tween_property(rigid_body_b.shape, "scale", Vector2(), 0)#.finished.connect(func(): rigid_body_b.process_mode = Node.PROCESS_MODE_DISABLED)
+		create_tween().tween_property(rigid_body_b.shape, "scale", Vector2(), 0).finished.connect(func(): rigid_body_b.rigidbody.process_mode = Node.PROCESS_MODE_DISABLED)
 		remote_transform_b.update_rotation = true
 	skeleton_modification_stack.set_modification(bone_a_idx, modification_a)
 	skeleton_modification_stack.set_modification(bone_b_idx, modification_b)
@@ -1237,12 +1236,11 @@ func _update_soft_body_rigidbodies(skeleton_node:Skeleton2D = null):
 
 var _max_deletions = 6
 var _last_delete_time := 0
-const WAIT_DELETE_MSEC = 100
 
 @onready var _last_texture = texture
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta: float) -> void:
 	# Needed in case texture changes
 	if Engine.is_editor_hint():
 		if texture != _last_texture:
@@ -1250,7 +1248,7 @@ func _process(delta):
 		_last_texture = texture
 		return
 	# Wait a little before breaking bones
-	if break_distance_ratio <= 0 || !_skeleton_node || Time.get_ticks_msec() - _last_delete_time < WAIT_DELETE_MSEC:
+	if break_distance_ratio <= 0 || !_skeleton_node:
 		return
 	# Break at max max_deletions joints
 	var deleted_count = 0

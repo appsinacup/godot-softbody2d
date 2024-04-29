@@ -1,21 +1,30 @@
 <p align="center">
-	<img width="128px" src="addons/softbody2d/softbody2d.svg"/> 
-	<h1 align="center">Godot SoftBody2D </h1> 
+<img src="https://github.com/appsinacup/godot-softbody2d/blob/main/softbody2d_banner.jpg?raw=true"/>
 </p>
 <p align="center">
-	<a href="https://github.com/godotengine/godot-cpp" alt="Godot Version">
-		<img src="https://img.shields.io/badge/Godot-v4.2-%23478cbf?logo=godot-engine&logoColor=white"/></a>
-	<a href="https://github.com/appsinacup/godot-box2d/graphs/contributors" alt="Contributors">
-		<img src="https://img.shields.io/github/contributors/appsinacup/godot-box2d" /></a>
-	<a href="https://github.com/appsinacup/godot-box2d/pulse" alt="Activity">
-		<img src="https://img.shields.io/github/commit-activity/m/appsinacup/godot-box2d" /></a>
-	<a href="https://discord.gg/56dMud8HYn">
-		<img src="https://img.shields.io/discord/1138836561102897172?logo=discord"
-			alt="Chat on Discord"></a>
-<img src="docs/godot_softbody.gif"/>
+        <img src="https://img.shields.io/badge/Godot-4.2-%23478cbf?logo=godot-engine&logoColor=white" />
 </p>
 
-A SoftBody2D is defined by a set of RigidBody2Ds and Joint2Ds used to simulate it and a Skeleton2D used to deform the texture.
+<p align = "center">
+    <strong>
+        <a href="http://softbody2d.appsinacup.com">Documentation</a> | <a href="https://discord.gg/56dMud8HYn">Discord</a>
+    </strong>
+</p>
+
+
+-----
+
+<p align = "center">
+<b>2D squishy softbodies</b>
+<i>for the Godot game engine.</i>
+</p>
+
+-----
+
+Adds the SoftBody2D node which creates a set of RigidBody2Ds and Joint2Ds used with a Skeleton2D in order to deform the texture.
+
+<img src="docs/godot_softbody.gif"/>
+</p>
 
 # Installation
 
@@ -101,13 +110,3 @@ You can create multiple types of softbodies with this plugin, such as:
 </td>
 </tr>
 </table>
-
-# [Discord](https://discord.gg/56dMud8HYn)
-
-A vibrant community for discussion, user support and showcases.
-
-# License
-
-Godot SoftBody2D is distributed under the MIT license. See `LICENSE` for more details.
-
-Uses parts of code from (godot-chunked-voronoi-generator)[https://github.com/arcanewright/godot-chunked-voronoi-generator]
