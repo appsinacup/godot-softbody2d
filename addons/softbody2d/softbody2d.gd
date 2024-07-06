@@ -33,7 +33,7 @@ func _get_configuration_warnings():
 	if texture == null:
 		return ["No texture set."]
 	if get_child_count() == 0:
-		return ["No rigidbodies created. Check the vertex_interval to be lower than texture size."]
+		return ["No rigidbodies created. Check the vertex_interval to be lower than texture size, or try updating the texture_epsilon, min_alpha and margin_pixels properties."]
 	if !get_node_or_null(skeleton):
 		return ["Skeleton2D empty."]
 	return []
@@ -430,6 +430,7 @@ func create_softbody2d(runtime: bool = false):
 		return
 	var voronoi = _create_polygon2d()
 	if (!voronoi || voronoi[0].is_empty()):
+		push_error("No regions created. Vertex interval is probably too big.")
 		return
 	var skeleton2d_and_connected_bones = _construct_skeleton2d(voronoi[0], voronoi[1])
 	_create_rigidbodies2d(skeleton2d_and_connected_bones[0], skeleton2d_and_connected_bones[1])
@@ -476,6 +477,7 @@ func _create_external_vertices_from_texture(texture, inside = true) -> PackedVec
 	var poly = bitmap.opaque_to_polygons(rect, texture_epsilon)
 	if poly.is_empty():
 		push_error("Could not generate polygon outline")
+		return [[]]
 	if poly.size() != 1:
 		var resulting_poly = PackedVector2Array()
 		for poly_b in poly:
