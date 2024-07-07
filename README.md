@@ -2,13 +2,13 @@
 <img src="https://github.com/appsinacup/godot-softbody2d/blob/main/softbody2d_banner.jpg?raw=true"/>
 </p>
 <p align="center">
-        <img src="https://img.shields.io/badge/Godot-4.2-%23478cbf?logo=godot-engine&logoColor=white" />
+		<img src="https://img.shields.io/badge/Godot-4.2-%23478cbf?logo=godot-engine&logoColor=white" />
 </p>
 
 <p align = "center">
-    <strong>
-        <a href="http://softbody2d.appsinacup.com">Documentation</a> | <a href="https://discord.gg/56dMud8HYn">Discord</a>
-    </strong>
+	<strong>
+		<a href="http://softbody2d.appsinacup.com">Documentation</a> | <a href="https://discord.gg/56dMud8HYn">Discord</a>
+	</strong>
 </p>
 
 
