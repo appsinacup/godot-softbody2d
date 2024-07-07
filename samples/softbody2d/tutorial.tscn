@@ -11164,7 +11164,7 @@ offset_top = 224.0
 offset_right = 1183.0
 offset_bottom = 264.0
 
-[node name="HSlider" type="HSlider" parent="Panel"]
+[node name="HSlider" type="HSlider" parent="Panel" node_paths=PackedStringArray("softbody")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -11176,6 +11176,7 @@ max_value = 3.0
 step = 0.1
 value = 0.5
 script = ExtResource("9_hexin")
+softbody = NodePath("../../SoftBody2D")
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 0
@@ -11185,7 +11186,6 @@ text = "Scale"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(874, 366)
-zoom = Vector2(0.5, 0.5)
 
 [connection signal="timeout" from="Node/Timer" to="Node" method="_on_timer_timeout"]
 [connection signal="value_changed" from="Panel/HSlider" to="Panel/HSlider" method="_on_value_changed"]

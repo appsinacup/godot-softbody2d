@@ -8,7 +8,7 @@ extends Polygon2D
 ## - a set of [RigidBody2D] nodes, each with one [CollisionShape2D] with a [Shape2D] and a set of [Joint2D] nodes connected to adjacent bodies.[br]
 ## - one [Skeleton2D] node with a set of [Bone2D] nodes, each getting their position set from a [RemoteTransform2D] node, located on the rigidbodies.[br]
 ##
-## @tutorial: https://appsinacup.com/softbody2d-tutorial/
+## @tutorial: https://softbody2d.appsinacup.com/
 
 class_name SoftBody2D
 
