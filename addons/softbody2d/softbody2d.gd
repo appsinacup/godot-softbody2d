@@ -73,30 +73,6 @@ func _get_configuration_warnings():
 	get:
 		return vertex_interval
 
-@export_group("Collision")
-## Sets the [member PhysicsBody2D.collision_layer].
-@export_flags_2d_physics var collision_layer := 1 :
-	set (value):
-		if collision_layer == value:
-			return
-		collision_layer = value
-		for body in get_rigid_bodies():
-			body.rigidbody.collision_layer = collision_layer
-	get:
-		return collision_layer
-## Sets the [member PhysicsBody2D.collision_mask].
-@export_flags_2d_physics var collision_mask := 1 :
-	set (value):
-		if collision_mask == value:
-			return
-		collision_mask = value
-		for body in get_rigid_bodies():
-			body.rigidbody.collision_mask = collision_mask
-	get:
-		return collision_mask
-
-#endregion
-
 #region Image
 ## Properties that relate to the image used to generate the polygon
 @export_group("Image")
@@ -136,11 +112,6 @@ func _get_configuration_warnings():
 		create_softbody2d()
 	get:
 		return margin_pixels
-#endregion
-
-#region Polygon
-## Properties that relate to the generated polygon.
-@export_group("Polygon")
 
 ## Offset from Texture Center for the polygon. Use this if some rigidbodies are positioned weirdly.
 @export var polygon_offset := Vector2():
@@ -151,15 +122,7 @@ func _get_configuration_warnings():
 		create_softbody2d()
 	get:
 		return polygon_offset
-## Offset from edge of the polygon inwards.
-@export var margin_offset_edge := 0.0:
-	set (value):
-		if margin_offset_edge == value:
-			return
-		margin_offset_edge = value
-		create_softbody2d()
-	get:
-		return margin_offset_edge
+
 ## Minimum area of a region that was cut. If it's less than this, it will be added to another region close to it.
 @export_range(0.01, 1, 0.01) var min_area:= 0.2:
 	set (value):
@@ -179,15 +142,6 @@ const MAX_REGIONS := 200
 ## Set properties related to the generated joints between rigidbodies.
 @export_group("Joint")
 
-## Should create a joint between node a->b and b->a (2 joints per 2 nodes) or just 1 joint per 2 nodes.
-@export var joint_both_ways : bool = true:
-	set (value):
-		if joint_both_ways == value:
-			return
-		joint_both_ways = value
-		create_softbody2d()
-	get:
-		return joint_both_ways
 ## The joint type. Pin yields a more sturdy softbody, and uses [PinJoint2D], while sprint a more soft one, and uses [DampedSpringJoint2D].
 @export_enum("pin", "spring") var joint_type:= "pin":
 	set (value):
@@ -220,6 +174,10 @@ const MAX_REGIONS := 200
 				joint.disable_collision = disable_collision
 	get:
 		return disable_collision
+
+## If this is greater than 0, the softbody will be breakable. This number is multiplied by [member SoftBody2D.vertex_interval]
+@export_range(0, 2, 0.1, "or_greater") var break_distance_ratio:= 0.0
+
 @export_subgroup("DampedSpringJoint")
 ## Relevant only if you picked [member SoftBody2D.joint_type] = "spring". Sets the [member DampedSpringJoint2D.stiffness] property of the joint.
 @export_range(0.1, 128, 0.1, "or_greater") var stiffness: float = 10  :
@@ -286,12 +244,12 @@ const MAX_REGIONS := 200
 
 #endregion
 
-#region RigidBody
+#region Shape
 
-## Properties that change every rigidbody created for this softbody.
-@export_group("RigidBody")
+## Properties that change every shape created for this softbody.
+@export_group("Shape")
 ## Sets the [member Shape2D size].
-@export_range(2, 50, 1, "or_greater") var radius := 20 :
+@export_range(2, 50, 0.1, "or_greater") var radius := 20 :
 	set (value):
 		if radius == value:
 			return
@@ -306,6 +264,43 @@ const MAX_REGIONS := 200
 				push_error("Wrong shape used for shape_type. " + shape_type)
 	get:
 		return radius
+
+## What kind of shape to create for each rigidbody.
+@export_enum("Circle", "Rectangle") var shape_type:= "Rectangle" :
+	set (value):
+		if shape_type == value:
+			return
+		shape_type = value
+		for body in get_rigid_bodies():
+			var shape = body.shape
+			if shape_type == "Circle":
+				shape.shape = CircleShape2D.new()
+				shape.shape.resource_local_to_scene = true
+				shape.shape.radius = radius / 2.0
+			elif shape_type == "Rectangle":
+				shape.shape = RectangleShape2D.new()
+				shape.shape.resource_local_to_scene = true
+				shape.shape.size = Vector2(radius, radius)
+			else:
+				push_error("Wrong shape used for shape_type")
+	get:
+		return shape_type
+
+## Offset from edge of the polygon inwards when creating shapes.
+@export_range(0, 50, 0.1, "or_greater") var margin_offset_edge := 0.0:
+	set (value):
+		if margin_offset_edge == value:
+			return
+		margin_offset_edge = value
+		create_softbody2d()
+	get:
+		return margin_offset_edge
+#endregion
+
+#region RigidBody
+
+## Properties that change every rigidbody created for this softbody.
+@export_group("RigidBody")
 
 ## Sets the mass.
 @export var mass := 0.1 :
@@ -354,29 +349,27 @@ const MAX_REGIONS := 200
 	get:
 		return constant_torque
 
-## What kind of shape to create for each rigidbody.
-@export_enum("Circle", "Rectangle") var shape_type:= "Rectangle" :
+## Sets the [member PhysicsBody2D.collision_layer].
+@export_flags_2d_physics var collision_layer := 1 :
 	set (value):
-		if shape_type == value:
+		if collision_layer == value:
 			return
-		shape_type = value
+		collision_layer = value
 		for body in get_rigid_bodies():
-			var shape = body.shape
-			if shape_type == "Circle":
-				shape.shape = CircleShape2D.new()
-				shape.shape.resource_local_to_scene = true
-				shape.shape.radius = radius / 2.0
-			elif shape_type == "Rectangle":
-				shape.shape = RectangleShape2D.new()
-				shape.shape.resource_local_to_scene = true
-				shape.shape.size = Vector2(radius, radius)
-			else:
-				push_error("Wrong shape used for shape_type")
+			body.rigidbody.collision_layer = collision_layer
 	get:
-		return shape_type
-## If this is greater than 0, the softbody will be breakable. This number is multiplied by [member SoftBody2D.vertex_interval]
-@export_range(0, 2, 0.1, "or_greater") var break_distance_ratio:= 0.0
-
+		return collision_layer
+## Sets the [member PhysicsBody2D.collision_mask].
+@export_flags_2d_physics var collision_mask := 1 :
+	set (value):
+		if collision_mask == value:
+			return
+		collision_mask = value
+		for body in get_rigid_bodies():
+			body.rigidbody.collision_mask = collision_mask
+	get:
+		return collision_mask
+		
 ## A custom rigidbody scene from which to create the rigidbody. Useful if you want to have custom rigidbodies with custom scripts.
 @export var rigidbody_scene: PackedScene :
 	set (value):
@@ -906,50 +899,41 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D], connected_bones: Array):
 	for idx_a in len(rigid_bodies):
 		var node_a := rigid_bodies[idx_a]
 		for idx_b in connected_bones[idx_a].keys():
-			# only create joint once
-			if idx_b > idx_a && !joint_both_ways:
-				continue
 			var node_b := rigid_bodies[idx_b]
 			if node_a == node_b:
 				continue
 			connected_nodes_paths[idx_a].append(NodePath(bones[idx_b].name))
 			connected_nodes_idx[idx_a].append(idx_b)
 			connected_nodes[idx_a].append(node_b)
+			var joint: Joint2D
 			if joint_type == "pin":
-				var joint = PinJoint2D.new()
-				joint.visible = false
-				joint.name = "Joint2D-"+node_a.name+"-"+node_b.name
-				joint.node_a = ".."
-				joint.node_b = "../../" + node_b.name
-				joint.softness = softness
-				joint.disable_collision = disable_collision
-				joint.look_at(node_b.global_position)
-				joint.rotation = node_a.position.angle_to_point(node_b.position) - PI/2
-				joint.bias = bias
-				node_a.add_child(joint)
-				joint.global_position = node_a.global_position
-				if Engine.is_editor_hint():
-					joint.set_owner(get_tree().get_edited_scene_root())
+				var pin_joint = PinJoint2D.new()
+				pin_joint.softness = softness
+				joint = pin_joint
 			else:
-				var joint = DampedSpringJoint2D.new()
-				joint.visible = false
-				joint.name = "Joint2D-"+node_a.name+"-"+node_b.name
-				joint.node_a = ".."
-				joint.node_b = "../../" + node_b.name
-				joint.stiffness = stiffness
-				joint.disable_collision = disable_collision
+				var spring_joint = DampedSpringJoint2D.new()
+				spring_joint.stiffness = stiffness
 				var joint_distance := (node_a.global_position - node_b.global_position).length()
-				joint.set_meta("joint_distance", joint_distance)
-				joint.rest_length = joint_distance * rest_length_ratio
-				joint.length = joint_distance * length_ratio
-				joint.look_at(node_b.global_position)
-				joint.rotation = node_a.position.angle_to_point(node_b.position) - PI/2
-				joint.damping = damping
-				joint.bias = bias
-				node_a.add_child(joint)
-				joint.global_position = node_a.global_position
-				if Engine.is_editor_hint():
-					joint.set_owner(get_tree().get_edited_scene_root())
+				spring_joint.set_meta("joint_distance", joint_distance)
+				spring_joint.rest_length = joint_distance * rest_length_ratio
+				spring_joint.length = joint_distance * length_ratio
+				spring_joint.damping = damping
+				joint = spring_joint
+			joint.name = "Joint2D-"+node_a.name+"-"+node_b.name
+			joint.node_a = ".."
+			joint.node_b = "../../" + node_b.name
+			joint.look_at(node_b.global_position)
+			joint.disable_collision = disable_collision
+			joint.rotation = node_a.position.angle_to_point(node_b.position) - PI/2
+			joint.bias = bias
+			joint.visible = false
+			node_a.add_child(joint)
+			if Engine.is_editor_hint():
+				joint.set_owner(get_tree().get_edited_scene_root())
+			#var middle = node_b.global_position - node_a.global_position
+			#middle = middle.normalized() * radius / 2.0
+			#joint.global_position = node_a.global_position + middle
+			joint.global_position = node_a.global_position
 	var skeleton_node: Skeleton2D = get_node_or_null(skeleton)
 	skeleton_node.visible = false;
 	var skeleton_modification_stack:=SkeletonModificationStack2D.new()

@@ -39,10 +39,6 @@ You can create multiple types of softbodies with this plugin, such as:
 - Breakable/Deformable SoftBody2D
 - SoftBody2D with Hole
 
-# Video Tutorial
-
-[![Tutorial](https://img.youtube.com/vi/By_AfqLxAKw/0.jpg)](https://www.youtube.com/watch?v=By_AfqLxAKw)
-
 # How this plugin creates a softbody
 
 <table>
