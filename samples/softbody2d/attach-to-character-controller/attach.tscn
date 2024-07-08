@@ -367,8 +367,8 @@ internal_vertex_count = 726
 script = ExtResource("2_sqj5y")
 show_shapes = true
 vertex_interval = 45
-margin_offset_edge = 9.0
 radius = 42
+margin_offset_edge = 9.0
 
 [node name="Skeleton2D" type="Skeleton2D" parent="SoftBody2D"]
 visible = false

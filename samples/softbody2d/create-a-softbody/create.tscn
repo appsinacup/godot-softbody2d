@@ -361,8 +361,8 @@ bones = ["Bone-0", PackedFloat32Array(0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 
 internal_vertex_count = 726
 script = ExtResource("2_f6sev")
 vertex_interval = 45
-margin_offset_edge = 9.0
 radius = 42
+margin_offset_edge = 9.0
 
 [node name="Skeleton2D" type="Skeleton2D" parent="SoftBody2D"]
 visible = false
