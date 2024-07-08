@@ -74,8 +74,8 @@ func _get_configuration_warnings():
 		return vertex_interval
 
 #region Image
-## Properties that relate to the image used to generate the polygon
-@export_group("Image")
+## Properties that relate to the image used to generate the polygons and regions
+@export_group("Region")
 ## Create softbody with holes
 @export var exclude_texture: Texture2D:
 	set (value):
