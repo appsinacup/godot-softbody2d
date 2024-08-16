@@ -20,7 +20,6 @@ signal joint_removed(rigid_body_a: SoftBodyChild, rigid_body_b: SoftBodyChild)
 func _set(property, value):
 	if property == "texture":
 		texture = value as Texture2D
-		vertex_interval = texture.get_size().length() / 10
 		create_softbody2d()
 		return true
 	if property == "scale":
@@ -76,6 +75,15 @@ func _get_configuration_warnings():
 #region Image
 ## Properties that relate to the image used to generate the polygons and regions
 @export_group("Region")
+## Type of shape to create pattern
+@export_enum("rectangle", "hexagon") var pattern_type:= "hexagon":
+	set (value):
+		if pattern_type == value:
+			return
+		pattern_type = value
+		create_softbody2d()
+	get:
+		return pattern_type
 ## Create softbody with holes
 @export var exclude_texture: Texture2D:
 	set (value):
@@ -133,7 +141,7 @@ func _get_configuration_warnings():
 	get:
 		return min_area
 
-const MAX_REGIONS := 200
+const MAX_REGIONS := 400
 
 #endregion
 
@@ -242,6 +250,45 @@ const MAX_REGIONS := 200
 	get:
 		return softness
 
+## Relevant only if you picked [member SoftBody2D.joint_type] = "pin". Sets the [member PinJoint2D.angular_limit_enabled] property of the joint.
+@export var angular_limit_enabled: bool = false :
+	set (value):
+		if angular_limit_enabled == value:
+			return
+		angular_limit_enabled = value
+		for body in get_rigid_bodies():
+			for joint in body.joints:
+				if joint is PinJoint2D:
+					joint.angular_limit_enabled = angular_limit_enabled
+	get:
+		return angular_limit_enabled
+
+## Relevant only if you picked [member SoftBody2D.joint_type] = "pin". Sets the [member PinJoint2D.angular_limit_lower] property of the joint.
+@export_range(-180, 180, 0.1) var angular_limit_lower: float = 0.0 :
+	set (value):
+		if angular_limit_lower == value:
+			return
+		angular_limit_lower = value
+		for body in get_rigid_bodies():
+			for joint in body.joints:
+				if joint is PinJoint2D:
+					joint.angular_limit_lower = angular_limit_lower
+	get:
+		return angular_limit_lower
+
+## Relevant only if you picked [member SoftBody2D.joint_type] = "pin". Sets the [member PinJoint2D.angular_limit_upper] property of the joint.
+@export_range(-180, 180, 0.1) var angular_limit_upper: float = 0.0 :
+	set (value):
+		if angular_limit_upper == value:
+			return
+		angular_limit_upper = value
+		for body in get_rigid_bodies():
+			for joint in body.joints:
+				if joint is PinJoint2D:
+					joint.angular_limit_upper = angular_limit_upper
+	get:
+		return angular_limit_upper
+
 #endregion
 
 #region Shape
@@ -287,7 +334,7 @@ const MAX_REGIONS := 200
 		return shape_type
 
 ## Offset from edge of the polygon inwards when creating shapes.
-@export_range(0, 50, 0.1, "or_greater") var margin_offset_edge := 0.0:
+@export_range(-50, 50, 0.1, "or_greater") var margin_offset_edge := 0.0:
 	set (value):
 		if margin_offset_edge == value:
 			return
@@ -313,6 +360,17 @@ const MAX_REGIONS := 200
 				body.rigidbody.mass = mass
 	get:
 		return mass
+## Sets the can_sleep.
+@export var can_sleep := true :
+	set (value):
+		if can_sleep == value:
+			return
+		can_sleep = value
+		for body in get_rigid_bodies():
+			if "can_sleep" in body.rigidbody:
+				body.rigidbody.can_sleep = can_sleep
+	get:
+		return can_sleep
 ## Sets the gravity scale. Each rigidbody will have [member RigidBody2D.gravity_scale] set to this amount.
 @export_range(-1, 1, 0.01) var gravity_scale := 1.0 :
 	set (value):
@@ -369,6 +427,24 @@ const MAX_REGIONS := 200
 			body.rigidbody.collision_mask = collision_mask
 	get:
 		return collision_mask
+## Exclude [member PhysicsBody2D.add_collision_exception_with].
+@export var exclude_array: Array[Node] = [] :
+	set (value):
+		if exclude_array == value:
+			return
+		for body in get_rigid_bodies():
+			for exclude in exclude_array:
+				if exclude != null:
+					body.rigidbody.remove_collision_exception_with(exclude)
+		exclude_array = value
+		for body in get_rigid_bodies():
+			for exclude in exclude_array:
+				if exclude != null:
+					body.rigidbody.add_collision_exception_with(exclude)
+	get:
+		if !exclude_array:
+			return []
+		return exclude_array
 		
 ## A custom rigidbody scene from which to create the rigidbody. Useful if you want to have custom rigidbodies with custom scripts.
 @export var rigidbody_scene: PackedScene :
@@ -504,7 +580,7 @@ func _get_polygon_verts():
 func _generate_points_voronoi(lim_min: Vector2, lim_max: Vector2, polygon_verts):
 	var polygon_size = lim_max - lim_min
 	var polygon_num = Vector2(int(polygon_size.x / vertex_interval), int(polygon_size.y / vertex_interval))
-	var voronoi = Voronoi2D.generate_voronoi(polygon_size * 1.2, vertex_interval, \
+	var voronoi = Voronoi2D.generate_voronoi(pattern_type, polygon_size * 1.2, vertex_interval, \
 		lim_min + polygon_offset)
 	var polygons = []
 	var new_voronoi: Array[Voronoi2D.VoronoiRegion2D]
@@ -858,6 +934,7 @@ func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D, mass, is_center: boo
 	collision_shape.name = shape_type + "Shape2D"
 	collision_shape.visible = show_shapes
 	rigid_body.mass = mass
+	rigid_body.can_sleep = can_sleep
 	rigid_body.gravity_scale = gravity_scale
 	rigid_body.constant_torque = constant_torque
 	rigid_body.constant_force = constant_force
@@ -866,6 +943,8 @@ func _create_rigid_body(skeleton: Skeleton2D, bone: Bone2D, mass, is_center: boo
 	rigid_body.add_child(collision_shape)
 	rigid_body.collision_layer = collision_layer
 	rigid_body.collision_mask = collision_mask
+	for exclude in exclude_array:
+		rigid_body.add_collision_exception_with(exclude)
 	var remote_transform = RemoteTransform2D.new()
 	remote_transform.visible = false;
 	remote_transform.name = "RemoteTransform2D"
@@ -909,6 +988,9 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D], connected_bones: Array):
 			if joint_type == "pin":
 				var pin_joint = PinJoint2D.new()
 				pin_joint.softness = softness
+				pin_joint.angular_limit_enabled = angular_limit_enabled
+				pin_joint.angular_limit_lower = angular_limit_lower
+				pin_joint.angular_limit_upper = angular_limit_upper
 				joint = pin_joint
 			else:
 				var spring_joint = DampedSpringJoint2D.new()
@@ -930,10 +1012,10 @@ func _generate_joints(rigid_bodies: Array[RigidBody2D], connected_bones: Array):
 			node_a.add_child(joint)
 			if Engine.is_editor_hint():
 				joint.set_owner(get_tree().get_edited_scene_root())
-			#var middle = node_b.global_position - node_a.global_position
-			#middle = middle.normalized() * radius / 2.0
-			#joint.global_position = node_a.global_position + middle
-			joint.global_position = node_a.global_position
+			var middle = node_b.global_position - node_a.global_position
+			middle = middle.normalized() * radius / 2.0
+			joint.global_position = node_a.global_position + middle
+			#joint.global_position = node_a.global_position
 	var skeleton_node: Skeleton2D = get_node_or_null(skeleton)
 	skeleton_node.visible = false;
 	var skeleton_modification_stack:=SkeletonModificationStack2D.new()
@@ -1143,13 +1225,17 @@ func remove_joint(rigid_body_child: SoftBodyChild, joint: Joint2D):
 		var remote_transform_a : RemoteTransform2D= rigid_body_a.rigidbody.get_children().filter(func (node): return node is RemoteTransform2D)[0]
 		rigid_body_a.rigidbody.rotation = bone_a.rotation
 		# TODO deactivate it.
-		create_tween().tween_property(rigid_body_a.shape, "scale", Vector2(), 0).finished.connect(func(): rigid_body_a.rigidbody.process_mode = Node.PROCESS_MODE_DISABLED)
+		rigid_body_a.shape.scale = Vector2(0,0)
+		rigid_body_a.rigidbody.process_mode = Node.PROCESS_MODE_DISABLED
+		#create_tween().tween_property(rigid_body_a.shape, "scale", Vector2(), 0).finished.connect(func(): rigid_body_a.rigidbody.process_mode = Node.PROCESS_MODE_DISABLED)
 		remote_transform_a.update_rotation = true
 	if !_update_bone_lookat(_skeleton_node, skeleton_modification_stack.get_modification(bone_b_idx), bone_b, bone_b.get_meta("connected_nodes_paths"), bone_b_idx):
 		var remote_transform_b : RemoteTransform2D= rigid_body_b.rigidbody.get_children().filter(func (node): return node is RemoteTransform2D)[0]
 		rigid_body_b.rigidbody.rotation = bone_b.rotation
 		# TODO deactivate it.
-		create_tween().tween_property(rigid_body_b.shape, "scale", Vector2(), 0).finished.connect(func(): rigid_body_b.rigidbody.process_mode = Node.PROCESS_MODE_DISABLED)
+		rigid_body_a.shape.scale = Vector2(0,0)
+		rigid_body_a.rigidbody.process_mode = Node.PROCESS_MODE_DISABLED
+		#create_tween().tween_property(rigid_body_b.shape, "scale", Vector2(), 0).finished.connect(func(): rigid_body_b.rigidbody.process_mode = Node.PROCESS_MODE_DISABLED)
 		remote_transform_b.update_rotation = true
 	skeleton_modification_stack.set_modification(bone_a_idx, modification_a)
 	skeleton_modification_stack.set_modification(bone_b_idx, modification_b)
@@ -1206,8 +1292,7 @@ func _update_soft_body_rigidbodies(skeleton_node:Skeleton2D = null):
 		softbodyrb.rigidbody = child as PhysicsBody2D
 		var nodes_found = bones.filter(func(bone): return bone.name == child.name);
 		if bones.filter(func(bone): return bone.name == child.name).is_empty():
-			push_error("Cannot find node " + child.name + " on " + skeleton_node.get_path().get_concatenated_names())
-			return
+			continue
 		softbodyrb.bone = bones.filter(func(bone): return bone.name == child.name)[0]
 		var rb_children = child.get_children()
 		softbodyrb.shape = rb_children.filter(func (node): return node is CollisionShape2D)[0]
@@ -1220,22 +1305,25 @@ func _update_soft_body_rigidbodies(skeleton_node:Skeleton2D = null):
 		_soft_body_rigidbodies_dict[softbodyrb.rigidbody] = softbodyrb
 	_soft_body_rigidbodies_array = result
 
-var _max_deletions = 6
+var _max_deletions = 3
 var _last_delete_time := 0
+var _delete_every_x_frames := 2
 
 @onready var _last_texture = texture
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	# Needed in case texture changes
 	if Engine.is_editor_hint():
 		if texture != _last_texture:
 			create_softbody2d()
 		_last_texture = texture
 		return
+	_delete_every_x_frames -= 1
 	# Wait a little before breaking bones
-	if break_distance_ratio <= 0 || !_skeleton_node:
+	if break_distance_ratio <= 0 || !_skeleton_node || _delete_every_x_frames > 0:
 		return
+	_delete_every_x_frames = 2
 	# Break at max max_deletions joints
 	var deleted_count = 0
 	for rigid_body in get_rigid_bodies():
@@ -1245,7 +1333,10 @@ func _physics_process(delta: float) -> void:
 				continue
 			if joint.is_queued_for_deletion() || deleted_count >= _max_deletions:
 				continue
-			if _hinges_distances_squared[joint.name] * break_distance_ratio * break_distance_ratio * rigid_body.joints.size() < _hinges_bodies[rigid_body.rigidbody.name].global_position.distance_squared_to(_hinges_bodies[joint.node_b].global_position):
+			var mul := rigid_body.joints.size()
+			if mul >= 2:
+				mul = 4
+			if _hinges_distances_squared[joint.name] * break_distance_ratio * break_distance_ratio * mul < _hinges_bodies[rigid_body.rigidbody.name].global_position.distance_squared_to(_hinges_bodies[joint.node_b].global_position):
 				deleted_count = deleted_count + 1
 				remove_joint(rigid_body, joint)
 				_last_delete_time = Time.get_ticks_msec()
