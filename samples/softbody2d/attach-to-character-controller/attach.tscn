@@ -1,8 +1,8 @@
 [gd_scene load_steps=50 format=3 uid="uid://chhnrbkrbyki8"]
 
 [ext_resource type="Texture2D" uid="uid://bxx5v7b42j4kf" path="res://addons/softbody2d/softbody2d.svg" id="1_dax5o"]
-[ext_resource type="Script" path="res://addons/softbody2d/softbody2d.gd" id="2_sqj5y"]
-[ext_resource type="Script" path="res://samples/softbody2d/attach-to-character-controller/character_body_2d.gd" id="3_ksp00"]
+[ext_resource type="Script" uid="uid://kol6k5y6rb8a" path="res://addons/softbody2d/softbody2d.gd" id="2_sqj5y"]
+[ext_resource type="Script" uid="uid://cfu325l10g83w" path="res://samples/softbody2d/attach-to-character-controller/character_body_2d.gd" id="3_ksp00"]
 
 [sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_qhvfe"]
 resource_local_to_scene = true
@@ -390,7 +390,6 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-1" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
 position = Vector2(32.921, 124.661)
 rotation = -1.0366
-scale = Vector2(1, 1)
 rest = Transform2D(0.509149, -0.860679, 0.860679, 0.509149, 32.921, 124.661)
 auto_calculate_length_and_angle = false
 length = 45.0
@@ -523,7 +522,6 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-11" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
 position = Vector2(110.367, 194.83)
 rotation = 1.62589
-scale = Vector2(1, 1)
 rest = Transform2D(-0.055062, 0.998483, -0.998483, -0.055062, 110.367, 194.83)
 auto_calculate_length_and_angle = false
 length = 45.0
@@ -630,7 +628,6 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-19" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
 position = Vector2(188.042, 117.511)
 rotation = 1.67192
-scale = Vector2(1, 1)
 rest = Transform2D(-0.100954, 0.994891, -0.994891, -0.100954, 188.042, 117.511)
 auto_calculate_length_and_angle = false
 length = 45.0
