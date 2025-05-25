@@ -1,13 +1,13 @@
 [gd_scene load_steps=183 format=3 uid="uid://nqkmdq2vwm72"]
 
-[ext_resource type="Texture2D" uid="uid://s0laqqc3aky2" path="res://samples/softbody2d/softbody2d.png" id="1_gjugi"]
-[ext_resource type="Script" path="res://addons/softbody2d/softbody2d.gd" id="2_4mj6g"]
-[ext_resource type="Texture2D" uid="uid://dpyuasjj5bpxo" path="res://samples/softbody2d/softbody2d_inner.png" id="3_n8j03"]
+[ext_resource type="Texture2D" uid="uid://cy3a0ytwub5iu" path="res://samples/softbody2d/softbody2d.png" id="1_gjugi"]
+[ext_resource type="Script" uid="uid://kol6k5y6rb8a" path="res://addons/softbody2d/softbody2d.gd" id="2_4mj6g"]
+[ext_resource type="Texture2D" uid="uid://vnyf35nnt7t1" path="res://samples/softbody2d/softbody2d_inner.png" id="3_n8j03"]
 [ext_resource type="PackedScene" uid="uid://e43003nmrylg" path="res://samples/softbody2d/pickable_rigidbody.tscn" id="4_13lkq"]
-[ext_resource type="Texture2D" uid="uid://d3h2p840dgby1" path="res://samples/softbody2d/softbody2d_full.png" id="5_xkbwg"]
-[ext_resource type="Script" path="res://samples/softbody2d/ApplyForceToSoftbody.gd" id="5_xux5r"]
+[ext_resource type="Texture2D" uid="uid://btv2ywl5ttevy" path="res://samples/softbody2d/softbody2d_full.png" id="5_xkbwg"]
+[ext_resource type="Script" uid="uid://l8phvmpck803" path="res://samples/softbody2d/ApplyForceToSoftbody.gd" id="5_xux5r"]
 [ext_resource type="PhysicsMaterial" uid="uid://2kay8j53abmv" path="res://samples/softbody2d/softbody2d_phys_slippery.tres" id="6_eyp3s"]
-[ext_resource type="Script" path="res://samples/softbody2d/HSlider.gd" id="9_hexin"]
+[ext_resource type="Script" uid="uid://ddhnhxl06a6ey" path="res://samples/softbody2d/HSlider.gd" id="9_hexin"]
 
 [sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_y564c"]
 resource_local_to_scene = true
@@ -1371,8 +1371,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2xdum"]
 _data = {
-"RESET": SubResource("Animation_gjkde"),
-"new_animation": SubResource("Animation_jv0db")
+&"RESET": SubResource("Animation_gjkde"),
+&"new_animation": SubResource("Animation_jv0db")
 }
 
 [node name="FloatingSoftbody" type="Node2D"]
