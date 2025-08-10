@@ -31,6 +31,10 @@ Adds the SoftBody2D node which creates a set of RigidBody2Ds and Joint2Ds used w
 - Automatic (Recommended): Download the plugin from the official [Godot Asset Store](https://godotengine.org/asset-library/asset/1621) using the `AssetLib` tab in Godot.
 - Manual: Download the source code and move only the addons folder into your project addons folder.
 
+## Video Tutorial
+
+[![Video Tutorial](https://img.youtube.com/vi/M2n6KXE1YII/0.jpg)](https://www.youtube.com/watch?v=M2n6KXE1YII)
+
 # Features
 
 You can create multiple types of softbodies with this plugin, such as:
