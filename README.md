@@ -43,6 +43,10 @@ You can create multiple types of softbodies with this plugin, such as:
 - Breakable/Deformable SoftBody2D
 - SoftBody2D with Hole
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=appsinacup/godot-softbody2d&type=date&legend=top-left)](https://www.star-history.com/#appsinacup/godot-softbody2d&type=date&legend=top-left)
+
 # How this plugin creates a softbody
 
 <table>
