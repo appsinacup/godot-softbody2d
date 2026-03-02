@@ -7,7 +7,7 @@
 
 <p align = "center">
 	<strong>
-		<a href="http://softbody2d.appsinacup.com">Documentation</a> | <a href="https://discord.gg/56dMud8HYn">Discord</a>
+		<a href="http://softbody2d.appsinacup.com">Documentation</a> | <a href="https://discord.gg/v649emcpAu">Discord</a>
 	</strong>
 </p>
 
