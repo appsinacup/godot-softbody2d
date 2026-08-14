@@ -113,4 +113,4 @@ You can create multiple types of softbodies with this plugin, such as:
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=appsinacup/godot-softbody2d&type=date&legend=top-left)](https://www.star-history.com/#appsinacup/godot-softbody2d&type=date&legend=top-left)
+[![Star History Chart](https://star-history.dera.page/svg?repos=appsinacup/godot-softbody2d&type=date&legend=top-left)](https://star-history.dera.page/#appsinacup/godot-softbody2d&type=date&legend=top-left)
