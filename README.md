@@ -2,7 +2,7 @@
 <img src="https://github.com/appsinacup/godot-softbody2d/blob/main/softbody2d_banner.jpg?raw=true"/>
 </p>
 <p align="center">
-		<img src="https://img.shields.io/badge/Godot-4.2-%23478cbf?logo=godot-engine&logoColor=white" />
+		<img src="https://img.shields.io/badge/Godot-4.4+-%23478cbf?logo=godot-engine&logoColor=white" />
 </p>
 
 <p align = "center">
@@ -31,6 +31,14 @@ Adds the SoftBody2D node which creates a set of RigidBody2Ds and Joint2Ds used w
 - Automatic (Recommended): Download the plugin from the official [Godot Asset Store](https://store.godotengine.org/asset/appsinacup/softbody2d/) using the `Asset Store` tab in Godot.
 - Manual: Download the source code and move only the addons folder into your project addons folder.
 
+Requires Godot 4.4 or newer.
+
+### Optional: Godot Rapier Physics
+
+Force based breaking (`break_mode = FORCE`) needs [Godot Rapier Physics](https://godot.rapier.rs):
+install it and select **Rapier2D** under *Project Settings → Physics → 2D*. Everything else
+works on stock Godot Physics.
+
 ## Video Tutorial
 
 [![Video Tutorial](https://img.youtube.com/vi/M2n6KXE1YII/0.jpg)](https://www.youtube.com/watch?v=M2n6KXE1YII)
@@ -42,6 +50,12 @@ You can create multiple types of softbodies with this plugin, such as:
 - Bouncy SoftBody2D
 - Breakable/Deformable SoftBody2D
 - SoftBody2D with Hole
+
+Recent additions (see [CHANGELOG.md](CHANGELOG.md)): shape holding `joint_reach`, force
+based breaking, `cut()`, `edge_clearance`, `bake_scale` and `debug_draw`.
+
+Demos live in `demos/` (open `demos/demo_hub.tscn`) and tests in `tests/`
+(`godot --headless res://tests/run_tests.tscn`). Run `./lint.sh` before committing.
 
 # How this plugin creates a softbody
 

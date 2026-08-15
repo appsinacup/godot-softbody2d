@@ -1390,7 +1390,6 @@ script = ExtResource("2_4mj6g")
 vertex_interval = 42
 exclude_texture = ExtResource("3_n8j03")
 radius = 42
-margin_offset_edge = 8.0
 mass = 1.0
 
 [node name="Skeleton2D" type="Skeleton2D" parent="SoftBody2D"]
@@ -2955,7 +2954,6 @@ script = ExtResource("2_4mj6g")
 vertex_interval = 42
 exclude_texture = ExtResource("3_n8j03")
 radius = 42
-margin_offset_edge = 8.0
 mass = 1.0
 rigidbody_scene = ExtResource("4_13lkq")
 
@@ -4520,7 +4518,6 @@ script = ExtResource("2_4mj6g")
 vertex_interval = 40
 exclude_texture = ExtResource("3_n8j03")
 radius = 40
-margin_offset_edge = 8.0
 mass = 1.0
 gravity_scale = 2.08167e-17
 rigidbody_scene = ExtResource("4_13lkq")
@@ -6209,7 +6206,6 @@ vertex_interval = 40
 exclude_texture = ExtResource("3_n8j03")
 softness = 100.0
 radius = 40
-margin_offset_edge = 8.0
 mass = 1.0
 
 [node name="Skeleton2D" type="Skeleton2D" parent="HangingSoftbody2D"]
@@ -7864,7 +7860,6 @@ margin_pixels = 8
 min_area = 0.5
 break_distance_ratio = 1.1
 radius = 22
-margin_offset_edge = 7.0
 mass = 1.0
 constant_force = Vector2(2.08165e-12, 2.08165e-12)
 rigidbody_scene = ExtResource("4_13lkq")

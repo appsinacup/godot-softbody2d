@@ -15,3 +15,4 @@ data_*/
 
 *.import
 !/addons/softbody2d/softbody2d.svg.import
+/addons/godot-rapier2d

@@ -1,0 +1,7 @@
+# gdlint (gdtoolkit) config — run:  ./lint.sh   (or: gdlint addons/softbody2d tests demos)
+# Line length is 120, matching `gdformat -l 120` in lint.sh.
+# max-file-lines is a ratchet: it sits just above softbody2d.gd, whose remaining bulk is the
+# documented export block. Lower it as files shrink; never raise it to pass.
+max-line-length: 120
+max-file-lines: 1350
+disable: []

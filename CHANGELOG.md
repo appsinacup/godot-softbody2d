@@ -1,5 +1,25 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- `joint_reach`: also joint bodies 2 (default) or 3 hops apart, so the softbody holds its shape.
+- `break_mode = FORCE` with `break_force`, `break_torque`, `break_smoothing`. Needs Godot Rapier Physics.
+- `interior_strength`: joints deep inside are tougher, so tears start at the surface.
+- `yield_strain` and `yield_limit`: joints squeezed past the strain take a permanent set, up to the limit, so dents stay (clay).
+- `skin_smoothing`: the texture blends across region borders.
+- `edge_clearance`: keeps collision shapes inside the drawn texture.
+- `bake_scale`: scales the generated geometry, since physics cannot scale bodies.
+- `debug_draw`: draws joints coloured by load and the collision shapes, in editor and in game.
+- `cut(from, to)`, `apply_impulse_at_point()`, `get_clusters()`, `get_joint_target()`, `linear_damp`, `angular_damp`, `max_breaks_per_step`, `baked` and `body_detached` signals, `SoftBody2DPhysics`.
+
+### Changed
+
+- Removed `margin_offset_edge` and `show_shapes`, replaced by `edge_clearance` and `debug_draw`.
+- Split into `SoftBody2DRegions`, `SoftBody2DBuilder`, `SoftBody2DLattice`.
+
+
 ## [v1.6.2](https://github.com/Ughuuu/godot-4-softbody2d/releases/tag/v1.6.2)
 
 - Hide some items so speed is better in editor(skeleton and remote transform)
